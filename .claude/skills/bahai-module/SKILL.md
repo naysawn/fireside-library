@@ -24,7 +24,7 @@ Each section follows this structure: opening exploration questions → reading p
 - **Audience**: Mixed group of 2 Baha'is and 2 seekers (non-Baha'i)
 - **Format**: Group discussion setting
 - **Sections**: 2 by default (Naysawn can override)
-- **Reading length**: 250–375 words per section (500–750 words total)
+- **Reading length**: 500–750 words per section (reading passages only, not counting questions)
 - **Questions per section**: 3 opening reflection questions + 3 closing discussion questions
 - **Source material**: Always provided by Naysawn — never generate, invent, or substitute your own
 
@@ -98,7 +98,7 @@ Once questions are finalized, assemble the complete module in the output format 
 - Strong questions hold a tension: *"If God is truly unknowable, what does it mean to grow closer to Him?"*
 
 ### Common Failure Modes to Avoid
-- **Too long**: Stay within 500–750 words total for reading passages. Cut ruthlessly.
+- **Too long**: Stay within 500–750 words per reading passage. Cut ruthlessly.
 - **Weak sourcing**: Every claim in the reading must trace back to the provided source material
 - **Leading questions**: Questions should open exploration, not confirm conclusions
 - **Surface-level questions**: If a question can be answered in one sentence without real reflection, go deeper

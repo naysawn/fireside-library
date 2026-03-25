@@ -17,10 +17,10 @@ Each module is tagged with a seeker phase: `discovery`, `investigation`, or `con
 ## Context routing
 
 - Starting or resuming work on a module → read that module's `metadata.yaml` and `research/` folder
-- Writing or drafting a module → read `brief/audience.md` and `brief/samples/`, then use the `bahai-module` skill
+- Writing or drafting a module → read `brief/audience.md`, `brief/style.md`, and `brief/samples/`, then use the `bahai-module` skill
 - Understanding the process and lifecycle → read `brief/process.md`
 - Understanding who the modules are for → read `brief/audience.md`
-- Calibrating writing tone → read examples in `brief/samples/`
+- Calibrating writing tone and style → read `brief/style.md` and examples in `brief/samples/`
 - Kicking off a new project or restructuring → use the `project-kickoff` skill
 - Understanding the module format → read `.claude/skills/bahai-module/SKILL.md`
 - Checking module status → read `metadata.yaml` in the relevant module folder
