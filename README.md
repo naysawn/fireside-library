@@ -2,7 +2,19 @@
 
 A collection of structured study modules designed for small group discussions exploring the Baha'i Faith. Each module is a standalone 2-section reading with reflection and discussion questions, written for a mixed group of Baha'is and seekers.
 
-## Structure
+## Repo Structure
+
+```
+├── content/                # Module content and writing infrastructure
+│   ├── brief/              # Audience, process, style guide, samples
+│   ├── 01-overview-of-the-bahai-faith/
+│   ├── 02-bahai-spiritual-principles/
+│   ├── ...
+│   └── .claude/skills/     # Claude Code skills for drafting modules
+├── web/                    # Publishing website (coming soon)
+├── CLAUDE.md               # Top-level routing
+└── README.md
+```
 
 Each numbered folder is a self-contained module:
 
@@ -16,11 +28,6 @@ Each numbered folder is a self-contained module:
 └── final.md             # Approved module
 ```
 
-Global project docs live in `brief/`:
-- `process.md` — the full module lifecycle from planning to publication
-- `audience.md` — who the modules are for
-- `samples/` — example modules for tone reference
-
 ## Module Lifecycle
 
 1. **Planning** — group selects modules and assigns writers/editors
@@ -33,4 +40,4 @@ Global project docs live in `brief/`:
 
 ## Contributing
 
-Contributors work in this repo using Claude Code. See `CLAUDE.md` for routing and rules.
+Contributors work in this repo using Claude Code. See `content/CLAUDE.md` for module writing rules and routing.
