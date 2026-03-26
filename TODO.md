@@ -4,17 +4,18 @@
 
 Convert each module from Google Docs to markdown and place in the correct folder.
 
-- [ ] 01 - Overview of the Baha'i Faith
-- [ ] 02 - Baha'i Spiritual Principles
-- [ ] 03 - Baha'i Social Teachings
-- [ ] 04 - Developing a Relationship with God
-- [ ] 05 - The Bab and Baha'u'llah
-- [ ] 06 - The Centers of the Covenant
-- [ ] 07 - Making Sense of a Turbulent World
-- [ ] 09 - The Baha'i Faith and Christianity
-- [ ] 10 - The Baha'i Administrative Order
-- [ ] 11 - Suffering and Justice
-- [ ] 12 - Non Involvement in Partisan Politics
+- [x] 01 - Overview of the Baha'i Faith
+- [x] 02 - Baha'i Spiritual Principles
+- [x] 03 - Baha'i Social Teachings
+- [x] 04 - Developing a Relationship with God
+- [x] 05 - The Bab and Baha'u'llah
+- [x] 06 - The Centers of the Covenant
+- [x] 07 - Making Sense of a Turbulent World
+- [x] 08 - Prayer (furthest along — multiple AI drafts + v1 + v2)
+- [x] 09 - The Baha'i Faith and Christianity
+- [x] 10 - The Baha'i Administrative Order
+- [x] 11 - Suffering and Justice
+- [x] 12 - Non Involvement in Partisan Politics
 
 ## Editorial Cleanup (per module, during revision)
 
@@ -36,7 +37,7 @@ Convert each module from Google Docs to markdown and place in the correct folder
 
 ## Design Decisions
 
-- [ ] Web interface for editing — should non-technical contributors have a UI layer over the repo?
+- [x] Web interface for editing — plan drafted in `research/app-plan.md` (Next.js app with version viewer, comments, AI-assisted editing)
 - [ ] Publishing website — separate project or integrated with this repo?
 - [ ] PDF generation pipeline — build as a Vercel API route using Puppeteer, rendering the same styled HTML to PDF so one layout serves both web and print
 - [ ] Google Drive library of source materials — how to reference/link from module `research/` folders
