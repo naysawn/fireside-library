@@ -85,7 +85,39 @@ comments:
     created: 2026-03-24
 ```
 
-### 5. Markdown Editor (future)
+### 5. Auto-Versioning on Save
+- Edits never overwrite existing files — each save creates the next version file (v1.md → v2.md → v3.md)
+- The version history *is* the folder listing — no database, no git dependency for versioning
+- Optional: auto-snapshot on significant edits (v1.1.md, v1.2.md)
+- The full history of a module's evolution is always visible as plain files
+
+### 6. AI-Assisted Editing (Claude API)
+- Author highlights a paragraph and writes an instruction (e.g., "make this more accessible to newcomers")
+- A Server Action calls the Claude API with the selected text + instruction + context from `brief/audience.md` and `brief/samples/` for tone calibration
+- Claude returns a proposed revision shown as a diff (original vs suggested)
+- Author accepts, rejects, or manually edits the suggestion
+- Accepted edits get written into the next version file — never mutating the original
+- AI suggestions stored in sidecar comments for audit trail:
+
+```yaml
+comments:
+  - paragraph: 3
+    author: "Naysawn"
+    text: "Simplify this for someone new to the Faith"
+    type: suggestion
+    ai_proposed: "The Baha'i Faith teaches that humanity is one family..."
+    ai_accepted: false
+    created: 2026-03-25
+```
+
+#### Cost Considerations
+- Uses the Anthropic API (usage-based billing, separate from Claude subscription)
+- Haiku model recommended — cheapest option, handles paragraph-level rewrites well
+- Costs would be minimal (cents/day) given small request sizes (paragraph + short instruction)
+- `max_tokens` cap on responses keeps costs predictable
+- Anthropic API has a free tier with rate limits that may suffice during development
+
+### 7. Markdown Editor (future)
 - In-browser editing with CodeMirror or Milkdown
 - Server Actions write changes back to the content directory
 - No database needed for basic editing
@@ -102,6 +134,7 @@ comments:
 | Diffing | jsdiff or diff-match-patch | Compare draft versions |
 | Editor (future) | CodeMirror or Milkdown | In-browser markdown editing |
 | Database (if needed) | SQLite via better-sqlite3 | Only if comments outgrow sidecar files |
+| AI editing | Claude API (Haiku) | Propose paragraph-level revisions from author comments |
 | Styling | Tailwind CSS | Fast to build, good typography defaults |
 
 ## How It Works (Architecture)
@@ -133,7 +166,9 @@ See `research/nextjs-vs-traditional-architecture.png` for a visual comparison.
 6. Build version viewer with markdown rendering
 7. Add version diff view
 8. Add comment sidecar support
-9. (Future) Add in-browser markdown editor
+9. Add auto-versioning (saves create new version files, never overwrite)
+10. Integrate Claude API for AI-assisted editing (Server Action + accept/reject UI)
+11. (Future) Add in-browser markdown editor
 
 ## Design Principles
 
