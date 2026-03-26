@@ -31,6 +31,7 @@ Convert each module from Google Docs to markdown and place in the correct folder
 
 - [ ] Web interface for editing — should non-technical contributors have a UI layer over the repo?
 - [ ] Publishing website — separate project or integrated with this repo?
+- [ ] PDF generation pipeline — build as a Vercel API route using Puppeteer, rendering the same styled HTML to PDF so one layout serves both web and print
 - [ ] Google Drive library of source materials — how to reference/link from module `research/` folders
 
 ## Project Setup
