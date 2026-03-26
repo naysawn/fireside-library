@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baha'i Modules — Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Base ──────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #2c54ea;
+    --accent-light: #eaeffd;
+    --accent-hover: #1d3fc4;
+    --bg: #ffffff;
+    --bg-row-alt: #fafafa;
+    --bg-hover: #f4f6ff;
+    --text: #111111;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --border: #e4e4e4;
+    --border-light: #eeeeee;
+    --radius: 6px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --transition: 150ms ease;
+  }
+
+  html {
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ── Layout Shell ──────────────────────────────────────── */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Header ────────────────────────────────────────────── */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .logo-mark svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .site-desc {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    margin-left: 2px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+
+  .header-link:hover {
+    color: var(--accent);
+  }
+
+  /* ── Filter Bar ────────────────────────────────────────── */
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .filter-btn {
+    font-family: var(--font);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover {
+    color: var(--text);
+    background: var(--bg-row-alt);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .filter-btn.active:hover {
+    background: var(--accent-hover);
+  }
+
+  .search-box {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .search-box svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+  }
+
+  .search-input {
+    font-family: var(--font);
+    font-size: 0.8rem;
+    padding: 7px 12px 7px 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    width: 200px;
+    outline: none;
+    transition: all var(--transition);
+  }
+
+  .search-input::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  .search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+    width: 240px;
+  }
+
+  /* ── Results Count ─────────────────────────────────────── */
+  .results-bar {
+    padding: 12px 0;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Directory Table ───────────────────────────────────── */
+  .directory {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .directory thead th {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding: 0 0 10px;
+    border-bottom: 2px solid var(--text);
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .directory thead th.col-num { width: 48px; }
+  .directory thead th.col-title { }
+  .directory thead th.col-phase { width: 130px; }
+  .directory thead th.col-status { width: 80px; }
+  .directory thead th.col-topics { width: 240px; }
+
+  .directory tbody tr {
+    cursor: pointer;
+    transition: background var(--transition);
+  }
+
+  .directory tbody tr:hover {
+    background: var(--bg-hover);
+  }
+
+  .directory tbody tr:hover .module-title {
+    color: var(--accent);
+  }
+
+  .directory tbody tr:hover .row-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .directory tbody td {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    font-size: 0.87rem;
+  }
+
+  .directory tbody tr:last-child td {
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Number column */
+  .col-num {
+    font-variant-numeric: tabular-nums;
+    color: var(--text-tertiary);
+    font-size: 0.8rem !important;
+    font-weight: 500;
+    padding-right: 12px !important;
+  }
+
+  /* Title column */
+  .title-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 16px;
+  }
+
+  .module-title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: color var(--transition);
+    line-height: 1.35;
+  }
+
+  .row-arrow {
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all var(--transition);
+    color: var(--accent);
+  }
+
+  /* Phase column */
+  .phase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .phase-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .phase-dot.discovery { background: var(--accent); }
+  .phase-dot.investigation { background: #e88c30; }
+  .phase-dot.consolidation { background: #1aab5c; }
+
+  /* Status column */
+  .status-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .status-tag.beta {
+    background: #fff3e0;
+    color: #c77600;
+  }
+
+  .status-tag.v1 {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .status-tag.draft {
+    background: var(--bg-row-alt);
+    color: var(--text-tertiary);
+  }
+
+  /* Topics column */
+  .topics {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ── Empty State ───────────────────────────────────────── */
+  .empty-state {
+    text-align: center;
+    padding: 64px 0;
+    display: none;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+  }
+
+  .empty-state .empty-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  /* ── Footer ────────────────────────────────────────────── */
+  .footer {
+    padding: 32px 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+  }
+
+  .footer a {
+    color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+
+  .footer a:hover {
+    color: var(--accent);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  /* ── Responsive ────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    html { font-size: 14px; }
+
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px 0 18px;
+    }
+
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .filters {
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      width: 100%;
+    }
+
+    .search-input:focus {
+      width: 100%;
+    }
+
+    .search-box {
+      width: 100%;
+    }
+
+    /* Hide topics and status columns on mobile */
+    .col-topics,
+    .col-status {
+      display: none;
+    }
+
+    .col-phase {
+      width: auto;
+    }
+
+    .directory tbody td {
+      padding: 12px 0;
+    }
+
+    .page {
+      padding: 0 16px;
+    }
+
+    .footer {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .col-num {
+      display: none;
+    }
+
+    .phase-badge span {
+      display: none;
+    }
+
+    .phase-badge .phase-dot {
+      width: 9px;
+      height: 9px;
+    }
+
+    .col-phase {
+      width: 32px !important;
+    }
+  }
+
+  /* ── Keyboard shortcut hint ────────────────────────────── */
+  .kbd-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity var(--transition);
+  }
+
+  .search-input:focus ~ .kbd-hint {
+    opacity: 0;
+  }
+
+  kbd {
+    font-family: var(--font);
+    font-size: 0.65rem;
+    background: var(--bg-row-alt);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  /* ── Smooth entrance animation ─────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .directory tbody tr {
+    animation: fadeUp 0.3s ease both;
+  }
+
+  .directory tbody tr:nth-child(1)  { animation-delay: 0.02s; }
+  .directory tbody tr:nth-child(2)  { animation-delay: 0.04s; }
+  .directory tbody tr:nth-child(3)  { animation-delay: 0.06s; }
+  .directory tbody tr:nth-child(4)  { animation-delay: 0.08s; }
+  .directory tbody tr:nth-child(5)  { animation-delay: 0.10s; }
+  .directory tbody tr:nth-child(6)  { animation-delay: 0.12s; }
+  .directory tbody tr:nth-child(7)  { animation-delay: 0.14s; }
+  .directory tbody tr:nth-child(8)  { animation-delay: 0.16s; }
+  .directory tbody tr:nth-child(9)  { animation-delay: 0.18s; }
+  .directory tbody tr:nth-child(10) { animation-delay: 0.20s; }
+  .directory tbody tr:nth-child(11) { animation-delay: 0.22s; }
+  .directory tbody tr:nth-child(12) { animation-delay: 0.24s; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-mark">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Nine-pointed star simplified as a geometric mark -->
+          <circle cx="16" cy="16" r="15" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+          <path d="M16 3 L18.5 12.5 L28 11 L21 17 L28 23 L18.5 20.5 L16 29 L13.5 20.5 L4 23 L11 17 L4 11 L13.5 12.5 Z"
+                fill="var(--accent)" opacity="0.12"/>
+          <path d="M16 6 L17.8 13.2 L25 12 L19.5 16.8 L25 22 L17.8 19.8 L16 26 L14.2 19.8 L7 22 L12.5 16.8 L7 12 L14.2 13.2 Z"
+                fill="var(--accent)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="site-title">Baha'i Modules</div>
+        <div class="site-desc">Educational modules for seekers and study circles</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="#" class="header-link">About</a>
+      <a href="#" class="header-link">Process</a>
+    </div>
+  </header>
+
+  <!-- ── Controls ────────────────────────────────────────── -->
+  <div class="controls">
+    <div class="filters" role="tablist" aria-label="Filter by phase">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="discovery">Discovery</button>
+      <button class="filter-btn" data-filter="investigation">Investigation</button>
+      <button class="filter-btn" data-filter="consolidation">Consolidation</button>
+    </div>
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" class="search-input" placeholder="Search modules..." id="searchInput" autocomplete="off" spellcheck="false">
+      <span class="kbd-hint"><kbd>/</kbd></span>
+    </div>
+  </div>
+
+  <!-- ── Results Count ───────────────────────────────────── -->
+  <div class="results-bar" id="resultsBar">12 modules</div>
+
+  <!-- ── Directory ───────────────────────────────────────── -->
+  <table class="directory" id="directory">
+    <thead>
+      <tr>
+        <th class="col-num">#</th>
+        <th class="col-title">Module</th>
+        <th class="col-phase">Phase</th>
+        <th class="col-status">Status</th>
+        <th class="col-topics">Topics</th>
+      </tr>
+    </thead>
+    <tbody id="moduleBody">
+    </tbody>
+  </table>
+
+  <!-- ── Empty State ─────────────────────────────────────── -->
+  <div class="empty-state" id="emptyState">
+    <p class="empty-label">No modules found</p>
+    <p>Try adjusting your search or filters.</p>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <span>&copy; 2026 Baha'i Modules Project</span>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Source</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── Module Data ─────────────────────────────────────────
+  const modules = [
+    {
+      num: '01',
+      title: 'Overview of the Baha\'i Faith',
+      phase: 'discovery',
+      status: 'v1',
+      topics: 'History, core beliefs, community life, global presence'
+    },
+    {
+      num: '02',
+      title: 'Baha\'i Spiritual Principles',
+      phase: 'discovery',
+      status: 'beta',
+      topics: 'Oneness of humanity, independent investigation of truth, unity'
+    },
+    {
+      num: '03',
+      title: 'Baha\'i Social Teachings',
+      phase: 'discovery',
+      status: 'beta',
+      topics: 'Equality, education, elimination of prejudice, economic justice'
+    },
+    {
+      num: '04',
+      title: 'Developing a Relationship with God',
+      phase: 'investigation',
+      status: 'draft',
+      topics: 'Devotion, meditation, spiritual growth, daily practice'
+    },
+    {
+      num: '05',
+      title: 'The Bab and Baha\'u\'llah',
+      phase: 'discovery',
+      status: 'v1',
+      topics: 'Twin Manifestations, revelation, historical context'
+    },
+    {
+      num: '06',
+      title: 'The Centers of the Covenant',
+      phase: 'investigation',
+      status: 'draft',
+      topics: 'Abdu\'l-Baha, Shoghi Effendi, the Covenant, authority'
+    },
+    {
+      num: '07',
+      title: 'Making Sense of a Turbulent World',
+      phase: 'investigation',
+      status: 'beta',
+      topics: 'Global crises, divine plan, hope, transformation'
+    },
+    {
+      num: '08',
+      title: 'Prayer',
+      phase: 'discovery',
+      status: 'v1',
+      topics: 'Obligatory prayer, devotional life, sacred texts, healing'
+    },
+    {
+      num: '09',
+      title: 'The Baha\'i Faith and Christianity',
+      phase: 'investigation',
+      status: 'draft',
+      topics: 'Progressive revelation, biblical prophecy, interfaith dialogue'
+    },
+    {
+      num: '10',
+      title: 'The Baha\'i Administrative Order',
+      phase: 'consolidation',
+      status: 'draft',
+      topics: 'Local assemblies, the UHJ, consultation, elections'
+    },
+    {
+      num: '11',
+      title: 'Suffering and Justice',
+      phase: 'investigation',
+      status: 'draft',
+      topics: 'Tests and difficulties, divine justice, theodicy, resilience'
+    },
+    {
+      num: '12',
+      title: 'Non-Involvement in Partisan Politics',
+      phase: 'consolidation',
+      status: 'draft',
+      topics: 'Political non-partisanship, constructive engagement, governance'
+    }
+  ];
+
+  const tbody = document.getElementById('moduleBody');
+  const resultsBar = document.getElementById('resultsBar');
+  const emptyState = document.getElementById('emptyState');
+  const directory = document.getElementById('directory');
+  const searchInput = document.getElementById('searchInput');
+
+  // ── Render Rows ─────────────────────────────────────────
+  function renderRows(data) {
+    tbody.innerHTML = '';
+
+    if (data.length === 0) {
+      directory.style.display = 'none';
+      emptyState.style.display = 'block';
+      resultsBar.textContent = '0 modules';
+      return;
+    }
+
+    directory.style.display = '';
+    emptyState.style.display = 'none';
+    resultsBar.textContent = data.length + (data.length === 1 ? ' module' : ' modules');
+
+    data.forEach(function(mod) {
+      const tr = document.createElement('tr');
+      tr.setAttribute('data-phase', mod.phase);
+      tr.setAttribute('tabindex', '0');
+      tr.setAttribute('role', 'link');
+      tr.setAttribute('aria-label', 'Module ' + mod.num + ': ' + mod.title);
+
+      var phaseLabel = mod.phase.charAt(0).toUpperCase() + mod.phase.slice(1);
+
+      tr.innerHTML =
+        '<td class="col-num">' + mod.num + '</td>' +
+        '<td class="col-title"><div class="title-cell">' +
+          '<span class="module-title">' + escapeHtml(mod.title) + '</span>' +
+          '<svg class="row-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>' +
+        '</div></td>' +
+        '<td class="col-phase"><span class="phase-badge"><span class="phase-dot ' + mod.phase + '"></span><span>' + phaseLabel + '</span></span></td>' +
+        '<td class="col-status"><span class="status-tag ' + mod.status + '">' + mod.status + '</span></td>' +
+        '<td class="col-topics"><span class="topics">' + escapeHtml(mod.topics) + '</span></td>';
+
+      tr.addEventListener('click', function() {
+        // Navigate to module page (placeholder)
+        console.log('Navigate to module ' + mod.num);
+      });
+
+      tr.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          tr.click();
+        }
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // ── Filtering ───────────────────────────────────────────
+  var activePhase = 'all';
+
+  function getFilteredModules() {
+    var searchTerm = searchInput.value.toLowerCase().trim();
+
+    return modules.filter(function(mod) {
+      var phaseMatch = activePhase === 'all' || mod.phase === activePhase;
+      var searchMatch = !searchTerm ||
+        mod.title.toLowerCase().indexOf(searchTerm) !== -1 ||
+        mod.topics.toLowerCase().indexOf(searchTerm) !== -1 ||
+        mod.num.indexOf(searchTerm) !== -1 ||
+        mod.phase.toLowerCase().indexOf(searchTerm) !== -1;
+      return phaseMatch && searchMatch;
+    });
+  }
+
+  function applyFilters() {
+    renderRows(getFilteredModules());
+  }
+
+  // ── Filter Buttons ──────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      activePhase = btn.getAttribute('data-filter');
+      applyFilters();
+    });
+  });
+
+  // ── Search ──────────────────────────────────────────────
+  searchInput.addEventListener('input', function() {
+    applyFilters();
+  });
+
+  // Keyboard shortcut: / to focus search
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+    if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.value = '';
+      searchInput.blur();
+      applyFilters();
+    }
+  });
+
+  // ── Initial Render ──────────────────────────────────────
+  renderRows(modules);
+
+})();
+</script>
+
+</body>
+</html>
