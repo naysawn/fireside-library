@@ -14,6 +14,12 @@ Convert each module from Google Docs to markdown and place in the correct folder
 - [ ] 09 - The Baha'i Faith and Christianity
 - [ ] 10 - The Baha'i Administrative Order
 - [ ] 11 - Suffering and Justice
+- [ ] 12 - Non Involvement in Partisan Politics
+
+## Editorial Cleanup (per module, during revision)
+
+- [ ] Convert longer quotations to block quotes (Google Docs export does not use `>` syntax)
+- [ ] Apply style guide (em dashes, AI tells, citations, acceptance criteria)
 
 ## Populate Brief & Samples
 
