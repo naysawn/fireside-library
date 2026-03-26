@@ -26,6 +26,7 @@ Convert each module from Google Docs to markdown and place in the correct folder
 - [ ] Drop 2-3 strongest existing modules into `brief/samples/` as tone references
 - [ ] Review and refine `brief/audience.md`
 - [ ] Review and refine `brief/process.md`
+- [ ] Define the purpose each module by seeker stage & what also can be assumed about the audience in terms of knowledge
 
 ## Build Skills
 
