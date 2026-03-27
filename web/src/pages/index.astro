@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CharacterCollection from '../components/CharacterCollection.astro';
+---
+
+<Layout title="Baha'i Modules" activeNav="home">
+
+<header class="bg-accent pt-36 pb-24 text-white">
+  <div class="max-w-5xl mx-auto px-6 md:px-12 grid md:grid-cols-[1fr_auto] gap-12 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight mb-6">Written materials for exploring the Faith together.</h1>
+      <p class="text-lg md:text-xl leading-relaxed opacity-92 max-w-xl">Bite-sized written explorations. Built for small groups and real conversations.</p>
+      <div class="mt-9 flex gap-3.5 flex-wrap">
+        <a href="/modules" class="inline-block bg-white text-accent-deep font-semibold text-[0.9375rem] px-7 py-3 rounded-md no-underline hover:bg-accent-pale hover:-translate-y-px transition">Browse modules</a>
+        <a href="/about" class="inline-block bg-transparent text-white font-semibold text-[0.9375rem] px-7 py-3 rounded-md border-2 border-white/40 no-underline hover:border-white hover:bg-white/10 transition">About this project</a>
+      </div>
+    </div>
+    <div class="hidden md:block">
+      <CharacterCollection />
+    </div>
+  </div>
+</header>
+
+<section class="py-20 md:py-24">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-8">Texts to make it easier to teach</h2>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">Having written material to read together helps sustain conversation and keeps the focus on subjects worth discussing.</p>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">Without something to look at together, things drift. We talk about the weather, we talk about sports. Anything to keep from talking about subjects of real meaning.</p>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">Give a small group something to read together. Ask questions that cause people to think. Let the conversation go where it goes.</p>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">In our experience, that combination has sparked three-hour discussions about suffering, the existence of God, what happens after death, and what it means to live a spiritual life in this century.</p>
+  </div>
+</section>
+
+<section class="py-20 md:py-24 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">Texts for every stage of interest</h2>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-12">Every module targets a specific stage of a seeker's relationship with the Faith. The subjects, the depth, and the assumptions about what a reader already knows shift accordingly.</p>
+
+    <div class="grid md:grid-cols-2 gap-0">
+      <div class="py-7 border-t border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent text-xs font-bold">D</span>
+          <h3 class="text-lg font-bold">Discovery</h3>
+        </div>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people encountering the Faith for the first time. These modules introduce core ideas and invite curiosity. The goal is a genuine "oh wow, this has a lot of interesting things to say" reaction.</p>
+      </div>
+
+      <div class="py-7 border-t border-gray-200 md:border-l md:pl-10">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent text-xs font-bold">I</span>
+          <h3 class="text-lg font-bold">Investigation</h3>
+        </div>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people actively exploring the Faith. These modules go deeper into specific subjects and engage with harder questions. The reader is past curiosity and into genuine examination.</p>
+      </div>
+
+      <div class="py-7 border-t border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent text-xs font-bold">C</span>
+          <h3 class="text-lg font-bold">Consolidation</h3>
+        </div>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people who identify as Baha'is and want to understand community life, institutions, and the many ways to serve. The language assumes familiarity with the basics.</p>
+      </div>
+
+      <div class="py-7 border-t border-gray-200 md:border-l md:pl-10">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent text-xs font-bold">S</span>
+          <h3 class="text-lg font-bold">Service</h3>
+        </div>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">These modules lead naturally into the institute materials. Groups can continue with Ruhi and other resources according to their areas of interest in service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 md:py-24 bg-gray-100 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-8">Open source. Come help.</h2>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">This project started in Boston. A few of us wanted better materials for sharing the Faith with seekers, so we started writing them. We tested them in living rooms and over Zoom. Some worked well. Some we rewrote from scratch. We are still learning what works.</p>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Everything here is open source. The modules, the writing process, and the tools we use to produce them are all on <a href="https://github.com/naysawn/bahai-modules" class="text-accent-deep underline underline-offset-2 hover:text-accent-dark">GitHub</a>. We need other communities to try these, give us honest feedback, and help us figure out what we have not thought of yet.</p>
+  </div>
+</section>
+
+</Layout>

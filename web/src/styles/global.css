@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #e04e1a;
+  --color-accent-deep: #c7420f;
+  --color-accent-dark: #9a3410;
+  --color-accent-pale: #fdf0ec;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: white;
+  }
+}
+
+/* Print styles */
+@media print {
+  nav, footer, .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: black;
+  }
+
+  .prose blockquote {
+    background: none !important;
+    border-left-color: #999 !important;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Module reading prose styles */
+
+/* Hide the h1 since the title is already in the page header */
+.module-prose h1 {
+  display: none;
+}
+
+.module-prose h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+  color: #111;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.module-prose h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  color: #111;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: #737373;
+}
+
+.module-prose h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #222;
+}
+
+.module-prose p {
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  margin-bottom: 1.25rem;
+  color: #2c2c2c;
+}
+
+.module-prose ol {
+  counter-reset: question;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.module-prose ol li {
+  counter-increment: question;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #2c2c2c;
+}
+
+.module-prose ol li::before {
+  content: counter(question) ".";
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 0.9375rem;
+}
+
+.module-prose blockquote {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-accent-pale);
+  border-radius: 0 6px 6px 0;
+}
+
+.module-prose blockquote p {
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.module-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.module-prose em {
+  color: #333;
+}
+
+.module-prose hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 3rem 0;
+}

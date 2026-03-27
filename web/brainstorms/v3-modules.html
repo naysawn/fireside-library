@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modules | Baha'i Modules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --black: #111111;
+    --white: #ffffff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --accent: #e04e1a;
+    --accent-deep: #c7420f;
+    --accent-dark: #9a3410;
+    --accent-pale: #fdf0ec;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--white);
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 48px;
+    }
+  }
+
+  /* Navigation */
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--accent);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s;
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  nav .site-name {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  nav .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  nav .nav-links a:hover {
+    color: var(--white);
+  }
+
+  nav .nav-links a.active {
+    color: var(--white);
+  }
+
+  /* Page Header */
+
+  .page-header {
+    background: var(--accent);
+    padding: 120px 0 56px;
+    color: var(--white);
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .page-header p {
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.65;
+    opacity: 0.92;
+    max-width: 520px;
+  }
+
+  /* Filter Bar */
+
+  .filter-bar {
+    padding: 32px 0 0;
+  }
+
+  .filter-bar .filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-pill {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-pill:hover {
+    border-color: var(--gray-400);
+    color: var(--black);
+  }
+
+  .filter-pill.active {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+
+  .module-count {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    font-weight: 500;
+  }
+
+  /* Module List */
+
+  .module-list {
+    padding: 0 0 80px;
+  }
+
+  .module-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 0 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-200);
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.12s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .module-item:hover {
+    background: var(--gray-100);
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 6px;
+  }
+
+  .module-item:hover .module-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .module-num {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  .module-body {
+    min-width: 0;
+  }
+
+  .module-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .module-title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .phase-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .phase-badge.discovery {
+    background: var(--accent-pale);
+    color: var(--accent-deep);
+  }
+
+  .phase-badge.investigation {
+    background: #eef2ff;
+    color: #4338ca;
+  }
+
+  .phase-badge.consolidation {
+    background: #ecfdf5;
+    color: #047857;
+  }
+
+  .module-desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--gray-600);
+  }
+
+  .module-arrow {
+    font-size: 1.125rem;
+    color: var(--gray-400);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 48px 0;
+  }
+
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer p {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+  }
+
+  footer a {
+    color: var(--gray-500);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  footer a:hover {
+    color: var(--black);
+  }
+
+  /* Responsive */
+
+  @media (max-width: 600px) {
+    .page-header {
+      padding: 100px 0 40px;
+    }
+
+    .module-item {
+      grid-template-columns: 36px 1fr auto;
+      gap: 0 12px;
+      padding: 16px 0;
+    }
+
+    .module-title-row {
+      gap: 8px;
+    }
+
+    .module-arrow {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="v3-homepage.html" class="site-name">Baha'i Modules</a>
+    <ul class="nav-links">
+      <li><a href="v3-homepage.html">Home</a></li>
+      <li><a href="v3-modules.html" class="active">Modules</a></li>
+      <li><a href="v3-about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <h1>Modules</h1>
+    <p>Written materials for exploring the Baha'i Faith together.</p>
+  </div>
+</header>
+
+<section class="filter-bar">
+  <div class="container">
+    <div class="filter-row">
+      <div class="filter-pills">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="discovery">Discovery</button>
+        <button class="filter-pill" data-filter="investigation">Investigation</button>
+        <button class="filter-pill" data-filter="consolidation">Consolidation</button>
+      </div>
+      <span class="module-count">12 modules</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-list">
+  <div class="container">
+
+    <a href="#" class="module-item" data-phase="discovery">
+      <span class="module-num">01</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Overview of the Baha'i Faith</span>
+          <span class="phase-badge discovery">Discovery</span>
+        </div>
+        <p class="module-desc">A first look at the history, central figures, and core beliefs of the Baha'i Faith.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="discovery">
+      <span class="module-num">02</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Baha'i Spiritual Principles</span>
+          <span class="phase-badge discovery">Discovery</span>
+        </div>
+        <p class="module-desc">The spiritual teachings at the heart of Baha'u'llah's revelation and what they ask of us.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="discovery">
+      <span class="module-num">03</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Baha'i Social Teachings</span>
+          <span class="phase-badge discovery">Discovery</span>
+        </div>
+        <p class="module-desc">How the Baha'i Faith addresses equality, justice, education, and the structure of society.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="investigation">
+      <span class="module-num">04</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Developing a Relationship with God</span>
+          <span class="phase-badge investigation">Investigation</span>
+        </div>
+        <p class="module-desc">What the Baha'i writings say about knowing God and what that relationship looks like in practice.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="discovery">
+      <span class="module-num">05</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">The Bab and Baha'u'llah</span>
+          <span class="phase-badge discovery">Discovery</span>
+        </div>
+        <p class="module-desc">The lives of the two central figures of the Baha'i Faith and what they set in motion.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="investigation">
+      <span class="module-num">06</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">The Centers of the Covenant</span>
+          <span class="phase-badge investigation">Investigation</span>
+        </div>
+        <p class="module-desc">How Abdu'l-Baha, Shoghi Effendi, and the Universal House of Justice carry forward Baha'u'llah's vision.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="investigation">
+      <span class="module-num">07</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Making Sense of a Turbulent World</span>
+          <span class="phase-badge investigation">Investigation</span>
+        </div>
+        <p class="module-desc">How the Baha'i writings explain the crises of our time and what they say is coming next.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="discovery">
+      <span class="module-num">08</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Prayer</span>
+          <span class="phase-badge discovery">Discovery</span>
+        </div>
+        <p class="module-desc">What Baha'is believe about prayer, why it matters, and how to build a practice of it.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="investigation">
+      <span class="module-num">09</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">The Baha'i Faith and Christianity</span>
+          <span class="phase-badge investigation">Investigation</span>
+        </div>
+        <p class="module-desc">The relationship between the two religions, their shared roots, and where they diverge.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="consolidation">
+      <span class="module-num">10</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">The Baha'i Administrative Order</span>
+          <span class="phase-badge consolidation">Consolidation</span>
+        </div>
+        <p class="module-desc">How Baha'i communities organize themselves, make decisions, and govern without clergy.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="investigation">
+      <span class="module-num">11</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Suffering and Justice</span>
+          <span class="phase-badge investigation">Investigation</span>
+        </div>
+        <p class="module-desc">What the Baha'i writings say about why suffering exists and how justice will come.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+    <a href="#" class="module-item" data-phase="consolidation">
+      <span class="module-num">12</span>
+      <div class="module-body">
+        <div class="module-title-row">
+          <span class="module-title">Non-Involvement in Partisan Politics</span>
+          <span class="phase-badge consolidation">Consolidation</span>
+        </div>
+        <p class="module-desc">Why Baha'is stay out of partisan politics and what they do instead.</p>
+      </div>
+      <span class="module-arrow">&rarr;</span>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Baha'i Modules. An open source project from Boston.</p>
+    <p><a href="https://github.com">GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll shadow
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navEl.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+    } else {
+      navEl.style.boxShadow = 'none';
+    }
+  });
+
+  // Filter logic
+  const pills = document.querySelectorAll('.filter-pill');
+  const items = document.querySelectorAll('.module-item');
+  const countEl = document.querySelector('.module-count');
+
+  function updateCount() {
+    const visible = document.querySelectorAll('.module-item:not([style*="display: none"])').length;
+    countEl.textContent = visible + (visible === 1 ? ' module' : ' modules');
+  }
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.phase === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      updateCount();
+    });
+  });
+</script>
+
+</body>
+</html>
