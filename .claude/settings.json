@@ -1,0 +1,69 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Skill",
+      "mcp__pencil",
+
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(python3 *)",
+
+      "Bash(git status*)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git branch *)",
+      "Bash(git stash *)",
+      "Bash(git merge *)",
+      "Bash(git mv *)",
+      "Bash(git remote *)",
+
+      "Bash(gh *)",
+
+      "Bash(open *)",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(cat *)",
+      "Bash(jq *)",
+      "Bash(sips *)",
+      "Bash(magick *)",
+      "Bash(pandoc *)",
+      "Bash(file *)",
+      "Bash(chmod *)",
+      "Bash(claude *)",
+      "Bash(brew *)",
+      "Bash(curl *)",
+      "Bash(awk *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(sed *)",
+      "Bash(xargs *)"
+    ],
+    "deny": [
+      "Bash(git push --force *)",
+      "Bash(git push origin main)",
+      "Bash(git push origin master)",
+      "Bash(git reset --hard *)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf /*)",
+      "Bash(sudo *)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/Users/naysawnnaji/.claude/plans"
+    ]
+  }
+}

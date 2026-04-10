@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Review — Baha'i Modules Gap Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --border: #e7e5e4;
+    --text: #1c1917;
+    --text-muted: #78716c;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --blue: #2563eb;
+    --blue-light: #eff6ff;
+    --purple: #7c3aed;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .preamble {
+    background: var(--blue-light);
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .preamble strong { color: var(--blue); }
+
+  /* Grid layouts */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .card.full { grid-column: 1 / -1; }
+
+  /* Heatmap table */
+  .heatmap-wrap { overflow-x: auto; }
+
+  table.heatmap {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  table.heatmap th, table.heatmap td {
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+
+  table.heatmap th {
+    background: #f5f5f4;
+    font-weight: 600;
+    font-size: 0.78rem;
+  }
+
+  table.heatmap th:first-child,
+  table.heatmap td:first-child {
+    text-align: left;
+    font-weight: 500;
+    min-width: 200px;
+    background: #f5f5f4;
+  }
+
+  .cell-1 { background: #fecaca; color: #991b1b; font-weight: 700; }
+  .cell-2 { background: #fed7aa; color: #9a3412; font-weight: 600; }
+  .cell-3 { background: #fef08a; color: #854d0e; }
+  .cell-4 { background: #bbf7d0; color: #166534; }
+  .cell-5 { background: #86efac; color: #14532d; font-weight: 600; }
+
+  /* Concern cards */
+  .concern {
+    border-left: 4px solid var(--red);
+    background: var(--red-light);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+
+  .concern.amber {
+    border-left-color: var(--amber);
+    background: var(--amber-light);
+  }
+
+  .concern.green {
+    border-left-color: var(--green);
+    background: var(--green-light);
+  }
+
+  .concern .label {
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+
+  .concern.amber .label { color: var(--amber); }
+  .concern .label { color: var(--red); }
+  .concern.green .label { color: var(--green); }
+
+  /* Module detail cards */
+  .module-detail {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .module-detail h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .badge.red { background: #fecaca; color: #991b1b; }
+  .badge.amber { background: #fed7aa; color: #9a3412; }
+  .badge.green { background: #bbf7d0; color: #166534; }
+
+  .module-detail ul {
+    margin: 0.5rem 0 0 1.25rem;
+    font-size: 0.88rem;
+  }
+
+  .module-detail li { margin-bottom: 0.35rem; }
+
+  /* Severity legend */
+  .legend {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .legend .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  /* Next steps */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+  }
+
+  .steps li {
+    counter-increment: step;
+    padding: 0.75rem 0.75rem 0.75rem 3rem;
+    margin-bottom: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    position: relative;
+    font-size: 0.9rem;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .steps li strong { display: block; margin-bottom: 0.15rem; }
+
+  /* Chart containers */
+  .chart-container {
+    position: relative;
+    height: 320px;
+  }
+
+  .chart-container.tall {
+    height: 420px;
+  }
+
+  /* Section spacing */
+  section { margin-bottom: 3rem; }
+
+  hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* Persona cards */
+  .persona-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .persona-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .persona-card.discovery::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .persona-card.investigation::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+  .persona-card.consolidation::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+  .persona-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .persona-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .persona-card.discovery .persona-avatar { background: #3b82f6; }
+  .persona-card.investigation .persona-avatar { background: #8b5cf6; }
+  .persona-card.consolidation .persona-avatar { background: #f59e0b; }
+
+  .persona-name { font-size: 1.1rem; font-weight: 700; }
+  .persona-role { font-size: 0.85rem; color: var(--text-muted); }
+
+  .persona-bio {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .persona-section {
+    margin-bottom: 0.75rem;
+  }
+
+  .persona-section h4 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .persona-section ul {
+    font-size: 0.85rem;
+    margin: 0 0 0 1.1rem;
+  }
+
+  .persona-section li { margin-bottom: 0.2rem; }
+
+  .persona-modules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  .persona-modules .chip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #f5f5f4;
+    border: 1px solid var(--border);
+  }
+
+  .expectation-table {
+    width: 100%;
+    font-size: 0.82rem;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  .expectation-table th {
+    text-align: left;
+    padding: 0.5rem 0.6rem;
+    background: #f5f5f4;
+    border: 1px solid var(--border);
+    font-size: 0.78rem;
+  }
+
+  .expectation-table td {
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .expectation-table .phase-disc { border-left: 3px solid #3b82f6; }
+  .expectation-table .phase-inv { border-left: 3px solid #8b5cf6; }
+  .expectation-table .phase-cons { border-left: 3px solid #f59e0b; }
+
+  /* Print */
+  @media print {
+    body { padding: 1rem; }
+    .card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Critical Review: Module Gap Analysis</h1>
+<p class="subtitle">A skeptic's reading of all 12 modules, measured against the project brief. April 2, 2026.</p>
+
+<div class="preamble">
+  <strong>Methodology:</strong> Each module was read twice: once as standalone text, and once as a discussion tool for a small group
+  (2 Baha'is + 2 seekers, ~2 hours). Scoring is calibrated to each module's phase. Discovery modules (M08) are held to the
+  highest bar: assume nothing, frame everything as invitation. Investigation modules (most of the collection) can assume basic
+  familiarity but must still frame claims as Baha'i perspective, not self-evident truth. Consolidation modules (M10) can assume
+  the reader accepts Baha'u'llah. Scores also account for the module's role as a discussion scaffold: the Baha'is in the room
+  provide context the text does not need to carry alone. Scored on 8 dimensions (1 = major gap, 5 = strong alignment with brief).
+</div>
+
+<!-- ====== SECTION 1: PERSONAS BY PHASE ====== -->
+<section>
+<h2>1. Audience Personas by Phase</h2>
+<p style="font-size:0.9rem; color: var(--text-muted); margin-bottom:1.5rem;">Each phase has a different person in the room. The expectations for what a module can assume, how it frames claims, and what questions it asks should be calibrated to that person. Only Module 08 (Prayer) is for Discovery. Module 10 (Administrative Order) is for Consolidation. Everything else is Investigation.</p>
+
+<div class="grid-3">
+  <div class="persona-card discovery">
+    <div class="persona-header">
+      <div class="persona-avatar">D</div>
+      <div>
+        <div class="persona-name">The Curious Visitor</div>
+        <div class="persona-role">Discovery Phase</div>
+      </div>
+    </div>
+    <div class="persona-bio">
+      Someone who showed up because a friend invited them, or because they are going through something and are open to exploring. They may or may not believe in God. They have no Baha'i vocabulary. They are deciding whether this feels safe and genuine, or whether they are being recruited.
+    </div>
+    <div class="persona-section">
+      <h4>What they are thinking</h4>
+      <ul>
+        <li>"Is this going to be preachy?"</li>
+        <li>"Do I have to believe something to be here?"</li>
+        <li>"Will I be able to say what I actually think?"</li>
+        <li>"Is this a group that respects my intelligence?"</li>
+      </ul>
+    </div>
+    <div class="persona-section">
+      <h4>What the module must do</h4>
+      <ul>
+        <li>Assume nothing: no God, no soul, no scripture as authority</li>
+        <li>Open with universal human experience, not Baha'i concepts</li>
+        <li>Frame everything as "one perspective worth considering"</li>
+        <li>Leave every question genuinely open</li>
+        <li>The reader should feel <em>invited</em>, never <em>instructed</em></li>
+      </ul>
+    </div>
+    <div class="persona-modules">
+      <span class="chip" style="background:#dbeafe; border-color:#93c5fd;">M08 Prayer</span>
+    </div>
+  </div>
+
+  <div class="persona-card investigation">
+    <div class="persona-header">
+      <div class="persona-avatar">I</div>
+      <div>
+        <div class="persona-name">The Active Explorer</div>
+        <div class="persona-role">Investigation Phase</div>
+      </div>
+    </div>
+    <div class="persona-bio">
+      Someone who has attended a few gatherings and is genuinely interested. They know the basics: who Baha'u'llah is, roughly what Baha'is believe. They are deciding whether this Faith holds up under scrutiny. They are comparing it to what they already believe. They are reading on their own between sessions.
+    </div>
+    <div class="persona-section">
+      <h4>What they are thinking</h4>
+      <ul>
+        <li>"This is interesting, but does it really work?"</li>
+        <li>"What are the hard parts? What is not being said?"</li>
+        <li>"How is this different from what I already believe?"</li>
+        <li>"Can I trust this community with my real questions?"</li>
+      </ul>
+    </div>
+    <div class="persona-section">
+      <h4>What the module must do</h4>
+      <ul>
+        <li>Can assume basic familiarity (who Baha'u'llah is, progressive revelation)</li>
+        <li>Must still frame claims as the Baha'i understanding, not self-evident truth</li>
+        <li>Should actively surface the hard questions a skeptic would ask</li>
+        <li>Can go deeper into scripture but must explain why it matters</li>
+        <li>The reader should feel <em>respected as an independent thinker</em></li>
+      </ul>
+    </div>
+    <div class="persona-modules">
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M01 Overview</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M02 Spiritual</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M03 Social</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M04 God</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M05 Bab/Baha</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M06 Covenant</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M07 Turbulent</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M09 Christianity</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M11 Suffering</span>
+      <span class="chip" style="background:#ede9fe; border-color:#c4b5fd;">M12 Politics</span>
+    </div>
+  </div>
+
+  <div class="persona-card consolidation">
+    <div class="persona-header">
+      <div class="persona-avatar">C</div>
+      <div>
+        <div class="persona-name">The New Baha'i</div>
+        <div class="persona-role">Consolidation Phase</div>
+      </div>
+    </div>
+    <div class="persona-bio">
+      Someone who has recognized Baha'u'llah and is beginning to identify as a Baha'i. They want to understand how to participate in community life. They are still forming their understanding of many teachings, but they have made a commitment. They may feel overwhelmed by the scope of what they have joined.
+    </div>
+    <div class="persona-section">
+      <h4>What they are thinking</h4>
+      <ul>
+        <li>"OK, I believe this. Now how does this actually work?"</li>
+        <li>"What is expected of me as part of this community?"</li>
+        <li>"How do I explain this to my family and friends?"</li>
+        <li>"Some of this is still hard. Is it OK to say that?"</li>
+      </ul>
+    </div>
+    <div class="persona-section">
+      <h4>What the module must do</h4>
+      <ul>
+        <li>Can assume the reader accepts Baha'u'llah's station</li>
+        <li>Can use Baha'i vocabulary without glossing every term</li>
+        <li>Should still be warm and conversational, not institutional</li>
+        <li>Can address "how to" questions and community practice</li>
+        <li>The reader should feel <em>welcomed into something they are part of</em></li>
+      </ul>
+    </div>
+    <div class="persona-modules">
+      <span class="chip" style="background:#fef3c7; border-color:#fcd34d;">M10 Admin Order</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>How Phase Changes the Scoring</h3>
+  <p style="font-size:0.88rem; margin-bottom:1rem;">The same dimension means different things depending on who is in the room:</p>
+  <table class="expectation-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Discovery Expectation</th>
+        <th>Investigation Expectation</th>
+        <th>Consolidation Expectation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:600;">Skeptic-Friendliness</td>
+        <td class="phase-disc">Must be fully open. No claims presented as truth. Everything is "one way to think about this."</td>
+        <td class="phase-inv">Should surface hard questions proactively. Frame claims as Baha'i perspective. Honest about tensions.</td>
+        <td class="phase-cons">Less critical. Reader has accepted the framework. But should still model intellectual honesty.</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Assumption Level</td>
+        <td class="phase-disc">Zero assumptions. No God, no soul, no prayer practice, no familiarity with any religion.</td>
+        <td class="phase-inv">Can assume: knows who Baha'u'llah is, basic progressive revelation, willing to engage with scripture.</td>
+        <td class="phase-cons">Can assume: accepts Baha'u'llah, familiar with core concepts, basic Baha'i vocabulary.</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Opening Questions</td>
+        <td class="phase-disc">Must be grounded in universal human experience. No Baha'i concepts whatsoever.</td>
+        <td class="phase-inv">Can reference shared experiences from earlier modules. Still universal but can be more specific.</td>
+        <td class="phase-cons">Can reference Baha'i experiences directly ("Have you ever been in a Feast?").</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Evidence Quality</td>
+        <td class="phase-disc">Analogies, lived experience, stories. Scripture is introduced gently, as something "worth sitting with."</td>
+        <td class="phase-inv">Can engage more deeply with scripture and history. But must explain <em>why</em> a quote matters, not just cite it.</td>
+        <td class="phase-cons">Can rely more heavily on authoritative texts. Reader grants them weight.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ====== SECTION 2: OVERVIEW RADAR ====== -->
+<section>
+<h2>2. Overall Health: Radar Comparison</h2>
+<div class="grid-2">
+  <div class="card">
+    <h3>Average Scores Across All Modules</h3>
+    <div class="chart-container">
+      <canvas id="radarOverall"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <h3>What This Shows</h3>
+    <p style="font-size:0.9rem; margin-bottom:1rem;">Regraded against phase-appropriate expectations and as discussion tools, the picture shifts. The collection is stronger than it first appeared, but two problems remain systemic:</p>
+    <div class="concern">
+      <div class="label">Critical Gap</div>
+      <strong>Style Guide Compliance (avg ~1.9)</strong> — Nearly universal: no citations sections, missing block quotes, em dashes. Only Module 08 is compliant. This is mechanical work that can be fixed in a single pass.
+    </div>
+    <div class="concern">
+      <div class="label">Critical Gap</div>
+      <strong>Structural Compliance (avg ~2.6)</strong> — Modules 11 and 12 are not modules at all (pasted letters). Module 04 is underdeveloped. Module 06 has no opening questions. The prescribed format (3+3 Qs, reading passages, citations) is only fully realized in Module 08.
+    </div>
+    <div class="concern amber">
+      <div class="label">Needs Work</div>
+      <strong>Length Compliance (avg ~2.5)</strong> — Modules 03, 07, 09, and 12 far exceed what a group can discuss in 2 hours. A good discussion tool is concise enough to read aloud and still leave time for conversation.
+    </div>
+    <div class="concern green">
+      <div class="label">Relative Strength</div>
+      <strong>Opening Questions (avg ~3.4)</strong> — Most modules open with genuinely universal, discussion-worthy questions. Modules 04 and 10 are standouts. This is the collection's strongest dimension and the most important one for a discussion tool.
+    </div>
+    <div class="concern green">
+      <div class="label">Improved with Phase Context</div>
+      <strong>Skeptic-Friendliness + Assumptions (avg ~2.7 / ~3.0)</strong> — When scored against investigation-phase expectations (reader has basic familiarity), many modules are closer to acceptable than the initial review suggested. The real issue is not that they assume too much, but that they present claims as fact rather than as the Baha'i understanding. Framing, not content, is the fix.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ====== SECTION 2: HEATMAP ====== -->
+<section>
+<h2>3. Module-by-Dimension Heatmap</h2>
+<div class="legend">
+  <span><span class="dot" style="background:#fecaca"></span> 1 — Major gap</span>
+  <span><span class="dot" style="background:#fed7aa"></span> 2 — Significant issues</span>
+  <span><span class="dot" style="background:#fef08a"></span> 3 — Needs work</span>
+  <span><span class="dot" style="background:#bbf7d0"></span> 4 — Mostly aligned</span>
+  <span><span class="dot" style="background:#86efac"></span> 5 — Strong</span>
+</div>
+<div class="card full heatmap-wrap">
+<table class="heatmap">
+  <thead>
+    <tr>
+      <th>Module</th>
+      <th>Phase</th>
+      <th>Tone</th>
+      <th>Structure</th>
+      <th>Style Guide</th>
+      <th>Skeptic-Friendly</th>
+      <th>Assumptions</th>
+      <th>Evidence Quality</th>
+      <th>Length</th>
+      <th>Opening Qs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>01 — Overview</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-4">4</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-3">3</td>
+      <td class="cell-3">3</td><td class="cell-4">4</td>
+    </tr>
+    <tr>
+      <td>02 — Spiritual Principles</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-2">2</td><td class="cell-3">3</td><td class="cell-3">3</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td>
+    </tr>
+    <tr>
+      <td>03 — Social Teachings</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-4">4</td><td class="cell-2">2</td><td class="cell-2">2</td>
+      <td class="cell-4">4</td><td class="cell-4">4</td><td class="cell-3">3</td>
+      <td class="cell-1">1</td><td class="cell-4">4</td>
+    </tr>
+    <tr>
+      <td>04 — Relationship with God</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-4">4</td><td class="cell-2">2</td><td class="cell-1">1</td>
+      <td class="cell-2">2</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-3">3</td><td class="cell-5">5</td>
+    </tr>
+    <tr>
+      <td>05 — The Bab and Baha'u'llah</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-4">4</td><td class="cell-3">3</td><td class="cell-1">1</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-3">3</td>
+      <td class="cell-2">2</td><td class="cell-3">3</td>
+    </tr>
+    <tr>
+      <td>06 — Centers of the Covenant</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-2">2</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-3">3</td><td class="cell-1">1</td>
+    </tr>
+    <tr>
+      <td>07 — Turbulent World</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-2">2</td><td class="cell-2">2</td><td class="cell-3">3</td>
+      <td class="cell-1">1</td><td class="cell-4">4</td>
+    </tr>
+    <tr>
+      <td>08 — Prayer (v2)</td>
+      <td style="background:#dbeafe; color:#1d4ed8; font-weight:600; font-size:0.75rem;">DISC</td>
+      <td class="cell-5">5</td><td class="cell-5">5</td><td class="cell-4">4</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-4">4</td>
+      <td class="cell-5">5</td><td class="cell-5">5</td>
+    </tr>
+    <tr>
+      <td>09 — Christianity</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-4">4</td>
+      <td class="cell-1">1</td><td class="cell-3">3</td>
+    </tr>
+    <tr>
+      <td>10 — Administrative Order</td>
+      <td style="background:#fef3c7; color:#92400e; font-weight:600; font-size:0.75rem;">CONS</td>
+      <td class="cell-4">4</td><td class="cell-3">3</td><td class="cell-2">2</td>
+      <td class="cell-4">4</td><td class="cell-4">4</td><td class="cell-3">3</td>
+      <td class="cell-3">3</td><td class="cell-5">5</td>
+    </tr>
+    <tr>
+      <td>11 — Suffering and Justice</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-2">2</td><td class="cell-1">1</td><td class="cell-1">1</td>
+      <td class="cell-3">3</td><td class="cell-3">3</td><td class="cell-3">3</td>
+      <td class="cell-4">4</td><td class="cell-3">3</td>
+    </tr>
+    <tr>
+      <td>12 — Partisan Politics</td>
+      <td style="background:#ede9fe; color:#6d28d9; font-weight:600; font-size:0.75rem;">INV</td>
+      <td class="cell-2">2</td><td class="cell-1">1</td><td class="cell-1">1</td>
+      <td class="cell-2">2</td><td class="cell-2">2</td><td class="cell-3">3</td>
+      <td class="cell-1">1</td><td class="cell-1">1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+<!-- ====== SECTION 3: BAR CHART — PRIORITY RANKING ====== -->
+<section>
+<h2>4. Priority Ranking: Which Modules Need the Most Work?</h2>
+<div class="grid-2">
+  <div class="card">
+    <div class="chart-container tall">
+      <canvas id="barPriority"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Reading the Chart</h3>
+    <p style="font-size:0.9rem; margin-bottom:1rem;">Lower composite scores mean more gaps. The dashed line at 24 represents "acceptable" alignment with the brief (average of 3/5 across 8 dimensions).</p>
+    <h3 style="margin-top:1rem;">Tiers</h3>
+    <div class="concern">
+      <div class="label">Tier 1 — Needs Rethinking</div>
+      <strong>Modules 07, 11, 12</strong> — These have fundamental structural or framing issues. 11 and 12 are not modules at all (they are letters). 07 makes the most aggressive claims with the least scaffolding for skeptics.
+    </div>
+    <div class="concern amber">
+      <div class="label">Tier 2 — Needs Significant Revision</div>
+      <strong>Modules 02, 05, 06</strong> — Tone is okay but assumptions run deep. A skeptic reading these would feel they are being told what to believe rather than invited to explore.
+    </div>
+    <div class="concern amber">
+      <div class="label">Tier 3 — Needs Polish</div>
+      <strong>Modules 01, 03, 04, 09, 10</strong> — Fundamentally sound but need style guide cleanup, better question design, and more acknowledgment of where a skeptic might push back.
+    </div>
+    <div class="concern green">
+      <div class="label">Tier 4 — Model</div>
+      <strong>Module 08</strong> — The only module that has been through the full drafting process. Use as the benchmark.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ====== SECTION 4: SKEPTIC'S TOP CONCERNS ====== -->
+<section>
+<h2>5. The Skeptic's Top Concerns (Cross-Cutting)</h2>
+<p style="font-size:0.9rem; color: var(--text-muted); margin-bottom:1.5rem;">These are patterns that recur across multiple modules. A thoughtful skeptic attending these study circles would notice all of them.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color:var(--red);">A. "The text assumes its own conclusion"</h3>
+    <p style="font-size:0.88rem; margin:0.5rem 0;">Modules frequently present Baha'i theological claims as self-evident truths rather than propositions worth examining. Examples:</p>
+    <ul style="font-size:0.85rem;">
+      <li><strong>Mod 02:</strong> Presents the soul, life after death, and spiritual growth practices as facts. A seeker who is unsure whether they believe in God is immediately behind.</li>
+      <li><strong>Mod 05:</strong> The miraculous survival of the Bab during the first volley is narrated as established fact with no historiographic framing.</li>
+      <li><strong>Mod 07:</strong> Claims all modern progress is a "consequence of Baha'u'llah's revelation." This is an extraordinary claim that needs extraordinary scaffolding.</li>
+      <li><strong>Mod 06:</strong> "Innate knowledge" of Abdu'l-Baha is stated plainly. A skeptic will ask: how do you know that?</li>
+    </ul>
+    <p style="font-size:0.85rem; margin-top:0.75rem; color:var(--text-muted);"><strong>Brief says:</strong> "Seekers should never feel preached at." Stating faith claims as facts <em>is</em> preaching, even in a warm tone.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--red);">B. "Quantity is presented as proof"</h3>
+    <p style="font-size:0.88rem; margin:0.5rem 0;">Multiple modules cite the volume of Baha'u'llah's writings (20,000 works, 7 million words) as implicit evidence of divine station. A skeptic notes:</p>
+    <ul style="font-size:0.85rem;">
+      <li>Volume does not equal truth. L. Ron Hubbard was also prolific.</li>
+      <li>The comparison works as a point of interest but not as an argument.</li>
+      <li><strong>Appears in:</strong> Modules 01, 05, and referenced indirectly in 07.</li>
+    </ul>
+    <p style="font-size:0.85rem; margin-top:0.75rem; color:var(--text-muted);"><strong>Fix:</strong> Present volume as remarkable and worth exploring, not as evidence. "Baha'u'llah produced an extraordinary body of work" vs. "This proves..."</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--amber);">C. "The hard questions are absent"</h3>
+    <p style="font-size:0.88rem; margin:0.5rem 0;">The modules avoid or gloss over the exact questions a skeptic would ask first:</p>
+    <ul style="font-size:0.85rem;">
+      <li><strong>Mod 06:</strong> UHJ is composed only of men. This is not addressed or contextualized at all. A skeptic sees evasion.</li>
+      <li><strong>Mod 10:</strong> "No nominations, no campaigning" — but what about accountability? Dissent? How does this actually work in practice?</li>
+      <li><strong>Mod 07:</strong> Blames "atheism" and "materialism" as dark forces. Many seekers <em>are</em> atheists or materialists. This is alienating.</li>
+      <li><strong>Mod 12:</strong> Political non-involvement in the face of injustice — the tension is real but unexamined.</li>
+      <li><strong>Mod 09:</strong> Symbolic interpretation of prophecy. A skeptic notes you can "fulfill" anything symbolically.</li>
+    </ul>
+    <p style="font-size:0.85rem; margin-top:0.75rem; color:var(--text-muted);"><strong>Brief says:</strong> "Baha'is are co-learners, not teachers." Co-learners engage with hard questions. Teachers avoid them.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--amber);">D. "The tone is warm but the framing is closed"</h3>
+    <p style="font-size:0.88rem; margin:0.5rem 0;">This is the subtlest issue. The modules <em>sound</em> inviting but are structurally closed — they present one framework and one conclusion. A genuinely open text would:</p>
+    <ul style="font-size:0.85rem;">
+      <li>Name the counter-position honestly before presenting the Baha'i view</li>
+      <li>Use language like "Baha'is understand this as..." rather than "The truth is..."</li>
+      <li>Include discussion questions that genuinely permit disagreement</li>
+      <li>Acknowledge where the Baha'i position is demanding or counter-cultural</li>
+    </ul>
+    <p style="font-size:0.85rem; margin-top:0.75rem; color:var(--text-muted);"><strong>Module 08 (v2) does this best</strong> — "Why pray if God already knows what we need?" is an honest opening. More modules need this energy.</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--amber);">E. "Suffering is romanticized"</h3>
+    <p style="font-size:0.88rem; margin:0.5rem 0;">Several modules frame historical suffering as evidence of legitimacy:</p>
+    <ul style="font-size:0.85rem;">
+      <li><strong>Mod 05:</strong> Story of Badi (17-year-old messenger tortured to death) — presented with reverence but no acknowledgment that glorifying a teenager's martyrdom can read as disturbing.</li>
+      <li><strong>Mod 05:</strong> Baha'u'llah's suffering framed as proof of sincerity. Skeptic notes: many people have suffered for false causes.</li>
+      <li><strong>Mod 07:</strong> Current world suffering described as "travail of childbirth" — this metaphor minimizes real suffering to people experiencing it.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--amber);">F. "Two modules are not modules"</h3>
+    <p style="font-size:0.88rem; margin:0.5rem 0;">Modules 11 and 12 are complete letters from Baha'i institutions pasted with light framing:</p>
+    <ul style="font-size:0.85rem;">
+      <li>They do not follow the module format at all (no proper opening questions, reading passages, closing questions)</li>
+      <li>The language is institutional, not conversational</li>
+      <li>Reading level is well above 10th grade</li>
+      <li>Module 12 has <em>comprehension questions</em> — this reads like a catechism, not a study circle</li>
+      <li>A skeptic sees these as "here, read the official position" rather than "let us explore this together"</li>
+    </ul>
+    <p style="font-size:0.85rem; margin-top:0.75rem; color:var(--text-muted);"><strong>Fix:</strong> These topics deserve real modules. Use the letters as <em>source material</em> and write proper modules around them, integrating quotes within a conversational reading passage.</p>
+  </div>
+</div>
+</section>
+
+<!-- ====== SECTION 5: STYLE GUIDE COMPLIANCE ====== -->
+<section>
+<h2>6. Style Guide Compliance</h2>
+<div class="grid-2">
+  <div class="card">
+    <div class="chart-container tall">
+      <canvas id="barStyle"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Common Violations</h3>
+    <p style="font-size:0.88rem; margin-bottom:0.75rem;">Only Module 08 (v2) is close to style guide compliance. The V1 drafts ported from Google Docs share these issues:</p>
+    <table style="width:100%; font-size:0.85rem; border-collapse:collapse; margin-top:0.5rem;">
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.4rem 0; font-weight:600;">Em dashes</td>
+        <td style="padding:0.4rem 0;">Present in modules 01-07, 09-10. Banned by style guide.</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.4rem 0; font-weight:600;">Missing citations</td>
+        <td style="padding:0.4rem 0;">Modules 01-07, 10 have quotes without numbered citations or a citations section.</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.4rem 0; font-weight:600;">Block quotes</td>
+        <td style="padding:0.4rem 0;">Several modules have fewer than the required 3-4 block quotes per section.</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.4rem 0; font-weight:600;">Section word count</td>
+        <td style="padding:0.4rem 0;">Modules 03, 07, 11, 12 far exceed the 500-750 word target per section.</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.4rem 0; font-weight:600;">Question format</td>
+        <td style="padding:0.4rem 0;">Modules 11, 12 use comprehension questions. Others inconsistently apply 3+3 format.</td>
+      </tr>
+      <tr>
+        <td style="padding:0.4rem 0; font-weight:600;">Diacritical marks</td>
+        <td style="padding:0.4rem 0;">Some modules use marks (Bahá'u'lláh) against the style guide.</td>
+      </tr>
+    </table>
+    <p style="font-size:0.82rem; margin-top:1rem; color:var(--text-muted);">Note: Style guide violations are expected in V1 drafts ported from Google Docs. These will be addressed naturally during the drafting process. The concern is flagged here for completeness.</p>
+  </div>
+</div>
+</section>
+
+<!-- ====== SECTION 6: PER-MODULE DETAIL ====== -->
+<section>
+<h2>7. Per-Module Skeptic's Notes</h2>
+
+<div class="module-detail">
+  <h3>Module 01 — Overview of the Baha'i Faith <span class="badge amber">Tier 3</span></h3>
+  <ul>
+    <li><strong>Strongest aspect:</strong> Covers a lot of ground accessibly. The story of Baha'u'llah is told with warmth.</li>
+    <li><strong>Skeptic's issue:</strong> "Three onenesses" framing is catchy but reductive. Progressive revelation is asserted, not explored. A skeptic asks: why should I accept that all religions come from the same source?</li>
+    <li><strong>Fix:</strong> Frame progressive revelation as the Baha'i <em>understanding</em>, invite the reader to sit with it. Add a question like: "What would it mean if this were true? What difficulties does this idea raise?"</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 02 — Spiritual Principles <span class="badge red">Tier 2</span></h3>
+  <ul>
+    <li><strong>Skeptic's issue:</strong> This is the most assumption-heavy module. It presents the soul, the afterlife, and spiritual practices as established facts. A seeker who is agnostic or materialist has no on-ramp here.</li>
+    <li><strong>Skeptic's issue:</strong> The "growing spiritually" section is a checklist of Baha'i practices (prayer, fasting, self-accounting). For a discovery-phase module, this reads like onboarding materials.</li>
+    <li><strong>Fix:</strong> Open with the universal human experience of feeling there is "more" to life. Present the soul concept as one framework for understanding that feeling. Separate the practices section — a seeker needs to care <em>why</em> before hearing <em>how</em>.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 03 — Social Teachings <span class="badge amber">Tier 3</span></h3>
+  <ul>
+    <li><strong>Strongest aspect:</strong> The most accessible and least "religious" module. Social teachings have natural appeal.</li>
+    <li><strong>Skeptic's issue:</strong> Tries to cover 10+ principles in one module. Each gets surface treatment. A skeptic says: these are nice ideas, but anyone could say this — what is the Baha'i <em>mechanism</em> for achieving them?</li>
+    <li><strong>Skeptic's issue:</strong> Way too long. Exceeds word count targets significantly.</li>
+    <li><strong>Fix:</strong> Split into two modules or choose 4-5 principles to explore deeply. Add substance: how do Baha'is actually implement these? What has worked? What is still a struggle?</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 04 — Developing a Relationship with God <span class="badge amber">Tier 3</span></h3>
+  <ul>
+    <li><strong>Strongest aspect:</strong> Opening questions are the most universal in the collection. The kingdoms analogy is effective.</li>
+    <li><strong>Skeptic's issue:</strong> Assumes the reader believes in God. The "unknowable essence" paired with "signs of God everywhere" is a tension that is not addressed — a skeptic sees contradiction.</li>
+    <li><strong>Fix:</strong> Acknowledge that "developing a relationship with God" presupposes something the reader may still be exploring. The kingdoms analogy can work even for someone unsure — lean into it as a thought experiment.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 05 — The Bab and Baha'u'llah <span class="badge red">Tier 2</span></h3>
+  <ul>
+    <li><strong>Strongest aspect:</strong> Compelling storytelling. The Bab's declaration scene and Baha'u'llah's exiles are vivid.</li>
+    <li><strong>Skeptic's issue:</strong> The most hagiographic module. The firing squad miracle is presented as fact. Volume of writings used as evidence. Story of Badi romanticizes a teenager's death. Throughout, suffering = legitimacy, an argument form that proves too much.</li>
+    <li><strong>Fix:</strong> Tell the stories but flag what is historical consensus vs. Baha'i tradition. Let the reader draw their own conclusions about what the stories mean. Replace "this proves" energy with "what do you make of this?" energy.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 06 — Centers of the Covenant <span class="badge red">Tier 2</span></h3>
+  <ul>
+    <li><strong>Skeptic's issue:</strong> Reads like institutional PR. "Innate knowledge" is a major claim offered without support. Succession disputes (Covenant-breaking) are absent — a skeptic researching independently will find this and wonder why it was not mentioned.</li>
+    <li><strong>Skeptic's issue:</strong> The UHJ section states it is composed of men without any discussion. This is the single biggest red flag for progressive-minded seekers. Silence reads as evasion.</li>
+    <li><strong>Fix:</strong> Acknowledge that the male-only UHJ composition raises questions. You do not need to resolve the question — just signal that the Faith is aware the question exists. Similarly, briefly acknowledge succession challenges; the Covenant is stronger for being tested.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 07 — Making Sense of a Turbulent World <span class="badge red">Tier 1</span></h3>
+  <ul>
+    <li><strong>Skeptic's issue:</strong> The most problematic module. Claims all modern progress stems from Baha'u'llah's revelation. Labels atheism and materialism as "dark forces." The May 23 1844 coincidence is presented as meaningful — a skeptic calls this cherry-picking.</li>
+    <li><strong>Skeptic's issue:</strong> "Travail of childbirth" metaphor for world suffering. To someone who has actually suffered, this can feel dismissive.</li>
+    <li><strong>Skeptic's issue:</strong> Way too long. Dense with claims. Reads as the most "insider" module — assumes the reader already finds the Baha'i worldview compelling.</li>
+    <li><strong>Fix:</strong> This module needs fundamental rethinking. Start with the universal experience of living through turbulent times. Present the Baha'i framework as <em>one</em> lens. Do not blame skepticism itself as a dark force when your audience may include skeptics. Shorten significantly.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 08 — Prayer (v2) <span class="badge green">Tier 4 — Model</span></h3>
+  <ul>
+    <li><strong>Strongest module overall.</strong> Opens with an honest question ("Why pray if God already knows?"). Uses nature analogies effectively. Follows the format. Warm without being preachy.</li>
+    <li><strong>Remaining issue:</strong> Still assumes the reader prays or wants to. Could benefit from one more beat of acknowledgment: "If you do not pray, or are not sure what prayer means to you, that is a fine place to start."</li>
+    <li><strong>Writer's flag:</strong> <code>%%FLAG: I don't like the prayer is not information for God%%</code> — this should be resolved.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 09 — The Baha'i Faith and Christianity <span class="badge amber">Tier 3</span></h3>
+  <ul>
+    <li><strong>Skeptic's issue:</strong> Uses biblical tests to validate Baha'u'llah — but this is circular for anyone who does not already accept the Bible as authoritative. Symbolic interpretation of prophecy is convenient: you can "fulfill" anything symbolically.</li>
+    <li><strong>Skeptic's issue:</strong> Assumes the audience is Christian. Non-Christians in the study circle have no entry point.</li>
+    <li><strong>Fix:</strong> Frame clearly as "for those coming from a Christian background." Acknowledge the symbolic interpretation concern directly: "You may notice that the Baha'i reading of these prophecies is symbolic rather than literal. This raises a fair question..."</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 10 — Administrative Order <span class="badge amber">Tier 3</span></h3>
+  <ul>
+    <li><strong>Strongest aspect:</strong> The redefinition of power is genuinely interesting and counter-cultural.</li>
+    <li><strong>Skeptic's issue:</strong> Presents a governance system without discussing accountability, dissent, or failure modes. "No nominations, no campaigning" sounds appealing but a skeptic asks: how do you prevent groupthink? What happens when a Local Assembly makes a bad decision?</li>
+    <li><strong>Fix:</strong> Acknowledge that this system sounds unusual and invite the reader to sit with both its appeal and its tensions. Honest engagement with limitations builds more trust than a clean pitch.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 11 — Suffering and Justice <span class="badge red">Tier 1</span></h3>
+  <ul>
+    <li><strong>Core problem:</strong> This is not a module. It is a letter from a Baha'i institution with framing and comprehension questions. The format, reading level, and voice do not match the brief at all.</li>
+    <li><strong>Skeptic's issue:</strong> "Remote regions having their own unnamed Prophets" is a major theological claim dropped without exploration.</li>
+    <li><strong>Fix:</strong> Rewrite as a proper module using the letter as source material. The topic — why does suffering exist if God is just? — is among the most important for seekers. It deserves the full treatment.</li>
+  </ul>
+</div>
+
+<div class="module-detail">
+  <h3>Module 12 — Non-Involvement in Partisan Politics <span class="badge red">Tier 1</span></h3>
+  <ul>
+    <li><strong>Core problem:</strong> Same as Module 11 — a pasted letter, not a module. Comprehension questions read like a test.</li>
+    <li><strong>Skeptic's issue:</strong> Political non-involvement in the face of injustice is a genuinely difficult position. The module does not wrestle with it — it states it. A skeptic asks: is this complicity? What about moral obligation?</li>
+    <li><strong>Fix:</strong> Rewrite as a proper module. Open with the universal frustration of feeling the political system is broken. Present the Baha'i approach as a radical alternative, but honestly engage with the objection that stepping back from politics means stepping back from justice.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ====== SECTION 7: DIMENSION BREAKDOWN ====== -->
+<section>
+<h2>8. Dimension Averages: Where the Collection is Strongest and Weakest</h2>
+<div class="card">
+  <div class="chart-container">
+    <canvas id="barDimensions"></canvas>
+  </div>
+</div>
+</section>
+
+<!-- ====== SECTION 8: NEXT STEPS ====== -->
+<section>
+<h2>9. Recommended Next Steps</h2>
+<ol class="steps">
+  <li>
+    <strong>Establish Module 08 (v2) as the benchmark.</strong>
+    Put it in <code>brief/samples/</code> (which is currently empty). Every future module should be measured against it for tone, structure, and skeptic-friendliness.
+  </li>
+  <li>
+    <strong>Rewrite Modules 11 and 12 from scratch.</strong>
+    These are letters, not modules. Use the letters as source material and write proper modules with the prescribed format. The topics are important — they deserve the same treatment as Prayer.
+  </li>
+  <li>
+    <strong>Fundamentally rethink Module 07.</strong>
+    This is the module most likely to alienate a skeptical seeker. The claims are too large, the framing is too closed, and labeling atheism as a "dark force" is counterproductive when your audience may include atheists. Consider splitting into two modules: one on living through turbulent times, one on the Baha'i vision of the future.
+  </li>
+  <li>
+    <strong>Add "skeptic scaffolding" to Modules 02, 05, and 06.</strong>
+    These are the next-most-assumption-heavy modules. For each, identify the 2-3 biggest claims and add framing language: "Baha'is understand this as..." or "This raises a natural question..." Acknowledge the hard questions (especially UHJ gender composition in Module 06).
+  </li>
+  <li>
+    <strong>Create a "skeptic's checklist" for the editorial review phase.</strong>
+    Add to the brief: before a module advances past editorial review, ask: (1) Does this module assume the reader already agrees? (2) Are the opening questions genuinely universal? (3) Are claims framed as Baha'i perspective or as self-evident truth? (4) Would a thoughtful atheist feel respected reading this?
+  </li>
+  <li>
+    <strong>Run style guide cleanup across all V1 drafts.</strong>
+    Remove em dashes, add citations sections, check word counts, verify block quote minimums. This is mechanical work that can be done in one pass.
+  </li>
+  <li>
+    <strong>Tighten Module 03.</strong>
+    It tries to cover too much. Either split it or choose 4-5 principles for depth over breadth. The social teachings are the easiest entry point for skeptics — do not waste this opportunity on a survey.
+  </li>
+  <li>
+    <strong>Draft a "How to use these modules" guide for facilitators.</strong>
+    Include guidance on: how to handle pushback and tough questions, how to create space for disagreement, how to avoid the "teacher-student" dynamic the brief warns against. The modules alone cannot solve the tone problem — the facilitation matters too.
+  </li>
+</ol>
+</section>
+
+<hr>
+<p style="font-size:0.82rem; color:var(--text-muted); text-align:center;">
+  Generated April 2, 2026. Based on V1 drafts of all modules and v2 of Module 08. Scores are qualitative assessments, not algorithmic measurements.
+</p>
+
+<script>
+// ====== DATA ======
+const modules = [
+  'M01\nOverview', 'M02\nSpiritual', 'M03\nSocial', 'M04\nGod',
+  'M05\nBab/Bahá', 'M06\nCovenant', 'M07\nTurbulent', 'M08\nPrayer',
+  'M09\nChristian', 'M10\nAdmin', 'M11\nSuffering', 'M12\nPolitics'
+];
+
+const dimensions = [
+  'Tone Alignment', 'Structural Compliance', 'Style Guide',
+  'Skeptic-Friendly', 'Assumption Level', 'Evidence Quality',
+  'Length Compliance', 'Opening Questions'
+];
+
+// Rows = modules, Cols = dimensions (Tone, Structure, Style, Skeptic, Assumptions, Evidence, Length, OpenQs)
+// Phase-adjusted regrading: scored against investigation-phase expectations (basic familiarity OK,
+// but claims still need framing) and as discussion tools (Baha'is in room provide context, module
+// is scaffold for conversation not standalone persuasion).
+const scores = [
+  [4,3,2,3,3,3,3,4], // M01 — INV: warm tone, good opening Qs, uses "is regarded"/"Baha'u'llah teaches" framing fairly well. Structure has too many subsections but workable. No citations.
+  [3,3,2,2,3,3,3,3], // M02 — INV: womb analogy is powerful discussion fuel. But afterlife/soul stated as flat fact. Practices section reads as onboarding. Block quotes strong (6-7).
+  [4,2,2,4,4,3,1,4], // M03 — INV: best-framed claims ("Baha'i Faith teaches"). Good opening Qs. But way too long (~4200 words), too many topics for one session. As discussion tool, group never gets past topic 4.
+  [4,2,1,2,3,2,3,5], // M04 — INV: best opening Qs in the collection. But 0 block quotes, no citations, borrows from Bahai.org, and Section 2 is a quote list not a discussion passage. Underdeveloped.
+  [4,3,1,3,3,3,2,3], // M05 — INV: compelling narrative sparks organic discussion. Claims mostly framed as what Bab/Baha'u'llah declared (appropriate for biography). 0 block quotes, no citations. Too long for 2hr session.
+  [3,3,2,2,3,2,3,1], // M06 — INV: NO opening questions at all (major gap for discussion tool). UHJ gender issue addressed but dismissively. Reads as institutional history. Baha'is in room would carry discussion.
+  [3,3,2,2,2,3,1,4], // M07 — INV: strong opening Qs, excellent block quotes (9-10). But claims-as-fact problem ("God permitted" material progress, atheism as dark force). Way too long. Section 3 shifts to recruitment tone.
+  [5,5,4,3,3,4,5,5], // M08 — DISC: benchmark. Perfect structure, warm, honest opening, right length (~1700 words), proper citations. Only module that fully works as designed.
+  [3,3,2,3,3,4,1,3], // M09 — INV: excellent evidence quality (specific prophecies, Bible refs, Kenneth Bowers source). Good framing. But 4600 words is absurdly long for 2hr discussion. Needs splitting.
+  [4,3,2,4,4,3,3,5], // M10 — CONS: excellent opening Qs, good self-aware framing ("unique its proponents would say"). Consultation section is practically useful. 1 block quote. Appropriate for committed audience.
+  [2,1,1,3,3,3,4,3], // M11 — INV: right length, strong opening Q1, and letter format = implicit framing. But not a module: no sections, no reading passages, institutional tone. A skeptic actually gets served well because they know they're reading a primary source.
+  [2,1,1,2,2,3,1,1], // M12 — INV: 3400 words of dense institutional prose. No opening Qs. 11 comprehension questions read as catechism. Not a module. Not a discussion tool. Needs complete rewrite.
+];
+
+// ====== CHART 1: RADAR — overall averages ======
+const dimAvgs = dimensions.map((_, di) => {
+  const sum = scores.reduce((s, row) => s + row[di], 0);
+  return +(sum / scores.length).toFixed(1);
+});
+
+new Chart(document.getElementById('radarOverall'), {
+  type: 'radar',
+  data: {
+    labels: dimensions,
+    datasets: [{
+      label: 'Average (all modules)',
+      data: dimAvgs,
+      backgroundColor: 'rgba(37, 99, 235, 0.15)',
+      borderColor: 'rgba(37, 99, 235, 0.8)',
+      borderWidth: 2,
+      pointBackgroundColor: 'rgba(37, 99, 235, 1)',
+      pointRadius: 4
+    }, {
+      label: 'Module 08 (benchmark)',
+      data: scores[7],
+      backgroundColor: 'rgba(22, 163, 74, 0.1)',
+      borderColor: 'rgba(22, 163, 74, 0.6)',
+      borderWidth: 2,
+      borderDash: [5, 5],
+      pointBackgroundColor: 'rgba(22, 163, 74, 1)',
+      pointRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      r: {
+        min: 0, max: 5,
+        ticks: { stepSize: 1, font: { size: 11 } },
+        pointLabels: { font: { size: 11 } }
+      }
+    },
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 12 } } }
+    }
+  }
+});
+
+// ====== CHART 2: BAR — composite scores (priority) ======
+const composites = scores.map(row => row.reduce((a,b) => a + b, 0));
+
+const barColors = composites.map(c =>
+  c < 18 ? 'rgba(220, 38, 38, 0.75)' :
+  c < 22 ? 'rgba(217, 119, 6, 0.75)' :
+  c < 28 ? 'rgba(37, 99, 235, 0.75)' :
+  'rgba(22, 163, 74, 0.75)'
+);
+
+new Chart(document.getElementById('barPriority'), {
+  type: 'bar',
+  data: {
+    labels: modules,
+    datasets: [{
+      label: 'Composite Score (max 40)',
+      data: composites,
+      backgroundColor: barColors,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        min: 0, max: 40,
+        ticks: { font: { size: 11 } },
+        grid: { color: '#e7e5e4' }
+      },
+      y: { ticks: { font: { size: 11 } } }
+    },
+    plugins: {
+      legend: { display: false },
+      annotation: {
+        annotations: {
+          threshold: {
+            type: 'line', xMin: 24, xMax: 24,
+            borderColor: '#78716c', borderWidth: 1, borderDash: [6, 4],
+            label: { display: true, content: 'Acceptable (24)', position: 'start', font: { size: 10 } }
+          }
+        }
+      }
+    }
+  }
+});
+
+// ====== CHART 3: BAR — style guide issues ======
+const styleIssues = {
+  labels: modules,
+  datasets: [{
+    label: 'Em Dashes',
+    data: [3,2,4,3,5,3,4,0,2,3,0,0],
+    backgroundColor: 'rgba(220, 38, 38, 0.7)'
+  }, {
+    label: 'Missing Citations',
+    data: [1,1,1,1,1,1,1,0,0,1,1,1],
+    backgroundColor: 'rgba(217, 119, 6, 0.7)'
+  }, {
+    label: 'Word Count Violation',
+    data: [0,0,1,0,0,0,1,0,0,0,1,1],
+    backgroundColor: 'rgba(124, 58, 237, 0.7)'
+  }, {
+    label: 'Format Deviation',
+    data: [0,0,1,0,0,0,0,0,0,0,1,1],
+    backgroundColor: 'rgba(37, 99, 235, 0.7)'
+  }]
+};
+
+new Chart(document.getElementById('barStyle'), {
+  type: 'bar',
+  data: styleIssues,
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        stacked: true,
+        ticks: { font: { size: 11 } },
+        title: { display: true, text: 'Issue Count (relative severity)', font: { size: 11 } }
+      },
+      y: { stacked: true, ticks: { font: { size: 11 } } }
+    },
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 } } }
+    }
+  }
+});
+
+// ====== CHART 4: BAR — dimension averages (horizontal) ======
+const dimColors = dimAvgs.map(v =>
+  v < 2.5 ? 'rgba(220, 38, 38, 0.75)' :
+  v < 3.0 ? 'rgba(217, 119, 6, 0.75)' :
+  v < 3.5 ? 'rgba(37, 99, 235, 0.75)' :
+  'rgba(22, 163, 74, 0.75)'
+);
+
+new Chart(document.getElementById('barDimensions'), {
+  type: 'bar',
+  data: {
+    labels: dimensions,
+    datasets: [{
+      label: 'Average Score (1-5)',
+      data: dimAvgs,
+      backgroundColor: dimColors,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: { min: 0, max: 5, ticks: { stepSize: 1, font: { size: 11 } } },
+      y: { ticks: { font: { size: 12 } } }
+    },
+    plugins: { legend: { display: false } }
+  }
+});
+</script>
+
+</body>
+</html>

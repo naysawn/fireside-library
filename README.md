@@ -5,38 +5,56 @@ A collection of structured study modules designed for small group discussions ex
 ## Repo Structure
 
 ```
-├── content/                # Module content and writing infrastructure
-│   ├── brief/              # Audience, process, style guide, samples
-│   ├── 01-overview-of-the-bahai-faith/
-│   ├── 02-bahai-spiritual-principles/
-│   ├── ...
-│   └── .claude/skills/     # Claude Code skills for drafting modules
-├── web/                    # Publishing website (coming soon)
-├── CLAUDE.md               # Top-level routing
+├── content/
+│   ├── brief/                  # Audience, process, style guide, voice, rubric, samples
+│   ├── analysis/               # Cross-module reviews and proposals
+│   ├── modules/                # All numbered module folders
+│   │   ├── 01-overview-of-the-bahai-faith/
+│   │   ├── 02-bahai-spiritual-principles/
+│   │   ├── ...
+│   │   └── 12-non-involvement-in-partisan-politics/
+│   └── .claude/skills/         # Content-specific Claude Code skills
+├── web/                        # Publishing website (Astro)
+├── .claude/
+│   ├── settings.json           # Project permissions
+│   └── skills/                 # Repo-wide Claude Code skills
+├── CLAUDE.md                   # Top-level routing
+├── TODO.md                     # Shared tracking across content and web
 └── README.md
 ```
 
-Each numbered folder is a self-contained module:
+Each numbered folder in `content/modules/` is a self-contained module:
 
 ```
-01-overview-of-the-bahai-faith/
+08-prayer/
 ├── metadata.yaml       # Title, phase, topics, status
-├── research/            # Source material (PDFs, excerpts, links)
+├── report.html         # Generated grading report (rubric scores, compliance)
+├── research/           # Source material (PDFs, excerpts, links)
 ├── drafts/
-│   ├── ai-draft.md      # Claude-generated draft
-│   └── v1.md, v2.md…    # Writer's revisions
-└── final.md             # Approved module
+│   ├── ai-draft.md     # Claude-generated draft
+│   ├── v1.md, v2.md…   # Writer's revisions
+└── final.md            # Approved module
 ```
 
 ## Module Lifecycle
 
 1. **Planning** — group selects modules and assigns writers/editors
 2. **Drafting** — writer gathers research and produces a draft with Claude
-3. **Review** — editor provides feedback on arc, sourcing, and emphasis
-4. **Rewrite** — writer rewrites in their own voice
-5. **Beta** — published for field testing
-6. **Testing** — feedback collected from at least 2 group sessions
-7. **v1** — feedback incorporated and module published as v1
+3. **Humanize + Grade** — run humanizer, score against rubric (must hit 28/35)
+4. **Review** — editor reviews with skeptic's checklist and phase persona lens
+5. **Rewrite** — writer rewrites in their own voice
+6. **Final Grade** — score rewrite against rubric (must hit 32/35)
+7. **Beta** — published for field testing
+8. **Testing** — feedback collected from at least 2 group sessions
+9. **v1** — feedback incorporated and module published as v1
+
+## Seeker Phases
+
+Each module targets a specific audience phase:
+
+- **Discovery** — someone attending for the first time, no assumptions (Module 08)
+- **Investigation** — someone actively exploring, knows the basics (Modules 01-07, 09, 11-12)
+- **Consolidation** — someone who has committed, learning to participate (Module 10)
 
 ## Contributing
 
