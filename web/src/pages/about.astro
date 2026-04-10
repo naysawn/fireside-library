@@ -11,85 +11,106 @@ import Layout from '../layouts/Layout.astro';
 </header>
 
 <section class="py-16 md:py-20">
-  <div class="max-w-3xl mx-auto px-6 md:px-12">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
 
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">Text to sustain deep discussions</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">Each module covers a single subject and fills a single session of two to three hours. Groups of 4 to 8 people work best. Large enough for conversation from multiple perspectives, small enough where everyone can speak.</p>
-
-    <hr class="border-gray-200 my-12">
-
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">Two sections</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">Every module has two or three sections. The first section introduces the subject and establishes the core ideas. The second goes deeper, applies them, or shifts perspective. A third sometimes exists if the topic simply could not fit in two.</p>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">You can stop after the first section if the group runs long. Each section is meant to stand on its own.</p>
-
-    <hr class="border-gray-200 my-12">
-
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">Opening questions</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">Each section starts by asking people to open up and share. "Have you ever felt like your prayers were heard?" "Have you ever felt the presence of the divine?" These are invitations to think out loud. We learn by hearing from everyone.</p>
-
-    <hr class="border-gray-200 my-12">
-
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">Readings</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">Each module draws on scripture and writings from Baha'u'llah, Abdu'l-Baha, Shoghi Effendi, and guidance from the Universal House of Justice. The text provides context and explanation. The readings assume that participants do not subscribe to the teachings but have a good working knowledge of the Faith.</p>
-
-    <hr class="border-gray-200 my-12">
-
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">Discussion questions</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">At the end of each section, questions ask the group to consider the topic from other angles. These are less about the text and more about what the group thinks. They are the part where people tend to forget what time it is.</p>
-
-    <hr class="border-gray-200 my-12">
-
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">How we make them</h2>
-    <div class="space-y-0">
-      <div class="grid grid-cols-[3rem_1fr] gap-x-4 py-5 border-t border-gray-200">
-        <span class="text-xs font-bold text-accent tracking-wider">01</span>
-        <div>
-          <h3 class="font-bold text-sm mb-1">Planning</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">A group identifies the next set of modules based on the needs of seekers in the pipeline. For each module, they agree on the sections, bullet points, timeline, and assign a writer and editor.</p>
+    <!-- Intro with icon -->
+    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 items-start mb-16">
+      <div class="hidden md:block">
+        <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mt-1">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17 3H7a2 2 0 00-2 2v14l7-3 7 3V5a2 2 0 00-2-2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
-      <div class="grid grid-cols-[3rem_1fr] gap-x-4 py-5 border-t border-gray-200">
-        <span class="text-xs font-bold text-accent tracking-wider">02</span>
-        <div>
-          <h3 class="font-bold text-sm mb-1">Drafting</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">The writer gathers source materials and produces a draft, often with AI assistance. The draft goes to the editor.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-[3rem_1fr] gap-x-4 py-5 border-t border-gray-200">
-        <span class="text-xs font-bold text-accent tracking-wider">03</span>
-        <div>
-          <h3 class="font-bold text-sm mb-1">Review</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">The editor reviews the arc, the source material, the emphasis, and whether the text addresses questions people actually have at the grassroots.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-[3rem_1fr] gap-x-4 py-5 border-t border-gray-200">
-        <span class="text-xs font-bold text-accent tracking-wider">04</span>
-        <div>
-          <h3 class="font-bold text-sm mb-1">Rewrite</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">The writer rewrites the module in their own words. AI may help, but the finished product should read like a human wrote it.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-[3rem_1fr] gap-x-4 py-5 border-t border-gray-200">
-        <span class="text-xs font-bold text-accent tracking-wider">05</span>
-        <div>
-          <h3 class="font-bold text-sm mb-1">Beta</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">The module is published as beta. Feedback is collected each time it is used, at least twice.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-[3rem_1fr] gap-x-4 py-5 border-t border-b border-gray-200">
-        <span class="text-xs font-bold text-accent tracking-wider">06</span>
-        <div>
-          <h3 class="font-bold text-sm mb-1">v1</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">The writer incorporates feedback and the module is published as v1.</p>
-        </div>
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight mb-6">Text to sustain deep discussions</h2>
+        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5 max-w-2xl">Each module covers a single subject and fills a single session of two to three hours. Groups of 4 to 8 people work best. Large enough for conversation from multiple perspectives, small enough where everyone can speak.</p>
       </div>
     </div>
 
-    <hr class="border-gray-200 my-12">
+    <!-- How a module works - visual cards -->
+    <h2 class="text-2xl font-extrabold tracking-tight mb-8">How a module works</h2>
+    <div class="grid md:grid-cols-2 gap-6 mb-16">
 
-    <h2 class="text-2xl font-extrabold tracking-tight mb-6">Open source. Get involved.</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">This project started in Boston. We are a small group of Baha'is who wanted better materials for sharing the Faith with seekers. We are still experimenting, still learning, still rewriting.</p>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5">Everything is on <a href="https://github.com/naysawn/bahai-modules" class="text-accent-deep underline underline-offset-2 hover:text-accent-dark">GitHub</a>. If you want to try these modules in your community, adapt them for your context, or help us write new ones, we would be grateful.</p>
+      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold">Two sections</h3>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-600">Every module has two or three sections. The first introduces the subject and establishes the core ideas. The second goes deeper, applies them, or shifts perspective. You can stop after the first if the group runs long. Each section stands on its own.</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e04e1a" stroke-width="1.75"/><path d="M12 8v4m0 4h.01" stroke="#e04e1a" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-bold">Opening questions</h3>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-600">Each section starts by asking people to open up and share. "Have you ever felt like your prayers were heard?" "Have you ever felt the presence of the divine?" These are invitations to think out loud. We learn by hearing from everyone.</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold">Readings</h3>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-600">Each module draws on writings from Baha'u'llah, Abdu'l-Baha, Shoghi Effendi, and the Universal House of Justice. The text provides context and explanation. The readings assume participants do not subscribe to the teachings but have a good working knowledge of the Faith.</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold">Discussion questions</h3>
+        </div>
+        <p class="text-sm leading-relaxed text-gray-600">At the end of each section, questions ask the group to consider the topic from other angles. These are less about the text and more about what the group thinks.</p>
+        <p class="text-accent font-semibold text-sm mt-3">They are the part where people forget what time it is.</p>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="border-l-4 border-accent pl-6 py-2 mb-16">
+      <p class="text-xl md:text-2xl font-bold text-gray-800 leading-snug max-w-xl">In practice, these modules have sparked three-hour discussions on deep questions of meaning, purpose, and faith.</p>
+    </div>
+
+    <!-- How we make them -->
+    <h2 class="text-2xl font-extrabold tracking-tight mb-8">How we make them</h2>
+    <div class="grid md:grid-cols-3 gap-4 mb-16">
+      <div class="relative pl-8 pb-6">
+        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/40 text-white text-[0.625rem] font-bold flex items-center justify-center">1</div>
+        <h3 class="font-bold text-sm mb-1">Planning</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">A group identifies modules based on seeker needs. They agree on sections, timeline, and assign a writer and editor.</p>
+      </div>
+      <div class="relative pl-8 pb-6">
+        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/50 text-white text-[0.625rem] font-bold flex items-center justify-center">2</div>
+        <h3 class="font-bold text-sm mb-1">Drafting</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">The writer gathers source materials and produces a draft, often with AI assistance.</p>
+      </div>
+      <div class="relative pl-8 pb-6">
+        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/60 text-white text-[0.625rem] font-bold flex items-center justify-center">3</div>
+        <h3 class="font-bold text-sm mb-1">Review</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">The editor reviews the arc, sourcing, emphasis, and whether it addresses real questions at the grassroots.</p>
+      </div>
+      <div class="relative pl-8 pb-6">
+        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/70 text-white text-[0.625rem] font-bold flex items-center justify-center">4</div>
+        <h3 class="font-bold text-sm mb-1">Rewrite</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">The writer rewrites in their own words. AI may help, but the finished product should read like a human wrote it.</p>
+      </div>
+      <div class="relative pl-8 pb-6">
+        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/80 text-white text-[0.625rem] font-bold flex items-center justify-center">5</div>
+        <h3 class="font-bold text-sm mb-1">Beta</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">Published as beta. Feedback is collected each time it is used, at least twice.</p>
+      </div>
+      <div class="relative pl-8 pb-6">
+        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent text-white text-[0.625rem] font-bold flex items-center justify-center">6</div>
+        <h3 class="font-bold text-sm mb-1">v1</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">The writer incorporates feedback and the module is published as v1.</p>
+      </div>
+    </div>
 
   </div>
 </section>

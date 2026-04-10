@@ -1,6 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "Read",
       "Glob",
@@ -9,12 +8,10 @@
       "WebFetch",
       "Skill",
       "mcp__pencil",
-
       "Bash(npm *)",
       "Bash(npx *)",
       "Bash(node *)",
       "Bash(python3 *)",
-
       "Bash(git status*)",
       "Bash(git log *)",
       "Bash(git diff *)",
@@ -26,9 +23,7 @@
       "Bash(git merge *)",
       "Bash(git mv *)",
       "Bash(git remote *)",
-
       "Bash(gh *)",
-
       "Bash(open *)",
       "Bash(ls *)",
       "Bash(pwd)",
@@ -49,7 +44,9 @@
       "Bash(find *)",
       "Bash(grep *)",
       "Bash(sed *)",
-      "Bash(xargs *)"
+      "Bash(xargs *)",
+      "Read(//Users/naysawnnaji/Sites/**)",
+      "Read(//Users/naysawnnaji/**)"
     ],
     "deny": [
       "Bash(git push --force *)",
@@ -61,9 +58,11 @@
       "Bash(rm -rf /*)",
       "Bash(sudo *)"
     ],
+    "defaultMode": "acceptEdits",
     "additionalDirectories": [
       "/tmp",
-      "/Users/naysawnnaji/.claude/plans"
+      "/Users/naysawnnaji/.claude/plans",
+      "/Users/naysawnnaji/Sites/modules/content/.claude/skills"
     ]
   }
 }

@@ -163,6 +163,10 @@ status: draft                             # required: draft | beta | v1
 5. Generates homepage and about page from Astro components
 6. Static output deployed to Vercel
 
+## Content TODO
+
+- Update module markdown to use structural label convention: h3 for structural labels ("Questions for Reflection", "Reading", "Questions for Discussion") and h4 for content headings ("Origins", "One God"). This distinction drives the CSS: h3 renders as small uppercase accent-colored labels, h4 renders as bold same-size-as-body content headings.
+
 ## Deferred
 
 - PDF generation pipeline (Puppeteer on Vercel)

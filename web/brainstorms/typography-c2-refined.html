@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. Overview of the Baha'i Faith — Baha'i Modules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --accent: #e04e1a;
+    --accent-deep: #c7420f;
+    --accent-dark: #9a3410;
+    --accent-pale: #fdf0ec;
+    --text: #1a1a1a;
+    --text-light: #444;
+    --text-muted: #999;
+    --bg: #FAFAF8;
+    --white: #ffffff;
+    --border: #e5e5e5;
+    --warm-tint: #faf8f5;
+    --content-width: 640px;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--white);
+  }
+
+  /* ───── Navigation ───── */
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--accent);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s;
+  }
+
+  nav .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  nav .site-name {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  nav .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  nav .nav-links a:hover {
+    color: var(--white);
+  }
+
+  /* ───── Module Header ───── */
+
+  .module-header {
+    padding: 96px 0 48px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .module-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .header-content {
+    max-width: 800px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-deep);
+    text-decoration: none;
+    margin-bottom: 28px;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--accent-dark);
+  }
+
+  .back-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 12px;
+  }
+
+  .module-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #e0e0dc;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .module-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--text);
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .phase-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    background: var(--accent-pale);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-light);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .print-btn:hover {
+    border-color: #bbb;
+    color: var(--text);
+  }
+
+  .print-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* ───── Content Area ───── */
+
+  .content-area {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .content-body {
+    max-width: var(--content-width);
+    padding: 56px 0 80px;
+  }
+
+  /* ───── Typography ───── */
+
+  .content-body h1 {
+    display: none;
+  }
+
+  .content-body h2 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--text);
+    margin-top: 3em;
+    margin-bottom: 0.75em;
+    padding-top: 1.5em;
+    padding-bottom: 0.4em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: -0.5em;
+    margin-right: -0.5em;
+    border-top: 2px solid var(--accent);
+    background: var(--warm-tint);
+  }
+
+  .content-body h2:first-child {
+    margin-top: 0;
+    padding-top: 0.4em;
+    border-top: none;
+  }
+
+  .content-body h3 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+  }
+
+  .content-body h3 + p {
+    margin-top: 0;
+  }
+
+  .content-body h4 {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text);
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .content-body p {
+    margin-bottom: 1.25em;
+  }
+
+  .content-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .content-body em {
+    font-style: italic;
+  }
+
+  .content-body strong {
+    font-weight: 700;
+  }
+
+  /* ───── Block Quotes ───── */
+
+  .content-body blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 1em 1.5em;
+    margin: 1.5em 0;
+    color: var(--text-light);
+    background: var(--warm-tint);
+  }
+
+  .content-body blockquote p {
+    margin-bottom: 0.5em;
+  }
+
+  .content-body blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ───── Numbered Questions ───── */
+
+  .content-body ol {
+    list-style: none;
+    counter-reset: questions;
+    margin: 1em 0 1.25em;
+    padding: 0;
+  }
+
+  .content-body ol li {
+    counter-increment: questions;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0;
+    margin-bottom: 1em;
+    line-height: 1.7;
+  }
+
+  .content-body ol li::before {
+    content: counter(questions) ".";
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  /* ───── Footer ───── */
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    background: var(--white);
+  }
+
+  footer .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  footer a:hover {
+    color: var(--text);
+  }
+
+  /* ───── Responsive ───── */
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 17px;
+    }
+
+    nav .nav-inner {
+      padding: 0 20px;
+    }
+
+    nav .nav-links {
+      gap: 16px;
+    }
+
+    .module-header-inner {
+      padding: 0 20px;
+    }
+
+    .header-top {
+      gap: 14px;
+    }
+
+    .module-number {
+      font-size: 2.5rem;
+    }
+
+    .module-title {
+      font-size: 1.5rem;
+    }
+
+    .content-area {
+      padding: 0 20px;
+    }
+
+    .content-body {
+      padding: 40px 0 60px;
+    }
+
+    .content-body h2 {
+      font-size: 22px;
+      margin-top: 2.5em;
+      padding-left: 0.4em;
+      padding-right: 0.4em;
+      margin-left: -0.4em;
+      margin-right: -0.4em;
+    }
+
+    .content-body h4 {
+      font-size: 17px;
+    }
+
+    .content-body ol li {
+      grid-template-columns: 24px 1fr;
+    }
+
+    .content-body ol li::before {
+      font-size: 17px;
+    }
+
+    footer .footer-inner {
+      padding: 0 20px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+
+  /* ───── Print ───── */
+
+  @media print {
+    nav, .back-link, .print-btn, footer {
+      display: none !important;
+    }
+
+    .module-header {
+      padding-top: 0;
+    }
+
+    body {
+      background: white;
+      color: #000;
+      font-size: 11pt;
+    }
+
+    .content-body blockquote {
+      border-left-color: #666;
+      background: none;
+    }
+
+    .content-body h2 {
+      border-top-color: #666;
+      background: none;
+    }
+
+    .content-body h3 {
+      color: #333;
+    }
+
+    .content-body ol li::before {
+      color: #333;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="site-name">Baha'i Modules</a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Modules</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Module Header -->
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="header-content">
+      <a href="#" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+        All Modules
+      </a>
+      <div class="header-top">
+        <span class="module-number">01</span>
+        <h1 class="module-title">Overview of the Baha'i Faith</h1>
+      </div>
+      <div class="header-meta">
+        <span class="phase-badge">Discovery</span>
+        <button class="print-btn" onclick="window.print()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="8" height="4" rx="0.5"/><path d="M4 12H2.5A1.5 1.5 0 011 10.5v-4A1.5 1.5 0 012.5 5h11A1.5 1.5 0 0115 6.5v4a1.5 1.5 0 01-1.5 1.5H12"/><path d="M4 5V1.5a.5.5 0 01.5-.5h7a.5.5 0 01.5.5V5"/></svg>
+          Print
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Content -->
+<article class="content-area">
+  <div class="content-body">
+
+    <h2 style="margin-top:0; padding-top:0.4em; border-top:none;">Section 1</h2>
+
+    <h3>Questions for Discussion</h3>
+
+    <p>We're about to explore some foundational Baha'i teachings. But first, let's start with your own experience:</p>
+
+    <ol>
+      <li>When you hear the word "religion," what do you feel? Hope, skepticism, indifference, something else? Why?</li>
+      <li>What have you heard about the Baha'i Faith? Is there anything that stands out to you? Anything you would really like to learn more about?</li>
+      <li>Have you ever had a moment where you felt certain of God's presence or existence? What was happening? And have you had moments of genuine doubt? What distinguishes those two states?</li>
+    </ol>
+
+    <h4>Introduction</h4>
+
+    <p>Humanity has always sought guidance for understanding our place in the world and how to live together with meaning and purpose. In our time of rapid transformation this search feels particularly urgent. Baha'u'llah and His Forerunner, the Bab, offer such guidance. Their teachings provide a framework for building a world of unity, justice, and prosperity&mdash;where both individuals and society can advance together.</p>
+
+    <p>Before we dive into the specifics of their guidance, let's examine the origins of the Baha'i Faith.</p>
+
+    <h4>Origins</h4>
+
+    <p>The Baha'i Faith was born in Persia (today Iran) in the mid-19th century. In less than 200 years it has become a universal faith present in every country in the world with adherents from virtually every national, ethnic, religious, and tribal background.</p>
+
+    <p>The story begins with the Bab (1819&ndash;1850), meaning "the Gate." The Bab was a young merchant from Shiraz, Persia, who proclaimed His divine mission in 1844, declaring that He was the bearer of a new message from God and the forerunner of the Promised One of all religions. This moment is considered the beginning of the Baha'i Era&mdash;a new cycle of human history and social evolution.</p>
+
+    <p>Baha'u'llah (1817&ndash;1892), Whose title means "the Glory of God," is recognized as that Promised One. Born in Persia, Baha'u'llah established a Cause that has gradually inspired millions of people from virtually every race, culture, class, and nation on earth. He is regarded as the latest in the succession of Divine Messengers Who founded the world's major religions.</p>
+
+    <p>Baha'u'llah endured a life of extraordinary suffering. He was exiled and under house arrest most of His life, poisoned twice, surrounded many times by violent mobs, betrayed, and survived repeated attempts on His life. He declared: <em>"The Ancient Beauty hath consented to be bound with chains that mankind may be released from its bondage, and hath accepted to be made a prisoner within this most mighty Stronghold that the whole world may attain unto true liberty."</em></p>
+
+    <p>In 1863, He declared that He had been identified by God as a Manifestation and He was the promised one foretold by all religions. Announcing his station to Christians, He shared:</p>
+
+    <blockquote>
+      <p>"Followers of the Gospel, behold the gates of heaven are flung open. He that had ascended unto it is now come. Give ear to His voice calling aloud over land and sea, announcing to all mankind the advent of this Revelation&mdash;a Revelation through the agency of which the Tongue of Grandeur is now proclaiming: 'Lo, the sacred Pledge hath been fulfilled, for He, the Promised One, is come!"</p>
+    </blockquote>
+
+    <p>Baha'u'llah revealed nearly 20,000 works&mdash;over seven million words, the equivalent of thirty-five New Testaments. Approximately ten percent of Baha'u'llah's writings have been translated into English. As He revealed these words, Baha'u'llah would dictate to a scribe as he paced the room. The words flowed without pause or correction.</p>
+
+    <p>At times, up to 5,000&ndash;7,500 words, or 12-15 typed pages, were revealed in a single hour. For example, the nearly 200 pages of the Book of Certitude were revealed in just forty-eight hours. This is all the more remarkable given that Baha'u'llah never studied Arabic or had little formal education, yet friends and even enemies assert that His mastery of both Persian and Arabic was absolute. Baha'u'llah explains that His writings are the greatest proof of His claim to Prophethood after His own person.</p>
+
+    <p>As Baha'u'llah's teachings spread, He was exiled many times, finally arriving in the ancient city of Akka, located in what is now Israel. In 1892, Baha'u'llah passed away from this life at the age of 75. His earthly remains were laid to rest at Bahji. The burial sites of the Bab and Baha'u'llah have become sacred shrines and places of pilgrimage for Baha'is from around the world.</p>
+
+    <h3>Questions for Discussion</h3>
+
+    <ol>
+      <li>Baha'u'llah revealed nearly 20,000 works, the equivalent of 35 New Testaments. Have you come across any of His writings yet? Do you have any favorite passages?</li>
+      <li>Baha'u'llah stated His writings were His greatest proof of His prophethood after His own Person. What do you think he meant by that? What significance might we draw from His revelation of the word of God occurring rapidly and without pause or correction?</li>
+      <li>Baha'u'llah declared: <em>"The Ancient Beauty hath consented to be bound with chains that mankind may be released from its bondage."</em> What bondage do you think He's referring to? What are we being released from?</li>
+    </ol>
+
+    <h2>Section 2 &mdash; The Teachings</h2>
+
+    <p>Baha'u'llah's teachings cover a vast range of subjects&mdash;from social issues such as racial justice, the equality of the sexes, and wealth inequity to those innermost questions that affect the life of the soul.</p>
+
+    <p>Baha'u'llah compares His writings to a vast ocean, addressing virtually every aspect of spiritual reality and the human condition. The original texts, many of them written in His own hand, have been meticulously preserved.</p>
+
+    <p>Baha'u'llah's writings affirm that human nature is fundamentally spiritual, and proclaim that our development as individuals is intimately connected to the advancement of our communities and ultimately of our societies. Worship of God and service to humanity are two inseparable aspects of life, enabling both individuals and society to progress.</p>
+
+    <p>For over a century and a half, individuals, communities, and institutions have been striving to realize the hopeful vision of peace and unity presented in His writings. One of Baha'u'llah's foundational teachings is sometimes called the three onenesses&mdash;one God, one human family, and one unfolding religion. Let's explore it.</p>
+
+    <h4>One God</h4>
+
+    <p>Called by different names throughout the ages, the eternal God, the Creator of the universe, is limitless, all-knowing, all-powerful, and all-loving. God is one. The reality of God is beyond human understanding, though we may find expressions of God's attributes in every created thing. Since God is far beyond our understanding, God manifests Himself by sending us Manifestations, who are the founders of the major world's religions.</p>
+
+    <p>The purpose of our lives is to recognize, love, and grow closer to God. We may do so by striving to emulate God's attributes, such as love, compassion, generosity, justice, and mercy, in both our inner lives and our actions.</p>
+
+    <p><em>"The peoples of the world, of whatever race or religion, derive their inspiration from one heavenly Source, and are the subjects of one God." (Baha'u'llah)</em></p>
+
+    <h4>One Human Family</h4>
+
+    <p>At the heart of Baha'i teachings is a radical truth: all human beings are children of the same God. This is not merely a beautiful sentiment&mdash;it is the spiritual principle that must govern our age if we are to achieve true justice and peace.</p>
+
+    <p>Understanding the oneness of humanity demands that we reject all prejudices and any behavior that privileges some at the expense of others. It calls us beyond tolerance to true love&mdash;selfless, unconditional love for all humanity that flows from our love for God. When we truly grasp that every person is created in God's image, we cannot remain indifferent to injustice. We cannot divide the world into "us" and "them."</p>
+
+    <p>The Baha'i writings assert that all differences of race, culture, class, and background are expressions of humanity's beautiful diversity, not grounds for division.</p>
+
+    <p><em>"O Children of Men! Know ye not why We created you all from the same dust? That no one should exalt himself over the other. Ponder at all times in your hearts how ye were created. Since We have created you all from one same substance it is incumbent on you to be even as one soul, to walk with the same feet, eat with the same mouth and dwell in the same land, that from your inmost being, by your deeds and actions, the signs of oneness and the essence of detachment may be made manifest." (Baha'u'llah)</em></p>
+
+    <h4>One Unfolding Religion</h4>
+
+    <p>Baha'u'llah declares: <em>"There can be no doubt whatever, that the peoples of the world, of whatever race or religion, derive their inspiration from one heavenly Source, and are the subjects of one God."</em></p>
+
+    <p>According to Baha'u'llah, there is only one religion, not many competing faiths. What we call different religions are successive chapters in humanity's spiritual education&mdash;progressive revelation of the same divine truth.</p>
+
+    <p>Abraham, Krishna, Moses, Zoroaster, Buddha, Jesus Christ, Muhammad, the Bab, and Baha'u'llah&mdash;all are Manifestations of the same God. Baha'u'llah writes, <em>"This is the changeless Faith of God, eternal in the past, eternal in the future."</em> With this statement He affirms the continuity of the Cause of God, revealed through a line of Prophets stretching from the dawn of history to the present day.</p>
+
+    <p>While the spiritual truths remain constant, each Manifestation also brings specific guidance suited to Their age and humanity's evolving capacity.</p>
+
+    <p>Think of humanity as a student progressing through school. Each grade brings a new teacher with new lessons, yet each builds upon what came before. A first-grade teacher emphasizes different skills than a high school teacher&mdash;not because they disagree, but because students at different stages need different guidance. Humanity has received different lessons from different Teachers&mdash;each building upon the previous, each preparing for the next.</p>
+
+    <p>With each Manifestation, spiritual forces are released which, over time, increasingly permeate human affairs, providing the main impulse for the further development of consciousness and society.</p>
+
+    <p>Baha'u'llah explicitly stated that after the passage of at least a thousand years, another Manifestation will appear.</p>
+
+    <h4>A New Standard for Religion</h4>
+
+    <p>Baha'u'llah teaches that religion must be conducive to love and unity. If it becomes a source of hatred or division, its absence is preferable. Abdu'l-Baha, Baha'u'llah's son, put it plainly: <em>"Any religion which is not a cause of love and unity is no religion."</em></p>
+
+    <p>For millennia, religious conflict has torn humanity apart&mdash;wars fought in God's name, persecution justified by scripture. True religion, Baha'u'llah teaches, is <em>"a radiant light and an impregnable stronghold for the protection and welfare of the peoples of the world."</em> Its fruits should be unmistakable: unity, justice, good character, the search for truth, the liberation of human conscience.</p>
+
+    <p>The Baha'i writings liken the Messengers of God to the cycle of seasons. Each Prophet is like springtime&mdash;releasing spiritual power that transforms civilization. But gradually, the initial freshness fades. Human additions corrupt the pure teachings, and the time comes for another Messenger to renew religion once more. We see this pattern in Moses, Christ, and Muhammad&mdash;each brought renewed spiritual force, and each, over time, saw Their teachings corrupted by selfish human ideas, superstition, and the worldly quest for power.</p>
+
+    <p>All the Founders of the great religions, Baha'u'llah explained, proclaim the same essential faith. They are chapters in one unfolding story&mdash;successive renewals of the same divine springtime. When a new Messenger appears, humanity's task is to recognize this spiritual renewal and harvest its transformative teachings.</p>
+
+    <p><em>"Religion should unite all hearts and cause wars and disputes to vanish from the face of the earth; it should give birth to spirituality, and bring light and life to every soul. If religion becomes a cause of dislike, hatred and division, it would be better to be without it ... Any religion which is not a cause of love and unity is no religion." (Abdu'l-Baha)</em></p>
+
+    <h4>Being a Baha'i</h4>
+
+    <p>Baha'u'llah teaches that the purpose of life is to know and love God. Since God is beyond our direct comprehension, we come to know God through His Manifestations, the great Teachers who appear age after age. To recognize the Manifestation of one's own time is to align oneself with God's will for humanity and to draw upon the spiritual energies released for this stage of our collective journey.</p>
+
+    <p>Becoming a Baha'i is simply a matter of recognizing Baha'u'llah as the Messenger of God for this age and informing the community of one's desire to join. In the United States, this is done by filling out a simple form at bahai.us. There are no rituals or ceremonies.</p>
+
+    <p>Enrolled members can participate in Baha'i elections, be elected to Baha'i institutions, and attend the Nineteen Day Feast and receive monthly community updates. From that moment, they become part of a global community of over 7 million people striving to put these teachings into practice.</p>
+
+    <h3>Questions for Discussion</h3>
+
+    <p>Let's reflect on what we just read</p>
+
+    <ol>
+      <li>Most of us carry something from our experience with religion&mdash;good, bad, or complicated. What came up for you as you read about these teachings? Is there any baggage worth examining together?</li>
+      <li>The text described the reality of God as beyond human understanding, though we may find expressions of God's attributes in every created thing. Are there times in your own life where you felt the presence of the Divine or marvelled at the design of God's system?</li>
+      <li>Do religious leaders and everyday believers have a responsibility to investigate new revelation when it arrives&mdash;and what is lost, personally and for society, when they don't?</li>
+    </ol>
+
+    <h2>The Covenant</h2>
+
+    <p>Whereas in the past, religious communities disagreed over the question of succession and became divided after the passing of a Messenger of God, Baha'u'llah put into place a system that would ensure the continuity of guidance and maintain the integrity and organic wholeness of the Baha'i community into the future, an essential concept known to Baha'is as the Covenant.</p>
+
+    <p>In His writings, Baha'u'llah appointed His eldest son, Abdu'l-Baha, to be the head of the Faith after His passing. Abdu'l-Baha was the perfect exemplar of the Baha'i Faith's spirit and teachings. A champion of social justice and an ambassador for international peace, He devoted His life to furthering His Father's cause and to promoting its ideals. The role Abdu'l-Baha played as spiritual leader, authoritative interpreter, and role model is unique in all religious history.</p>
+
+    <p>Baha'u'llah called His son "the Center of My Covenant" and identified Abdu'l-Baha as His successor in His written will, thereby ensuring the unity of the Faith after His passing. Abdu'l-Baha passed away peacefully in His sleep on November 28, 1921, at the age of 77. In His Will and Testament, Abdu'l-Baha appointed His grandson, Shoghi Effendi Rabbani, to succeed Him as the leader, or Guardian, of the Baha'i Faith. This appointment was an extension of the Covenant established by Baha'u'llah. Following the passing of the Guardian, the Universal House of Justice was established.</p>
+
+    <p>The Universal House of Justice, the international governing body of the Baha'i Faith, was first elected in 1963. The Universal House of Justice is without precedent in religious history. Nonpartisan elections, without nominations or campaigns and conducted by secret ballot, and collective decision making are hallmarks of Baha'i administration. These and other principles constitute a model of just and unified global governance.</p>
+
+    <p>There is no priesthood within the Baha'i Faith and none of the members of the elected institutions may claim a special station. Authority is vested in the institution and its collective decision making. Baha'i institutions are not merely the means of administering the internal aspects of Baha'i community life. They are also channels through which the spirit of the Faith flows, uniting and sustaining society as humanity moves towards its collective maturity.</p>
+
+    <h3>Questions for Discussion</h3>
+
+    <p>Now that we've explored the Baha'i Faith's vision, let's reflect on what resonated with you and what questions arose.</p>
+
+    <ol>
+      <li>Abdu'l-Baha is described as "the perfect exemplar" of the Faith's spirit and teachings. Why might having a living example, not just written teachings, be important for us? Is there anything an exemplar offer that scripture alone cannot?</li>
+      <li>This was just a glimpse into the vast ocean of the Baha'i revelation. The community is open to everyone&mdash;both to explore and to join. What is resonating with you? Are there any topics you'd love to explore further together?</li>
+    </ol>
+
+  </div>
+</article>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <p>Baha'i Modules. An open source project from Boston.</p>
+    <p><a href="https://github.com">GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.style.boxShadow = window.scrollY > 10 ? '0 1px 3px rgba(0,0,0,0.1)' : 'none';
+  });
+</script>
+
+</body>
+</html>

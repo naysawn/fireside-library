@@ -14,28 +14,27 @@
 
 Why do we pray? If God already knows what is in our hearts, what is the point of putting it into words?
 
-Abdu'l-Baha, the son of Baha'u'llah (the founder of the Baha'i Faith), answers this with a simple analogy. When one friend loves another, is it not natural to want to say so? Even if the other person already knows, the impulse to express it is real. He explains: *"It is true that God knows the wishes of all hearts; but the impulse to pray is a natural one, springing from man's love to God."* [1] Prayer, in other words, is not information for God. It is an expression of a relationship. Like a child calling out for a parent who is already in the room, the act of reaching out is itself the point.
-%%FLAG: I don't like the prayer is not information for God%%
+Abdu'l-Baha, the son of Baha'u'llah (the founder of the Baha'i Faith), answers this with a simple analogy. When one friend loves another, is it not natural to want to say so? Even if the other person already knows, the impulse to express it is real. He explains: *"It is true that God knows the wishes of all hearts; but the impulse to pray is a natural one, springing from man's love to God."* [1] Prayer, in this sense, is the expression of a relationship. Like a child calling out for a parent who is already in the room, the act of reaching out is itself the point.
 
 And this act of reaching out turns out to be among the most powerful things a human being can do. The Baha'i writings describe prayer in extraordinary terms. Abdu'l-Baha says:
 
 > "There is nothing sweeter in the world of existence than prayer. Man must live in a state of prayer. The most blessed condition is the condition of prayer and supplication. Prayer is conversation with God." [2]
 
-Conversation with God. And this conversation does real things. The Baha'i writings describe prayer can be *"a fire that will burn away the veils which have shut me out from Thy beauty, and a light that will lead me unto the ocean of Thy Presence."* [3]  Prayer *"creates spirituality, creates mindfulness and celestial feelings, begets new attractions of the Kingdom and engenders the susceptibilities of the higher intelligence."* [4] 
+Conversation with God. And this conversation does real things. The Baha'i writings describe prayer as *"a fire that will burn away the veils which have shut me out from Thy beauty, and a light that will lead me unto the ocean of Thy Presence."* [3] Prayer *"creates spirituality, creates mindfulness and celestial feelings, begets new attractions of the Kingdom and engenders the susceptibilities of the higher intelligence."* [4]
 
-Prayer burns away obstacles, draws us closer to God, and cultivates capacities we did not know we had. For those uncertain about how to begin, Abdu'l-Baha offers reassurance: *"Prayer need not be in words, but rather in thought and attitude."* [5] It can start with something as quiet as turning the heart in the direction of God.
+Prayer burns away obstacles, draws us closer to God, and opens up capacities we did not know we had. For those uncertain about how to begin, Abdu'l-Baha offers reassurance: *"Prayer need not be in words, but rather in thought and attitude."* [5] It can start with something as quiet as turning the heart in the direction of God.
 
-The Universal House of Justice, the international governing body of the Baha'i Faith, captures how this quiet turning renews us:
+The Universal House of Justice, the international governing body of the Baha'i Faith, describes how this quiet turning renews us:
 
 > "Prayer is the essential spiritual conversation of the soul with its Maker, direct and without intermediation. Like the morning's dew, it brings freshness to the heart and cleanses it, purifying it from attachments of the insistent self." [6]
 
-Dew does not force its way into the ground; it arrives gently and gradually softens the ground. Prayer works the same way.
+Dew does not force its way into the ground. It arrives gently and gradually softens the soil. Prayer works the same way.
 
 But the effects go deeper still. Abdu'l-Baha offers another image:
 
 > "When one supplicates to his Lord, turns to Him and seeks bounty from His Ocean, this supplication brings light to his heart, illumination to his sight, life to his soul and exaltation to his being. When the vessel is enlarged the water increases, and when the thirst grows the bounty of the cloud becomes agreeable to the taste of man. This is the mystery of supplication and the wisdom of stating one's wants." [7]
 
-Prayer makes us more capable. It enlarges the vessel itself. A person who prays regularly is being gradually reshaped, the way a riverbed is slowly widened by the water that runs through it. Our capacity to receive, to understand, and to serve grows through the practice of sincere prayer.
+Prayer makes us more capable of receiving. It enlarges the vessel itself. A person who prays regularly is being gradually reshaped, the way a riverbed is slowly widened by the water that runs through it. Our capacity to receive, to understand, and to serve grows through the practice of sincere prayer.
 
 ### Questions for Discussion
 
@@ -63,21 +62,21 @@ Most of us have had the experience of wanting to pray but not knowing what to sa
 
 The Baha'i Faith speaks directly to this struggle. Baha'u'llah, Abdu'l-Baha, and the Bab did not merely teach about prayer. They revealed prayers, specific words given to humanity to use. These are not ordinary compositions. Shoghi Effendi, the Guardian of the Baha'i Faith, explains that certain prayers *"have been invested by Baha'u'llah with a special potency and significance, and should therefore be accepted as such and be recited by the believers with unquestioning faith and confidence, that through them they may enter into a much closer communion with God."* [8]
 
-In practice, this means there is an entire book of prayers revealed by Baha'u'llah, the Bab, and Abdu'l-Baha covering every aspect of life, from healing to forgiveness to guidance to gratitude. Baha'is themselves are called upon to recite at least one of three obligatory prayers every day, recognizing that this daily practice sustains their spiritual life. But these prayers are not reserved for Baha'is alone. They are available to anyone. They are Baha'u'llah's gift: words carrying a special potency, ready to be used by anyone willing to leverage them to connect with God.
+In practice, this means there is an entire book of prayers revealed by Baha'u'llah, the Bab, and Abdu'l-Baha covering every aspect of life, from healing to forgiveness to guidance to gratitude. Baha'is are called upon to recite at least one of three obligatory prayers every day, recognizing that this daily practice sustains their spiritual life. These prayers are not reserved for Baha'is alone. They are available to anyone willing to use them to connect with God.
 
-When our own vocabulary falls short, the revealed prayers offer us the language. These prayers provide a language that only God Himself could offer and reciting them effects us profoundly. In referring to the potency of the long obligatory prayer, Baha'u'llah says: *"It hath been revealed in such wise that if it be recited to a rock, that rock would stir and speak forth; and if it be recited to a mountain, that mountain would move and flow."* [9] 
+When our own vocabulary falls short, the revealed prayers offer us the language. Reciting them changes us. In referring to the long obligatory prayer, Baha'u'llah says: *"It hath been revealed in such wise that if it be recited to a rock, that rock would stir and speak forth; and if it be recited to a mountain, that mountain would move and flow."* [9]
 
-The words are potent. They are all the more potent if recited with love:
+The words carry power. They carry all the more power if recited with love:
 
 > "Intone, O My servant, the verses of God that have been received by thee, as intoned by them who have drawn nigh unto Him, that the sweetness of thy melody may kindle thine own soul, and attract the hearts of all men." [10]
 
-The way we say the words matters. Abdu'l-Baha explains: *"Words without love mean nothing. If a person talks to you as an unpleasant duty, with no love or pleasure in his meeting with you, do you wish to converse with him?"* [5] Reciting a prayer with attention and reverence is itself a spiritual act, but the spirit behind the words matters just as much. 
+The way we say the words matters. Abdu'l-Baha explains: *"Words without love mean nothing. If a person talks to you as an unpleasant duty, with no love or pleasure in his meeting with you, do you wish to converse with him?"* [5] Reciting a prayer with attention and reverence is itself a spiritual act, but the spirit behind the words matters just as much.
 
-But prayer does not only transform us inwardly. Sincere prayer has the effect of *"transmuting earthly inclinations into heavenly attributes and inspiring selfless service to humankind."* [12] Prayer feeds the soul. That nourishment provides increased capacity, and that increased capacity powers us to actively work to better the world.
+Prayer does not only transform us inwardly. Sincere prayer has the effect of *"transmuting earthly inclinations into heavenly attributes and inspiring selfless service to humankind."* [12] Prayer feeds the soul. That nourishment gives us increased capacity, and that increased capacity moves us to work for the betterment of the world.
 
-Think of ourselves as reeds. A reed that is blocked with dirt cannot carry water. But a reed that has been cleared out becomes an instrument; water flows through it freely. Prayer is what clears us out. It removes the distractions, the ego, the fear that block us from acting with love. When we pray sincerely, we are not just filling ourselves up. We are making space for something larger to move through us. The kindness we show, the patience we bring to difficulty, the service we offer to others, these become expressions of something deeper than our own willpower. They become God's love, operating through a human life.
+Think of a reed. A reed that is blocked with dirt cannot carry water. But a reed that has been cleared out becomes an instrument; water flows through it freely. Prayer is what clears us out. It removes the distractions, the ego, the fear that keep us from acting with love. When we pray sincerely, we are not just filling ourselves up. We are making space for something larger to move through us. The kindness we show, the patience we bring to difficulty, the service we offer to others; these become expressions of something deeper than our own willpower. They become God's love, operating through a human life.
 
-Prayer does not end when we open our eyes. It continues in how we treat the person sitting next to us, the work we do, the way we move through the world. A prayer cherished by Baha'is around the world captures this beautifully:
+Prayer does not end when we open our eyes. It continues in how we treat the person sitting next to us, the work we do, the way we move through the world. A prayer cherished by Baha'is around the world says it simply:
 
 > "O God, make me a hollow reed, from which the pith of self hath been blown, so that I may become a clear channel through which Thy love may flow to others." [13]
 
