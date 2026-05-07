@@ -46,7 +46,9 @@
       "Bash(sed *)",
       "Bash(xargs *)",
       "Read(//Users/naysawnnaji/Sites/**)",
-      "Read(//Users/naysawnnaji/**)"
+      "Read(//Users/naysawnnaji/**)",
+      "Bash(git -C /Users/naysawnnaji/Sites/modules remote -v)",
+      "Bash(git config:*)"
     ],
     "deny": [
       "Bash(git push --force *)",

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parse as parseYaml } from 'yaml';
 
-const CONTENT_DIR = path.resolve(process.cwd(), '../content');
+const CONTENT_DIR = path.resolve(process.cwd(), '../content/modules');
 
 export interface ModuleMetadata {
   title: string;
