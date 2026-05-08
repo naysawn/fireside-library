@@ -29,18 +29,17 @@ function getLatestDraft(draftsDir: string): string | null {
     return fs.readFileSync(path.join(draftsDir, 'final.md'), 'utf-8');
   }
 
-  // Find the highest numbered v*.md file (case insensitive)
-  const vFiles = files
-    .filter(f => /^v\d+\.md$/i.test(f))
-    .sort((a, b) => {
-      const numA = parseInt(a.match(/\d+/)![0]);
-      const numB = parseInt(b.match(/\d+/)![0]);
-      return numB - numA;
-    });
+  // Prefer human drafts (v*.md), fall back to AI drafts (ai-draft-*.md)
+  const pickHighest = (pattern: RegExp) =>
+    files
+      .filter(f => pattern.test(f))
+      .sort((a, b) => parseInt(b.match(/\d+/)![0]) - parseInt(a.match(/\d+/)![0]))[0];
 
-  if (vFiles.length === 0) return null;
+  const latest = pickHighest(/^v\d+\.md$/i) ?? pickHighest(/^ai-draft-\d+\.md$/i);
 
-  return fs.readFileSync(path.join(draftsDir, vFiles[0]), 'utf-8');
+  if (!latest) return null;
+
+  return fs.readFileSync(path.join(draftsDir, latest), 'utf-8');
 }
 
 export function getAllModules(): Module[] {

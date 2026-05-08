@@ -12,6 +12,12 @@ function watchContentPlugin() {
     name: 'watch-content',
     configureServer(server) {
       server.watcher.add(contentDir);
+      const onChange = (file) => {
+        if (file.startsWith(contentDir)) server.restart();
+      };
+      server.watcher.on('change', onChange);
+      server.watcher.on('add', onChange);
+      server.watcher.on('unlink', onChange);
     },
   };
 }
