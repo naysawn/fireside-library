@@ -17,16 +17,33 @@ export interface Module {
   metadata: ModuleMetadata;
   content: string;
   folder: string;
+  sourceFile: string;
+  sourceModified: string;
 }
 
-function getLatestDraft(draftsDir: string): string | null {
+interface DraftSource {
+  content: string;
+  filename: string;
+  modified: Date;
+}
+
+function getLatestDraft(draftsDir: string): DraftSource | null {
   if (!fs.existsSync(draftsDir)) return null;
 
   const files = fs.readdirSync(draftsDir);
 
+  const read = (filename: string): DraftSource => {
+    const filepath = path.join(draftsDir, filename);
+    return {
+      content: fs.readFileSync(filepath, 'utf-8'),
+      filename,
+      modified: fs.statSync(filepath).mtime,
+    };
+  };
+
   // Check for final.md first
   if (files.includes('final.md')) {
-    return fs.readFileSync(path.join(draftsDir, 'final.md'), 'utf-8');
+    return read('final.md');
   }
 
   // Prefer human drafts (v*.md), fall back to AI drafts (ai-draft-*.md)
@@ -39,7 +56,7 @@ function getLatestDraft(draftsDir: string): string | null {
 
   if (!latest) return null;
 
-  return fs.readFileSync(path.join(draftsDir, latest), 'utf-8');
+  return read(latest);
 }
 
 export function getAllModules(): Module[] {
@@ -60,9 +77,9 @@ export function getAllModules(): Module[] {
     const metadata = parseYaml(metadataRaw) as ModuleMetadata;
 
     const draftsDir = path.join(folderPath, 'drafts');
-    const content = getLatestDraft(draftsDir);
+    const draft = getLatestDraft(draftsDir);
 
-    if (!content) continue;
+    if (!draft) continue;
 
     // Generate slug from folder name, stripping the number prefix
     const slug = entry.name.replace(/^\d{2}-/, '');
@@ -70,8 +87,10 @@ export function getAllModules(): Module[] {
     modules.push({
       slug,
       metadata,
-      content,
+      content: draft.content,
       folder: entry.name,
+      sourceFile: draft.filename,
+      sourceModified: draft.modified.toISOString(),
     });
   }
 

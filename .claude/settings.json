@@ -48,7 +48,9 @@
       "Read(//Users/naysawnnaji/Sites/**)",
       "Read(//Users/naysawnnaji/**)",
       "Bash(git -C /Users/naysawnnaji/Sites/modules remote -v)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(md5 /Users/naysawnnaji/Sites/modules/content/modules/13-spiritual-development/drafts/ai-draft-1.md)",
+      "Bash(md5 /Users/naysawnnaji/Sites/modules/content/modules/13-spiritual-development/drafts/ai-draft-3.md)"
     ],
     "deny": [
       "Bash(git push --force *)",
