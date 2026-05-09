@@ -67,7 +67,8 @@
   }
 
   /* Structural labels: "QUESTIONS FOR DISCUSSION", "READING" */
-  .module-prose h3 {
+  .module-prose h3,
+  .module-prose h4 {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -79,18 +80,10 @@
   }
 
   .module-prose h3 + p,
-  .module-prose h3 + ol {
+  .module-prose h3 + ol,
+  .module-prose h4 + p,
+  .module-prose h4 + ol {
     margin-top: 0;
-  }
-
-  /* Content headings: "Origins", "One God" */
-  .module-prose h4 {
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.25;
-    color: #141414;
-    margin-top: 2em;
-    margin-bottom: 0.5em;
   }
 
   /* Body text */
@@ -183,9 +176,9 @@
     margin: 3em 0;
   }
 
-  /* Citations section */
+  /* Citations section — last h2 directly followed by an ol */
   .module-prose h2#citations,
-  .module-prose h2:last-of-type {
+  .module-prose h2:last-of-type:has(+ ol) {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -202,7 +195,7 @@
   }
 
   .module-prose h2#citations + ol li,
-  .module-prose h2:last-of-type + ol li {
+  .module-prose h2:last-of-type:has(+ ol) + ol li {
     font-size: 13px;
     line-height: 1.5;
     color: #737373;
@@ -211,14 +204,14 @@
   }
 
   .module-prose h2#citations + ol li::before,
-  .module-prose h2:last-of-type + ol li::before {
+  .module-prose h2:last-of-type:has(+ ol) + ol li::before {
     font-size: 13px;
     line-height: 1.5;
     color: #999;
   }
 
   .module-prose h2#citations + ol li em,
-  .module-prose h2:last-of-type + ol li em {
+  .module-prose h2:last-of-type:has(+ ol) + ol li em {
     color: #737373;
   }
 
@@ -235,13 +228,51 @@
     display: none !important;
   }
 
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  article, main, .module-prose {
+    overflow: visible !important;
+  }
+
+  article {
+    padding: 0 !important;
+  }
+
+  article > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: none !important;
+  }
+
+  .module-prose ol,
+  .module-prose ol li {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .module-prose .word-count {
+    display: none !important;
+  }
+
   @page {
-    margin: 0.6in 0.75in;
+    margin: 0.75in 0.9in;
     size: letter;
+
+    @bottom-right {
+      content: counter(page);
+      font-family: Arial, sans-serif;
+      font-size: 9pt;
+      color: #666;
+    }
   }
 
   body {
-    font-family: 'Georgia', serif;
+    font-family: Arial, sans-serif;
     font-size: 10pt;
     line-height: 1.35;
     color: black;
@@ -250,56 +281,47 @@
 
   .module-prose h1 {
     display: block !important;
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16pt;
-    font-weight: 800;
-    margin-bottom: 4pt;
+    font-weight: 700;
+    margin-bottom: 12pt;
     color: black;
-    border-bottom: 1pt solid #666;
-    padding-bottom: 6pt;
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
   .module-prose {
     max-width: 100%;
-    font-family: 'Georgia', serif;
+    font-family: Arial, sans-serif;
     font-size: 10pt;
     line-height: 1.35;
   }
 
   .module-prose h2 {
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 13pt;
     font-weight: 700;
     margin-top: 18pt;
-    margin-bottom: 6pt;
-    padding: 0 0 4pt;
+    margin-bottom: 10pt;
+    padding: 0;
     margin-left: 0;
     margin-right: 0;
     border-top: none;
-    border-bottom: 0.5pt solid #999;
+    border-bottom: none;
     background: none;
     color: black;
     page-break-after: avoid;
   }
 
-  .module-prose h3 {
-    font-family: 'Inter', sans-serif;
+  .module-prose h3,
+  .module-prose h4 {
+    font-family: Arial, sans-serif;
     font-size: 8pt;
     font-weight: 700;
     margin-top: 14pt;
-    margin-bottom: 4pt;
+    margin-bottom: 10pt;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #555;
-    page-break-after: avoid;
-  }
-
-  .module-prose h4 {
-    font-family: 'Inter', sans-serif;
-    font-size: 10pt;
-    font-weight: 700;
-    margin-top: 10pt;
-    margin-bottom: 3pt;
     color: black;
     page-break-after: avoid;
   }
@@ -307,21 +329,21 @@
   .module-prose p {
     font-size: 10pt;
     line-height: 1.35;
-    margin-bottom: 6pt;
+    margin-bottom: 11pt;
     color: black;
     orphans: 3;
     widows: 3;
   }
 
   .module-prose ol {
-    margin-top: 2pt;
-    margin-bottom: 8pt;
+    margin-top: 4pt;
+    margin-bottom: 14pt;
   }
 
   .module-prose ol li {
     font-size: 10pt;
     line-height: 1.35;
-    margin-bottom: 4pt;
+    margin-bottom: 12pt;
     grid-template-columns: 1.25rem 1fr;
     color: black;
   }
@@ -332,7 +354,7 @@
   }
 
   .module-prose blockquote {
-    margin: 8pt 0;
+    margin: 11pt 0;
     padding: 0 0 0 12pt;
     border-left: 1.5pt solid #666;
     background: none;
@@ -344,12 +366,11 @@
     font-size: 9.5pt;
     line-height: 1.35;
     color: black;
-    margin-bottom: 3pt;
+    margin-bottom: 6pt;
   }
 
   .module-prose hr {
-    margin: 12pt 0;
-    border-top: 0.5pt solid #ccc;
+    display: none;
   }
 
   a {
