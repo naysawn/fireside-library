@@ -260,7 +260,7 @@
   }
 
   @page {
-    margin: 0.75in 0.9in;
+    margin: 0.9in;
     size: letter;
 
     @bottom-right {
