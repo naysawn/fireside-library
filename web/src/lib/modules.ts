@@ -12,51 +12,99 @@ export interface ModuleMetadata {
   status: string;
 }
 
+export interface GradeDimension {
+  name: string;
+  score: number;
+  max: number;
+  sub_items?: { text: string; passed: boolean; evidence?: string }[];
+}
+
+export interface Grade {
+  module_id: string | number;
+  draft_version: string;
+  graded_at: string;
+  rubric_version: number;
+  dimensions: GradeDimension[];
+  ai_tells_found?: { pattern: string; match: string; location?: string }[];
+  mechanical_check?: Record<string, boolean>;
+  total: number;
+  max: number;
+  coverage_gate_passed: boolean;
+  advance_gate_passed: boolean;
+  ship_gate_passed: boolean;
+  summary_fixes?: string[];
+  spec_missing?: boolean;
+  filename: string;
+}
+
+export interface DraftWithGrade {
+  filename: string;     // e.g., "ai-draft-6.md"
+  version: string;      // e.g., "ai-draft-6"
+  content: string;
+  modified: string;     // ISO date
+  grade: Grade | null;  // most-recent grade whose draft_version matches
+}
+
 export interface Module {
   slug: string;
   metadata: ModuleMetadata;
-  content: string;
   folder: string;
+  drafts: DraftWithGrade[];   // sorted newest first by mtime
+  // Legacy aliases for drafts[0]
+  content: string;
   sourceFile: string;
   sourceModified: string;
+  latestGrade: Grade | null;
 }
 
-interface DraftSource {
-  content: string;
-  filename: string;
-  modified: Date;
-}
-
-function getLatestDraft(draftsDir: string): DraftSource | null {
-  if (!fs.existsSync(draftsDir)) return null;
-
-  const files = fs.readdirSync(draftsDir);
-
-  const read = (filename: string): DraftSource => {
-    const filepath = path.join(draftsDir, filename);
-    return {
-      content: fs.readFileSync(filepath, 'utf-8'),
-      filename,
-      modified: fs.statSync(filepath).mtime,
-    };
-  };
-
-  // Check for final.md first
-  if (files.includes('final.md')) {
-    return read('final.md');
+function readAllGrades(gradesDir: string): Grade[] {
+  if (!fs.existsSync(gradesDir)) return [];
+  const files = fs.readdirSync(gradesDir).filter(f => f.endsWith('.json'));
+  const grades: Grade[] = [];
+  for (const name of files) {
+    try {
+      const filepath = path.join(gradesDir, name);
+      const raw = fs.readFileSync(filepath, 'utf-8');
+      const parsed = JSON.parse(raw) as Omit<Grade, 'filename'>;
+      grades.push({ ...parsed, filename: name });
+    } catch {
+      // skip unparseable grades
+    }
   }
+  // Sort by mtime descending so the most-recent grade for a draft wins
+  return grades.sort((a, b) => {
+    const am = fs.statSync(path.join(gradesDir, a.filename)).mtime.getTime();
+    const bm = fs.statSync(path.join(gradesDir, b.filename)).mtime.getTime();
+    return bm - am;
+  });
+}
 
-  // Prefer human drafts (v*.md), fall back to AI drafts (ai-draft-*.md)
-  const pickHighest = (pattern: RegExp) =>
-    files
-      .filter(f => pattern.test(f))
-      .sort((a, b) => parseInt(b.match(/\d+/)![0]) - parseInt(a.match(/\d+/)![0]))[0];
+function getAllDrafts(draftsDir: string, gradesDir: string): DraftWithGrade[] {
+  if (!fs.existsSync(draftsDir)) return [];
 
-  const latest = pickHighest(/^v\d+\.md$/i) ?? pickHighest(/^ai-draft-\d+\.md$/i);
+  const allGrades = readAllGrades(gradesDir);
+  const files = fs.readdirSync(draftsDir).filter(f => f.endsWith('.md'));
 
-  if (!latest) return null;
+  const drafts: DraftWithGrade[] = files.map((filename) => {
+    const filepath = path.join(draftsDir, filename);
+    const stat = fs.statSync(filepath);
+    const version = filename.replace(/\.md$/i, '');
+    // Match the most-recent grade whose draft_version corresponds (case-insensitive)
+    const matchedGrade = allGrades.find(
+      g => g.draft_version.toLowerCase() === version.toLowerCase()
+    ) ?? null;
+    return {
+      filename,
+      version,
+      content: fs.readFileSync(filepath, 'utf-8'),
+      modified: stat.mtime.toISOString(),
+      grade: matchedGrade,
+    };
+  });
 
-  return read(latest);
+  // Sort newest first by mtime
+  drafts.sort((a, b) => new Date(b.modified).getTime() - new Date(a.modified).getTime());
+  return drafts;
 }
 
 export function getAllModules(): Module[] {
@@ -77,20 +125,24 @@ export function getAllModules(): Module[] {
     const metadata = parseYaml(metadataRaw) as ModuleMetadata;
 
     const draftsDir = path.join(folderPath, 'drafts');
-    const draft = getLatestDraft(draftsDir);
+    const gradesDir = path.join(folderPath, 'grades');
+    const drafts = getAllDrafts(draftsDir, gradesDir);
 
-    if (!draft) continue;
+    if (drafts.length === 0) continue;
 
-    // Generate slug from folder name, stripping the number prefix
     const slug = entry.name.replace(/^\d{2}-/, '');
+    const newest = drafts[0];
 
     modules.push({
       slug,
       metadata,
-      content: draft.content,
       folder: entry.name,
-      sourceFile: draft.filename,
-      sourceModified: draft.modified.toISOString(),
+      drafts,
+      // Aliases pointing at the newest draft + its grade
+      content: newest.content,
+      sourceFile: newest.filename,
+      sourceModified: newest.modified,
+      latestGrade: newest.grade,
     });
   }
 

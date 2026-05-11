@@ -1,0 +1,300 @@
+{
+  "module_id": "13",
+  "draft_version": "ai-draft-5",
+  "graded_at": "2026-05-10T00:00:00Z",
+  "rubric_version": 1,
+  "spec_missing": true,
+  "mechanical_check": {
+    "numbered_references_present": true,
+    "citations_section_exists": true,
+    "inline_quotes_italicized": true,
+    "no_paraphrase_as_quote": true,
+    "opening_and_closing_blocks_per_section": true,
+    "metadata_phase_set": true
+  },
+  "dimensions": [
+    {
+      "name": "Topical Coverage",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Defines what the subject is, in concrete terms (not just why it matters)",
+          "passed": true,
+          "evidence": "'Spiritual development is the ongoing work of subordinating the lower nature to the higher.' Plus the twofold-nature definition: 'higher, spiritual nature, capable of reflecting God's attributes' and 'lower, egotistical nature, pulled toward self-interest...'."
+        },
+        {
+          "text": "Covers every item in spec.must_cover (fallback: names at least 3 substantive sub-topics within the subject)",
+          "passed": true,
+          "evidence": "Spec is missing; fallback applies. Draft names well over three sub-topics: twofold nature, womb analogy, polishing the mirror, immersion in Writings, meditation, daily prayer, the Fast, daily self-accounting, work as worship, service. Spec_missing flagged."
+        },
+        {
+          "text": "Includes specific examples (named prayers, practices, types, situations, people)",
+          "passed": true,
+          "evidence": "'Baha'u'llah revealed three obligatory prayers — a short, a medium, and a long version'; 'Once a year, for nineteen days, Baha'is do not eat or drink between sunrise and sunset'; named texts (Hidden Words, Kitab-i-Aqdas) and people (Baha'u'llah, Abdu'l-Baha, the Bab)."
+        },
+        {
+          "text": "Goes beyond 'it's good' — explains how it works, what it includes, what it requires",
+          "passed": true,
+          "evidence": "'Reading the Writings makes prayer richer; meditation makes work feel like worship; the fast lends weight to ordinary self-accounting; service is what the polished mirror is for.' Each practice is given its own mechanism (e.g., fast as 'detachment, made physical')."
+        },
+        {
+          "text": "A reader who knew nothing about the topic could explain its main components afterward",
+          "passed": true,
+          "evidence": "The draft scaffolds clearly: definition (twofold nature), why it matters (womb analogy), how (mirror metaphor), the daily shape of the work (seven named practices). A newcomer could list the components."
+        }
+      ]
+    },
+    {
+      "name": "Opening Reflection Questions",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "2–3 questions per section, before the reading",
+          "passed": true,
+          "evidence": "Section 1: 2 questions. Section 2: 3 questions. Both blocks appear before the Reading heading."
+        },
+        {
+          "text": "Drawn from universal human experience — answerable regardless of faith background",
+          "passed": true,
+          "evidence": "'Have you ever felt pulled in two directions by your own self...?' and 'Think of someone you know who is genuinely working on becoming a better version of themselves.' Neither requires Baha'i belief."
+        },
+        {
+          "text": "No Baha'i concepts introduced (the reader arrives from their own life first)",
+          "passed": true,
+          "evidence": "The opening questions use plain language: 'spiritual person', 'good person', 'change a habit'. No reference to Manifestations, obligatory prayer, the Fast, or Baha'i terminology."
+        },
+        {
+          "text": "Genuinely curious, not leading",
+          "passed": true,
+          "evidence": "'When you have tried to change a habit or grow in some way, what has actually worked? What has not?' — open-ended; both directions equally legitimate."
+        },
+        {
+          "text": "No question telegraphs a 'right' answer",
+          "passed": true,
+          "evidence": "'What does it mean, to you, to be a spiritual person? Is that the same as being a good person, or different?' explicitly invites either answer."
+        }
+      ]
+    },
+    {
+      "name": "Closing Discussion Questions",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "2–3 questions per section, after the reading",
+          "passed": true,
+          "evidence": "Section 1: 2 closing questions. Section 2: 3 closing questions."
+        },
+        {
+          "text": "Require genuine reflection (not answerable in one sentence)",
+          "passed": true,
+          "evidence": "'If the lower self stays with us our whole life, what does it mean to live well with it, rather than at war with it?' demands grappling with a real tension."
+        },
+        {
+          "text": "Push into implications, tensions, or personal application",
+          "passed": true,
+          "evidence": "'The womb analogy reframes this whole life as preparation for what comes next... what does it suggest about the things we usually treat as urgent? About the things we usually ignore?'"
+        },
+        {
+          "text": "At least one connects the principle to lived experience",
+          "passed": true,
+          "evidence": "'In practice, what is the difference between treating a spiritual practice as a rule and treating it as nourishment?' — invites concrete personal experience."
+        },
+        {
+          "text": "No leading questions",
+          "passed": true,
+          "evidence": "'What do you make of that claim? Would you approach prayer differently if you believed it?' — genuinely open; no presupposition of agreement."
+        }
+      ]
+    },
+    {
+      "name": "Quotations",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Quotes are from primary Baha'i sources",
+          "passed": true,
+          "evidence": "All ten citations attribute Baha'u'llah or Abdu'l-Baha (e.g., '*Baha'u'llah, The Hidden Words, Arabic, no. 3*'; '*Abdu'l-Baha, Paris Talks*'; '*Abdu'l-Baha, The Promulgation of Universal Peace*')."
+        },
+        {
+          "text": "Includes spec.key_quotes or substantive equivalents (fallback: each quote substantively addresses the subject)",
+          "passed": true,
+          "evidence": "Spec missing; fallback applies. Every quote is on-topic: Hidden Words on creation in love, womb analogy, mirror metaphor, choice Wine, immerse in My words, soul as embryo, Long Obligatory Prayer, daily reckoning, work as worship, source of goodness."
+        },
+        {
+          "text": "At least 3–4 block quotes from the source material",
+          "passed": true,
+          "evidence": "Three substantial block quotes: the womb passage, the mirror/heart passage, and the Long Obligatory Prayer passage on rocks and mountains. The threshold is met (style.md says 3-4)."
+        },
+        {
+          "text": "Quotes are distributed across the module, not clustered",
+          "passed": true,
+          "evidence": "Section 1 carries 3 quotes (refs [1],[2],[3]). Section 2 carries 7 quotes spread across each named practice (refs [4]-[10]). Distribution is even and tied to structure."
+        },
+        {
+          "text": "Each quote is integrated with surrounding prose",
+          "passed": true,
+          "evidence": "'That word, *choice Wine*, is doing a lot of work. A rule, you obey; wine, you drink, and it changes you from the inside.' The setup before each quote and the gloss afterward show genuine integration, not orphaning."
+        }
+      ]
+    },
+    {
+      "name": "Length",
+      "score": 4,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Each reading passage is 500–1000 words",
+          "passed": false,
+          "evidence": "Section 1 reading is approximately 795 words (in range). Section 2 reading is approximately 1060 words, slightly over the 1000-word ceiling. Includes the seven sub-practices plus closing tie-back."
+        },
+        {
+          "text": "Sections are roughly balanced in length",
+          "passed": true,
+          "evidence": "Section 1: ~795 words; Section 2: ~1060 words. Not perfectly balanced but within the same order of magnitude; Section 2 is longer because it walks through seven practices, which is structurally justified."
+        },
+        {
+          "text": "Could be read aloud start-to-finish, with discussion, in 60–90 minutes",
+          "passed": true,
+          "evidence": "Total ~2332 words across two sections plus ten questions. Reading aloud at ~150 wpm = ~16 minutes; with reflection and discussion of 5 question pairs, well within 60-90 minutes."
+        },
+        {
+          "text": "No section is so long the group will zone out",
+          "passed": true,
+          "evidence": "Section 2 uses sub-headings ('Pray Daily', 'Fast for Nineteen Days', etc.) that break the reading into bite-sized chunks; each sub-section is short enough to absorb."
+        },
+        {
+          "text": "Total module is no longer than the subject genuinely requires",
+          "passed": true,
+          "evidence": "No filler is apparent. The closing 'These practices do not stand alone. Each one feeds the others...' synthesizes rather than padding. Each practice gets minimal but sufficient treatment."
+        }
+      ]
+    },
+    {
+      "name": "AI Tells",
+      "score": 3,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Zero banned vocabulary",
+          "passed": false,
+          "evidence": "'The Word of God, in the Baha'i view, has creative and transformative power.' (line 67). 'transformative' is on the banned list."
+        },
+        {
+          "text": "Em dashes used minimally or not at all",
+          "passed": false,
+          "evidence": "Em dashes appear in at least 13 places: 'Not the body — that is obvious'; 'God's attributes — kindness, generosity, justice, love'; 'spiritual qualities — love, justice, compassion, truthfulness, patience'; 'the practices — but he was careful'; 'three obligatory prayers — a short, a medium, and a long version'; etc. Style guide explicitly says 'No em dashes.'"
+        },
+        {
+          "text": "No 'serves as' / 'stands as' / 'represents' where 'is' would work",
+          "passed": true,
+          "evidence": "Searched the draft; the copula-avoidance pattern is absent. The draft uses 'is' directly: 'Spiritual development is the ongoing work...', 'The fast is detachment, made physical.', 'The light is constant.'"
+        },
+        {
+          "text": "No formulaic rule-of-three lists where two or four items would do",
+          "passed": false,
+          "evidence": "Multiple rule-of-three lists: 'love, justice, compassion, truthfulness, patience' (four-five, fine), but: 'kindness, generosity, justice, love' (four, fine). However: 'three obligatory prayers — a short, a medium, and a long' (factual, fine). Borderline triples appear: 'It does not just inform; it changes the reader.' is okay. 'a teacher, a farmer, an engineer, an artist, or a healthcare worker' is five (fine). Net: not enough formulaic triples to fail outright, but the rhythm of '— X, Y, and Z' constructions appears repeatedly throughout. Marking as borderline-fail given the cumulative pattern of paired-and-triplet constructions."
+        },
+        {
+          "text": "Last paragraph doesn't restate the opening (no AI-style summary conclusion)",
+          "passed": true,
+          "evidence": "Closing line is 'The choice, and the work, are ours.' This advances rather than restates. Earlier closing 'The light is constant. The work is the polishing.' similarly forwards motion rather than recapitulating."
+        }
+      ]
+    },
+    {
+      "name": "Voice & Tone",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Reads aloud like one person talking to a small group",
+          "passed": true,
+          "evidence": "'A rule, you obey; wine, you drink, and it changes you from the inside.' and 'Whatever one makes of that claim, it is not a small one.' have the cadence of someone speaking, not lecturing."
+        },
+        {
+          "text": "Tone matches the reference samples — warm, direct, accessible",
+          "passed": true,
+          "evidence": "'Most of us, at some point, have wondered what we are made of. Not the body — that is obvious. The other part.' Matches the directness and warmth of M04 V1's 'Just as our bodies require nourishment to develop properly, we need regular prayer for our spiritual sustenance and health.'"
+        },
+        {
+          "text": "Sentence rhythm varies — short punches mixed with longer flowing sentences",
+          "passed": true,
+          "evidence": "'The light is constant. The work is the polishing.' (short punches) followed by extended flowing prose like 'The honest evening question — *Did I act today as the person I am trying to become?* — is a small habit with cumulative force.'"
+        },
+        {
+          "text": "Uses 'you' / 'we' where it fits — not stiff third-person throughout",
+          "passed": true,
+          "evidence": "'Most of us, at some point, have wondered what we are made of.' 'We are spiritual beings before we are anything else.' 'The choice, and the work, are ours.'"
+        },
+        {
+          "text": "Compared paragraph-by-paragraph against M04 V1 / M09 V1, the voice feels of-a-piece",
+          "passed": true,
+          "evidence": "Echoes M04 V1's habit of pairing analogy with claim ('Just as our bodies require nourishment...') in passages like 'Where eyes and ears are formed in the womb, character is formed here.' The teacherly, friendly register matches both reference samples."
+        }
+      ]
+    },
+    {
+      "name": "Narrative Arc & Flow",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Follows the arc described in spec.arc (fallback: each section has a clear arc)",
+          "passed": true,
+          "evidence": "Spec missing; fallback applies. Section 1 opens with a felt human observation ('we are not just one thing'), establishes twofold nature, then frames life as preparation, lands on the mirror metaphor that sets up Section 2. Section 2 opens with 'what is the actual work?' and lands on 'The choice, and the work, are ours.'"
+        },
+        {
+          "text": "Each paragraph makes a new point — no two paragraphs say the same thing in different words",
+          "passed": true,
+          "evidence": "Each paragraph in Section 1 advances: lived observation → twofold nature → soul as essential → polishing the mirror. In Section 2, each named practice is a distinct action with its own mechanism."
+        },
+        {
+          "text": "Connective tissue between paragraphs",
+          "passed": true,
+          "evidence": "'Reading alone, though, does not finish the work.' (transition into meditation). 'What ponder fixes outwardly, prayer takes inward.' (transition into prayer). 'If the fast is annual, this practice is daily.' (transition to self-accounting)."
+        },
+        {
+          "text": "The module as a whole has an arc — later sections build on what earlier ones established",
+          "passed": true,
+          "evidence": "Section 1 ends with 'The daily shape of polishing the mirror, and turning it toward the sun, is the subject of the next section.' Section 2 explicitly picks up the metaphor: 'The practices that follow are not chores. They are instruments of transformation.'"
+        },
+        {
+          "text": "No paragraph or section feels removable without anyone noticing",
+          "passed": true,
+          "evidence": "Each named practice in Section 2 (Immerse, Meditate, Pray, Fast, Account, Work, Serve) carries unique content. Removing any of them would leave a visible hole — and the closing synthesis 'Reading the Writings makes prayer richer; meditation makes work feel like worship...' depends on each piece being present."
+        }
+      ]
+    }
+  ],
+  "ai_tells_found": [
+    {
+      "pattern": "banned_word",
+      "match": "transformative",
+      "location": "Section 2, sub-section 'Immerse Yourself in the Sacred Writings': 'The Word of God, in the Baha'i view, has creative and transformative power.'"
+    },
+    {
+      "pattern": "em_dash",
+      "match": "—",
+      "location": "Section 1 reading: 'Not the body — that is obvious.' and 12+ further em dashes throughout both sections (e.g., 'God's attributes — kindness, generosity, justice, love'; 'three obligatory prayers — a short, a medium, and a long version'; 'qualities — love, justice, compassion, truthfulness, patience')."
+    },
+    {
+      "pattern": "em_dash_in_question",
+      "match": "—",
+      "location": "Section 1 opening question 2: 'Have you ever felt pulled in two directions by your own self — one part of you wanting one thing, another part of you wanting something quite different?'"
+    }
+  ],
+  "total": 37,
+  "max": 40,
+  "coverage_gate_passed": true,
+  "advance_gate_passed": true,
+  "ship_gate_passed": true,
+  "summary_fixes": [
+    "Replace every em dash (—) with a comma, period, semicolon, or parenthesis. Style guide is explicit: 'No em dashes.' This single edit affects ~13+ locations and is the cleanest path to a higher AI Tells score.",
+    "Replace 'transformative' on line 67. Suggest: 'The Word of God, in the Baha'i view, has creative power that changes the reader.' — which already aligns with the next sentence.",
+    "Trim Section 2 by ~60-100 words to bring it under the 1000-word ceiling. The 'Treat Your Work as Worship' or 'Serve Beyond Your Work' paragraphs could be tightened without losing the practice."
+  ]
+}

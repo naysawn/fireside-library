@@ -20,24 +20,24 @@ See `content/analysis/process-upgrade-proposal.html` for full implementation pla
 
 ### Phase 2: Skills
 - [ ] Update `bahai-module` SKILL.md — add voice.md reference, phase-aware audience question, anti-pattern block
-- [ ] Create `content/.claude/skills/grade-module/` — reads rubric, scores draft, generates `report.html` per module
+- [x] ~~Create `content/.claude/skills/grade-module/`~~ — replaced with slash command `/grade-module` at `content/.claude/commands/grade-module.md`; rubric at `brief/rubric.md` does the heavy lifting
 - [ ] Install `humanizer` at `.claude/skills/` — adapt from blader/humanizer, configure with voice samples
 
 ### Phase 3: Brief Files
 - [ ] Create `content/brief/rubric.md` — 7-dimension grading rubric with calibration examples and judge prompt
-- [ ] Create `content/brief/samples/08-prayer-v2.md` — copy Module 08 v2 as benchmark
+- [x] ~~Create `content/brief/samples/08-prayer-v2.md` — copy Module 08 v2 as benchmark~~ — abandoned. M08 is not the gold standard. Voice/tone refs are M04 V1 and M09 V1 (in their own folders). Rubric calibration handled by abstract low/high paragraphs in `brief/rubric.md`.
 - [ ] Create `content/brief/voice.md` — Voice DNA document (exemplar paragraphs, rhythm, analogy style, how to handle difficulty)
 - [ ] Update `content/brief/style.md` — add structural tells, rhythm requirements, permitted imperfections, expanded banned words
 - [ ] Update `content/brief/process.md` — add Phase 2.5 (humanize + grade), Phase 4.5 (final grade), skeptic's checklist to Phase 3
 
 ### Phase 4: Proof of Concept
-- [ ] Grade Module 08 (Prayer) — should score 32+/35, validates rubric calibration
+- [ ] Grade Module 08 (Prayer) — see how it actually scores; no presumed result
 - [ ] Grade Module 04 (Relationship with God) — should score below 28, validates rubric discriminates
 - [ ] Run humanizer on a passage from Module 07 — test voice matching
 - [ ] Adjust rubric/skills based on results
 
 ### Phase 5: Roll Out
-- [ ] Grade all 12 modules, generate `report.html` for each
+- [ ] Grade all 12 modules — each writes a timestamped JSON to its `grades/` folder
 - [ ] Update this TODO with revision priorities based on grading results
 
 ### Phase 6: Separate Writer/Editor Repo
@@ -71,8 +71,8 @@ See `content/analysis/process-upgrade-proposal.html` for full implementation pla
 - [ ] Module 09: The Baha'i Faith and Christianity — too long (~4600 words), consider splitting
 - [ ] Module 10: The Baha'i Administrative Order — add block quotes, add citations
 
-### Benchmark
-- [ ] Module 08: Prayer — resolve writer's %%FLAG%%, otherwise the model module
+### Tier 5 — Resolve flags
+- [ ] Module 08: Prayer — resolve writer's %%FLAG%%
 
 ---
 
@@ -89,7 +89,7 @@ See `content/analysis/process-upgrade-proposal.html` for full implementation pla
 
 - [ ] Publishing website for modules
 - [ ] PDF generation pipeline
-- [ ] Module dashboard (reads per-module report.html, shows collection health at a glance)
+- [ ] Module dashboard at `/grades` (reads each module's most recent grade JSON, shows collection health at a glance)
 
 ---
 

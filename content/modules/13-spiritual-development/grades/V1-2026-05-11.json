@@ -1,0 +1,274 @@
+{
+  "module_id": "13",
+  "draft_version": "V1",
+  "graded_at": "2026-05-11T00:00:00Z",
+  "rubric_version": 2,
+  "spec_missing": true,
+  "all_gates_passed": false,
+  "gates": [
+    {
+      "name": "Spec Coverage",
+      "passed": false,
+      "sub_items": [
+        {
+          "text": "Module has a spec: block in metadata.yaml",
+          "passed": false,
+          "evidence": "metadata.yaml contains only: title, id, phase, topics, status. No 'spec:' block present."
+        },
+        {
+          "text": "Every item in spec.must_cover is substantively addressed in the reading",
+          "passed": false,
+          "evidence": "Cannot verify: spec.must_cover is missing."
+        },
+        {
+          "text": "The module follows the arc described in spec.arc",
+          "passed": false,
+          "evidence": "Cannot verify: spec.arc is missing."
+        },
+        {
+          "text": "Every term in spec.key_terms is defined the first time it appears",
+          "passed": false,
+          "evidence": "Cannot verify: spec.key_terms is missing."
+        }
+      ],
+      "punch_list": [
+        "Write a spec: block in metadata.yaml with brief, arc, must_cover, key_quotes, and key_terms before re-grading."
+      ]
+    },
+    {
+      "name": "Opening Reflection Questions",
+      "passed": false,
+      "sub_items": [
+        {
+          "text": "Each section has an opening reflection block before the reading",
+          "passed": false,
+          "evidence": "Section 1 has '### Questions for Reflection' before the reading, but Section 2 jumps from '## Section 2: Developing Spirituality' straight into '### Growing Spiritually' and then the reading — no opening reflection block."
+        },
+        {
+          "text": "2–3 questions per section",
+          "passed": false,
+          "evidence": "Section 1 has 2 opening questions. Section 2 has 0 opening questions."
+        },
+        {
+          "text": "Drawn from universal human experience — answerable regardless of faith background",
+          "passed": false,
+          "evidence": "Section 1 Q2: 'Baha'is believe the soul develops qualities here that it needs in the next life, like a child in the womb developing organs for this world. How does that framing make you think about life on this earth day to day?' — anchored in a Baha'i premise rather than the reader's own life."
+        },
+        {
+          "text": "No Baha'i concepts introduced in the question stem (reader arrives from their own life first)",
+          "passed": false,
+          "evidence": "Section 1 Q2 opens 'Baha'is believe the soul develops qualities here that it needs in the next life...' — explicitly introduces a Baha'i concept in the stem."
+        },
+        {
+          "text": "Genuinely curious, not leading; no question telegraphs a 'right' answer",
+          "passed": true,
+          "evidence": "Section 1 Q1: 'What does it mean, to you, to be a spiritual person? Is that the same as being a good person, or different?' — open, non-leading."
+        }
+      ],
+      "punch_list": [
+        "Add an opening reflection block with 2–3 questions to Section 2 before the reading begins.",
+        "Rewrite Section 1 Q2 so the stem starts from the reader's life rather than 'Baha'is believe...'."
+      ]
+    },
+    {
+      "name": "Closing Discussion Questions",
+      "passed": true,
+      "sub_items": [
+        {
+          "text": "Each section has a closing discussion block after the reading",
+          "passed": true,
+          "evidence": "Section 1 ends with '### Questions for Discussion'; Section 2 ends with '### Questions for Discussion'."
+        },
+        {
+          "text": "2–3 questions per section",
+          "passed": true,
+          "evidence": "Section 1: 2 closing questions. Section 2: 3 closing questions."
+        },
+        {
+          "text": "Require genuine reflection (not answerable in one sentence)",
+          "passed": true,
+          "evidence": "Section 1 Q1: 'If the lower self stays with us our whole life, what does it mean to live well with it, rather than at war with it?' — requires sustained reflection."
+        },
+        {
+          "text": "Push into implications, tensions, or personal application",
+          "passed": true,
+          "evidence": "Section 2 Q1: 'In practice, what's the difference between treating a spiritual practice as a rule and treating it as nourishment?' — pushes into a tension."
+        },
+        {
+          "text": "At least one question per section connects the principle to lived experience",
+          "passed": true,
+          "evidence": "Section 1 Q2: 'If that's true, what does it suggest about the things we usually treat as urgent? About the things we usually ignore?' — directly invites lived application."
+        },
+        {
+          "text": "No leading questions ('Don't you think…?' / 'Wouldn't it be true that…?')",
+          "passed": true,
+          "evidence": "No 'Don't you think' or 'Wouldn't it be true' constructions detected. Section 2 Q2: 'What do you make of that claim? Would you approach prayer differently if you believed it?' — frames as genuine query."
+        }
+      ],
+      "punch_list": []
+    },
+    {
+      "name": "Quotations",
+      "passed": true,
+      "sub_items": [
+        {
+          "text": "Quotes are from primary Baha'i sources (Baha'u'llah, Abdu'l-Baha, Shoghi Effendi, Universal House of Justice)",
+          "passed": true,
+          "evidence": "All quotes attributed to Baha'u'llah ('Veiled in My immemorial being...', 'Think not that We have revealed unto you a mere code of laws...', 'immerse yourselves in the ocean of My words...', 'Bring thyself to account each day...') or Abdu'l-Baha ('In the beginning of his human life man was embryonic...', 'The light of the sun becomes apparent...', 'All the time too that the child is in the womb...', 'Briefly, all effort and exertion...')."
+        },
+        {
+          "text": "At least 3–4 block quotes from source material",
+          "passed": true,
+          "evidence": "Six block quotes present: Hidden Words ('Veiled in My immemorial being'), womb analogy ('In the beginning of his human life man was embryonic'), mirror passage ('The light of the sun becomes apparent'), choice Wine ('Think not that We have revealed unto you a mere code of laws'), child-in-womb spiritual food ('All the time too that the child is in the womb'), Long Obligatory Prayer ('should be said at those times when one feeleth himself in a prayerful mood')."
+        },
+        {
+          "text": "Quotes distributed across the module, not clustered in one section",
+          "passed": true,
+          "evidence": "Section 1 contains roughly 3 block quotes; Section 2 contains roughly 3 block quotes plus inline quotes spread across each practice subheading."
+        },
+        {
+          "text": "Every quote in spec.key_quotes is included, or a clearly equivalent substitute is",
+          "passed": true,
+          "evidence": "Not verifiable — spec.key_quotes is missing. No list to check against; not failed on this basis (carried forward via Gate 1)."
+        },
+        {
+          "text": "No paraphrase presented as a direct quote",
+          "passed": true,
+          "evidence": "All material inside quote marks or block-quote markers appears verbatim attributable; paraphrase such as 'Abdu'l-Baha explain that in this world, we are developing our souls...' is plainly outside any quotation marks."
+        },
+        {
+          "text": "Each quote is integrated with prose (introduced or followed up, not orphaned)",
+          "passed": true,
+          "evidence": "Mirror quote is introduced 'Abdu'l-Baha offers an image for this:' and followed by 'The light and love of God is constant. We were made to reflect it.' Long Obligatory Prayer quote introduced by 'Of the Long Obligatory Prayer, Baha'u'llah stated that it...'."
+        }
+      ],
+      "punch_list": []
+    },
+    {
+      "name": "Mechanical",
+      "passed": false,
+      "sub_items": [
+        {
+          "text": "Each reading passage is 500–1000 words",
+          "passed": true,
+          "evidence": "Section 1 reading is approximately 540 words (from 'Throughout history, humanity has pondered...' through '...the work of the next section.'). Section 2 reading is approximately 720 words (from 'Understanding who we are...' through 'The choice, and the journey, is ours.'). Both within 500–1000."
+        },
+        {
+          "text": "Numbered references in text (e.g. [1], [2]) for every quote",
+          "passed": false,
+          "evidence": "No numbered references appear anywhere in the draft. Quotes are presented without [1], [2], etc."
+        },
+        {
+          "text": "Citations section exists at the end with full references",
+          "passed": false,
+          "evidence": "Draft ends at 'The choice, and the journey, is ours.' followed by the Section 2 discussion questions. No Citations section."
+        },
+        {
+          "text": "Inline quotes are italicized (per style.md:23); block quotes are not",
+          "passed": true,
+          "evidence": "Inline quotes use italics: 'immerse yourselves in the ocean of My words, that ye may unravel its secrets...', 'Bring thyself to account each day ere thou art summoned to a reckoning...', 'Briefly, all effort and exertion put forth by man from the fullness of his heart is worship...'. Block quotes use '>' without italics."
+        },
+        {
+          "text": "metadata.yaml has phase set to discovery / investigation / consolidation",
+          "passed": true,
+          "evidence": "metadata.yaml line: 'phase: investigation'."
+        }
+      ],
+      "punch_list": [
+        "Add numbered references [1], [2], ... to every quote in the text.",
+        "Add a Citations section at the end of the draft listing full source references for each numbered quote."
+      ]
+    }
+  ],
+  "advisories": {
+    "ai_patterns": [
+      {
+        "pattern": "banned_word",
+        "match": "journey",
+        "location": "Section 2 final line: 'The choice, and the journey, is ours.'"
+      },
+      {
+        "pattern": "banned_word",
+        "match": "profound",
+        "location": "Section 2 under Daily Prayer: 'Sincere prayer has a profound effect on the soul...'"
+      },
+      {
+        "pattern": "banned_word",
+        "match": "transformative",
+        "location": "Section 2 under Immersion in the Sacred Writings: 'The Word of God has creative and transformative powers.'"
+      },
+      {
+        "pattern": "banned_word",
+        "match": "leveraged",
+        "location": "Section 2 under Daily Prayer: 'Baha'u'llah revealed many other prayers to be leveraged as desired.'"
+      },
+      {
+        "pattern": "em_dash",
+        "match": "(none)",
+        "location": "No em dashes detected in the draft."
+      },
+      {
+        "pattern": "copula_avoidance",
+        "match": "becomes an act of worship",
+        "location": "Section 2 under Daily Work: '...our daily work becomes an act of worship when performed with excellence...'"
+      },
+      {
+        "pattern": "copula_avoidance",
+        "match": "Prayer is spiritual communion",
+        "location": "Section 2 under Daily Prayer: 'Prayer is spiritual communion with God...' — uses 'is' directly; flagged here as a non-occurrence reference point only."
+      },
+      {
+        "pattern": "rule_of_three",
+        "match": "kindness, generosity, justice, and love",
+        "location": "Section 1 reading: '...capable of reflecting God's attributes such as kindness, generosity, justice, and love.' (parallel list, 4 items)"
+      },
+      {
+        "pattern": "rule_of_three",
+        "match": "love, justice, compassion, truthfulness, patience",
+        "location": "Section 1 reading: '...acquiring spiritual attributes (love, justice, compassion, truthfulness, patience)...'"
+      },
+      {
+        "pattern": "rule_of_three",
+        "match": "Every experience, every challenge, every relationship",
+        "location": "Section 1 reading: 'Every experience, every challenge, every relationship is an opportunity to develop these qualities of our souls.' (parallel triplet)"
+      },
+      {
+        "pattern": "rule_of_three",
+        "match": "teachers, farmers, engineers, artists, or healthcare workers",
+        "location": "Section 2 under Daily Work: 'Whether we are teachers, farmers, engineers, artists, or healthcare workers...'"
+      },
+      {
+        "pattern": "rule_of_three",
+        "match": "short, medium, and long",
+        "location": "Section 2 under Daily Prayer: 'Baha'u'llah revealed three obligatory prayers (short, medium, and long)...'"
+      },
+      {
+        "pattern": "summary_conclusion",
+        "match": "Baha'u'llah offers both a vision and an invitation...",
+        "location": "Section 2 penultimate paragraph: 'Baha'u'llah offers both a vision and an invitation: We are spiritual beings created in love, placed on earth to prepare for eternity while carrying forward an ever-advancing civilization, and given clear guidance on how to fulfill this sacred purpose.' — restates the module's opening claims."
+      }
+    ],
+    "narrative_arc": [
+      {
+        "observation": "The womb analogy is introduced in Section 1 (Abdu'l-Baha quote 'In the beginning of his human life man was embryonic...') and returned to in Section 2 under Daily Prayer (Abdu'l-Baha quote 'All the time too that the child is in the womb...'). The second appearance reuses the same metaphor without clearly building on or distinguishing from the first.",
+        "location": "Section 1 reading vs Section 2 'Daily Prayer' subsection."
+      },
+      {
+        "observation": "Section 2 opens with 'Understanding who we are and why we exist naturally leads to the practical question: How do we actually develop these spiritual capacities?' immediately followed by 'But first a pre-amble, Baha'u'llah revealed a body of teachings...'. The transition from the framing question to the choice-Wine pre-amble to the practices list feels abrupt; the pre-amble interrupts before the question is engaged.",
+        "location": "Section 2 opening paragraphs through the 'choice Wine' quote."
+      },
+      {
+        "observation": "An ever-advancing civilization is introduced for the first time in the closing summary paragraph ('placed on earth to prepare for eternity while carrying forward an ever-advancing civilization') without prior setup in either reading. Arc divergence at the close.",
+        "location": "Section 2 closing summary paragraph."
+      },
+      {
+        "observation": "The 'Growing Spiritually' heading sits between '## Section 2' and the reading where an opening reflection block would normally appear; the structural break that signals 'pause and reflect before reading' is absent.",
+        "location": "Section 2 header structure."
+      },
+      {
+        "observation": "Spec arc cannot be checked: spec.arc is missing from metadata.yaml.",
+        "location": "metadata.yaml"
+      }
+    ]
+  }
+}

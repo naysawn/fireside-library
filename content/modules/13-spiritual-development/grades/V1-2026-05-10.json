@@ -1,0 +1,292 @@
+{
+  "module_id": "13",
+  "draft_version": "V1",
+  "graded_at": "2026-05-10T00:00:00Z",
+  "rubric_version": 1,
+  "spec_missing": true,
+  "mechanical_check": {
+    "numbered_references_in_text": false,
+    "citations_section": false,
+    "inline_quotes_italicized": false,
+    "no_paraphrase_as_direct_quote": true,
+    "opening_and_closing_blocks_per_section": false,
+    "metadata_phase_set": true
+  },
+  "dimensions": [
+    {
+      "name": "Topical Coverage",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Defines what the subject is, in concrete terms (not just why it matters)",
+          "passed": true,
+          "evidence": "'Spiritual development is the ongoing work of subordinating the lower nature to the higher.' The draft also defines twofold nature: 'a higher, spiritual nature, capable of reflecting God's attributes... And we have an egotistical nature, pulled toward self-interest...'"
+        },
+        {
+          "text": "Names at least 3 substantive sub-topics or distinctions within the subject (spec fallback)",
+          "passed": true,
+          "evidence": "Names many: 'Immersion in the Sacred Writings', 'Meditation and Reflection', 'Daily Prayer', 'Fast Annually', 'Bring Yourself to Account Daily', 'Daily Work', 'Serving Others' — plus the twofold nature distinction (higher/egotistical) in section 1."
+        },
+        {
+          "text": "Includes specific examples (named prayers, practices, types, situations, people)",
+          "passed": true,
+          "evidence": "'Baha'u'llah revealed three obligatory prayers (short, medium, and long) and instructed His followers to recite one of these each day individually.' 'Baha'is observe a nineteen-day fast each year, abstaining from food and drink from dawn to sunset.'"
+        },
+        {
+          "text": "Goes beyond 'it's good' — explains how it works, what it includes, what it requires",
+          "passed": true,
+          "evidence": "Explains the womb-analogy mechanism: 'In this world, we develop our souls by acquiring spiritual attributes (love, justice, compassion, truthfulness, patience) that will prepare us for the eternal life to come.' Explains polishing the mirror: 'in the mirror which is polished, pure and sanctified you may behold the Sun in all its fullness...'"
+        },
+        {
+          "text": "A reader who knew nothing about the topic could explain its main components afterward",
+          "passed": true,
+          "evidence": "After reading, a newcomer could explain: (a) we have a twofold nature, (b) life is preparation for the next world, (c) we polish the mirror through specific practices: studying the Writings, meditation, daily prayer, the Fast, daily self-accounting, work as worship, and service to others."
+        }
+      ]
+    },
+    {
+      "name": "Opening Reflection Questions",
+      "score": 2,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "2-3 questions per section, before the reading",
+          "passed": false,
+          "evidence": "Section 1 has 2 reflection questions before the reading, but Section 2 has NO opening reflection questions at all — it goes from the header 'Section 2: Developing Spirituality' directly to '### Growing Spiritually' with no Questions for Reflection block."
+        },
+        {
+          "text": "Drawn from universal human experience — answerable regardless of faith background",
+          "passed": false,
+          "evidence": "Section 1 Q2 frames the question through Baha'i premise before asking: 'Baha'is believe the soul develops qualities here that it needs in the next life, like a child in the womb developing organs for this world. How does that framing make you think...' — this is a Baha'i concept, not a universal human starting point."
+        },
+        {
+          "text": "No Baha'i concepts introduced (the reader arrives from their own life first)",
+          "passed": false,
+          "evidence": "Section 1 Q2 introduces the womb-analogy Baha'i teaching directly in the question stem ('Baha'is believe the soul develops qualities here that it needs in the next life, like a child in the womb developing organs for this world'). This pre-empts the very teaching the reading delivers."
+        },
+        {
+          "text": "Genuinely curious, not leading",
+          "passed": true,
+          "evidence": "Section 1 Q1 is curious and open: 'What does it mean, to you, to be a spiritual person? Is that the same as being a good person, or different?'"
+        },
+        {
+          "text": "No question telegraphs a 'right' answer",
+          "passed": true,
+          "evidence": "Section 1 Q1 ('What does it mean, to you, to be a spiritual person?') invites genuine answers without a target. Q2 frames a Baha'i premise but still asks how the framing strikes the reader."
+        }
+      ]
+    },
+    {
+      "name": "Closing Discussion Questions",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "2-3 questions per section, after the reading",
+          "passed": true,
+          "evidence": "Section 1 closes with 2 discussion questions; Section 2 closes with 3 discussion questions."
+        },
+        {
+          "text": "Require genuine reflection (not answerable in one sentence)",
+          "passed": true,
+          "evidence": "'If the lower self stays with us our whole life, what does it mean to live well with it, rather than at war with it?' — open-ended, requires reflection."
+        },
+        {
+          "text": "Push into implications, tensions, or personal application",
+          "passed": true,
+          "evidence": "'The womb analogy reframes this whole life as preparation for what comes next. If that's true, what does it suggest about the things we usually treat as urgent? About the things we usually ignore?' — pushes into practical implications."
+        },
+        {
+          "text": "At least one connects the principle to lived experience",
+          "passed": true,
+          "evidence": "'In practice, what's the difference between treating a spiritual practice as a rule and treating it as nourishment?' — directly invites lived-experience application."
+        },
+        {
+          "text": "No leading questions",
+          "passed": true,
+          "evidence": "None take the 'Don't you think...?' form. Even 'Would you approach prayer differently if you believed it?' is genuinely open."
+        }
+      ]
+    },
+    {
+      "name": "Quotations",
+      "score": 3,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Quotes are from primary Baha'i sources",
+          "passed": true,
+          "evidence": "All quotes are from Baha'u'llah ('Veiled in My immemorial being...', 'Think not that We have revealed unto you a mere code of laws...', 'Bring thyself to account each day...') and Abdu'l-Baha ('In the beginning of his human life man was embryonic...', 'The light of the sun becomes apparent...', 'All the time too that the child is in the womb...')."
+        },
+        {
+          "text": "Each quote substantively addresses the subject (spec fallback — quotes are not ornamental)",
+          "passed": true,
+          "evidence": "Each quote does work: the 'Veiled in My immemorial being' quote grounds the love-creation premise; the womb quote establishes the central analogy; the mirror-and-sun quote develops the central mechanism of spiritual development."
+        },
+        {
+          "text": "At least 3-4 block quotes from the source material",
+          "passed": true,
+          "evidence": "There are 7+ block quotes spread across the module: the 'Veiled' quote, the embryonic-womb quote, the mirror-sun quote, the choice-Wine quote, the womb-spiritual-food quote, the Long Obligatory Prayer claim, the bring-thyself-to-account quote."
+        },
+        {
+          "text": "Quotes are distributed across the module, not clustered in one section",
+          "passed": true,
+          "evidence": "Quotes appear in Section 1 ('Veiled in My immemorial being', the womb quote, the mirror quote) and across multiple sub-sections of Section 2 (immersion, choice Wine, prayer/womb, Long Obligatory Prayer, self-accounting, work as worship)."
+        },
+        {
+          "text": "Each quote is integrated with surrounding prose — introduced or followed up, not orphaned",
+          "passed": false,
+          "evidence": "The 'Think not that We have revealed unto you a mere code of laws' quote sits as a 'pre-amble' with no real follow-up: 'With the pre-amble completed, Baha'u'llah revealed a set of practices for exactly this work' — the quote is dropped and the writer moves on without unpacking 'choice Wine.' The 'Bring thyself to account...' quote also has only a single perfunctory sentence after it. Several quotes are introduced thinly with 'Abdu'l-Baha explains:' and not followed up."
+        }
+      ]
+    },
+    {
+      "name": "Length",
+      "score": 5,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Each reading passage is 500-1000 words",
+          "passed": true,
+          "evidence": "Section 1 reading is ~575 words; Section 2 reading is ~900 words including the seven sub-sections. Both within the 500-1000 range."
+        },
+        {
+          "text": "Sections are roughly balanced in length",
+          "passed": true,
+          "evidence": "Section 1 (~575 words) and Section 2 (~900 words) — Section 2 is longer because it lists seven practices, which is appropriate; not wildly imbalanced."
+        },
+        {
+          "text": "Could be read aloud start-to-finish, with discussion, in 60-90 minutes",
+          "passed": true,
+          "evidence": "Total ~1800 words of body plus questions. Reading aloud ~15 minutes; with reflection and discussion across 2 sections, comfortably fits 60-90 minutes."
+        },
+        {
+          "text": "No section is so long the group will zone out",
+          "passed": true,
+          "evidence": "The seven Section 2 sub-headers ('Immersion in the Sacred Writings', 'Meditation and Reflection', etc.) each run only a paragraph or two — bite-sized chunks that keep the energy moving."
+        },
+        {
+          "text": "Total module is no longer than the subject genuinely requires",
+          "passed": true,
+          "evidence": "The module covers the twofold-nature framing then seven concrete practices without padding. No superfluous section that could be deleted on length grounds."
+        }
+      ]
+    },
+    {
+      "name": "AI Tells",
+      "score": 2,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Zero banned vocabulary",
+          "passed": false,
+          "evidence": "Multiple banned words present: 'Sincere prayer has a profound effect on the soul' (profound); 'Baha'u'llah revealed many other prayers to be leveraged as desired' (leveraged); 'The choice, and the journey, is ours' (journey)."
+        },
+        {
+          "text": "Em dashes used minimally or not at all",
+          "passed": true,
+          "evidence": "I see no em dashes in the body of the draft — punctuation uses commas, periods, and parentheses. (Note: the user-provided text uses parenthetical clarifications instead of em dashes.)"
+        },
+        {
+          "text": "No 'serves as' / 'stands as' / 'represents' where 'is' would work",
+          "passed": false,
+          "evidence": "'This practice symbolizes one's detachment from the things of this world and reminds us of our spiritual nature and dependence on God' uses 'symbolizes' as copula avoidance where 'is a sign of' or 'is' would work. 'our daily work becomes an act of worship' is borderline — but 'symbolizes' is the clearer hit."
+        },
+        {
+          "text": "No formulaic rule-of-three lists where two or four items would do",
+          "passed": false,
+          "evidence": "Multiple rule-of-three lists: 'kindness, generosity, justice, and love' (four — fine), but: 'love, justice, compassion, truthfulness, patience' (five — fine). However: 'teachers, farmers, engineers, artists, or healthcare workers' is fine. The clear rule-of-three is in Section 1: 'Every experience, every challenge, every relationship is an opportunity...' — the parallel triplet is the AI default. Also: 'caring for those who are vulnerable, contributing to our communities, sharing the teachings of Baha'u'llah with others, and working for justice' (four — fine)."
+        },
+        {
+          "text": "Last paragraph doesn't restate the opening (no AI-style summary conclusion)",
+          "passed": false,
+          "evidence": "The penultimate paragraph reads: 'Baha'u'llah offers both a vision and an invitation: We are spiritual beings created in love, placed on earth to prepare for eternity while carrying forward an ever-advancing civilization, and given clear guidance on how to fulfill this sacred purpose.' This is a summary recap of the module's opening claims (twofold nature, this-life-as-preparation, the practices) — exactly the AI-style summary conclusion the rubric warns about."
+        }
+      ]
+    },
+    {
+      "name": "Voice & Tone",
+      "score": 3,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Reads aloud like one person talking to a small group, not a lecture or a brochure",
+          "passed": false,
+          "evidence": "Stretches read like a brochure or doctrinal summary: 'Baha'u'llah teaches that we are spiritual beings, created out of divine love.' / 'Taken together, the Baha'i teachings describe human beings as having a twofold nature.' These are explanatory paragraphs about doctrine, not a person speaking. M08's anchor opens 'Why do we pray? If God already knows what is in our hearts, what is the point of putting it into words?' — that conversational hook is mostly absent here."
+        },
+        {
+          "text": "Tone matches the reference samples — warm, direct, accessible",
+          "passed": true,
+          "evidence": "Some passages match the warm-direct register of the references: 'The light and love of God is constant. We were made to reflect it. But we cannot reflect it unless we are oriented to the light and able to reflect it in the world.' — short, punchy, direct, in the M08 register."
+        },
+        {
+          "text": "Sentence rhythm varies — short punches mixed with longer flowing sentences",
+          "passed": true,
+          "evidence": "'The light and love of God is constant. We were made to reflect it.' (short) is followed by longer flowing sentences. The closing 'The choice, and the journey, is ours.' is a short punch after longer prose."
+        },
+        {
+          "text": "Uses 'you' / 'we' where it fits — not stiff third-person throughout",
+          "passed": true,
+          "evidence": "Uses 'we' liberally: 'we are not merely physical beings', 'we develop our souls', 'we are guided to thoughtfully consider their meanings', 'we need regular prayer for our spiritual sustenance'."
+        },
+        {
+          "text": "Compared paragraph-by-paragraph against the reference samples, voice feels of-a-piece",
+          "passed": false,
+          "evidence": "Compared against M08 v2's opener ('There is something in most people that reaches beyond the material...'), Section 1's opener feels generic and information-dense: 'Throughout history, humanity has pondered the fundamental questions of existence: Who are we? Why are we here?' That is a cliched textbook opening, not the writer's voice in the references. Several Section 2 sub-sections ('Baha'is observe a nineteen-day fast each year, abstaining from food and drink from dawn to sunset. This practice symbolizes...') read like an encyclopedia entry, not the references' direct voice."
+        }
+      ]
+    },
+    {
+      "name": "Narrative Arc & Flow",
+      "score": 3,
+      "max": 5,
+      "sub_items": [
+        {
+          "text": "Each section has a clear arc — opens somewhere, builds, lands somewhere different (spec fallback)",
+          "passed": true,
+          "evidence": "Section 1 opens with the 'who are we' question, builds through twofold nature and the womb analogy, lands at the mirror metaphor and a setup for Section 2: 'The daily shape of polishing a mirror and turning it toward the sun is the work of the next section.'"
+        },
+        {
+          "text": "Each paragraph makes a new point — no two paragraphs are saying the same thing in different words",
+          "passed": true,
+          "evidence": "Each Section 2 sub-header introduces a distinct practice: immersion, meditation, daily prayer, the Fast, self-accounting, daily work, and service. None duplicate."
+        },
+        {
+          "text": "Connective tissue between paragraphs where it would help",
+          "passed": false,
+          "evidence": "Section 2's transition from 'pre-amble' to the practices is awkward and bald: 'With the pre-amble completed, Baha'u'llah revealed a set of practices for exactly this work.' The seven sub-sections are presented as a list with no bridges between them — going from 'Fast Annually' to 'Bring Yourself to Account Daily' to 'Daily Work' lacks the connective tissue the rubric calls for."
+        },
+        {
+          "text": "Module as a whole has an arc — later sections build on or develop what earlier sections established",
+          "passed": true,
+          "evidence": "Section 1 establishes the why (twofold nature, this life as preparation, polishing the mirror). Section 2 delivers the how (the concrete practices). The closing line 'The choice, and the journey, is ours' is set up by Section 1's call to orient toward the light."
+        },
+        {
+          "text": "No paragraph or section feels like it could be removed without anyone noticing",
+          "passed": false,
+          "evidence": "The 'pre-amble' detour ('But first a pre-amble, Baha'u'llah revealed a body of teachings...') and the 'choice Wine' quote could be removed without losing the module's argument — they are dropped in and then waved off ('With the pre-amble completed'). The 'Serving Others' paragraph at the end repeats ground covered by 'Daily Work' (both are about service / contribution) and could be folded together."
+        }
+      ]
+    }
+  ],
+  "ai_tells_found": [
+    { "pattern": "banned_word", "match": "profound", "location": "Section 2, Daily Prayer: 'Sincere prayer has a profound effect on the soul'" },
+    { "pattern": "banned_word", "match": "leveraged", "location": "Section 2, Daily Prayer: 'In addition Baha'u'llah revealed many other prayers to be leveraged as desired.'" },
+    { "pattern": "banned_word", "match": "journey", "location": "Section 2, closing line: 'The choice, and the journey, is ours.'" },
+    { "pattern": "copula_avoidance", "match": "symbolizes", "location": "Section 2, Fast Annually: 'This practice symbolizes one's detachment from the things of this world'" },
+    { "pattern": "rule_of_three", "match": "Every experience, every challenge, every relationship is an opportunity", "location": "Section 1: 'Every experience, every challenge, every relationship is an opportunity to develop these qualities of our souls.'" },
+    { "pattern": "summary_conclusion", "match": "Baha'u'llah offers both a vision and an invitation: We are spiritual beings created in love, placed on earth to prepare for eternity while carrying forward an ever-advancing civilization, and given clear guidance on how to fulfill this sacred purpose.", "location": "Section 2, penultimate paragraph — restates the module's opening premise as an AI-style summary conclusion." },
+    { "pattern": "missing_citations", "match": "no [1]/[2] references and no Citations section", "location": "Whole module — quotes are presented without numbered references and no Citations section appears at the end." }
+  ],
+  "total": 28,
+  "max": 40,
+  "coverage_gate_passed": true,
+  "advance_gate_passed": false,
+  "ship_gate_passed": false,
+  "summary_fixes": [
+    "Add the housekeeping infrastructure: numbered references like [1], [2] in the body and a Citations section at the end of the module; italicize block-quote prose per style.md so the citation/formatting mechanical pre-check passes.",
+    "Add Opening Reflection Questions to Section 2 (currently missing entirely), and rewrite Section 1's Q2 so it does not introduce the womb-analogy Baha'i teaching before the reading delivers it — opening questions should arrive from universal human experience first.",
+    "Strip the AI tells: replace banned words 'profound', 'leveraged', and 'journey' (the closing line); rewrite the 'symbolizes' copula-avoidance; cut the penultimate summary paragraph that restates the module's opening; and integrate the orphaned 'choice Wine' quote into the surrounding prose instead of treating it as a detached pre-amble."
+  ]
+}

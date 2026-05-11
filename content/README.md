@@ -27,12 +27,13 @@ Each numbered folder in `content/modules/` is a self-contained module:
 
 ```
 08-prayer/
-├── metadata.yaml       # Title, phase, topics, status
-├── report.html         # Generated grading report (rubric scores, compliance)
+├── metadata.yaml       # Title, phase, topics, status, spec
 ├── research/           # Source material (PDFs, excerpts, links)
 ├── drafts/
 │   ├── ai-draft.md     # Claude-generated draft
-│   ├── v1.md, v2.md…   # Writer's revisions
+│   └── v1.md, v2.md…   # Writer's revisions
+├── grades/
+│   └── v2-2026-05-10.json  # Per-grade reports (newest read by dashboard)
 └── final.md            # Approved module
 ```
 

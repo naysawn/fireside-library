@@ -36,7 +36,7 @@ Each module is tagged with a seeker phase: `discovery`, `investigation`, or `con
 
 - Starting or resuming work on a module → read that module's `metadata.yaml` and `research/` folder in `modules/`
 - Writing or drafting a module → read `brief/audience.md` and `brief/style.md`, review the reference samples above, then use the `bahai-module` skill followed by the `humanizer` skill
-- Grading or evaluating a module → use the `grade-module` skill (generates `report.html` in the module folder)
+- Grading or evaluating a module → run `/grade-module <NN>` (or, manually: dispatch a subagent in fresh context with `brief/rubric.md`, the latest draft, and `metadata.yaml`; have it write a timestamped report into the module's `grades/` folder). Never grade in the same context that drafted.
 - Understanding the process and lifecycle → read `brief/process.md`
 - Understanding who the modules are for → read `brief/audience.md`
 - Calibrating writing tone and style → read `brief/style.md`, `brief/voice.md`, and examples in `brief/samples/`

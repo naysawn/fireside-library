@@ -122,18 +122,19 @@ Drafting with Voice DNA loaded and style rules active is a different cognitive m
 
 ### Steps
 
-1. **Grade the draft.** Run the `grade-module` skill against `drafts/ai-draft.md`. The skill scores the draft on 7 dimensions (5 points each, 35 total):
-   - Narrative arc and structure
-   - Quotation integration and sourcing
-   - Question quality (opening + closing)
-   - Audience calibration (phase-appropriate tone)
-   - Accessibility and reading level
-   - Voice and style compliance (AI tells, rhythm, analogies)
-   - Completeness (all components present, properly formatted)
-   
-   The output is `report.html` in the module folder.
+1. **Grade the draft.** Run `/grade-module <NN>` against `drafts/ai-draft.md`. A subagent scores the draft in fresh context on 8 dimensions (5 points each, 40 total):
+   - Topical Coverage / Depth (categorical gate, must score ≥ 4/5)
+   - Opening Reflection Questions
+   - Closing Discussion Questions
+   - Quotations
+   - Length
+   - AI Tells (negative check)
+   - Voice & Tone (positive check)
+   - Narrative Arc & Flow
 
-2. **Check the gate score.** The draft must score **28/35 or higher** to proceed. If it scores below 28:
+   The output is a timestamped JSON in `grades/` (e.g. `grades/ai-draft-2026-05-10.json`). See `brief/rubric.md` for the full rubric.
+
+2. **Check the gate score.** The draft must score **32/40 or higher** AND Topical Coverage ≥ 4/5 to proceed. If it scores below 32 or Coverage fails:
    - Read the report's dimension-level feedback
    - Return to Phase 3 with specific revision targets
    - Re-draft only the failing components (not the whole module)
@@ -151,7 +152,7 @@ Drafting with Voice DNA loaded and style rules active is a different cognitive m
 
 ### Gate
 A module cannot advance to Phase 5 until:
-- `report.html` shows a score of 28/35 or higher
+- The latest grade in `grades/` shows a total of 32/40 or higher AND Topical Coverage ≥ 4/5
 - `drafts/v1.md` exists (humanized version)
 - The writer has read it aloud and is satisfied it sounds natural
 
@@ -223,9 +224,9 @@ A module cannot advance to Phase 7 until `drafts/v2.md` (or later) exists and th
 
 ### Steps
 
-1. **Final grade.** Run the `grade-module` skill against the rewrite (`drafts/v2.md` or latest) in a fresh context. The rewrite must score **32/35 or higher** to proceed to beta.
-   - If below 32: return to Phase 6 with the report's feedback. Rewrite and re-grade.
-   - If the score is stuck between 28–31 after multiple rewrites, the editor and writer should discuss whether the module needs a structural rethink (back to Phase 2) or targeted fixes.
+1. **Final grade.** Run `/grade-module <NN>` against the rewrite (`drafts/v2.md` or latest) in a fresh context. The rewrite must score **36/40 or higher** AND Topical Coverage ≥ 4/5 to proceed to beta.
+   - If below 36: return to Phase 6 with the report's feedback. Rewrite and re-grade.
+   - If the score is stuck between 32–35 after multiple rewrites, the editor and writer should discuss whether the module needs a structural rethink (back to Phase 2) or targeted fixes.
 
 2. **Beta publication.** Publish the module on the website with a beta label. Update `metadata.yaml` status to `beta`.
 
@@ -244,7 +245,7 @@ A module cannot advance to Phase 7 until `drafts/v2.md` (or later) exists and th
 
 ### Gate
 A module reaches v1 status when:
-- Final grade is 32/35 or higher
+- Final grade is 36/40 or higher AND Topical Coverage ≥ 4/5
 - It has been tested in at least 2 group sessions
 - Field feedback has been incorporated
 - `final.md` exists
@@ -258,10 +259,10 @@ A module reaches v1 status when:
 | 1. Planning & Research | Group + Writer | Decide what to build, gather sources | Source material assembled, sections agreed |
 | 2. Interview & Architecture | Writer + AI | Establish structure, choose arcs | Arcs confirmed, no prose yet |
 | 3. AI Drafting | Writer + AI | Produce complete first draft | `ai-draft.md` with all components |
-| 4. Score & Humanize | Writer + AI | Grade against rubric, remove AI tells | 28/35+, `v1.md` exists, read aloud |
+| 4. Score & Humanize | Writer + AI | Grade against rubric, remove AI tells | 32/40+ & Coverage ≥ 4, `v1.md` exists, read aloud |
 | 5. Editorial Review | Editor | Substance review from grassroots perspective | Written feedback delivered |
 | 6. Rewrite | Writer | Human-voiced final draft | `v2.md` exists, writer satisfied |
-| 7. Final Score, Beta & Ship | Writer + AI + Group | Validate quality, field test, publish | 32/35+, 2 field tests, `final.md` |
+| 7. Final Score, Beta & Ship | Writer + AI + Group | Validate quality, field test, publish | 36/40+ & Coverage ≥ 4, 2 field tests, `final.md` |
 
 ## Key Principles
 
@@ -271,9 +272,9 @@ A module reaches v1 status when:
 
 **The AI draft is a starting point.** Phase 6 exists because no AI draft, however well-prompted, sounds like a human wrote it. The writer's job is to make the module theirs. If the published module reads like "AI text with human edits," the process has failed.
 
-**Gates protect quality.** Skipping the 28/35 gate sends a weak draft to an editor who wastes time on problems the rubric would have caught. Skipping field testing publishes untested assumptions about what seekers need. Every gate exists because someone learned the hard way what happens without it.
+**Gates protect quality.** Skipping the 32/40 gate sends a weak draft to an editor who wastes time on problems the rubric would have caught. Skipping field testing publishes untested assumptions about what seekers need. Every gate exists because someone learned the hard way what happens without it.
 
-**The module is a scaffold, not a monologue.** The reading passage is 500–750 words because the real learning happens in the discussion around it. Two Baha'is and two seekers in a room, talking honestly about questions that matter. The module's job is to set that conversation up well.
+**The module is a scaffold, not a monologue.** The reading passage is 500–1000 words because the real learning happens in the discussion around it. Two Baha'is and two seekers in a room, talking honestly about questions that matter. The module's job is to set that conversation up well.
 
 ## Complementary Resources
 

@@ -4,7 +4,7 @@ import PageCharacter from '../components/PageCharacter.astro';
 
 interface Props {
   title: string;
-  activeNav?: 'home' | 'modules' | 'about';
+  activeNav?: 'home' | 'modules' | 'about' | 'grades' | 'none';
 }
 
 const { title, activeNav = 'home' } = Astro.props;
