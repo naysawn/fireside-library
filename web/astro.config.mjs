@@ -24,6 +24,7 @@ function watchContentPlugin() {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://firesidelibrary.org',
   vite: {
     plugins: [tailwindcss(), watchContentPlugin()],
   },

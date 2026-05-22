@@ -2,9 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parse as parseYaml } from 'yaml';
 
-const CONTENT_DIR = path.resolve(process.cwd(), '../content/modules');
+const CONTENT_DIR = path.resolve(process.cwd(), '../content/firesides');
 
-export interface ModuleMetadata {
+export interface FiresideMetadata {
   title: string;
   id: number;
   phase: 'discovery' | 'investigation' | 'consolidation';
@@ -12,9 +12,9 @@ export interface ModuleMetadata {
   status: string;
 }
 
-export interface Module {
+export interface Fireside {
   slug: string;
-  metadata: ModuleMetadata;
+  metadata: FiresideMetadata;
   content: string;
   folder: string;
   sourceFile: string;
@@ -59,10 +59,10 @@ function getLatestDraft(draftsDir: string): DraftSource | null {
   return read(latest);
 }
 
-export function getAllModules(): Module[] {
+export function getAllFiresides(): Fireside[] {
   const entries = fs.readdirSync(CONTENT_DIR, { withFileTypes: true });
 
-  const modules: Module[] = [];
+  const firesides: Fireside[] = [];
 
   for (const entry of entries) {
     if (!entry.isDirectory()) continue;
@@ -74,7 +74,7 @@ export function getAllModules(): Module[] {
     if (!fs.existsSync(metadataPath)) continue;
 
     const metadataRaw = fs.readFileSync(metadataPath, 'utf-8');
-    const metadata = parseYaml(metadataRaw) as ModuleMetadata;
+    const metadata = parseYaml(metadataRaw) as FiresideMetadata;
 
     const draftsDir = path.join(folderPath, 'drafts');
     const draft = getLatestDraft(draftsDir);
@@ -84,7 +84,7 @@ export function getAllModules(): Module[] {
     // Generate slug from folder name, stripping the number prefix
     const slug = entry.name.replace(/^\d{2}-/, '');
 
-    modules.push({
+    firesides.push({
       slug,
       metadata,
       content: draft.content,
@@ -94,9 +94,9 @@ export function getAllModules(): Module[] {
     });
   }
 
-  return modules.sort((a, b) => a.metadata.id - b.metadata.id);
+  return firesides.sort((a, b) => a.metadata.id - b.metadata.id);
 }
 
-export function getModuleBySlug(slug: string): Module | undefined {
-  return getAllModules().find(m => m.slug === slug);
+export function getFiresideBySlug(slug: string): Fireside | undefined {
+  return getAllFiresides().find(f => f.slug === slug);
 }

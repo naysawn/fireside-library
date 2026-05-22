@@ -1,132 +1,166 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CharacterCollection from '../components/CharacterCollection.astro';
-import PageCharacter from '../components/PageCharacter.astro';
+import { getAllFiresides } from '../lib/firesides';
+
+const firesides = getAllFiresides();
 ---
 
-<Layout title="Baha'i Modules" activeNav="home">
+<Layout title="Fireside Library" activeNav="home">
 
-<header class="bg-accent pt-36 pb-24 text-white">
-  <div class="max-w-5xl mx-auto px-6 md:px-12 grid md:grid-cols-[1fr_auto] gap-12 items-center">
-    <div>
-      <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight mb-6">Written materials for exploring the Faith together.</h1>
-      <p class="text-lg md:text-xl leading-relaxed opacity-92 max-w-xl">Bite-sized written explorations. Built for small groups and real conversations.</p>
-      <div class="mt-9 flex gap-3.5 flex-wrap">
-        <a href="/modules" class="inline-block bg-white text-accent-deep font-semibold text-[0.9375rem] px-7 py-3 rounded-md no-underline hover:bg-accent-pale hover:-translate-y-px transition">Browse modules</a>
-        <a href="/about" class="inline-block bg-transparent text-white font-semibold text-[0.9375rem] px-7 py-3 rounded-md border-2 border-white/40 no-underline hover:border-white hover:bg-white/10 transition">About this project</a>
-      </div>
-    </div>
-    <div class="hidden md:block">
-      <CharacterCollection />
-    </div>
+<header class="bg-accent pt-36 pb-16 text-white">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight mb-2">Firesides</h1>
+    <p class="text-lg text-white/80">Written materials for exploring the Baha'i Faith together.</p>
   </div>
 </header>
 
-<!-- Why these exist -->
-<section class="py-20 md:py-24">
+<section class="py-12 md:py-16">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-10">Texts to make it easier to teach</h2>
 
-    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-8">
-      <!-- Icon column + text -->
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 3H7a2 2 0 00-2 2v14l7-3 7 3V5a2 2 0 00-2-2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="w-px flex-1 bg-gray-200 mt-3"></div>
+    <!-- View toggle and filters -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <div class="flex gap-2" id="filters">
+        <button class="filter-btn active" data-filter="all">All <span class="count"></span></button>
+        <button class="filter-btn" data-filter="discovery">Discovery</button>
+        <button class="filter-btn" data-filter="investigation">Investigation</button>
+        <button class="filter-btn" data-filter="consolidation">Consolidation</button>
       </div>
-      <div>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">Having written material to read together helps sustain conversation and keeps the focus on subjects worth discussing.</p>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Without something to look at together, things drift. We talk about the weather, we talk about sports. Anything to keep from talking about subjects of real meaning.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="w-px flex-1 bg-gray-200 mt-3"></div>
-      </div>
-      <div>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Give a small group something to read together. Ask questions that cause people to think. Let the conversation go where it goes.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e04e1a" stroke-width="1.75"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round"/><line x1="9" y1="9" x2="9.01" y2="9" stroke="#e04e1a" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke="#e04e1a" stroke-width="2.5" stroke-linecap="round"/></svg>
-        </div>
-      </div>
-      <div>
-        <p class="text-accent font-semibold text-lg leading-snug max-w-2xl">In our experience, that combination has sparked three-hour discussions about suffering, the existence of God, what happens after death, and what it means to live a spiritual life in this century.</p>
+      <div class="flex gap-2">
+        <button class="view-btn" data-view="list" aria-label="List view">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="2" width="16" height="2" rx="1" fill="currentColor"/><rect x="1" y="8" width="16" height="2" rx="1" fill="currentColor"/><rect x="1" y="14" width="16" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <button class="view-btn active" data-view="kanban" aria-label="Kanban view">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="4" height="16" rx="1" fill="currentColor"/><rect x="7" y="1" width="4" height="10" rx="1" fill="currentColor"/><rect x="13" y="1" width="4" height="13" rx="1" fill="currentColor"/></svg>
+        </button>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Phases journey -->
-<section class="py-20 md:py-24 border-t border-gray-200">
-  <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">Texts for every stage of interest</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-12">Every module targets a specific stage of a seeker's relationship with the Faith. The subjects, the depth, and the assumptions about what a reader already knows shift accordingly.</p>
-
-    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-8 max-w-2xl">
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent/40 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">1</div>
-        <div class="w-px flex-1 bg-accent/20 mt-3"></div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Discovery</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people encountering the Faith for the first time. The goal is a genuine "oh wow, this has a lot of interesting things to say" reaction.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent/60 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">2</div>
-        <div class="w-px flex-1 bg-accent/30 mt-3"></div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Investigation</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people actively exploring. These modules go deeper into specific subjects and engage with harder questions.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent/80 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">3</div>
-        <div class="w-px flex-1 bg-accent/40 mt-3"></div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Consolidation</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people who identify as Baha'is and want to understand community life, institutions, and the many ways to serve.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">4</div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Service</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">Groups continue with Ruhi and other institute materials according to their areas of interest in service.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Open source -->
-<section class="py-20 md:py-24 border-t border-gray-200">
-  <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <div class="bg-gray-900 text-white rounded-2xl p-8 md:p-12 grid md:grid-cols-[1fr_auto] gap-8 items-center">
-      <div>
-        <h2 class="text-2xl font-extrabold tracking-tight mb-4">Open source. Get involved.</h2>
-        <p class="text-[0.9375rem] leading-[1.7] text-gray-300 mb-4 max-w-xl">This project started in Boston. We are a small group of Baha'is who wanted better materials for sharing the Faith with seekers. We are still experimenting, still learning, still rewriting.</p>
-        <p class="text-[0.9375rem] leading-[1.7] text-gray-300 mb-6 max-w-xl">If you want to try these modules in your community, adapt them for your context, or help us write new ones, we would be grateful.</p>
-        <a href="https://github.com/naysawn/bahai-modules" class="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-md no-underline hover:-translate-y-px transition" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          View on GitHub
-        </a>
-      </div>
-      <div class="hidden md:block opacity-20">
-        <PageCharacter size="hero" inverted />
+    <!-- List view -->
+    <div id="list-view" class="hidden">
+      <div class="border-t border-gray-200">
+        {firesides.map((f) => (
+          <a href={`/firesides/${f.slug}`} class="fireside-row group" data-phase={f.metadata.phase}>
+            <span class="text-[0.8125rem] font-bold text-accent/50 w-8">{String(f.metadata.id).padStart(2, '0')}</span>
+            <span class="font-semibold text-gray-900 group-hover:text-accent transition-colors flex-1">{f.metadata.title}</span>
+            <span class:list={["phase-badge", `phase-${f.metadata.phase}`]}>{f.metadata.phase}</span>
+            <span class="text-[0.75rem] text-gray-400 hidden md:inline">{f.metadata.status}</span>
+            <svg class="w-4 h-4 text-gray-300 group-hover:text-accent group-hover:translate-x-0.5 transition-all" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        ))}
       </div>
     </div>
+
+    <!-- Kanban view -->
+    <div id="kanban-view">
+      <div class="grid md:grid-cols-3 gap-6">
+        {['discovery', 'investigation', 'consolidation'].map((phase) => (
+          <div>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-400 mb-4">{phase}</h3>
+            <div class="flex flex-col gap-3">
+              {firesides.filter(f => f.metadata.phase === phase).map((f) => (
+                <a href={`/firesides/${f.slug}`} class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-accent/40 hover:shadow-sm transition group no-underline">
+                  <div class="flex items-baseline gap-2">
+                    <span class="text-xs font-bold text-accent/60">{String(f.metadata.id).padStart(2, '0')}</span>
+                    <span class="text-sm font-semibold text-gray-900 group-hover:text-accent transition-colors">{f.metadata.title}</span>
+                  </div>
+                  <span class="text-xs text-gray-400 mt-1 inline-block">{f.metadata.status}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
 
 </Layout>
+
+<style>
+  .filter-btn {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid #e5e5e5;
+    background: white;
+    color: #737373;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: #a3a3a3; color: #333; }
+  .filter-btn.active { background: #111; color: white; border-color: #111; }
+
+  .view-btn {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    background: white;
+    color: #a3a3a3;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .view-btn:hover { color: #333; border-color: #a3a3a3; }
+  .view-btn.active { background: #111; color: white; border-color: #111; }
+
+  .fireside-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e5e5;
+    text-decoration: none;
+    transition: background 0.1s;
+  }
+  .fireside-row:hover { background: #fafafa; padding-left: 8px; padding-right: 8px; margin-left: -8px; margin-right: -8px; border-radius: 6px; }
+
+  .phase-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 9999px;
+  }
+  .phase-discovery { background: #f3f4f6; color: #525252; }
+  .phase-investigation { background: #e5e7eb; color: #374151; }
+  .phase-consolidation { background: #d1d5db; color: #1f2937; }
+</style>
+
+<script>
+  // Filter logic
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      document.querySelectorAll('.fireside-row').forEach(row => {
+        const el = row as HTMLElement;
+        if (filter === 'all' || el.dataset.phase === filter) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // View toggle
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const view = btn.getAttribute('data-view');
+      const listView = document.getElementById('list-view')!;
+      const kanbanView = document.getElementById('kanban-view')!;
+      if (view === 'list') {
+        listView.classList.remove('hidden');
+        kanbanView.classList.add('hidden');
+      } else {
+        listView.classList.add('hidden');
+        kanbanView.classList.remove('hidden');
+      }
+    });
+  });
+</script>

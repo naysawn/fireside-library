@@ -1,21 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getAllModules, type Module } from '../lib/modules';
+import Layout from '../../layouts/Layout.astro';
+import { getAllFiresides, type Fireside } from '../../lib/firesides';
 import { marked } from 'marked';
 
 export function getStaticPaths() {
-  const modules = getAllModules();
-  return modules.map((mod) => ({
-    params: { slug: mod.slug },
-    props: { module: mod },
+  const firesides = getAllFiresides();
+  return firesides.map((f) => ({
+    params: { slug: f.slug },
+    props: { fireside: f },
   }));
 }
 
 interface Props {
-  module: Module;
+  fireside: Fireside;
 }
 
-const { module } = Astro.props;
+const { fireside } = Astro.props;
 
 function annotateSectionWordCounts(md: string): string {
   const lines = md.split('\n');
@@ -45,9 +45,9 @@ function annotateSectionWordCounts(md: string): string {
   return lines.join('\n');
 }
 
-const htmlContent = await marked(annotateSectionWordCounts(module.content));
+const htmlContent = await marked(annotateSectionWordCounts(fireside.content));
 
-const sourceModified = new Date(module.sourceModified).toLocaleString('en-US', {
+const sourceModified = new Date(fireside.sourceModified).toLocaleString('en-US', {
   dateStyle: 'medium',
   timeStyle: 'short',
   timeZone: 'America/New_York',
@@ -60,24 +60,24 @@ const phaseColors: Record<string, string> = {
 };
 ---
 
-<Layout title={`${module.metadata.title} | Baha'i Modules`} activeNav="modules">
+<Layout title={`${fireside.metadata.title} | Fireside Library`} activeNav="firesides">
 
 <header class="bg-[#f5f5f3] pt-24 pb-5 border-b border-gray-200">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <a href="/modules" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-accent transition-colors no-underline mb-6">
+    <a href="/firesides" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-accent transition-colors no-underline mb-6">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      All modules
+      All firesides
     </a>
     <div class="flex items-start justify-between gap-4 flex-wrap">
       <div>
-        <p class="text-xs font-bold text-accent tracking-wider mb-2">MODULE {String(module.metadata.id).padStart(2, '0')}</p>
-        <h1 class="text-2xl md:text-3xl font-black tracking-tight leading-tight text-gray-900">{module.metadata.title}</h1>
+        <p class="text-xs font-bold text-accent tracking-wider mb-2">FIRESIDE {String(fireside.metadata.id).padStart(2, '0')}</p>
+        <h1 class="text-2xl md:text-3xl font-black tracking-tight leading-tight text-gray-900">{fireside.metadata.title}</h1>
         <div class="mt-3 flex items-center gap-3">
-          <span class:list={["text-[0.6875rem] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full", phaseColors[module.metadata.phase] || 'bg-gray-100 text-gray-600']}>
-            {module.metadata.phase}
+          <span class:list={["text-[0.6875rem] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full", phaseColors[fireside.metadata.phase] || 'bg-gray-100 text-gray-600']}>
+            {fireside.metadata.phase}
           </span>
-          {module.metadata.status && (
-            <span class="text-xs text-gray-400">{module.metadata.status}</span>
+          {fireside.metadata.status && (
+            <span class="text-xs text-gray-400">{fireside.metadata.status}</span>
           )}
         </div>
       </div>
@@ -87,7 +87,7 @@ const phaseColors: Record<string, string> = {
           Print
         </button>
         <div class="text-[0.6875rem] text-gray-400 font-mono text-right leading-tight">
-          <div>{module.sourceFile}</div>
+          <div>{fireside.sourceFile}</div>
           <div>{sourceModified}</div>
         </div>
       </div>
@@ -97,7 +97,7 @@ const phaseColors: Record<string, string> = {
 
 <article class="py-8 md:py-10">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <div class="module-prose" set:html={htmlContent} />
+    <div class="fireside-prose" set:html={htmlContent} />
   </div>
 </article>
 

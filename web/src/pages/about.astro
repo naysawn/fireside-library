@@ -2,33 +2,60 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About | Baha'i Modules" activeNav="about">
+<Layout title="About | Fireside Library" activeNav="about">
 
 <header class="bg-accent pt-36 pb-16 text-white">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <h1 class="text-3xl md:text-4xl font-black tracking-tight">About This Project</h1>
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">About this project</h1>
   </div>
 </header>
 
-<section class="py-16 md:py-20">
+<!-- Why these exist -->
+<section class="py-20 md:py-24">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-10">Texts to keep the conversation on what matters</h2>
 
-    <!-- Intro with icon -->
-    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 items-start mb-16">
-      <div class="hidden md:block">
-        <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mt-1">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17 3H7a2 2 0 00-2 2v14l7-3 7 3V5a2 2 0 00-2-2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-8">
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 3H7a2 2 0 00-2 2v14l7-3 7 3V5a2 2 0 00-2-2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="w-px flex-1 bg-gray-200 mt-3"></div>
+      </div>
+      <div>
+        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">Having written material to read together helps sustain conversation and keeps the focus on subjects worth discussing.</p>
+        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Without something to look at together, things drift. We talk about the weather, we talk about sports. Anything to keep from talking about subjects of real meaning.</p>
+      </div>
+
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="w-px flex-1 bg-gray-200 mt-3"></div>
+      </div>
+      <div>
+        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Read it together. Ask questions that cause people to think. Let the conversation go where it goes.</p>
+      </div>
+
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e04e1a" stroke-width="1.75"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round"/><line x1="9" y1="9" x2="9.01" y2="9" stroke="#e04e1a" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke="#e04e1a" stroke-width="2.5" stroke-linecap="round"/></svg>
         </div>
       </div>
       <div>
-        <h2 class="text-2xl font-extrabold tracking-tight mb-6">Text to sustain deep discussions</h2>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-5 max-w-2xl">Each module covers a single subject and fills a single session of two to three hours. Groups of 4 to 8 people work best. Large enough for conversation from multiple perspectives, small enough where everyone can speak.</p>
+        <p class="text-accent font-semibold text-lg leading-snug max-w-2xl">In our experience, that combination has sparked three-hour discussions about suffering, the existence of God, what happens after death, and what it means to live a spiritual life in this century.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- How a module works - visual cards -->
-    <h2 class="text-2xl font-extrabold tracking-tight mb-8">How a module works</h2>
-    <div class="grid md:grid-cols-2 gap-6 mb-16">
+<!-- What's in a fireside -->
+<section class="py-20 md:py-24 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">What's in a fireside</h2>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-12 max-w-2xl">Each fireside covers a single subject and fills a single session of two to three hours. Groups of 4 to 8 people work best — large enough for multiple perspectives, small enough that everyone can speak.</p>
+
+    <div class="grid md:grid-cols-2 gap-6">
 
       <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
         <div class="flex items-center gap-3 mb-4">
@@ -37,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <h3 class="font-bold">Two sections</h3>
         </div>
-        <p class="text-sm leading-relaxed text-gray-600">Every module has two or three sections. The first introduces the subject and establishes the core ideas. The second goes deeper, applies them, or shifts perspective. You can stop after the first if the group runs long. Each section stands on its own.</p>
+        <p class="text-sm leading-relaxed text-gray-600">Every fireside has two or three sections. The first introduces the subject and establishes the core ideas. The second goes deeper, applies them, or shifts perspective. You can stop after the first if the group runs long. Each section stands on its own.</p>
       </div>
 
       <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
@@ -57,7 +84,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <h3 class="font-bold">Readings</h3>
         </div>
-        <p class="text-sm leading-relaxed text-gray-600">Each module draws on writings from Baha'u'llah, Abdu'l-Baha, Shoghi Effendi, and the Universal House of Justice. The text provides context and explanation. The readings assume participants do not subscribe to the teachings but have a good working knowledge of the Faith.</p>
+        <p class="text-sm leading-relaxed text-gray-600">Each fireside draws on writings from Baha'u'llah, Abdu'l-Baha, Shoghi Effendi, and the Universal House of Justice. The text provides context and explanation. The readings assume participants do not subscribe to the teachings but have a good working knowledge of the Faith.</p>
       </div>
 
       <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
@@ -71,47 +98,53 @@ import Layout from '../layouts/Layout.astro';
         <p class="text-accent font-semibold text-sm mt-3">They are the part where people forget what time it is.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Pull quote -->
-    <div class="border-l-4 border-accent pl-6 py-2 mb-16">
-      <p class="text-xl md:text-2xl font-bold text-gray-800 leading-snug max-w-xl">In practice, these modules have sparked three-hour discussions on deep questions of meaning, purpose, and faith.</p>
+<!-- Phases journey -->
+<section class="py-20 md:py-24 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">Firesides for every stage of interest</h2>
+    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-12">Every fireside targets a specific stage of a seeker's relationship with the Faith. The subjects, the depth, and the assumptions about what a reader already knows shift accordingly.</p>
+
+    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-8 max-w-2xl">
+
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-11 h-11 rounded-full bg-accent/40 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">1</div>
+        <div class="w-px flex-1 bg-accent/20 mt-3"></div>
+      </div>
+      <div>
+        <h3 class="text-base font-bold mb-2">Discovery</h3>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people encountering the Faith for the first time. The goal is a genuine "oh wow, this has a lot of interesting things to say" reaction.</p>
+      </div>
+
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-11 h-11 rounded-full bg-accent/60 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">2</div>
+        <div class="w-px flex-1 bg-accent/30 mt-3"></div>
+      </div>
+      <div>
+        <h3 class="text-base font-bold mb-2">Investigation</h3>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people actively exploring. These firesides go deeper into specific subjects and engage with harder questions.</p>
+      </div>
+
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-11 h-11 rounded-full bg-accent/80 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">3</div>
+        <div class="w-px flex-1 bg-accent/40 mt-3"></div>
+      </div>
+      <div>
+        <h3 class="text-base font-bold mb-2">Consolidation</h3>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people who identify as Baha'is and want to understand community life, institutions, and the many ways to serve.</p>
+      </div>
+
+      <div class="hidden md:flex flex-col items-center">
+        <div class="w-11 h-11 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">4</div>
+      </div>
+      <div>
+        <h3 class="text-base font-bold mb-2">Service</h3>
+        <p class="text-[0.9375rem] leading-relaxed text-gray-600">Groups continue with Ruhi and other institute materials according to their areas of interest in service.</p>
+      </div>
+
     </div>
-
-    <!-- How we make them -->
-    <h2 class="text-2xl font-extrabold tracking-tight mb-8">How we make them</h2>
-    <div class="grid md:grid-cols-3 gap-4 mb-16">
-      <div class="relative pl-8 pb-6">
-        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/40 text-white text-[0.625rem] font-bold flex items-center justify-center">1</div>
-        <h3 class="font-bold text-sm mb-1">Planning</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">A group identifies modules based on seeker needs. They agree on sections, timeline, and assign a writer and editor.</p>
-      </div>
-      <div class="relative pl-8 pb-6">
-        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/50 text-white text-[0.625rem] font-bold flex items-center justify-center">2</div>
-        <h3 class="font-bold text-sm mb-1">Drafting</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">The writer gathers source materials and produces a draft, often with AI assistance.</p>
-      </div>
-      <div class="relative pl-8 pb-6">
-        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/60 text-white text-[0.625rem] font-bold flex items-center justify-center">3</div>
-        <h3 class="font-bold text-sm mb-1">Review</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">The editor reviews the arc, sourcing, emphasis, and whether it addresses real questions at the grassroots.</p>
-      </div>
-      <div class="relative pl-8 pb-6">
-        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/70 text-white text-[0.625rem] font-bold flex items-center justify-center">4</div>
-        <h3 class="font-bold text-sm mb-1">Rewrite</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">The writer rewrites in their own words. AI may help, but the finished product should read like a human wrote it.</p>
-      </div>
-      <div class="relative pl-8 pb-6">
-        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent/80 text-white text-[0.625rem] font-bold flex items-center justify-center">5</div>
-        <h3 class="font-bold text-sm mb-1">Beta</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">Published as beta. Feedback is collected each time it is used, at least twice.</p>
-      </div>
-      <div class="relative pl-8 pb-6">
-        <div class="absolute left-0 top-0.5 w-5 h-5 rounded-full bg-accent text-white text-[0.625rem] font-bold flex items-center justify-center">6</div>
-        <h3 class="font-bold text-sm mb-1">v1</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">The writer incorporates feedback and the module is published as v1.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 

@@ -31,7 +31,7 @@
 
 @layer base {
 
-  .module-prose {
+  .fireside-prose {
     max-width: 640px;
     font-size: 19px;
     line-height: 1.5;
@@ -40,12 +40,12 @@
   }
 
   /* Hide h1: title is in the page header */
-  .module-prose h1 {
+  .fireside-prose h1 {
     display: none;
   }
 
   /* Section dividers: "Section 1: Why We Pray" */
-  .module-prose h2 {
+  .fireside-prose h2 {
     font-size: 26px;
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -60,15 +60,15 @@
     background: #faf8f5;
   }
 
-  .module-prose h2:first-of-type {
+  .fireside-prose h2:first-of-type {
     margin-top: 0;
     padding-top: 0.4em;
     border-top: none;
   }
 
   /* Structural labels: "QUESTIONS FOR DISCUSSION", "READING" */
-  .module-prose h3,
-  .module-prose h4 {
+  .fireside-prose h3,
+  .fireside-prose h4 {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -79,34 +79,34 @@
     margin-bottom: 0.875em;
   }
 
-  .module-prose h3 + p,
-  .module-prose h3 + ol,
-  .module-prose h4 + p,
-  .module-prose h4 + ol {
+  .fireside-prose h3 + p,
+  .fireside-prose h3 + ol,
+  .fireside-prose h4 + p,
+  .fireside-prose h4 + ol {
     margin-top: 0;
   }
 
   /* Body text */
-  .module-prose p {
+  .fireside-prose p {
     font-size: 19px;
     line-height: 1.5;
     margin-bottom: 1.75em;
     color: #141414;
   }
 
-  .module-prose p:last-child {
+  .fireside-prose p:last-child {
     margin-bottom: 0;
   }
 
-  .module-prose em {
+  .fireside-prose em {
     font-style: italic;
   }
 
-  .module-prose strong {
+  .fireside-prose strong {
     font-weight: 700;
   }
 
-  .module-prose .word-count {
+  .fireside-prose .word-count {
     display: inline-block;
     margin-left: 0.75em;
     vertical-align: middle;
@@ -121,7 +121,7 @@
   }
 
   /* Block quotes */
-  .module-prose blockquote {
+  .fireside-prose blockquote {
     border-left: 2px solid var(--color-accent);
     padding: 1em 1.5em;
     margin: 1.5em 0;
@@ -130,25 +130,25 @@
     line-height: 1.5;
   }
 
-  .module-prose blockquote p {
+  .fireside-prose blockquote p {
     font-size: 19px;
     margin-bottom: 0.5em;
     color: #444;
   }
 
-  .module-prose blockquote p:last-child {
+  .fireside-prose blockquote p:last-child {
     margin-bottom: 0;
   }
 
   /* Numbered questions */
-  .module-prose ol {
+  .fireside-prose ol {
     list-style: none;
     counter-reset: questions;
     margin: 1em 0 1.25em;
     padding: 0;
   }
 
-  .module-prose ol li {
+  .fireside-prose ol li {
     counter-increment: questions;
     position: relative;
     padding-left: 28px;
@@ -158,7 +158,7 @@
     color: #141414;
   }
 
-  .module-prose ol li::before {
+  .fireside-prose ol li::before {
     content: counter(questions) ".";
     position: absolute;
     left: 0;
@@ -170,15 +170,15 @@
   }
 
   /* Section dividers */
-  .module-prose hr {
+  .fireside-prose hr {
     border: none;
     border-top: 1px solid #e5e5e5;
     margin: 3em 0;
   }
 
   /* Citations section — last h2 directly followed by an ol */
-  .module-prose h2#citations,
-  .module-prose h2:last-of-type:has(+ ol) {
+  .fireside-prose h2#citations,
+  .fireside-prose h2:last-of-type:has(+ ol) {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -194,8 +194,8 @@
     margin-bottom: 1rem;
   }
 
-  .module-prose h2#citations + ol li,
-  .module-prose h2:last-of-type:has(+ ol) + ol li {
+  .fireside-prose h2#citations + ol li,
+  .fireside-prose h2:last-of-type:has(+ ol) + ol li {
     font-size: 13px;
     line-height: 1.5;
     color: #737373;
@@ -203,15 +203,15 @@
     padding-left: 1.75rem;
   }
 
-  .module-prose h2#citations + ol li::before,
-  .module-prose h2:last-of-type:has(+ ol) + ol li::before {
+  .fireside-prose h2#citations + ol li::before,
+  .fireside-prose h2:last-of-type:has(+ ol) + ol li::before {
     font-size: 13px;
     line-height: 1.5;
     color: #999;
   }
 
-  .module-prose h2#citations + ol li em,
-  .module-prose h2:last-of-type:has(+ ol) + ol li em {
+  .fireside-prose h2#citations + ol li em,
+  .fireside-prose h2:last-of-type:has(+ ol) + ol li em {
     color: #737373;
   }
 
@@ -235,7 +235,7 @@
     position: static !important;
   }
 
-  article, main, .module-prose {
+  article, main, .fireside-prose {
     overflow: visible !important;
   }
 
@@ -249,13 +249,13 @@
     max-width: none !important;
   }
 
-  .module-prose ol,
-  .module-prose ol li {
+  .fireside-prose ol,
+  .fireside-prose ol li {
     page-break-inside: auto;
     break-inside: auto;
   }
 
-  .module-prose .word-count {
+  .fireside-prose .word-count {
     display: none !important;
   }
 
@@ -279,7 +279,7 @@
     background: white;
   }
 
-  .module-prose h1 {
+  .fireside-prose h1 {
     display: block !important;
     font-family: Arial, sans-serif;
     font-size: 16pt;
@@ -290,14 +290,14 @@
     padding-bottom: 0;
   }
 
-  .module-prose {
+  .fireside-prose {
     max-width: 100%;
     font-family: Arial, sans-serif;
     font-size: 10pt;
     line-height: 1.35;
   }
 
-  .module-prose h2 {
+  .fireside-prose h2 {
     font-family: Arial, sans-serif;
     font-size: 13pt;
     font-weight: 700;
@@ -313,8 +313,8 @@
     page-break-after: avoid;
   }
 
-  .module-prose h3,
-  .module-prose h4 {
+  .fireside-prose h3,
+  .fireside-prose h4 {
     font-family: Arial, sans-serif;
     font-size: 8pt;
     font-weight: 700;
@@ -326,7 +326,7 @@
     page-break-after: avoid;
   }
 
-  .module-prose p {
+  .fireside-prose p {
     font-size: 10pt;
     line-height: 1.35;
     margin-bottom: 11pt;
@@ -335,12 +335,12 @@
     widows: 3;
   }
 
-  .module-prose ol {
+  .fireside-prose ol {
     margin-top: 4pt;
     margin-bottom: 14pt;
   }
 
-  .module-prose ol li {
+  .fireside-prose ol li {
     font-size: 10pt;
     line-height: 1.35;
     margin-bottom: 12pt;
@@ -348,12 +348,12 @@
     color: black;
   }
 
-  .module-prose ol li::before {
+  .fireside-prose ol li::before {
     font-size: 9pt;
     color: #333;
   }
 
-  .module-prose blockquote {
+  .fireside-prose blockquote {
     margin: 11pt 0;
     padding: 0 0 0 12pt;
     border-left: 1.5pt solid #666;
@@ -362,14 +362,14 @@
     page-break-inside: avoid;
   }
 
-  .module-prose blockquote p {
+  .fireside-prose blockquote p {
     font-size: 9.5pt;
     line-height: 1.35;
     color: black;
     margin-bottom: 6pt;
   }
 
-  .module-prose hr {
+  .fireside-prose hr {
     display: none;
   }
 
