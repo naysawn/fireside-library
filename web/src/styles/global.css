@@ -260,7 +260,7 @@
   }
 
   @page {
-    margin: 0.9in;
+    margin: 0.5in 0.9in 0.9in;
     size: letter;
 
     @bottom-right {
@@ -268,6 +268,10 @@
       font-family: Arial, sans-serif;
       font-size: 9pt;
       color: #666;
+      vertical-align: bottom;
+      text-align: right;
+      margin-bottom: 0.2in;
+      margin-right: -0.5in;
     }
   }
 
