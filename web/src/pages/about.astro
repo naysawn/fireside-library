@@ -4,146 +4,121 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="About | Fireside Library" activeNav="about">
 
-<header class="bg-accent pt-36 pb-16 text-white">
+<header class="bg-accent pt-28 pb-12 text-white">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
     <h1 class="text-3xl md:text-4xl font-black tracking-tight">About this project</h1>
   </div>
 </header>
 
-<!-- Why these exist -->
-<section class="py-20 md:py-24">
+<section class="py-12 border-b border-gray-200">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-10">Texts to keep the conversation on what matters</h2>
+    <p class="text-xl md:text-2xl font-semibold tracking-tight text-gray-900 leading-snug max-w-3xl">Written materials to make it easier to have meaningful conversations about the Baha'i Faith.</p>
+    <p class="text-[1rem] leading-[1.7] text-gray-600 max-w-3xl mt-4">Each fireside is a written guide for a single 2-to-3-hour conversation, designed for a group of 4–8 people. They open with questions, ground discussion in passages from the Baha'i Writings, and never assume the reader subscribes to the teachings.</p>
+    <p class="text-[1rem] leading-[1.7] text-gray-600 max-w-3xl mt-4">They are free and open source — you're welcome to download them, edit them, mix them up, and contribute however you'd like.</p>
+  </div>
+</section>
 
-    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-8">
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 3H7a2 2 0 00-2 2v14l7-3 7 3V5a2 2 0 00-2-2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="w-px flex-1 bg-gray-200 mt-3"></div>
-      </div>
-      <div>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-5">Having written material to read together helps sustain conversation and keeps the focus on subjects worth discussing.</p>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Without something to look at together, things drift. We talk about the weather, we talk about sports. Anything to keep from talking about subjects of real meaning.</p>
-      </div>
+<!-- What it is / Who it's for -->
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
 
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="w-px flex-1 bg-gray-200 mt-3"></div>
-      </div>
-      <div>
-        <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl">Read it together. Ask questions that cause people to think. Let the conversation go where it goes.</p>
-      </div>
+    <h2 class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-4">01 — Quick reference</h2>
 
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e04e1a" stroke-width="1.75"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round"/><line x1="9" y1="9" x2="9.01" y2="9" stroke="#e04e1a" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke="#e04e1a" stroke-width="2.5" stroke-linecap="round"/></svg>
-        </div>
+    <div class="grid md:grid-cols-2 gap-4 mb-12">
+      <div class="border border-gray-200 rounded-lg p-6">
+        <p class="text-[0.6875rem] uppercase tracking-wider text-gray-500 font-semibold mb-1">Format</p>
+        <p class="text-[0.95rem] text-gray-800 leading-relaxed">2–3 sections per fireside. Each section has opening questions, readings, and discussion questions.</p>
       </div>
-      <div>
-        <p class="text-accent font-semibold text-lg leading-snug max-w-2xl">In our experience, that combination has sparked three-hour discussions about suffering, the existence of God, what happens after death, and what it means to live a spiritual life in this century.</p>
+      <div class="border border-gray-200 rounded-lg p-6">
+        <p class="text-[0.6875rem] uppercase tracking-wider text-gray-500 font-semibold mb-1">Duration</p>
+        <p class="text-[0.95rem] text-gray-800 leading-relaxed">A single session of 2–3 hours. Stop after the first section if the group runs long; each stands on its own.</p>
+      </div>
+      <div class="border border-gray-200 rounded-lg p-6">
+        <p class="text-[0.6875rem] uppercase tracking-wider text-gray-500 font-semibold mb-1">Group size</p>
+        <p class="text-[0.95rem] text-gray-800 leading-relaxed">4–8 people. Typically a mix of Baha'is and seekers.</p>
+      </div>
+      <div class="border border-gray-200 rounded-lg p-6">
+        <p class="text-[0.6875rem] uppercase tracking-wider text-gray-500 font-semibold mb-1">Sources</p>
+        <p class="text-[0.95rem] text-gray-800 leading-relaxed">Baha'u'llah, the Bab, 'Abdu'l-Baha, Shoghi Effendi, and the Universal House of Justice.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- What's in a fireside -->
-<section class="py-20 md:py-24 border-t border-gray-200">
+<section class="py-16 border-t border-gray-200 bg-gray-50">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">What's in a fireside</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 mb-12 max-w-2xl">Each fireside covers a single subject and fills a single session of two to three hours. Groups of 4 to 8 people work best — large enough for multiple perspectives, small enough that everyone can speak.</p>
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <h2 class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-2">02 — Anatomy of a fireside</h2>
+    <p class="text-2xl font-extrabold tracking-tight mb-8">Four building blocks</p>
 
-      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold">Two sections</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-gray-600">Every fireside has two or three sections. The first introduces the subject and establishes the core ideas. The second goes deeper, applies them, or shifts perspective. You can stop after the first if the group runs long. Each section stands on its own.</p>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-white rounded-lg p-5 border border-gray-200">
+        <div class="text-3xl font-black text-accent/30 mb-2">01</div>
+        <h3 class="font-bold text-sm mb-2">Sections</h3>
+        <p class="text-[0.8125rem] text-gray-600 leading-relaxed">Two or three. The first introduces the subject. The second goes deeper or shifts angle.</p>
       </div>
-
-      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e04e1a" stroke-width="1.75"/><path d="M12 8v4m0 4h.01" stroke="#e04e1a" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="font-bold">Opening questions</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-gray-600">Each section starts by asking people to open up and share. "Have you ever felt like your prayers were heard?" "Have you ever felt the presence of the divine?" These are invitations to think out loud. We learn by hearing from everyone.</p>
+      <div class="bg-white rounded-lg p-5 border border-gray-200">
+        <div class="text-3xl font-black text-accent/30 mb-2">02</div>
+        <h3 class="font-bold text-sm mb-2">Opening questions</h3>
+        <p class="text-[0.8125rem] text-gray-600 leading-relaxed">Invitations to share lived experience before reading. <em>"Have you ever felt the presence of the divine?"</em></p>
       </div>
-
-      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold">Readings</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-gray-600">Each fireside draws on writings from Baha'u'llah, Abdu'l-Baha, Shoghi Effendi, and the Universal House of Justice. The text provides context and explanation. The readings assume participants do not subscribe to the teachings but have a good working knowledge of the Faith.</p>
+      <div class="bg-white rounded-lg p-5 border border-gray-200">
+        <div class="text-3xl font-black text-accent/30 mb-2">03</div>
+        <h3 class="font-bold text-sm mb-2">Readings</h3>
+        <p class="text-[0.8125rem] text-gray-600 leading-relaxed">Written context interwoven with passages from the Baha'i Writings.</p>
       </div>
-
-      <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#e04e1a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-bold">Discussion questions</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-gray-600">At the end of each section, questions ask the group to consider the topic from other angles. These are less about the text and more about what the group thinks.</p>
-        <p class="text-accent font-semibold text-sm mt-3">They are the part where people forget what time it is.</p>
+      <div class="bg-white rounded-lg p-5 border border-gray-200">
+        <div class="text-3xl font-black text-accent/30 mb-2">04</div>
+        <h3 class="font-bold text-sm mb-2">Discussion questions</h3>
+        <p class="text-[0.8125rem] text-gray-600 leading-relaxed">Less about the text, more about what the group thinks. The part where people forget what time it is.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Phases journey -->
-<section class="py-20 md:py-24 border-t border-gray-200">
+<!-- Stages -->
+<section class="py-16 border-t border-gray-200">
   <div class="max-w-5xl mx-auto px-6 md:px-12">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight mb-4">Firesides for every stage of interest</h2>
-    <p class="text-[1.0625rem] leading-[1.7] text-gray-700 max-w-2xl mb-12">Every fireside targets a specific stage of a seeker's relationship with the Faith. The subjects, the depth, and the assumptions about what a reader already knows shift accordingly.</p>
 
-    <div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-8 max-w-2xl">
+    <h2 class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-2">03 — Stages of interest</h2>
+    <p class="text-2xl font-extrabold tracking-tight mb-2">Pick the materials that match where your group is at</p>
+    <p class="text-[0.95rem] text-gray-600 mb-8 max-w-2xl">Each fireside is tagged with a stage. The subjects, depth, and what the text assumes about the reader all shift accordingly.</p>
 
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent/40 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">1</div>
-        <div class="w-px flex-1 bg-accent/20 mt-3"></div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Discovery</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people encountering the Faith for the first time. The goal is a genuine "oh wow, this has a lot of interesting things to say" reaction.</p>
-      </div>
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-300">
+          <th class="py-3 pr-4 text-[0.75rem] uppercase tracking-wider text-gray-500 font-bold w-32">Stage</th>
+          <th class="py-3 pr-4 text-[0.75rem] uppercase tracking-wider text-gray-500 font-bold w-48">For</th>
+          <th class="py-3 text-[0.75rem] uppercase tracking-wider text-gray-500 font-bold">What to expect</th>
+        </tr>
+      </thead>
+      <tbody class="text-[0.9375rem]">
+        <tr class="border-b border-gray-200">
+          <td class="py-4 pr-4 font-bold text-gray-900">Discovery</td>
+          <td class="py-4 pr-4 text-gray-700">First-time encounters</td>
+          <td class="py-4 text-gray-600">Nothing assumed. Opens with universal human experience.</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-4 pr-4 font-bold text-gray-900">Investigation</td>
+          <td class="py-4 pr-4 text-gray-700">Active explorers</td>
+          <td class="py-4 text-gray-600">Designed for people interested in exploring what the Baha'i Faith is.</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="py-4 pr-4 font-bold text-gray-900">Consolidation</td>
+          <td class="py-4 pr-4 text-gray-700">Newly declared Baha'is</td>
+          <td class="py-4 text-gray-600">Designed for people who subscribe to the Baha'i teachings and want to learn how to apply them to their lives.</td>
+        </tr>
+        <tr>
+          <td class="py-4 pr-4 font-bold text-gray-900">Service</td>
+          <td class="py-4 pr-4 text-gray-700">Settled into the community</td>
+          <td class="py-4 text-gray-600">Continue with Ruhi and other institute materials.</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent/60 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">2</div>
-        <div class="w-px flex-1 bg-accent/30 mt-3"></div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Investigation</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people actively exploring. These firesides go deeper into specific subjects and engage with harder questions.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent/80 text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">3</div>
-        <div class="w-px flex-1 bg-accent/40 mt-3"></div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Consolidation</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">For people who identify as Baha'is and want to understand community life, institutions, and the many ways to serve.</p>
-      </div>
-
-      <div class="hidden md:flex flex-col items-center">
-        <div class="w-11 h-11 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold shadow-sm shrink-0">4</div>
-      </div>
-      <div>
-        <h3 class="text-base font-bold mb-2">Service</h3>
-        <p class="text-[0.9375rem] leading-relaxed text-gray-600">Groups continue with Ruhi and other institute materials according to their areas of interest in service.</p>
-      </div>
-
+    <div class="mt-10">
+      <a href="/" class="inline-flex items-center gap-2 bg-accent text-white font-semibold text-[0.9375rem] px-6 py-3 rounded-md no-underline hover:-translate-y-px transition">Browse the library →</a>
     </div>
   </div>
 </section>

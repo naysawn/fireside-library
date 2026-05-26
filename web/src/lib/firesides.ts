@@ -10,6 +10,8 @@ export interface FiresideMetadata {
   phase: 'discovery' | 'investigation' | 'consolidation';
   topics: string[];
   status: string;
+  /** When true, the entry is excluded from the site (e.g. House letters, not firesides). */
+  hidden?: boolean;
 }
 
 export interface Fireside {
@@ -75,6 +77,9 @@ export function getAllFiresides(): Fireside[] {
 
     const metadataRaw = fs.readFileSync(metadataPath, 'utf-8');
     const metadata = parseYaml(metadataRaw) as FiresideMetadata;
+
+    // Skip entries explicitly hidden (e.g. House letters, not firesides)
+    if (metadata.hidden) continue;
 
     const draftsDir = path.join(folderPath, 'drafts');
     const draft = getLatestDraft(draftsDir);
