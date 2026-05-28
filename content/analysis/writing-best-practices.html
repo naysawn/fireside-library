@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Best Practices — Getting Human Writing from Claude</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --border: #e7e5e4;
+    --text: #1c1917;
+    --muted: #78716c;
+    --red: #dc2626;
+    --amber: #d97706;
+    --green: #16a34a;
+    --blue: #2563eb;
+    --purple: #7c3aed;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.25rem; font-weight: 600; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 0.4rem; }
+
+  .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .card p, .card li { font-size: 0.9rem; }
+  .card ul { margin: 0.5rem 0 0 1.25rem; }
+  .card li { margin-bottom: 0.3rem; }
+
+  /* Comparison blocks */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+    border: 1px solid var(--border);
+  }
+
+  .compare .bad {
+    background: #fef2f2;
+    padding: 1rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .compare .good {
+    background: #f0fdf4;
+    padding: 1rem;
+  }
+
+  .compare .label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .compare .bad .label { color: var(--red); }
+  .compare .good .label { color: var(--green); }
+
+  .compare p { line-height: 1.6; }
+
+  /* Highlight boxes */
+  .insight {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .insight strong { color: var(--blue); }
+
+  .warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .warning strong { color: var(--amber); }
+
+  /* Rubric table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 1rem 0;
+  }
+
+  th, td {
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  th {
+    background: #f5f5f4;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  /* Banned words */
+  .banned-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.75rem 0;
+  }
+
+  .banned-words span {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #fecaca;
+    color: #991b1b;
+    font-weight: 500;
+  }
+
+  /* Prompt block */
+  .prompt-block {
+    background: #1c1917;
+    color: #fafaf9;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+
+  .prompt-block .comment { color: #78716c; }
+  .prompt-block .highlight { color: #86efac; }
+
+  /* Numbered list */
+  ol.steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+  }
+
+  ol.steps li {
+    counter-increment: step;
+    padding: 0.75rem 0.75rem 0.75rem 3rem;
+    margin-bottom: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    position: relative;
+    font-size: 0.9rem;
+  }
+
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  ol.steps li strong { display: block; margin-bottom: 0.15rem; }
+
+  /* Section dividers */
+  hr { border: none; border-top: 2px solid var(--border); margin: 2.5rem 0; }
+
+  .source-list {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .source-list a { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<h1>Getting Human Writing from Claude</h1>
+<p class="subtitle">Research-backed best practices for the Baha'i module project. How to brief Claude, set examples, and grade output.</p>
+
+<!-- ============================== -->
+<h2>1. Why AI Writing Sounds Like AI</h2>
+
+<p style="font-size:0.92rem; margin-bottom:1.5rem;">Before fixing the problem, understand the root cause. Claude defaults to "corporate helpful": a blend of Wikipedia neutrality and LinkedIn consulting speak. This happens because safety training rewards blandness, and the internet's professional writing is already templated. The result is text that is fluent, correct, and completely devoid of personality.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color:var(--red);">The AI Voice Fingerprint</h3>
+    <h4>Vocabulary tells</h4>
+    <div class="banned-words">
+      <span>delve</span><span>tapestry</span><span>multifaceted</span><span>landscape</span>
+      <span>journey</span><span>beacon</span><span>cornerstone</span><span>interplay</span>
+      <span>leverage</span><span>elevate</span><span>foster</span><span>harness</span>
+      <span>underscore</span><span>showcase</span><span>bolster</span><span>garner</span>
+      <span>moreover</span><span>furthermore</span><span>indeed</span><span>notably</span>
+      <span>subsequently</span><span>accordingly</span><span>groundbreaking</span>
+      <span>seamless</span><span>robust</span><span>game changer</span>
+    </div>
+    <h4 style="margin-top:1rem;">Structural tells</h4>
+    <ul>
+      <li>Uniform sentence length (~27 words, no variation)</li>
+      <li>Compulsive rule-of-three (three adjectives, three examples, three bullets)</li>
+      <li>Excessive em dashes (already in your style guide)</li>
+      <li>Perfect grammar: no fragments, no sentences starting with "And" or "But"</li>
+      <li>Copula avoidance: "serves as," "stands as," "represents" instead of "is"</li>
+      <li>Formulaic conclusions that restate what was already said</li>
+      <li>Every paragraph the same length</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--green);">What Human Writers Do Differently</h3>
+    <h4>The things AI cannot fake</h4>
+    <ul>
+      <li><strong>Earned specificity.</strong> A human writes "12:34 p.m." where AI writes "around noon." Details that could only come from lived experience.</li>
+      <li><strong>Controlled imperfection.</strong> Sentence fragments. Sentences starting with "And." Stylistic quirks. The roughness readers enjoy.</li>
+      <li><strong>Genuine surprise.</strong> Bold opinions, creative risks, an analogy that comes from left field. AI plays it safe.</li>
+      <li><strong>Asymmetric rhythm.</strong> A three-word sentence after a fifty-word one. Paragraph breaks that serve emotion, not just organization.</li>
+      <li><strong>Tolerated tangents.</strong> A sentence that eases into a side thought, then returns with a payoff. AI smooths these away.</li>
+      <li><strong>Emotional honesty without performance.</strong> Vulnerability that feels real, not "performatively literary."</li>
+    </ul>
+  </div>
+</div>
+
+<div class="insight">
+  <strong>Key finding:</strong> A study of 556 participants found that identical literary passages received higher ratings when labeled "human-written" vs. "AI-generated." Features praised as "imaginative" under human labels were dismissed as "formulaic" under AI labels. This means AI writing must clear a <em>higher</em> bar to be perceived as good. You cannot afford any AI tells.
+</div>
+
+<!-- ============================== -->
+<h2>2. How to Brief Claude for the Modules</h2>
+
+<p style="font-size:0.92rem; margin-bottom:1rem;">The research points to a three-part system: <strong>Voice DNA</strong> (how the writing should sound), <strong>Audience Profile</strong> (who is reading), and <strong>Anti-Patterns</strong> (what to avoid). You already have the audience profile in <code>audience.md</code> and anti-patterns in <code>style.md</code>. What is missing is the Voice DNA.</p>
+
+<div class="card" style="margin-bottom:1.5rem;">
+  <h3>The Voice DNA Document</h3>
+  <p>Build this from 3-5 of your best paragraphs (Module 08 v2 is a start). It should capture:</p>
+  <table>
+    <tr>
+      <th style="width:30%;">Element</th>
+      <th>What to Document</th>
+      <th>Example from Module 08 v2</th>
+    </tr>
+    <tr>
+      <td><strong>Sentence rhythm</strong></td>
+      <td>How do you mix short and long sentences? What is the typical range?</td>
+      <td>"Prayer, in the Baha'i understanding, is not a means of informing God of anything." (15 words) followed by a longer explanatory sentence. Short statement, then expansion.</td>
+    </tr>
+    <tr>
+      <td><strong>How you introduce quotes</strong></td>
+      <td>Do you set up quotes with context? Drop them in? Use them as section anchors?</td>
+      <td>Quotes are woven into the flow: context sentence, then quote, then what it means for the reader. Never just "As Baha'u'llah says:"</td>
+    </tr>
+    <tr>
+      <td><strong>Analogy style</strong></td>
+      <td>Where do your analogies come from? How extended are they?</td>
+      <td>Nature: dew on ground, riverbed shaped by water, hollow reed. Brief (1-2 sentences), concrete, no over-explaining.</td>
+    </tr>
+    <tr>
+      <td><strong>Paragraph openings</strong></td>
+      <td>How do you start paragraphs? With a claim? A question? A continuation?</td>
+      <td>Often with a quiet observation: "There is something in most people that reaches beyond the material." Not with transitions like "Furthermore" or "Additionally."</td>
+    </tr>
+    <tr>
+      <td><strong>How you handle difficulty</strong></td>
+      <td>When the topic is hard or the Baha'i position is counter-cultural, what do you do?</td>
+      <td>Name the tension directly: "Why pray if God already knows what is in our hearts?" Then sit with it before offering the Baha'i perspective.</td>
+    </tr>
+    <tr>
+      <td><strong>Words you use / avoid</strong></td>
+      <td>Beyond the banned list, what is your natural vocabulary?</td>
+      <td>Uses: "something," "sense of," "impulse," "draw closer," "in this understanding." Avoids: technical theological terms, academic register.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="warning">
+  <strong>The single most effective technique:</strong> Record yourself talking about the module topic for 5 minutes. Transcribe it. Feed the transcription to Claude as voice reference. Your speaking voice is closer to your real writing voice than your "trying to write" voice. The transcription captures your natural rhythm, your real vocabulary, and the way you actually explain things.
+</div>
+
+<!-- ============================== -->
+<h2>3. Prompting Techniques That Work</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <h3>What the Research Says</h3>
+    <ul>
+      <li><strong>Match prompt style to output style.</strong> If you want flowing prose, write your prompt in flowing prose. Removing markdown from your prompt reduces markdown in the output.</li>
+      <li><strong>Use 3-5 examples.</strong> Few-shot prompting dramatically improves voice consistency. Show Claude 3 paragraphs that sound right before asking it to write.</li>
+      <li><strong>Say why, not just what.</strong> "Never use em dashes" is less effective than "Em dashes are a signature AI tell and readers will immediately distrust the text."</li>
+      <li><strong>Force a stance.</strong> Instead of "write about prayer," say "make the case that prayer is not about informing God but about transforming the one who prays."</li>
+      <li><strong>Enforce specificity.</strong> "Every claim must include an analogy, a quote, or a concrete example. No vague benefits."</li>
+      <li><strong>Separate tasks.</strong> Use different passes for research synthesis, drafting, and copyediting. One prompt doing everything produces mush.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>What Your Style Guide Already Does Well</h3>
+    <ul>
+      <li>Banned word list (can be expanded)</li>
+      <li>Em dash prohibition</li>
+      <li>"Not X but Y" prohibition</li>
+      <li>Block quote requirements (structural constraint that forces integration)</li>
+      <li>Acceptance criteria checklist</li>
+    </ul>
+    <h3 style="margin-top:1rem;">What to Add</h3>
+    <ul>
+      <li>The Voice DNA document (see above)</li>
+      <li>Expanded banned patterns: copula avoidance, rule-of-three, formulaic transitions, summary conclusions</li>
+      <li>A "read aloud" test with specific criteria (see rubric below)</li>
+      <li>Sentence length variation requirement: "No three consecutive sentences within 5 words of each other in length"</li>
+      <li>Permission for imperfection: "Sentence fragments are OK for emphasis. Start sentences with 'And' or 'But' when it serves rhythm."</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Example: How to Prompt a Module Draft</h3>
+
+<div class="prompt-block"><span class="comment"># System prompt (in SKILL.md or CLAUDE.md)</span>
+
+You are writing a reading passage for a Baha'i study module. The audience
+is the Active Explorer: someone who has been to a few gatherings, knows
+who Baha'u'llah is, and is deciding whether this Faith holds up under
+scrutiny. They should feel respected as an independent thinker.
+
+<span class="highlight">## Voice</span>
+Write like a thoughtful friend explaining something over tea. Not a
+lecture. Not a sales pitch. Not a Wikipedia article.
+
+Read these three paragraphs. Match this rhythm, this level of directness,
+this way of introducing quotes:
+
+[paste 3 paragraphs from Module 08 v2 or your best writing]
+
+<span class="highlight">## What to do</span>
+- Open with a genuine question or honest observation, not a topic sentence
+- Use short analogies from nature (1-2 sentences, concrete, not extended)
+- Weave quotes into the flow: context, then quote, then what it means
+  for the reader. Never drop a quote and move on.
+- Name the hard questions before offering the Baha'i perspective
+- Vary sentence length. Mix 8-word sentences with 35-word ones.
+  No three consecutive sentences within 5 words of each other.
+
+<span class="highlight">## What to avoid</span>
+- Em dashes. Use commas, periods, or semicolons.
+- Any word from this list: delve, tapestry, multifaceted, landscape,
+  journey, beacon, cornerstone, moreover, furthermore, indeed, notably,
+  it is worth noting, let us unpack, in essence, at its core
+- "Not X, not Y, but Z" constructions
+- Copula avoidance: do not write "serves as," "stands as," "represents"
+  when you mean "is"
+- Rule of three: do not list three adjectives, three examples,
+  or three parallel clauses unless the content genuinely demands it
+- Summary conclusions that restate what you already said
+- Contractions (write "do not" not "don't")
+
+<span class="highlight">## Format</span>
+- 500-750 words
+- At least 3 block quotes with [n] citation numbers
+- Inline quotes italicized
+- Citations section at the end
+</div>
+
+<!-- ============================== -->
+<h2>4. Before and After: What Changes</h2>
+
+<div class="compare">
+  <div class="bad">
+    <div class="label">AI Default</div>
+    <p>Prayer is a multifaceted spiritual practice that serves as a cornerstone of the Baha'i Faith. It is worth noting that Baha'u'llah emphasized the transformative power of prayer, which fosters a deeper connection with the Divine. Moreover, prayer serves as a means of spiritual development, enabling individuals to cultivate qualities such as patience, gratitude, and compassion.</p>
+  </div>
+  <div class="good">
+    <div class="label">After Voice DNA + Anti-Patterns</div>
+    <p>There is something in most people that reaches beyond the material. A pull toward gratitude, or a weight we want to lay down, or a sense that something larger is listening. Baha'u'llah describes this impulse simply: prayer is food for the soul. Not information for God. Not a transaction. Food. Something the soul needs the way a body needs water.</p>
+  </div>
+</div>
+
+<div class="compare">
+  <div class="bad">
+    <div class="label">AI Default</div>
+    <p>The Baha'i Administrative Order represents a groundbreaking system of governance that stands as a unique contribution to human civilization. It is characterized by three levels of elected councils — Local Spiritual Assemblies, National Spiritual Assemblies, and the Universal House of Justice — each serving as pillars of a divinely ordained framework.</p>
+  </div>
+  <div class="good">
+    <div class="label">After Voice DNA + Anti-Patterns</div>
+    <p>Something is breaking down in the institutions people once trusted. Religious institutions, governments, international bodies. The gap between what they promise and what they deliver grows wider each year. Baha'is believe this is not an accident but a symptom: humanity has outgrown the systems built for an earlier stage of its collective life. So what replaces them?</p>
+  </div>
+</div>
+
+<div class="compare">
+  <div class="bad">
+    <div class="label">AI Default</div>
+    <p>Baha'u'llah, the Founder of the Baha'i Faith, endured decades of suffering and exile, which underscores the depth of His commitment to His divine mission. His journey from Tehran to Akka — spanning over 2,500 miles — serves as a testament to His unwavering dedication.</p>
+  </div>
+  <div class="good">
+    <div class="label">After Voice DNA + Anti-Patterns</div>
+    <p>Baha'u'llah spent forty years as a prisoner. He was poisoned, chained in an underground dungeon, exiled four times across 2,500 miles, and stripped of everything a person could lose. And during those years He wrote. Constantly. Over 20,000 works on subjects ranging from the nature of God to the governance of nations. Whatever you make of His claim, the fact of His life is extraordinary.</p>
+  </div>
+</div>
+
+<!-- ============================== -->
+<h2>5. The Grading Rubric</h2>
+
+<p style="font-size:0.92rem; margin-bottom:1rem;">Use this rubric to evaluate drafts. It is designed to be used by Claude as an objective judge, with specific counter-measures for the biases LLMs have when evaluating their own writing.</p>
+
+<div class="warning">
+  <strong>Critical anti-bias measure:</strong> Never have the same conversation generate AND evaluate. Start a fresh context for judging. Include examples of polished-but-empty AI text that should score LOW. This forces the judge to see past surface fluency.
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:22%;">Dimension</th>
+      <th style="width:8%;">Weight</th>
+      <th>1 (Weak)</th>
+      <th>3 (Adequate)</th>
+      <th>5 (Strong)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Specificity</strong><br><em>Concrete detail vs. vague claims</em></td>
+      <td>High</td>
+      <td>Abstract language throughout. "Prayer is important." No examples, no mechanisms, no sensory detail.</td>
+      <td>Some concrete details. 1-2 analogies. Most claims have at least one supporting example.</td>
+      <td>Rich in earned detail. Analogies from nature, specific quotes woven in, mechanisms explained. Every paragraph has something concrete.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Voice</strong><br><em>Distinctive human sound</em></td>
+      <td>High</td>
+      <td>Could be anyone. Generic helpful tone. Uses AI vocabulary. Sounds like a Wikipedia article crossed with a brochure.</td>
+      <td>Has a recognizable warmth. Mostly avoids AI tells. Reads as "a person wrote this" but without a strong individual voice.</td>
+      <td>Sounds like a specific person. Has mannerisms, a rhythm, an attitude. You would recognize this writer in a blind test.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Rhythm Variation</strong><br><em>Sentence length diversity</em></td>
+      <td>Medium</td>
+      <td>Most sentences 20-30 words. No variation. Monotone hum. Reading aloud feels like a metronome.</td>
+      <td>Some variation. A few short sentences. But overall pattern is predictable.</td>
+      <td>Deliberate mix: 5-word punches and 40-word flowing sentences. Paragraph lengths vary. Reading aloud has natural cadence.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Structural Courage</strong><br><em>Claims without hedging</em></td>
+      <td>Medium</td>
+      <td>Every claim qualified: "may," "typically," "it could be argued," "some would say." No commitments.</td>
+      <td>Makes clear statements most of the time. Occasional unnecessary hedging.</td>
+      <td>Direct claims backed by evidence or framed honestly as perspective. Uses "Baha'is understand this as..." rather than "it may be the case that..."</td>
+    </tr>
+    <tr>
+      <td><strong>5. AI Pattern Absence</strong><br><em>The anti-bias dimension</em></td>
+      <td>High</td>
+      <td>3+ AI tells present: banned vocabulary, rule-of-three, em dashes, copula avoidance, formulaic transitions, summary conclusion.</td>
+      <td>1-2 minor AI tells. No banned words, but some structural predictability.</td>
+      <td>Zero AI tells. Text could not be identified as AI-generated by any pattern-matching. Reads as fully human.</td>
+    </tr>
+    <tr>
+      <td><strong>6. Emotional Honesty</strong><br><em>Real feeling vs. performed feeling</em></td>
+      <td>Medium</td>
+      <td>Stock phrases: "truly transformative," "deeply meaningful." Emotion is declared, not earned.</td>
+      <td>Some genuine moments. Acknowledges complexity or difficulty at least once.</td>
+      <td>Names hard questions honestly. Admits where the Baha'i position is demanding. Vulnerability that feels real, not decorative.</td>
+    </tr>
+    <tr>
+      <td><strong>7. Discussion Readiness</strong><br><em>Works as a group tool</em></td>
+      <td>High</td>
+      <td>Too long to read aloud. No natural pause points. Questions lead to predetermined answers. Module does all the talking.</td>
+      <td>Reasonable length. Some good questions. Could work in a group with effort.</td>
+      <td>Perfect length for reading aloud with time for conversation. Questions genuinely open. At least one moment where the group will want to stop and talk.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 style="margin-top:1.5rem;">How to Use This Rubric as a Claude Judge</h3>
+
+<div class="prompt-block"><span class="comment"># Paste this into a fresh conversation with the draft text</span>
+
+You are an editor evaluating a Baha'i study module reading passage.
+Score it on 7 dimensions (1-5 scale). For each dimension:
+
+1. Quote the specific text evidence that supports your score
+2. Do NOT give credit for surface fluency. Smooth, polished text
+   that says nothing specific should score LOW on Specificity and Voice.
+3. For Dimension 5 (AI Pattern Absence), check against this list:
+   - Banned vocabulary: delve, tapestry, multifaceted, landscape,
+     journey, beacon, cornerstone, moreover, furthermore, indeed,
+     notably, it is worth noting, in essence, at its core
+   - Structural patterns: rule-of-three, copula avoidance ("serves as"
+     instead of "is"), em dashes, formulaic transitions, summary
+     conclusion that restates content
+   - Each pattern found = subtract 1 point
+
+<span class="highlight">CALIBRATION EXAMPLE — this should score LOW (1-2 on most dimensions):</span>
+
+"Prayer is a multifaceted spiritual practice that serves as a
+cornerstone of the Baha'i Faith. It is worth noting that Baha'u'llah
+emphasized the transformative power of prayer, which fosters a deeper
+connection with the Divine. Moreover, prayer serves as a means of
+spiritual development, enabling individuals to cultivate qualities
+such as patience, gratitude, and compassion."
+
+This text is fluent and correct but has zero specificity, no voice,
+uniform rhythm, copula avoidance, rule-of-three, banned vocabulary
+(multifaceted, cornerstone, moreover, fosters), and performed emotion.
+
+<span class="highlight">CALIBRATION EXAMPLE — this should score HIGH (4-5 on most dimensions):</span>
+
+"There is something in most people that reaches beyond the material.
+A pull toward gratitude, or a weight we want to lay down, or a sense
+that something larger is listening. Baha'u'llah describes this impulse
+simply: prayer is food for the soul. Not information for God. Not a
+transaction. Food."
+
+This text has specificity (food metaphor), voice (short declaratives,
+the "Not... Not... Food." rhythm), variation (6-word to 20-word
+sentences), courage (direct claim), and zero AI tells.
+
+Now score the following draft:
+
+[paste draft here]
+</div>
+
+<!-- ============================== -->
+<h2>6. Applying This to Your Existing Style Guide</h2>
+
+<p style="font-size:0.92rem; margin-bottom:1rem;">Your <code>style.md</code> is already good. Here is what to add based on this research:</p>
+
+<ol class="steps">
+  <li>
+    <strong>Expand the banned patterns list.</strong>
+    Add: copula avoidance ("serves as," "stands as," "represents" when you mean "is"), rule-of-three compulsion, formulaic transitions ("Additionally," "Consequently," "It is important to note"), summary conclusions that restate content, and uniform paragraph length.
+  </li>
+  <li>
+    <strong>Add a sentence rhythm requirement.</strong>
+    "No three consecutive sentences within 5 words of each other in length. Mix short declaratives (under 10 words) with longer flowing sentences (25+ words). Read aloud: if it sounds like a metronome, rewrite."
+  </li>
+  <li>
+    <strong>Add permission for imperfection.</strong>
+    "Sentence fragments are acceptable for emphasis. Sentences may begin with 'And' or 'But' when it serves rhythm. Not every paragraph needs to be the same length."
+  </li>
+  <li>
+    <strong>Create the Voice DNA document.</strong>
+    Build it from Module 08 v2 and from recordings of yourself explaining module topics aloud. Put it in <code>brief/voice.md</code>. Include 3-5 exemplar paragraphs with annotations explaining what makes them work.
+  </li>
+  <li>
+    <strong>Add the grading rubric.</strong>
+    Put the 7-dimension rubric in <code>brief/rubric.md</code> with the calibration examples. Use it as a gate before any draft advances past the editorial review phase.
+  </li>
+  <li>
+    <strong>Separate Claude's tasks.</strong>
+    Do not ask one prompt to research, draft, and polish. Use the interview phase (already in your SKILL.md) for research and direction, then a dedicated drafting prompt with Voice DNA, then a separate editing/grading pass in a fresh context.
+  </li>
+  <li>
+    <strong>Add a "source of difficulty" requirement.</strong>
+    Every module must contain at least one moment where the text names a hard question, a tension, or a counter-argument. "If the module does not make the reader slightly uncomfortable at least once, it is not being honest enough."
+  </li>
+</ol>
+
+<hr>
+
+<h2>7. Quick Reference: The Anti-AI Checklist</h2>
+
+<div class="grid-2">
+  <div class="card">
+    <h3>Before Submitting a Draft, Check:</h3>
+    <ul>
+      <li>Search for every word on the banned list. Zero tolerance.</li>
+      <li>Count consecutive sentences within 5 words of each other. Flag clusters.</li>
+      <li>Search for em dashes. Remove all.</li>
+      <li>Search for "serves as," "stands as," "represents." Replace with "is."</li>
+      <li>Count instances of rule-of-three. Keep only those that genuinely need three items.</li>
+      <li>Check the last paragraph. If it restates the opening, delete it.</li>
+      <li>Read the first sentence of every paragraph. If they all sound the same (topic sentence, topic sentence, topic sentence), rewrite half of them.</li>
+      <li>Read the whole thing aloud. Where do you stumble? Where does it bore you? Those are the problems.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>The 5-Second Test</h3>
+    <p style="margin-bottom:0.75rem;">Show a paragraph to someone without context. Ask:</p>
+    <ul>
+      <li>"Did a person or a computer write this?"</li>
+      <li>"Could you describe the writer's personality?"</li>
+      <li>"What is the single most specific thing in this paragraph?"</li>
+    </ul>
+    <p style="margin-top:0.75rem;">If they say "computer," cannot describe a personality, or cannot point to anything specific, the paragraph needs rewriting.</p>
+    <h3 style="margin-top:1.5rem;">The Attribution Test</h3>
+    <p>Research shows identical text is rated lower when people think AI wrote it. Your text must be good enough to survive being suspected. If a reader thinks "this might be AI" and keeps reading anyway because the content is too specific, too surprising, or too honest to dismiss, you have won.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="source-list">
+  <h3 style="margin-bottom:0.5rem;">Sources</h3>
+  Wikipedia: Signs of AI Writing |
+  Grammarly: Common AI Words |
+  Pangram Labs: Guide to Spotting AI Writing Patterns |
+  Sean Kernan: 13 Signs You Used ChatGPT |
+  Junia.ai: LLM Default Voice |
+  Substack: Claude Skills That Made AI Write Like Me |
+  GitHub: blader/humanizer (29 AI patterns) |
+  Anthropic: Claude 4 Prompting Best Practices |
+  Anthropic: Configuring and Using Styles |
+  arxiv: Everyone Prefers Human Writers, Including AI (556-participant study) |
+  Evidently AI: LLM-as-a-Judge Complete Guide |
+  Snorkel AI: The Science of Rubric Design |
+  Confident AI: LLM-as-a-Judge Guide |
+  arxiv: Evaluating Scoring Bias in LLM-as-a-Judge
+</div>
+
+</body>
+</html>

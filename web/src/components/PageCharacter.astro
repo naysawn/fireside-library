@@ -1,0 +1,55 @@
+---
+interface Props {
+  size?: 'nav' | 'inline' | 'hero';
+  inverted?: boolean;
+}
+
+const { size = 'nav', inverted = false } = Astro.props;
+
+const sizes = {
+  nav: { width: 26, height: 30 },
+  inline: { width: 44, height: 51 },
+  hero: { width: 84, height: 98 },
+};
+
+const { width, height } = sizes[size];
+
+// Unique gradient ids so multiple instances don't collide.
+const uid = Math.random().toString(36).slice(2, 8);
+---
+
+<svg width={width} height={height} viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  {!inverted && (
+    <defs>
+      <linearGradient id={`fo-${uid}`} x1="24" y1="5" x2="24" y2="51" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#ff7a2f"/>
+        <stop offset="0.55" stop-color="#e04e1a"/>
+        <stop offset="1" stop-color="#9a3410"/>
+      </linearGradient>
+      <linearGradient id={`fi-${uid}`} x1="23" y1="27" x2="23" y2="47" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#ffe45e"/>
+        <stop offset="0.6" stop-color="#ffb02e"/>
+        <stop offset="1" stop-color="#ff6a1a"/>
+      </linearGradient>
+    </defs>
+  )}
+
+  <!-- outer flame -->
+  <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z"
+        fill={inverted ? '#fff7ed' : `url(#fo-${uid})`}/>
+
+  <!-- inner lick -->
+  <path class="inner-lick" d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z"
+        fill={inverted ? '#e04e1a' : `url(#fi-${uid})`}/>
+</svg>
+
+<style>
+  @keyframes lickFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  .inner-lick {
+    animation: lickFlicker 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+</style>

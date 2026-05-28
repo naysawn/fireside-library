@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Baha'i Modules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #fafafa;
+    --bg: #ffffff;
+    --gray-50: #f7f7f8;
+    --gray-100: #ececee;
+    --gray-200: #d9d9dd;
+    --gray-300: #b5b5bc;
+    --gray-400: #8e8e98;
+    --gray-500: #6b6b76;
+    --gray-600: #4e4e57;
+    --gray-700: #3a3a42;
+    --gray-800: #27272d;
+    --gray-900: #18181b;
+    --accent: #7c3aed;
+    --accent-deep: #6d28d9;
+    --accent-dark: #5b21b6;
+    --accent-light: #a78bfa;
+    --accent-pale: #ede9fe;
+    --accent-hover: #6d28d9;
+    --radius: 10px;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--black);
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--white);
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- NAV ---- */
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(124, 58, 237, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.current {
+    color: #fff;
+  }
+
+  /* ---- PAGE HEADER ---- */
+
+  .page-header {
+    background: var(--accent);
+    padding: 120px 24px 56px;
+    color: #fff;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  .page-header p {
+    font-size: 1.15rem;
+    opacity: 0.88;
+    max-width: 520px;
+  }
+
+  /* ---- SECTIONS ---- */
+
+  .about-section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .about-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .about-section h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+    color: var(--black);
+  }
+
+  .about-section p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--gray-700);
+    max-width: 680px;
+    margin-bottom: 16px;
+  }
+
+  .about-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quotes */
+  .quote-block {
+    background: var(--accent-pale);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 24px 0;
+    max-width: 680px;
+  }
+
+  .quote-block p {
+    color: var(--accent-dark);
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .quote-block .attribution {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0;
+  }
+
+  /* Steps */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .step {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    margin-bottom: 14px;
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+
+  .step p {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* Pipeline */
+  .pipeline {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .pipeline-stage {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .pipeline-stage .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .pipeline-stage .desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+  }
+
+  .pipeline-arrow {
+    font-size: 1.2rem;
+    color: var(--gray-300);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* CTA section */
+  .cta-section {
+    background: var(--accent);
+    padding: 56px 0;
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+  }
+
+  .cta-section p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    max-width: 520px;
+    margin: 0 auto 28px;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--accent-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    margin: 0 6px;
+  }
+
+  .btn-white:hover {
+    background: var(--accent-pale);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-white {
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    border: 2px solid rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+    margin: 0 6px;
+  }
+
+  .btn-outline-white:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ---- FOOTER ---- */
+
+  footer {
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- RESPONSIVE ---- */
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 100px 20px 44px;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .pipeline {
+      flex-direction: column;
+    }
+
+    .pipeline-arrow {
+      transform: rotate(90deg);
+    }
+
+    .pipeline-stage {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="v2-homepage.html" class="nav-brand">Baha'i Modules</a>
+    <ul class="nav-links">
+      <li><a href="v2-homepage.html#modules">Modules</a></li>
+      <li><a href="v2-about.html" class="current">About</a></li>
+      <li><a href="https://github.com" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+  <div class="wrap">
+    <h1>About this project</h1>
+    <p>A small group of Baha'is in Boston built these modules. Here is why, and how you can help.</p>
+  </div>
+</section>
+
+<!-- WHY TEACH -->
+<section class="about-section">
+  <div class="wrap">
+    <h2>Why teach?</h2>
+    <p>Teaching the Faith is not one obligation among many. Baha'u'llah calls it "the most meritorious of all deeds." Shoghi Effendi urged the American believers to make it "the dominating passion of our life." The Universal House of Justice describes it as "the sacred act of assisting a soul to recognize and obey his Lord."</p>
+
+    <div class="quote-block">
+      <p>"Teach ye the Cause of God, O people of Baha, for God hath prescribed unto every one the duty of proclaiming His Message, and regardeth it as the most meritorious of all deeds."</p>
+      <p class="attribution">Baha'u'llah</p>
+    </div>
+
+    <p>The world needs the Baha'i teachings. The Universal House of Justice puts it plainly: the body of humanity's material civilization "calls aloud, yearns more desperately with each passing day, for its Soul." Only those who have themselves awakened to the Revelation of God can bring this help to others.</p>
+  </div>
+</section>
+
+<!-- WHY WRITTEN MATERIALS -->
+<section class="about-section">
+  <div class="wrap">
+    <h2>Why written materials?</h2>
+    <p>Having something to read together changes a conversation. It keeps the focus on subjects of depth and gives everyone an anchor point. This is not a new idea.</p>
+    <p>In Colombia, during the growth that eventually led to the Ruhi materials, seekers studied from a booklet called <em>Conozcamos La Fe Baha'i</em>. The most rapid rise of enrollments in the United States happened when communities used the "Red Teaching Book" as material while travel teachers answered questions.</p>
+    <p>Written materials work because they give people something concrete to respond to. The text matters, but what makes these modules effective is that they get people talking and sharing. In practice, they have sparked three-hour discussions on deep questions of meaning, purpose, and faith.</p>
+  </div>
+</section>
+
+<!-- HOW THEY WORK -->
+<section class="about-section">
+  <div class="wrap">
+    <h2>How they work</h2>
+    <p>Each module covers one subject in a single session of two to three hours. The format is simple.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Pick a module</h3>
+        <p>Choose a topic based on what your group or seeker is interested in. Each module is self-contained.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Read together</h3>
+        <p>Go through the two sections as a group. The text includes readings from the Baha'i writings alongside explanatory material.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Discuss</h3>
+        <p>Each section has reflection questions that draw people into conversation. This is where the real learning happens.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Follow up</h3>
+        <p>Some groups continue with another module. Others move to Ruhi Book 1. The modules are flexible enough to fit your situation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW THEY'RE MADE -->
+<section class="about-section">
+  <div class="wrap">
+    <h2>How they are made</h2>
+    <p>Every module goes through a research and testing process before it reaches version 1.</p>
+
+    <div class="pipeline">
+      <div class="pipeline-stage">
+        <div class="label">Research</div>
+        <div class="desc">Gather source texts and structure the topic</div>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-stage">
+        <div class="label">Draft</div>
+        <div class="desc">Write the module and discussion questions</div>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-stage">
+        <div class="label">Review</div>
+        <div class="desc">Edit for accuracy, tone, and flow</div>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-stage">
+        <div class="label">Test</div>
+        <div class="desc">Use it in real sessions and collect feedback</div>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-stage">
+        <div class="label">Publish</div>
+        <div class="desc">Release as v1 and keep improving</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED (CTA) -->
+<section class="cta-section">
+  <div class="wrap">
+    <h2>Get involved</h2>
+    <p>We need communities to test these modules, give feedback, and help us learn what works. Writers, editors, and facilitators are all welcome.</p>
+    <a href="https://github.com" target="_blank" class="btn-white">View on GitHub</a>
+    <a href="v2-homepage.html#modules" class="btn-outline-white">Browse modules</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>Baha'i Modules is an open source project. <a href="https://github.com" target="_blank">Contribute on GitHub</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>

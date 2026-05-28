@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baha'i Modules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --gray-50: #f8f8f8;
+    --gray-100: #f2f2f2;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    --accent: #1d4ed8;
+    --accent-light: #3b82f6;
+    --accent-subtle: rgba(29, 78, 216, 0.06);
+    --accent-border: rgba(29, 78, 216, 0.15);
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #fff;
+    color: var(--black);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ── Layout ── */
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
+
+  .container--narrow {
+    max-width: 720px;
+  }
+
+  /* ── Navigation ── */
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+
+  .nav-brand {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-500);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--black);
+  }
+
+  /* ── Hero ── */
+
+  .hero {
+    padding-top: clamp(140px, 20vh, 220px);
+    padding-bottom: clamp(60px, 10vh, 120px);
+  }
+
+  .hero .container {
+    max-width: 900px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+
+  .hero-body {
+    max-width: 600px;
+  }
+
+  .hero-body p {
+    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--gray-600);
+    letter-spacing: -0.005em;
+  }
+
+  .hero-body p + p {
+    margin-top: 16px;
+  }
+
+  .hero-cta {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: #fff;
+    background: var(--black);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--gray-800);
+  }
+
+  .btn-primary svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover svg {
+    transform: translateY(2px);
+  }
+
+  .hero-meta {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-400);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Divider ── */
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+    margin: 0;
+  }
+
+  /* ── How It Works ── */
+
+  .how-section {
+    padding: clamp(64px, 10vh, 100px) 0;
+  }
+
+  .how-section .section-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 48px;
+  }
+
+  .how-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .how-lead {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: var(--black);
+  }
+
+  .how-lead strong {
+    font-weight: 600;
+  }
+
+  .how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .how-step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  .how-step-num {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+  }
+
+  .how-step-title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .how-step-desc {
+    font-size: 0.8125rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--gray-500);
+    letter-spacing: 0.005em;
+  }
+
+  @media (max-width: 768px) {
+    .how-columns {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* ── Callout Box ── */
+
+  .callout-section {
+    padding: clamp(48px, 8vh, 80px) 0;
+  }
+
+  .callout {
+    border: 1px solid var(--accent-border);
+    background: var(--accent-subtle);
+    border-radius: 12px;
+    padding: clamp(32px, 5vw, 48px) clamp(28px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .callout-text h3 {
+    font-size: clamp(1rem, 2vw, 1.1875rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+
+  .callout-text p {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--gray-600);
+    max-width: 520px;
+  }
+
+  .callout-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 10px 24px;
+    border: 1px solid var(--accent-border);
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    background: #fff;
+  }
+
+  .callout-link:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .callout-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .callout-link:hover svg {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 640px) {
+    .callout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  /* ── Modules Section ── */
+
+  .modules-section {
+    padding: clamp(64px, 10vh, 100px) 0 clamp(80px, 14vh, 140px);
+  }
+
+  .modules-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .modules-header .section-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .module-count {
+    font-weight: 400;
+    color: var(--gray-300);
+    margin-left: 8px;
+    font-size: 0.625rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Filters ── */
+
+  .filters {
+    display: flex;
+    gap: 4px;
+  }
+
+  .filter-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--gray-400);
+    background: none;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .filter-btn:hover {
+    color: var(--gray-700);
+  }
+
+  .filter-btn.active {
+    background: var(--black);
+    color: #fff;
+  }
+
+  /* ── Module List ── */
+
+  .module-list {
+    list-style: none;
+  }
+
+  .module-item {
+    border-top: 1px solid var(--gray-200);
+    transition: opacity 0.3s ease;
+  }
+
+  .module-item:last-child {
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .module-item.hidden {
+    display: none;
+  }
+
+  .module-link {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 0;
+    padding: 20px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.15s ease;
+    cursor: pointer;
+  }
+
+  .module-link:hover {
+    opacity: 0.55;
+  }
+
+  .module-num {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--gray-400);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  .module-title {
+    font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--black);
+  }
+
+  .module-phase {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .module-phase.discovery {
+    color: var(--accent);
+    background: var(--accent-subtle);
+  }
+
+  .module-phase.investigation {
+    color: var(--gray-600);
+    background: var(--gray-100);
+  }
+
+  .module-phase.consolidation {
+    color: var(--gray-500);
+    background: transparent;
+    border: 1px solid var(--gray-200);
+  }
+
+  /* ── Footer ── */
+
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-left p {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--gray-400);
+    line-height: 1.7;
+  }
+
+  .footer-left p:first-child {
+    font-weight: 500;
+    color: var(--gray-600);
+    margin-bottom: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--black);
+  }
+
+  /* ── Responsive ── */
+
+  @media (max-width: 600px) {
+    .module-link {
+      grid-template-columns: 36px 1fr;
+      gap: 0;
+      padding: 16px 0;
+    }
+
+    .module-phase {
+      grid-column: 2;
+      justify-self: start;
+      margin-top: 6px;
+      font-size: 0.625rem;
+    }
+
+    .nav-links {
+      gap: 16px;
+    }
+
+    .hero h1 {
+      letter-spacing: -0.03em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-link:last-child {
+      display: none;
+    }
+  }
+
+  /* ── Animations ── */
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .fade-in-d1 { animation-delay: 0.05s; }
+  .fade-in-d2 { animation-delay: 0.15s; }
+  .fade-in-d3 { animation-delay: 0.25s; }
+  .fade-in-d4 { animation-delay: 0.4s; }
+  .fade-in-d5 { animation-delay: 0.55s; }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scroll-triggered animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">Baha'i Modules</a>
+    <div class="nav-links">
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="#modules" class="nav-link">Browse modules</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1 class="fade-in">Three-hour conversations about God, purpose, and what it means to be human.</h1>
+    <div class="hero-body fade-in fade-in-d2">
+      <p>Deep conversations about the Baha'i Faith are hard to sustain. Even when the desire is there, most groups lose focus within the first hour. The discussion drifts, energy fades, the moment passes.</p>
+      <p>These modules change that. They give your group something to read together &mdash; a shared anchor that keeps the conversation grounded in subjects of real depth. Not lectures. Not textbooks. Materials designed for people to explore the Faith together.</p>
+    </div>
+    <div class="hero-cta fade-in fade-in-d3">
+      <a href="#modules" class="btn-primary">
+        Browse modules
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/></svg>
+      </a>
+      <span class="hero-meta">12 modules across 3 phases</span>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- How It Works -->
+<section class="how-section" id="how">
+  <div class="container">
+    <p class="section-label reveal">How it works</p>
+    <div class="how-columns">
+      <div class="how-lead reveal">
+        <p>We don't learn by just reading. We need to <strong>explore together</strong> &mdash; to ask questions, hear how others understand the teachings, and sit with ideas that challenge us.</p>
+        <p style="margin-top: 16px;">Each module is designed for a single session of two to three hours, combining readings with discussion prompts that draw participants into genuine conversation.</p>
+      </div>
+      <div class="how-steps reveal">
+        <div class="how-step">
+          <span class="how-step-num">01</span>
+          <div>
+            <p class="how-step-title">Pick a module</p>
+            <p class="how-step-desc">Choose a topic that fits your group. Each module stands on its own &mdash; no prerequisites, no sequence required.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="how-step-num">02</span>
+          <div>
+            <p class="how-step-title">Read together</p>
+            <p class="how-step-desc">The text is meant to be read aloud in a group. Sections alternate between readings and guided discussion.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="how-step-num">03</span>
+          <div>
+            <p class="how-step-title">Let the conversation happen</p>
+            <p class="how-step-desc">The prompts do the work. Groups regularly go three hours without losing focus &mdash; on questions of meaning, purpose, and faith.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Callout: Open Source / Boston -->
+<section class="callout-section">
+  <div class="container">
+    <div class="callout reveal">
+      <div class="callout-text">
+        <h3>An open source experiment from Boston.</h3>
+        <p>This project started in a living room. A small group of Baha'is in Boston wanted better materials for teaching the Faith, so we started writing them. It is still an experiment &mdash; we are doing our best, and we need other communities to try these and tell us what works.</p>
+      </div>
+      <a href="https://github.com" class="callout-link">
+        View on GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Modules -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="modules-header reveal">
+      <p class="section-label">Modules <span class="module-count">12</span></p>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="discovery">Discovery</button>
+        <button class="filter-btn" data-filter="investigation">Investigation</button>
+        <button class="filter-btn" data-filter="consolidation">Consolidation</button>
+      </div>
+    </div>
+
+    <ul class="module-list reveal">
+      <li class="module-item" data-phase="discovery">
+        <a href="#" class="module-link">
+          <span class="module-num">01</span>
+          <span class="module-title">Overview of the Baha'i Faith</span>
+          <span class="module-phase discovery">Discovery</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="discovery">
+        <a href="#" class="module-link">
+          <span class="module-num">02</span>
+          <span class="module-title">Baha'i Spiritual Principles</span>
+          <span class="module-phase discovery">Discovery</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="discovery">
+        <a href="#" class="module-link">
+          <span class="module-num">03</span>
+          <span class="module-title">Baha'i Social Teachings</span>
+          <span class="module-phase discovery">Discovery</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="investigation">
+        <a href="#" class="module-link">
+          <span class="module-num">04</span>
+          <span class="module-title">Developing a Relationship with God</span>
+          <span class="module-phase investigation">Investigation</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="discovery">
+        <a href="#" class="module-link">
+          <span class="module-num">05</span>
+          <span class="module-title">The Bab and Baha'u'llah</span>
+          <span class="module-phase discovery">Discovery</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="investigation">
+        <a href="#" class="module-link">
+          <span class="module-num">06</span>
+          <span class="module-title">The Centers of the Covenant</span>
+          <span class="module-phase investigation">Investigation</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="investigation">
+        <a href="#" class="module-link">
+          <span class="module-num">07</span>
+          <span class="module-title">Making Sense of a Turbulent World</span>
+          <span class="module-phase investigation">Investigation</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="discovery">
+        <a href="#" class="module-link">
+          <span class="module-num">08</span>
+          <span class="module-title">Prayer</span>
+          <span class="module-phase discovery">Discovery</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="investigation">
+        <a href="#" class="module-link">
+          <span class="module-num">09</span>
+          <span class="module-title">The Baha'i Faith and Christianity</span>
+          <span class="module-phase investigation">Investigation</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="consolidation">
+        <a href="#" class="module-link">
+          <span class="module-num">10</span>
+          <span class="module-title">The Baha'i Administrative Order</span>
+          <span class="module-phase consolidation">Consolidation</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="investigation">
+        <a href="#" class="module-link">
+          <span class="module-num">11</span>
+          <span class="module-title">Suffering and Justice</span>
+          <span class="module-phase investigation">Investigation</span>
+        </a>
+      </li>
+      <li class="module-item" data-phase="consolidation">
+        <a href="#" class="module-link">
+          <span class="module-num">12</span>
+          <span class="module-title">Non-Involvement in Partisan Politics</span>
+          <span class="module-phase consolidation">Consolidation</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>Baha'i Modules</p>
+        <p>An open source project from the Boston Baha'i community.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">GitHub</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Phase filtering ──
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const moduleItems = document.querySelectorAll('.module-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      moduleItems.forEach(item => {
+        if (filter === 'all' || item.dataset.phase === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Update count
+      const visible = document.querySelectorAll('.module-item:not(.hidden)').length;
+      document.querySelector('.module-count').textContent = visible;
+    });
+  });
+
+  // ── Smooth scroll for nav links ──
+  document.querySelectorAll('.nav-link, .btn-primary[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // ── Scroll-triggered reveal ──
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

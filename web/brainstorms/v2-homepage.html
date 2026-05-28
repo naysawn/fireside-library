@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baha'i Modules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #fafafa;
+    --bg: #ffffff;
+    --gray-50: #f7f7f8;
+    --gray-100: #ececee;
+    --gray-200: #d9d9dd;
+    --gray-300: #b5b5bc;
+    --gray-400: #8e8e98;
+    --gray-500: #6b6b76;
+    --gray-600: #4e4e57;
+    --gray-700: #3a3a42;
+    --gray-800: #27272d;
+    --gray-900: #18181b;
+    --accent: #7c3aed;
+    --accent-deep: #6d28d9;
+    --accent-dark: #5b21b6;
+    --accent-light: #a78bfa;
+    --accent-pale: #ede9fe;
+    --accent-hover: #6d28d9;
+    --accent-text: #ffffff;
+    --radius: 10px;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--black);
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--white);
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- NAV ---- */
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(124, 58, 237, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+  }
+
+  /* ---- HERO ---- */
+
+  .hero {
+    background: var(--accent);
+    padding: 140px 24px 80px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 8vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.0;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    max-width: 540px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .hero .cta-row {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--accent-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .btn-white:hover {
+    background: var(--accent-pale);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    border: 2px solid rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .btn-outline:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ---- WHY SECTION ---- */
+
+  .why {
+    padding: 80px 0;
+    background: var(--bg);
+  }
+
+  .why-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .why-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .why-header p {
+    font-size: 1.05rem;
+    color: var(--gray-500);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .why-card {
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    border: 1px solid var(--gray-100);
+  }
+
+  .why-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 18px;
+  }
+
+  .why-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    color: var(--black);
+  }
+
+  .why-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--gray-600);
+  }
+
+  /* ---- OPEN SOURCE ---- */
+
+  .oss {
+    background: var(--gray-900);
+    color: #fff;
+    padding: 48px 0;
+  }
+
+  .oss-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .oss-text h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .oss-text p {
+    color: var(--gray-400);
+    font-size: 0.95rem;
+    max-width: 480px;
+  }
+
+  .btn-accent {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-accent:hover {
+    background: var(--accent-hover);
+  }
+
+  /* ---- MODULES ---- */
+
+  .modules {
+    padding: 80px 0 96px;
+  }
+
+  .modules-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .modules-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    color: var(--gray-600);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover {
+    background: var(--gray-200);
+    color: var(--black);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .module-card {
+    background: var(--bg);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+
+  .module-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 2px 16px rgba(124, 58, 237, 0.1);
+  }
+
+  .module-card .num {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .module-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    color: var(--black);
+  }
+
+  .module-card .meta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .phase-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .phase-discovery {
+    background: var(--accent-pale);
+    color: var(--accent-deep);
+  }
+
+  .phase-investigation {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .phase-consolidation {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  /* ---- FOOTER ---- */
+
+  footer {
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- RESPONSIVE ---- */
+
+  @media (max-width: 768px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .oss-inner {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
+    .oss-text p {
+      max-width: 100%;
+    }
+
+    .modules-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .module-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      padding: 120px 20px 64px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="v2-homepage.html" class="nav-brand">Baha'i Modules</a>
+    <ul class="nav-links">
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="v2-about.html">About</a></li>
+      <li><a href="https://github.com" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Baha'i Modules</h1>
+    <p>Written materials for exploring the Faith together. Read, discuss, go deeper.</p>
+    <div class="cta-row">
+      <a href="#modules" class="btn-white">Browse modules</a>
+      <a href="v2-about.html" class="btn-outline">How they work</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap">
+    <div class="why-header">
+      <h2>Why these exist</h2>
+      <p>We kept running into the same problem. Here is how we solved it.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">1</div>
+        <h3>Deep conversations are hard to sustain</h3>
+        <p>Even with the best intentions, discussions about subjects that matter tend to lose focus or stay on the surface. The desire is there. The structure is not.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">2</div>
+        <h3>Written material gives conversations an anchor</h3>
+        <p>Having something to read together changes everything. The text keeps the discussion grounded while questions open up new ways of understanding.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">3</div>
+        <h3>We learn by exploring together</h3>
+        <p>Nobody processes the Faith just by reading a text. We need to ask questions, hear how others understand it, sit with ideas that challenge us. These modules create that space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN SOURCE -->
+<section class="oss">
+  <div class="wrap">
+    <div class="oss-inner">
+      <div class="oss-text">
+        <h2>An experiment from Boston. Open source.</h2>
+        <p>A small group of Baha'is built these and tested them in real sessions. They are free, open source, and far from finished. We need other communities to try them and tell us what works.</p>
+      </div>
+      <a href="https://github.com" target="_blank" class="btn-accent">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules" id="modules">
+  <div class="wrap">
+    <div class="modules-header">
+      <h2>All modules</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="discovery">Discovery</button>
+        <button class="filter-btn" data-filter="investigation">Investigation</button>
+        <button class="filter-btn" data-filter="consolidation">Consolidation</button>
+      </div>
+    </div>
+
+    <div class="module-grid">
+
+      <div class="module-card" data-phase="discovery">
+        <span class="num">MODULE 01</span>
+        <h3>Overview of the Baha'i Faith</h3>
+        <div class="meta"><span class="phase-tag phase-discovery">Discovery</span></div>
+      </div>
+
+      <div class="module-card" data-phase="discovery">
+        <span class="num">MODULE 02</span>
+        <h3>Baha'i Spiritual Principles</h3>
+        <div class="meta"><span class="phase-tag phase-discovery">Discovery</span></div>
+      </div>
+
+      <div class="module-card" data-phase="discovery">
+        <span class="num">MODULE 03</span>
+        <h3>Baha'i Social Teachings</h3>
+        <div class="meta"><span class="phase-tag phase-discovery">Discovery</span></div>
+      </div>
+
+      <div class="module-card" data-phase="investigation">
+        <span class="num">MODULE 04</span>
+        <h3>Developing a Relationship with God</h3>
+        <div class="meta"><span class="phase-tag phase-investigation">Investigation</span></div>
+      </div>
+
+      <div class="module-card" data-phase="discovery">
+        <span class="num">MODULE 05</span>
+        <h3>The Bab and Baha'u'llah</h3>
+        <div class="meta"><span class="phase-tag phase-discovery">Discovery</span></div>
+      </div>
+
+      <div class="module-card" data-phase="investigation">
+        <span class="num">MODULE 06</span>
+        <h3>The Centers of the Covenant</h3>
+        <div class="meta"><span class="phase-tag phase-investigation">Investigation</span></div>
+      </div>
+
+      <div class="module-card" data-phase="investigation">
+        <span class="num">MODULE 07</span>
+        <h3>Making Sense of a Turbulent World</h3>
+        <div class="meta"><span class="phase-tag phase-investigation">Investigation</span></div>
+      </div>
+
+      <div class="module-card" data-phase="discovery">
+        <span class="num">MODULE 08</span>
+        <h3>Prayer</h3>
+        <div class="meta"><span class="phase-tag phase-discovery">Discovery</span></div>
+      </div>
+
+      <div class="module-card" data-phase="investigation">
+        <span class="num">MODULE 09</span>
+        <h3>The Baha'i Faith and Christianity</h3>
+        <div class="meta"><span class="phase-tag phase-investigation">Investigation</span></div>
+      </div>
+
+      <div class="module-card" data-phase="consolidation">
+        <span class="num">MODULE 10</span>
+        <h3>The Baha'i Administrative Order</h3>
+        <div class="meta"><span class="phase-tag phase-consolidation">Consolidation</span></div>
+      </div>
+
+      <div class="module-card" data-phase="investigation">
+        <span class="num">MODULE 11</span>
+        <h3>Suffering and Justice</h3>
+        <div class="meta"><span class="phase-tag phase-investigation">Investigation</span></div>
+      </div>
+
+      <div class="module-card" data-phase="consolidation">
+        <span class="num">MODULE 12</span>
+        <h3>Non-Involvement in Partisan Politics</h3>
+        <div class="meta"><span class="phase-tag phase-consolidation">Consolidation</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>Baha'i Modules is an open source project. <a href="https://github.com" target="_blank">Contribute on GitHub</a>.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Phase filtering
+  var buttons = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.module-card');
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.getAttribute('data-filter');
+      cards.forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-phase') === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

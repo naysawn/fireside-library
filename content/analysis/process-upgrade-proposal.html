@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementation Plan — Module Project Restructure</title>
+<style>
+  :root {
+    --bg: #fafaf9; --surface: #fff; --border: #e7e5e4; --text: #1c1917;
+    --muted: #78716c; --red: #dc2626; --amber: #d97706; --green: #16a34a;
+    --blue: #2563eb; --purple: #7c3aed;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.7; padding:2rem; max-width:1100px; margin:0 auto; }
+  h1 { font-size:1.75rem; font-weight:700; margin-bottom:0.25rem; }
+  h2 { font-size:1.25rem; font-weight:600; margin:2.5rem 0 1rem; padding-bottom:0.5rem; border-bottom:2px solid var(--border); }
+  h3 { font-size:1rem; font-weight:600; margin-bottom:0.5rem; }
+  .sub { color:var(--muted); font-size:0.95rem; margin-bottom:2rem; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1rem; }
+  .card p, .card li { font-size:0.9rem; }
+  .card ul, .card ol { margin:0.5rem 0 0 1.25rem; }
+  .card li { margin-bottom:0.3rem; }
+
+  .phase { margin-bottom:2.5rem; }
+  .phase-header {
+    display:flex; align-items:center; gap:1rem; margin-bottom:1rem;
+    padding:1rem 1.25rem; border-radius:8px; background:var(--surface); border:1px solid var(--border);
+  }
+  .phase-num {
+    width:2.5rem; height:2.5rem; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:1.1rem; color:white; flex-shrink:0;
+  }
+  .phase-title { font-size:1.1rem; font-weight:600; }
+  .phase-desc { font-size:0.85rem; color:var(--muted); }
+
+  .task {
+    background:var(--surface); border:1px solid var(--border); border-radius:8px;
+    padding:1rem 1.25rem; margin-bottom:0.75rem; margin-left:1.5rem;
+    position:relative;
+  }
+  .task::before {
+    content:''; position:absolute; left:-1.5rem; top:50%; width:1.5rem; height:1px; background:var(--border);
+  }
+  .task h4 { font-size:0.92rem; font-weight:600; margin-bottom:0.25rem; }
+  .task p { font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem; }
+  .task .detail { font-size:0.82rem; line-height:1.6; }
+  .task .detail code { background:#f5f5f4; padding:0.1rem 0.35rem; border-radius:3px; font-size:0.78rem; }
+
+  .tag {
+    display:inline-block; font-size:0.68rem; font-weight:600; padding:0.15rem 0.5rem;
+    border-radius:999px; text-transform:uppercase; letter-spacing:0.03em; margin-right:0.35rem;
+  }
+  .tag.move { background:#dbeafe; color:#1e40af; }
+  .tag.create { background:#dcfce7; color:#166534; }
+  .tag.update { background:#fef3c7; color:#92400e; }
+  .tag.install { background:#ede9fe; color:#6d28d9; }
+  .tag.generate { background:#fce7f3; color:#9d174d; }
+
+  .tree { font-family:'SF Mono','Fira Code',monospace; font-size:0.8rem; line-height:1.8; background:#1c1917; color:#fafaf9; padding:1.25rem; border-radius:8px; margin:1rem 0; white-space:pre; overflow-x:auto; }
+  .tree .new { color:#86efac; }
+  .tree .moved { color:#93c5fd; }
+  .tree .changed { color:#fde68a; }
+  .tree .dim { color:#78716c; }
+
+  .deps { font-size:0.82rem; color:var(--muted); margin-top:0.5rem; }
+  .deps strong { color:var(--text); }
+
+  .insight { background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:1.25rem; margin:1.5rem 0; font-size:0.9rem; }
+  .insight strong { color:var(--blue); }
+
+  hr { border:none; border-top:2px solid var(--border); margin:2.5rem 0; }
+  .source { font-size:0.8rem; color:var(--muted); }
+
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; margin:1rem 0; }
+  th, td { padding:0.5rem 0.75rem; text-align:left; border:1px solid var(--border); vertical-align:top; }
+  th { background:#f5f5f4; font-weight:600; font-size:0.8rem; }
+</style>
+</head>
+<body>
+
+<h1>Implementation Plan</h1>
+<p class="sub">Sequential steps to restructure the module project. Each phase can be completed in one session and builds on the previous one. April 2026.</p>
+
+<!-- ============================== -->
+<h2>Target Structure</h2>
+
+<div class="tree">modules/
+├── CLAUDE.md                              <span class="changed">← update routing</span>
+├── TODO.md                                <span class="new">← NEW: shared tracking</span>
+├── .claude/
+│   ├── settings.json                      <span class="dim">(done)</span>
+│   └── skills/
+│       ├── project-kickoff/               <span class="moved">← MOVE from content/.claude/skills/</span>
+│       └── humanizer/                     <span class="new">← NEW: install + configure</span>
+│
+├── content/
+│   ├── CLAUDE.md                          <span class="changed">← update routing + rules</span>
+│   ├── .claude/skills/
+│   │   ├── bahai-module/                  <span class="changed">← update (voice, phase, anti-patterns)</span>
+│   │   └── grade-module/                  <span class="new">← NEW: rubric grading skill</span>
+│   ├── brief/
+│   │   ├── audience.md                    <span class="dim">(done — personas added)</span>
+│   │   ├── style.md                       <span class="changed">← update (expanded anti-patterns)</span>
+│   │   ├── process.md                     <span class="changed">← update (quality gates)</span>
+│   │   ├── voice.md                       <span class="new">← NEW: Voice DNA document</span>
+│   │   ├── rubric.md                      <span class="new">← NEW: 7-dimension grading rubric</span>
+│   │   └── samples/
+│   │       └── 08-prayer-v2.md            <span class="new">← NEW: benchmark module</span>
+│   ├── analysis/                          <span class="moved">← RENAME from research/</span>
+│   │   ├── critical-review.html
+│   │   ├── writing-best-practices.html
+│   │   └── process-upgrade-proposal.html
+│   └── modules/                           <span class="new">← NEW directory</span>
+│       ├── 01-overview-of-the-bahai-faith/
+│       │   ├── metadata.yaml
+│       │   ├── report.html                <span class="new">← NEW: generated grading report</span>
+│       │   ├── drafts/
+│       │   └── research/                  <span class="dim">(module source material)</span>
+│       ├── 02-bahai-spiritual-principles/
+│       ├── ...
+│       └── 12-non-involvement-in-partisan-politics/
+│
+└── web/                                   <span class="dim">(unchanged)</span></div>
+
+<!-- ============================== -->
+<h2>Phase 1: Move Files</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:var(--blue);">1</div>
+    <div>
+      <div class="phase-title">Restructure the folder layout</div>
+      <div class="phase-desc">No content changes. Just moving things to their right homes. Everything stays in git history.</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag create">create</span> content/modules/ directory</h4>
+    <p>New home for all numbered module folders.</p>
+    <div class="detail">
+      <code>mkdir content/modules</code>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag move">move</span> All 12 module folders into content/modules/</h4>
+    <p>Move <code>content/01-overview...</code> through <code>content/12-non-involvement...</code> into <code>content/modules/</code>.</p>
+    <div class="detail">
+      <code>git mv content/01-* content/02-* ... content/12-* content/modules/</code><br>
+      Also move <code>content/metadata.yaml</code> (the template file) into <code>content/modules/</code>.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag move">move</span> Rename content/research/ to content/analysis/</h4>
+    <p>Avoids confusion with per-module <code>research/</code> folders (source material).</p>
+    <div class="detail">
+      <code>git mv content/research content/analysis</code><br>
+      Move <code>app-plan.md</code> and <code>nextjs-vs-traditional-architecture.png</code> to <code>web/research/</code> (they're about the web app).
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag move">move</span> project-kickoff skill to repo root</h4>
+    <p>It's generic (not content-specific). Should be available from any context in the monorepo.</p>
+    <div class="detail">
+      <code>mkdir -p .claude/skills</code><br>
+      <code>git mv content/.claude/skills/project-kickoff .claude/skills/project-kickoff</code>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> Root CLAUDE.md routing</h4>
+    <p>Update paths to reflect new structure.</p>
+    <div class="detail">
+      Update <code>content/</code> description to mention that modules live in <code>content/modules/</code>.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> content/CLAUDE.md routing</h4>
+    <p>Update all paths: module folders now under <code>modules/</code>, research is now <code>analysis/</code>.</p>
+    <div class="detail">
+      Update context routing table. Add routing entry for <code>analysis/</code> folder. Update the rule about module folders to reference <code>modules/</code> subdirectory.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> bahai-module SKILL.md references</h4>
+    <p>Any hardcoded paths to <code>brief/</code> or example files need to be updated for the new depth.</p>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag create">create</span> TODO.md at repo root</h4>
+    <p>Shared tracking file visible from both content and web contexts. Tracks current iteration work across both areas.</p>
+    <div class="detail">
+      Seed with the remaining phases of this implementation plan, plus any open module work. Replaces <code>content/TODO.md</code>.
+    </div>
+  </div>
+
+  <div class="deps"><strong>Commit:</strong> "Restructure content folder: modules/, analysis/, repo-level skills and TODO"</div>
+</div>
+
+<!-- ============================== -->
+<h2>Phase 2: Brief Files</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:var(--purple);">2</div>
+    <div>
+      <div class="phase-title">Create and update the brief documents</div>
+      <div class="phase-desc">The reference materials that all skills and grading depend on. Must be done before new skills can work.</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag create">create</span> brief/voice.md — Voice DNA document</h4>
+    <p>The target voice for all module writing. Built from Module 08 v2.</p>
+    <div class="detail">
+      Option A: Install the <code>voiceprint</code> skill (<code>jamesckemp/claude-plugins</code>), run it with 5 excerpts from Module 08 v2 and your own writing, edit the output.<br><br>
+      Option B: Write manually. Include:
+      <ul>
+        <li>3-5 exemplar paragraphs with annotations explaining what makes them work</li>
+        <li>Sentence rhythm patterns (short declarative then expansion)</li>
+        <li>How to introduce quotes (context → quote → meaning for reader)</li>
+        <li>Analogy style (nature, concrete, 1-2 sentences, no over-explaining)</li>
+        <li>Paragraph opening patterns (quiet observations, not transitions)</li>
+        <li>How to handle difficulty (name the tension directly, sit with it)</li>
+        <li>Natural vocabulary vs. avoided vocabulary</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag create">create</span> brief/rubric.md — 7-dimension grading rubric</h4>
+    <p>Scoring system used by the grade-module skill and at quality gates.</p>
+    <div class="detail">
+      Dimensions: Specificity, Voice, Rhythm Variation, Structural Courage, AI Pattern Absence, Emotional Honesty, Discussion Readiness. Each scored 1-5.<br><br>
+      Must include:
+      <ul>
+        <li>1/3/5 calibration descriptions for each dimension</li>
+        <li>One LOW calibration example (polished-but-empty AI text)</li>
+        <li>One HIGH calibration example (from Module 08 v2)</li>
+        <li>Phase-adjusted expectations table (discovery vs investigation vs consolidation)</li>
+        <li>The complete judge prompt (for use in a fresh Claude context)</li>
+        <li>Gate thresholds: 28/35 for Phase 2.5, 32/35 for Phase 4.5</li>
+      </ul>
+      Source: <a href="writing-best-practices.html">writing-best-practices.html</a> Section 5.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag create">create</span> brief/samples/08-prayer-v2.md — Benchmark module</h4>
+    <p>Copy Module 08 v2 into samples. This is the reference every future draft is measured against.</p>
+    <div class="detail">
+      <code>cp content/modules/08-prayer/drafts/v2.md content/brief/samples/08-prayer-v2.md</code><br>
+      Add a header comment explaining why this is the benchmark.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> brief/style.md — Expanded anti-patterns</h4>
+    <p>Add the structural tells, rhythm requirements, and permitted imperfections from the writing research.</p>
+    <div class="detail">
+      Add sections:
+      <ul>
+        <li><strong>Structural Tells:</strong> copula avoidance, rule-of-three, formulaic transitions, summary conclusions, uniform paragraph length</li>
+        <li><strong>Rhythm Requirements:</strong> no 3 consecutive sentences within 5 words of each other</li>
+        <li><strong>Permitted Imperfections:</strong> fragments OK, "And"/"But" sentence starters OK, varied paragraph lengths OK</li>
+        <li><strong>Expanded banned words:</strong> the full list from writing-best-practices.html</li>
+      </ul>
+      Source: <a href="process-upgrade-proposal.html">process-upgrade-proposal.html</a> Section 4.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> brief/process.md — Quality gates</h4>
+    <p>Add Phase 2.5 (Humanize + Grade) and Phase 4.5 (Final Grade). Add the skeptic's checklist to Phase 3.</p>
+    <div class="detail">
+      <ul>
+        <li>Phase 2.5: Run humanizer, then grade against rubric. Must score 28/35 to advance.</li>
+        <li>Phase 3 update: Add skeptic's checklist (6 questions) and persona lens.</li>
+        <li>Phase 4.5: Score rewrite against rubric. Must score 32/35 and pass all 6 checklist items.</li>
+      </ul>
+      Source: <a href="process-upgrade-proposal.html">process-upgrade-proposal.html</a> Sections 2 and 5.
+    </div>
+  </div>
+
+  <div class="deps"><strong>Commit:</strong> "Add voice DNA, grading rubric, benchmark sample, expand style guide and process"</div>
+</div>
+
+<!-- ============================== -->
+<h2>Phase 3: Skills</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:var(--green);">3</div>
+    <div>
+      <div class="phase-title">Create and install skills</div>
+      <div class="phase-desc">The tools that use the brief documents. Depends on Phase 2 being complete.</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> bahai-module SKILL.md</h4>
+    <p>Three additions to the existing drafting skill.</p>
+    <div class="detail">
+      <ul>
+        <li><strong>Voice reference:</strong> Add <code>brief/voice.md</code> to the Reference Files section. Instruct Claude to read it before drafting and match the rhythm/tone.</li>
+        <li><strong>Phase-aware audience:</strong> Add interview question 5: "What phase is this module?" Then inject the matching persona from <code>brief/audience.md</code> into the drafting context.</li>
+        <li><strong>Anti-pattern block:</strong> Add the full structural tells list from <code>brief/style.md</code> to the Writing Guidelines section.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag create">create</span> content/.claude/skills/grade-module/ — Grading skill</h4>
+    <p>Reads a module draft, scores it against the rubric, generates report.html.</p>
+    <div class="detail">
+      <strong>Trigger:</strong> "grade this," "score this draft," "evaluate module X," "generate report for module X"<br><br>
+      <strong>Workflow:</strong>
+      <ol>
+        <li>Read <code>brief/rubric.md</code> for dimensions and calibration examples</li>
+        <li>Read <code>brief/voice.md</code> for voice reference</li>
+        <li>Read <code>brief/audience.md</code> and the module's <code>metadata.yaml</code> for phase</li>
+        <li>Read the latest draft in the module's <code>drafts/</code> folder</li>
+        <li>Score on all 7 dimensions with quoted evidence</li>
+        <li>Run the skeptic's checklist (6 items, pass/fail)</li>
+        <li>Check style guide compliance mechanically (em dashes, citations, word count, block quotes)</li>
+        <li>Generate <code>report.html</code> in the module folder with all results</li>
+      </ol>
+      <strong>Output:</strong> <code>modules/XX-name/report.html</code> — visual report with scores, evidence, pass/fail, timestamp.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag install">install</span> .claude/skills/humanizer/ — AI pattern removal</h4>
+    <p>Adapted from <code>blader/humanizer</code>. Lives at repo root (useful for content and web copy).</p>
+    <div class="detail">
+      <ol>
+        <li>Clone or download <code>blader/humanizer</code> SKILL.md</li>
+        <li>Add voice calibration: reference <code>content/brief/voice.md</code> for target voice</li>
+        <li>Add the module project's banned words list to its pattern library</li>
+        <li>Place in <code>.claude/skills/humanizer/SKILL.md</code></li>
+      </ol>
+      <strong>Trigger:</strong> "humanize this," "clean up AI patterns," or used in the Phase 2.5 workflow.
+    </div>
+  </div>
+
+  <div class="deps"><strong>Commit:</strong> "Add grade-module skill, install humanizer, update bahai-module with voice + phase awareness"</div>
+</div>
+
+<!-- ============================== -->
+<h2>Phase 4: Proof of Concept</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:var(--amber);">4</div>
+    <div>
+      <div class="phase-title">Test the full pipeline on one module</div>
+      <div class="phase-desc">Validate that everything works end-to-end before rolling out to all modules.</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag generate">generate</span> Grade Module 08 (Prayer) — the benchmark</h4>
+    <p>Run the grade-module skill on Module 08 v2. This should score highest and validates the rubric is calibrated correctly.</p>
+    <div class="detail">
+      Expected: 32+ out of 35. If it scores lower, the rubric needs adjusting. The generated <code>report.html</code> becomes the reference for what a good report looks like.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag generate">generate</span> Grade Module 04 (Relationship with God) — the weakest</h4>
+    <p>Run on the most underdeveloped module. Should score significantly lower. Validates the rubric discriminates.</p>
+    <div class="detail">
+      Expected: below 28. The report should clearly identify: 0 block quotes, no citations, Section 2 is a quote list, borrows from Bahai.org. If the report doesn't catch these, the skill needs fixing.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag generate">generate</span> Run humanizer on one passage</h4>
+    <p>Take a paragraph from Module 07 (the most AI-sounding investigation module) and run the humanizer. Compare before/after.</p>
+    <div class="detail">
+      If the output matches the voice in Module 08 v2 and clears the AI pattern checklist, the humanizer is configured correctly.
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> Adjust rubric/skills based on results</h4>
+    <p>Iterate on anything that didn't work. Typical issues: rubric too lenient (benchmark doesn't max out), too strict (everything fails), or humanizer voice mismatch.</p>
+  </div>
+
+  <div class="deps"><strong>Commit:</strong> "Proof of concept: grading reports for modules 08 and 04, rubric calibration"</div>
+</div>
+
+<!-- ============================== -->
+<h2>Phase 5: Roll Out</h2>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:var(--red);">5</div>
+    <div>
+      <div class="phase-title">Generate reports for all modules and update TODO</div>
+      <div class="phase-desc">Now that the pipeline is validated, apply it across the collection.</div>
+    </div>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag generate">generate</span> Grade all 12 modules</h4>
+    <p>Run grade-module on every module. Each gets a <code>report.html</code> in its folder.</p>
+  </div>
+
+  <div class="task">
+    <h4><span class="tag update">update</span> TODO.md with prioritized module work</h4>
+    <p>Based on the grading reports, populate TODO.md with the actual revision work in priority order.</p>
+    <div class="detail">
+      From the critical review, the priority tiers are:
+      <ol>
+        <li><strong>Rewrite:</strong> Modules 11, 12 (letters, not modules)</li>
+        <li><strong>Significant revision:</strong> Module 07 (claims-as-fact, too long), Module 04 (underdeveloped)</li>
+        <li><strong>Moderate revision:</strong> Modules 02, 05, 06 (framing + missing structural elements)</li>
+        <li><strong>Polish:</strong> Modules 01, 03, 09, 10 (style guide cleanup, length)</li>
+        <li><strong>Benchmark:</strong> Module 08 (resolve the writer's %%FLAG%%)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="deps"><strong>Commit:</strong> "Generate grading reports for all modules, update TODO with revision priorities"</div>
+</div>
+
+<!-- ============================== -->
+<hr>
+
+<h2>Dependency Map</h2>
+
+<table>
+  <tr>
+    <th>Phase</th>
+    <th>Depends On</th>
+    <th>Produces</th>
+    <th>Estimated Effort</th>
+  </tr>
+  <tr>
+    <td><strong>1. Move Files</strong></td>
+    <td>Nothing</td>
+    <td>Clean folder structure, updated routing, shared TODO</td>
+    <td>~30 min (mostly git mv)</td>
+  </tr>
+  <tr>
+    <td><strong>2. Brief Files</strong></td>
+    <td>Phase 1 (paths must be correct)</td>
+    <td>voice.md, rubric.md, benchmark sample, updated style.md + process.md</td>
+    <td>~1-2 hours (voice.md takes the most thought)</td>
+  </tr>
+  <tr>
+    <td><strong>3. Skills</strong></td>
+    <td>Phase 2 (skills reference brief files)</td>
+    <td>Updated bahai-module, new grade-module, installed humanizer</td>
+    <td>~1 hour</td>
+  </tr>
+  <tr>
+    <td><strong>4. Proof of Concept</strong></td>
+    <td>Phase 3 (skills must exist)</td>
+    <td>Validated pipeline, calibrated rubric, 2 sample reports</td>
+    <td>~1 hour</td>
+  </tr>
+  <tr>
+    <td><strong>5. Roll Out</strong></td>
+    <td>Phase 4 (pipeline must be validated)</td>
+    <td>12 grading reports, prioritized TODO</td>
+    <td>~30 min (mostly automated)</td>
+  </tr>
+</table>
+
+<div class="insight">
+  <strong>Total estimated effort:</strong> 3-5 focused sessions. Phases 1-2 can be done in one sitting. Phase 3 in another. Phases 4-5 in a third. Each phase produces a clean commit.
+</div>
+
+<hr>
+<p class="source">Based on: Critical Review, Writing Best Practices Research, Process Upgrade Proposal, and project-kickoff skill patterns. April 2026.</p>
+
+</body>
+</html>

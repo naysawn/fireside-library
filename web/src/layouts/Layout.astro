@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import PageCharacter from '../components/PageCharacter.astro';
+import Analytics from '@vercel/analytics/astro';
+
+interface Props {
+  title: string;
+  activeNav?: 'home' | 'about' | 'contribute';
+}
+
+const { title, activeNav = 'home' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="mask-icon" href="/mask-icon.svg" color="#e04e1a">
+  <meta name="theme-color" content="#e04e1a">
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  {import.meta.env.PROD && (
+    <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="4b5aa1d3-da14-404f-a697-4bb3112256e3"></script>
+  )}
+</head>
+<body class="font-sans bg-white text-gray-900">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-accent border-b border-black/10 transition-shadow">
+  <div class="max-w-5xl mx-auto px-6 md:px-12 flex items-center justify-between h-14">
+    <a href="/" class="flex items-center gap-2 text-white font-bold text-[0.9375rem] tracking-tight no-underline">
+      <PageCharacter size="nav" inverted />
+      Fireside Library
+    </a>
+    <ul class="flex items-center gap-4 md:gap-6 list-none">
+      <li>
+        <a href="/about" class:list={["text-sm font-medium no-underline transition-colors", activeNav === 'about' ? 'text-white' : 'text-white/85 hover:text-white']}>
+          About
+        </a>
+      </li>
+      <li>
+        <a href="/contribute" class:list={["text-sm font-medium no-underline transition-colors", activeNav === 'contribute' ? 'text-white' : 'text-white/85 hover:text-white']}>
+          Contribute
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/naysawn/fireside-library" class="text-white/85 hover:text-white transition-colors" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<slot />
+
+<footer class="border-t border-gray-200 py-12">
+  <div class="max-w-5xl mx-auto px-6 md:px-12 flex justify-between items-baseline flex-wrap gap-4">
+    <p class="text-[0.8125rem] text-gray-500">Fireside Library. An open source project from Boston.</p>
+    <a href="https://github.com/naysawn/fireside-library" class="text-[0.8125rem] text-gray-500 underline underline-offset-2 hover:text-gray-900">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (nav) {
+      nav.style.boxShadow = window.scrollY > 10 ? '0 1px 3px rgba(0,0,0,0.1)' : 'none';
+    }
+  });
+</script>
+
+<Analytics />
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageCharacter from '../components/PageCharacter.astro';
+---
+
+<Layout title="Brand | Fireside Library">
+
+<!-- Hero: the flame, big -->
+<header class="hero-night pt-28 pb-20 text-white text-center overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6 md:px-12 flex flex-col items-center">
+    <div class="scale-[2] md:scale-[3] mb-12 mt-6">
+      <PageCharacter size="hero" inverted />
+    </div>
+    <h1 class="text-4xl md:text-6xl font-black tracking-tight">The mark</h1>
+    <p class="text-white/85 text-lg md:text-xl mt-3 max-w-xl">A funky little flame — the same fire you see in the tab, the nav, and right here.</p>
+  </div>
+</header>
+
+<!-- The flame on light -->
+<section class="py-20 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+    <div class="flex justify-center">
+      <div class="scale-[2.5]">
+        <PageCharacter size="hero" />
+      </div>
+    </div>
+    <div>
+      <h2 class="t-eyebrow mb-2">On light</h2>
+      <p class="t-section-title mb-4">One flame, one lick</p>
+      <p class="t-body max-w-md">A clean fire glyph with a small inner lick that flickers. On light it runs the full gradient — from <span class="font-semibold" style="color:#ff7a2f">#ff7a2f</span> down to <span class="font-semibold" style="color:#9a3410">#9a3410</span> — with a gold core inside.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Palette -->
+<section class="py-16 border-t border-gray-200 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="t-eyebrow mb-2">Palette</h2>
+    <p class="t-section-title mb-8">The fire colors</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div class="rounded-lg overflow-hidden border border-gray-200 bg-white">
+        <div class="h-24" style="background:#ff7a2f"></div>
+        <div class="p-3"><p class="font-bold text-sm">Flame top</p><p class="text-[0.8125rem] text-gray-500 font-mono">#ff7a2f</p></div>
+      </div>
+      <div class="rounded-lg overflow-hidden border border-gray-200 bg-white">
+        <div class="h-24" style="background:#e04e1a"></div>
+        <div class="p-3"><p class="font-bold text-sm">Accent</p><p class="text-[0.8125rem] text-gray-500 font-mono">#e04e1a</p></div>
+      </div>
+      <div class="rounded-lg overflow-hidden border border-gray-200 bg-white">
+        <div class="h-24" style="background:#9a3410"></div>
+        <div class="p-3"><p class="font-bold text-sm">Ember</p><p class="text-[0.8125rem] text-gray-500 font-mono">#9a3410</p></div>
+      </div>
+      <div class="rounded-lg overflow-hidden border border-gray-200 bg-white">
+        <div class="h-24" style="background:#ffb02e"></div>
+        <div class="p-3"><p class="font-bold text-sm">Core</p><p class="text-[0.8125rem] text-gray-500 font-mono">#ffb02e</p></div>
+      </div>
+      <div class="rounded-lg overflow-hidden border border-gray-200 bg-white">
+        <div class="h-24" style="background:#ffd24a"></div>
+        <div class="p-3"><p class="font-bold text-sm">Spark</p><p class="text-[0.8125rem] text-gray-500 font-mono">#ffd24a</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Candidate marks for orange backgrounds -->
+<section class="py-20 border-t border-gray-200 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="t-eyebrow mb-2">The system</h2>
+    <p class="t-section-title mb-3">One shape, used three ways</p>
+    <p class="t-body max-w-2xl mb-10"><strong>Solid</strong> is the in-product mark — the nav and hero. <strong>Hearth tile</strong> is the favicon, so the mark survives any tab color. <strong>Outline</strong> is the spare alternate. Each gets a hard edge so it stays sharp small, where the old mark muddied out. Shown large, then at real favicon size (20&nbsp;px) on orange and on dark.</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Option 1: solid cream -->
+      <div class="rounded-xl border border-gray-200 bg-white overflow-hidden flex flex-col">
+        <div class="flex items-center justify-center gap-6 py-10" style="background:#e04e1a">
+          <svg width="58" height="68" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="#fff7ed"/>
+            <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="#e04e1a"/>
+          </svg>
+          <svg width="20" height="23" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="#fff7ed"/>
+            <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="#e04e1a"/>
+          </svg>
+        </div>
+        <div class="flex items-center justify-center py-8 bg-gray-900">
+          <svg width="20" height="23" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="#fff7ed"/>
+            <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="#1c1917"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <p class="font-bold text-sm mb-1">1 · Solid</p>
+          <p class="text-[0.875rem] leading-relaxed text-gray-600">A cream flame with the inner lick knocked back to the background color. Sharpest at tab size and reads instantly on anything.</p>
+        </div>
+      </div>
+
+      <!-- Option 2: outline -->
+      <div class="rounded-xl border border-gray-200 bg-white overflow-hidden flex flex-col">
+        <div class="flex items-center justify-center gap-6 py-10" style="background:#e04e1a">
+          <svg width="58" height="68" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="none" stroke="#fff7ed" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="none" stroke="#fff7ed" stroke-width="2.6" stroke-linejoin="round"/>
+          </svg>
+          <svg width="20" height="23" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="none" stroke="#fff7ed" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="none" stroke="#fff7ed" stroke-width="4" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="flex items-center justify-center py-8 bg-gray-900">
+          <svg width="20" height="23" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="none" stroke="#fff7ed" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="none" stroke="#fff7ed" stroke-width="4" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <p class="font-bold text-sm mb-1">2 · Outline</p>
+          <p class="text-[0.875rem] leading-relaxed text-gray-600">The line-art version — flame and inner lick as a cream stroke. Lighter and more open; the busiest of the three when tiny.</p>
+        </div>
+      </div>
+
+      <!-- Option 3: two-tone on a hearth tile -->
+      <div class="rounded-xl border border-gray-200 bg-white overflow-hidden flex flex-col">
+        <div class="flex items-center justify-center gap-6 py-10" style="background:#e04e1a">
+          <svg width="64" height="64" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="44" height="44" rx="11" fill="#fff7ed"/>
+            <g transform="translate(9 7) scale(0.625)">
+              <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="#ff7a2f"/>
+              <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="#ffd24a"/>
+            </g>
+          </svg>
+          <svg width="22" height="22" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="44" height="44" rx="11" fill="#fff7ed"/>
+            <g transform="translate(9 7) scale(0.625)">
+              <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="#ff7a2f"/>
+              <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="#ffd24a"/>
+            </g>
+          </svg>
+        </div>
+        <div class="flex items-center justify-center py-8 bg-gray-900">
+          <svg width="22" height="22" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="44" height="44" rx="11" fill="#fff7ed"/>
+            <g transform="translate(9 7) scale(0.625)">
+              <path d="M24 5 C18 16 11 24 10 36 C9 45 16 51 24 51 C33 51 41 45 40 34 C39 26 37 22 36 16 C35 20 32 21 30 23 C28 17 27 11 24 5 Z" fill="#ff7a2f"/>
+              <path d="M23 27 C20 33 17 36 18 41 C19 46 23 47 25 46 C30 44 30 39 27 35 C26 37 25 37 24 36 C25 33 25 30 23 27 Z" fill="#ffd24a"/>
+            </g>
+          </svg>
+        </div>
+        <div class="p-5">
+          <p class="font-bold text-sm mb-1">3 · Hearth tile</p>
+          <p class="text-[0.875rem] leading-relaxed text-gray-600">The warm gold-and-orange flame on a cream rounded tile — an app-icon feel that keeps the two-tone fire alive against the orange.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Tab preview -->
+<section class="py-16 border-t border-gray-200">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <h2 class="t-eyebrow mb-2">In the wild</h2>
+    <p class="t-section-title mb-8">How it shows up in a browser tab</p>
+
+    <div class="inline-flex items-center gap-2 bg-gray-100 border border-gray-300 rounded-t-lg px-3 py-2 max-w-xs">
+      <img src="/favicon.svg" width="18" height="18" alt="Fireside Library favicon" />
+      <span class="text-[0.8125rem] text-gray-700 truncate">Fireside Library</span>
+      <span class="ml-auto text-gray-400 text-sm">×</span>
+    </div>
+  </div>
+</section>
+
+</Layout>

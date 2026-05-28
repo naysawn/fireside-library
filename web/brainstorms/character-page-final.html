@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Character Exploration — Page with a Spark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #e04e1a;
+    --accent-light: #ff7a45;
+    --accent-deep: #c7420f;
+    --accent-dark: #9a3410;
+    --accent-pale: #fdf0ec;
+    --black: #111111;
+    --white: #ffffff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .page-wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+
+  .page-subtitle {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    margin-bottom: 3.5rem;
+    max-width: 560px;
+    line-height: 1.55;
+  }
+
+  /* Section headers */
+  .section {
+    margin-bottom: 4.5rem;
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .section-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: var(--gray-500);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Scene blocks */
+  .scene {
+    margin-bottom: 3rem;
+  }
+
+  .scene:last-child {
+    margin-bottom: 0;
+  }
+
+  .scene-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-500);
+    margin-bottom: 1.25rem;
+  }
+
+  .scene-stage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 200px;
+    padding: 2rem 1.5rem;
+    background: var(--gray-100);
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+    position: relative;
+  }
+
+  /* Static row */
+  .static-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 2rem 2.5rem;
+    background: var(--gray-100);
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .static-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .static-item .size-label {
+    font-size: 0.6rem;
+    color: var(--gray-500);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Hero mockup */
+  .hero-mockup {
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 60px 48px 64px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-mockup-text {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .hero-mockup-text h3 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .hero-mockup-text p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.65;
+    opacity: 0.92;
+    max-width: 420px;
+    margin-bottom: 24px;
+  }
+
+  .hero-mockup-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .hero-mockup-btns a {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  .hero-mockup-btns .btn-w {
+    background: var(--white);
+    color: var(--accent-deep);
+  }
+
+  .hero-mockup-btns .btn-o {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes sparkPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  @keyframes sparkTwinkle {
+    0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    25% { opacity: 0.7; transform: scale(0.9) rotate(8deg); }
+    50% { opacity: 0.5; transform: scale(0.8) rotate(0deg); }
+    75% { opacity: 0.8; transform: scale(0.95) rotate(-5deg); }
+  }
+
+  @keyframes gentleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  @keyframes eyeBlink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    96% { transform: scaleY(0.1); }
+  }
+
+  @keyframes orbitA {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(10px, -5px); }
+    50%  { transform: translate(0, -10px); }
+    75%  { transform: translate(-10px, -5px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes orbitB {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-10px, 5px); }
+    50%  { transform: translate(0, 10px); }
+    75%  { transform: translate(10px, 5px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes sparkTrail {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+
+  .spark-group { animation: sparkPulse 2.4s ease-in-out infinite; transform-origin: center; }
+  .spark-twinkle { animation: sparkTwinkle 3s ease-in-out infinite; transform-origin: center; }
+  .page-float { animation: gentleFloat 4s ease-in-out infinite; }
+  .eye-blink { animation: eyeBlink 4s ease-in-out infinite; }
+  .eye-blink-d { animation: eyeBlink 4s ease-in-out infinite 0.1s; }
+  .eye-blink-d2 { animation: eyeBlink 4.2s ease-in-out infinite 0.5s; }
+  .eye-blink-d3 { animation: eyeBlink 3.8s ease-in-out infinite 1.2s; }
+  .eye-blink-d4 { animation: eyeBlink 4.4s ease-in-out infinite 2s; }
+  .spark-orbit-a { animation: orbitA 3.5s ease-in-out infinite, sparkPulse 2.4s ease-in-out infinite; transform-origin: center; }
+  .spark-orbit-b { animation: orbitB 3.5s ease-in-out infinite, sparkPulse 2.4s ease-in-out infinite 0.3s; transform-origin: center; }
+  .spark-trail { animation: sparkTrail 2s ease-in-out infinite; }
+
+  @media (max-width: 640px) {
+    .page-wrap { padding: 2rem 1.25rem 3rem; }
+    .hero-mockup { padding: 40px 28px 48px; }
+    .static-row { gap: 2rem; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<h1>Final Character Exploration</h1>
+<p class="page-subtitle">The page mascot in group contexts, static/print versions, and integrated into the V3 homepage hero. Last review before committing to this character.</p>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 1: GROUP SCENES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-num">Section 1</div>
+  <h2>Group scenes</h2>
+  <p class="section-desc">The page character in social contexts. Multiple pages with distinct expressions and body language, arranged to feel like friends gathering rather than icons in a grid.</p>
+
+  <!-- Scene A: A study group -->
+  <div class="scene">
+    <div class="scene-label">A &mdash; A study group (4 pages)</div>
+    <div class="scene-stage" style="min-height: 240px; padding-bottom: 2.5rem;">
+      <svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- PAGE 1: Welcoming (eyes at viewer) — front left -->
+        <g transform="translate(40, 30) rotate(-4, 50, 60)" class="page-float" style="animation-delay: 0s;">
+          <!-- shadow -->
+          <ellipse cx="50" cy="142" rx="32" ry="4" fill="rgba(0,0,0,0.05)"/>
+          <!-- page body -->
+          <rect x="6" y="4" width="82" height="110" rx="7" fill="#fdfdfd" stroke="#c8c8c8" stroke-width="1.5"/>
+          <path d="M68 4 L88 24 L68 24 Z" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- text lines -->
+          <rect x="16" y="84" width="32" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="16" y="91" width="48" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="16" y="98" width="28" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- eyes — looking at viewer (centered) -->
+          <g class="eye-blink">
+            <ellipse cx="34" cy="52" rx="4.5" ry="5" fill="#2a2a2a"/>
+            <ellipse cx="33" cy="50" rx="1.6" ry="1.6" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d">
+            <ellipse cx="58" cy="52" rx="4.5" ry="5" fill="#2a2a2a"/>
+            <ellipse cx="57" cy="50" rx="1.6" ry="1.6" fill="#fff"/>
+          </g>
+          <!-- warm smile -->
+          <path d="M39 62 Q46 70 53 62" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <!-- blush -->
+          <ellipse cx="29" cy="60" rx="4" ry="2.2" fill="#f5c0a8" opacity="0.4"/>
+          <ellipse cx="63" cy="60" rx="4" ry="2.2" fill="#f5c0a8" opacity="0.4"/>
+          <!-- spark -->
+          <g class="spark-twinkle">
+            <path d="M44 16 L46.5 8 L49 16 L57 19 L49 22 L46.5 30 L44 22 L36 19 Z" fill="#e04e1a"/>
+            <path d="M45.2 16.5 L46.5 11 L47.8 16.5 L53 18.5 L47.8 20.5 L46.5 26 L45.2 20.5 L40 18.5 Z" fill="#ff7a45" opacity="0.5"/>
+          </g>
+        </g>
+
+        <!-- PAGE 2: Excited (bigger eyes, open mouth) — second from left, slightly forward -->
+        <g transform="translate(145, 18) rotate(3, 50, 60)" class="page-float" style="animation-delay: 0.6s;">
+          <ellipse cx="50" cy="148" rx="34" ry="4" fill="rgba(0,0,0,0.05)"/>
+          <rect x="4" y="2" width="88" height="118" rx="7" fill="#fdfdfd" stroke="#c0c0c0" stroke-width="1.5"/>
+          <path d="M72 2 L92 22 L72 22 Z" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- text lines -->
+          <rect x="14" y="90" width="36" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="14" y="97" width="52" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="14" y="104" width="30" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- bigger excited eyes -->
+          <g class="eye-blink-d2">
+            <ellipse cx="34" cy="52" rx="5.5" ry="6" fill="#2a2a2a"/>
+            <ellipse cx="32.5" cy="49.5" rx="2" ry="2" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d3">
+            <ellipse cx="60" cy="52" rx="5.5" ry="6" fill="#2a2a2a"/>
+            <ellipse cx="58.5" cy="49.5" rx="2" ry="2" fill="#fff"/>
+          </g>
+          <!-- open mouth (excited) -->
+          <ellipse cx="47" cy="68" rx="7" ry="5.5" fill="#2a2a2a"/>
+          <ellipse cx="47" cy="66.5" rx="5" ry="3" fill="#c44" opacity="0.25"/>
+          <!-- blush -->
+          <ellipse cx="27" cy="62" rx="4.5" ry="2.5" fill="#f5c0a8" opacity="0.45"/>
+          <ellipse cx="67" cy="62" rx="4.5" ry="2.5" fill="#f5c0a8" opacity="0.45"/>
+          <!-- spark -->
+          <g class="spark-group" style="animation-delay: 0.4s;">
+            <path d="M46 14 L48.5 6 L51 14 L59 17 L51 20 L48.5 28 L46 20 L38 17 Z" fill="#e04e1a"/>
+            <path d="M47.2 14.5 L48.5 9 L49.8 14.5 L55 16.5 L49.8 18.5 L48.5 24 L47.2 18.5 L42 16.5 Z" fill="#ff7a45" opacity="0.5"/>
+          </g>
+        </g>
+
+        <!-- PAGE 3: Reading (eyes down) — second from right -->
+        <g transform="translate(268, 35) rotate(-2, 50, 60)" class="page-float" style="animation-delay: 1.2s;">
+          <ellipse cx="48" cy="138" rx="30" ry="3.5" fill="rgba(0,0,0,0.05)"/>
+          <rect x="6" y="4" width="80" height="106" rx="7" fill="#fdfdfd" stroke="#c8c8c8" stroke-width="1.5"/>
+          <path d="M66 4 L86 24 L66 24 Z" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- text lines -->
+          <rect x="16" y="80" width="30" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="16" y="87" width="44" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="16" y="94" width="24" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- eyes looking down -->
+          <g class="eye-blink-d4">
+            <ellipse cx="32" cy="54" rx="4" ry="3.5" fill="#2a2a2a"/>
+            <ellipse cx="32" cy="56" rx="1.5" ry="1.2" fill="#fff" opacity="0.6"/>
+          </g>
+          <g class="eye-blink-d2">
+            <ellipse cx="54" cy="54" rx="4" ry="3.5" fill="#2a2a2a"/>
+            <ellipse cx="54" cy="56" rx="1.5" ry="1.2" fill="#fff" opacity="0.6"/>
+          </g>
+          <!-- gentle closed smile (content reading) -->
+          <path d="M37 62 Q43 67 49 62" stroke="#2a2a2a" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <!-- blush -->
+          <ellipse cx="27" cy="60" rx="3.5" ry="2" fill="#f5c0a8" opacity="0.35"/>
+          <ellipse cx="59" cy="60" rx="3.5" ry="2" fill="#f5c0a8" opacity="0.35"/>
+          <!-- spark (smaller, quieter while reading) -->
+          <g class="spark-group" style="animation-delay: 0.8s;">
+            <path d="M42 14 L44 8 L46 14 L52 16 L46 18 L44 24 L42 18 L36 16 Z" fill="#e04e1a"/>
+          </g>
+        </g>
+
+        <!-- PAGE 4: Thinking (eyes up) — rightmost -->
+        <g transform="translate(385, 24) rotate(5, 50, 60)" class="page-float" style="animation-delay: 1.8s;">
+          <ellipse cx="50" cy="145" rx="32" ry="4" fill="rgba(0,0,0,0.05)"/>
+          <rect x="6" y="6" width="84" height="112" rx="7" fill="#fdfdfd" stroke="#c5c5c5" stroke-width="1.5"/>
+          <path d="M70 6 L90 26 L70 26 Z" fill="#f0f0f0" stroke="#c5c5c5" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- text lines -->
+          <rect x="16" y="86" width="34" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="16" y="93" width="50" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="16" y="100" width="28" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- eyes looking up (thinking) -->
+          <g class="eye-blink-d3">
+            <ellipse cx="36" cy="52" rx="4.5" ry="5" fill="#2a2a2a"/>
+            <ellipse cx="36" cy="48" rx="1.8" ry="1.8" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d4">
+            <ellipse cx="60" cy="52" rx="4.5" ry="5" fill="#2a2a2a"/>
+            <ellipse cx="60" cy="48" rx="1.8" ry="1.8" fill="#fff"/>
+          </g>
+          <!-- slight thoughtful half-smile -->
+          <path d="M42 64 Q48 68 54 65" stroke="#2a2a2a" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <!-- blush -->
+          <ellipse cx="30" cy="61" rx="3.8" ry="2" fill="#f5c0a8" opacity="0.35"/>
+          <ellipse cx="66" cy="61" rx="3.8" ry="2" fill="#f5c0a8" opacity="0.35"/>
+          <!-- spark -->
+          <g class="spark-twinkle" style="animation-delay: 1s;">
+            <path d="M47 18 L49.5 10 L52 18 L60 21 L52 24 L49.5 32 L47 24 L39 21 Z" fill="#e04e1a"/>
+            <path d="M48.2 18.5 L49.5 13 L50.8 18.5 L56 20.5 L50.8 22.5 L49.5 28 L48.2 22.5 L43 20.5 Z" fill="#ff7a45" opacity="0.45"/>
+          </g>
+        </g>
+
+      </svg>
+    </div>
+  </div>
+
+  <!-- Scene B: Passing it along -->
+  <div class="scene">
+    <div class="scene-label">B &mdash; Passing it along (3 pages)</div>
+    <div class="scene-stage" style="min-height: 220px;">
+      <svg width="520" height="200" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- PAGE 1: Welcoming, handing off — left -->
+        <g transform="translate(30, 30) rotate(-3, 50, 55)" class="page-float">
+          <ellipse cx="50" cy="138" rx="30" ry="3.5" fill="rgba(0,0,0,0.05)"/>
+          <rect x="6" y="4" width="82" height="110" rx="7" fill="#fdfdfd" stroke="#c8c8c8" stroke-width="1.5"/>
+          <path d="M68 4 L88 24 L68 24 Z" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="1.2" stroke-linejoin="round"/>
+          <rect x="16" y="84" width="32" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="16" y="91" width="48" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="16" y="98" width="28" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- eyes looking right (toward next page) -->
+          <g class="eye-blink">
+            <ellipse cx="36" cy="52" rx="4.5" ry="5" fill="#2a2a2a"/>
+            <ellipse cx="38" cy="50.5" rx="1.6" ry="1.6" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d">
+            <ellipse cx="60" cy="52" rx="4.5" ry="5" fill="#2a2a2a"/>
+            <ellipse cx="62" cy="50.5" rx="1.6" ry="1.6" fill="#fff"/>
+          </g>
+          <!-- warm smile -->
+          <path d="M40 63 Q48 70 56 63" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <ellipse cx="30" cy="60" rx="4" ry="2.2" fill="#f5c0a8" opacity="0.4"/>
+          <ellipse cx="66" cy="60" rx="4" ry="2.2" fill="#f5c0a8" opacity="0.4"/>
+          <!-- spark -->
+          <g class="spark-group">
+            <path d="M46 16 L48.5 8 L51 16 L59 19 L51 22 L48.5 30 L46 22 L38 19 Z" fill="#e04e1a"/>
+          </g>
+        </g>
+
+        <!-- SPARK TRAIL: from page 1 to page 2 -->
+        <g>
+          <!-- trail of small sparks moving left to right -->
+          <g class="spark-trail" style="animation-delay: 0s;">
+            <path d="M148 78 L150 74 L152 78 L156 80 L152 82 L150 86 L148 82 L144 80 Z" fill="#e04e1a" opacity="0.6"/>
+          </g>
+          <g class="spark-trail" style="animation-delay: 0.3s;">
+            <path d="M178 72 L179.5 69 L181 72 L184 73.5 L181 75 L179.5 78 L178 75 L175 73.5 Z" fill="#e04e1a" opacity="0.45"/>
+          </g>
+          <g class="spark-trail" style="animation-delay: 0.6s;">
+            <path d="M205 68 L206 66 L207 68 L209 69 L207 70 L206 72 L205 70 L203 69 Z" fill="#e04e1a" opacity="0.3"/>
+          </g>
+          <!-- connecting arc -->
+          <path d="M130 72 Q175 50 220 70" stroke="#e04e1a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.12" stroke-dasharray="4 4"/>
+        </g>
+
+        <!-- PAGE 2: Excited, receiving — middle -->
+        <g transform="translate(215, 22) rotate(2, 50, 55)" class="page-float" style="animation-delay: 0.5s;">
+          <ellipse cx="50" cy="144" rx="32" ry="4" fill="rgba(0,0,0,0.05)"/>
+          <rect x="4" y="2" width="88" height="118" rx="7" fill="#fdfdfd" stroke="#c0c0c0" stroke-width="1.5"/>
+          <path d="M72 2 L92 22 L72 22 Z" fill="#f0f0f0" stroke="#c0c0c0" stroke-width="1.2" stroke-linejoin="round"/>
+          <rect x="14" y="92" width="36" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="14" y="99" width="52" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="14" y="106" width="30" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- bigger excited eyes -->
+          <g class="eye-blink-d2">
+            <ellipse cx="34" cy="54" rx="5.5" ry="6" fill="#2a2a2a"/>
+            <ellipse cx="32.5" cy="51.5" rx="2" ry="2" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d3">
+            <ellipse cx="60" cy="54" rx="5.5" ry="6" fill="#2a2a2a"/>
+            <ellipse cx="58.5" cy="51.5" rx="2" ry="2" fill="#fff"/>
+          </g>
+          <!-- open excited mouth -->
+          <ellipse cx="47" cy="70" rx="7" ry="5.5" fill="#2a2a2a"/>
+          <ellipse cx="47" cy="68.5" rx="5" ry="3" fill="#c44" opacity="0.25"/>
+          <ellipse cx="29" cy="64" rx="4.5" ry="2.5" fill="#f5c0a8" opacity="0.45"/>
+          <ellipse cx="65" cy="64" rx="4.5" ry="2.5" fill="#f5c0a8" opacity="0.45"/>
+          <!-- spark — brighter, just received -->
+          <g class="spark-twinkle">
+            <path d="M45 14 L48 4 L51 14 L61 17 L51 20 L48 30 L45 20 L35 17 Z" fill="#e04e1a"/>
+            <path d="M46.5 14.5 L48 8 L49.5 14.5 L55.5 16.5 L49.5 18.5 L48 25 L46.5 18.5 L40.5 16.5 Z" fill="#ff7a45" opacity="0.55"/>
+            <line x1="48" y1="0" x2="48" y2="3" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <line x1="63" y1="17" x2="66" y2="17" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <line x1="33" y1="17" x2="30" y2="17" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          </g>
+        </g>
+
+        <!-- SPARK TRAIL: from page 2 to page 3 -->
+        <g>
+          <g class="spark-trail" style="animation-delay: 0.9s;">
+            <path d="M335 74 L337 70 L339 74 L343 76 L339 78 L337 82 L335 78 L331 76 Z" fill="#e04e1a" opacity="0.55"/>
+          </g>
+          <g class="spark-trail" style="animation-delay: 1.2s;">
+            <path d="M362 70 L363.5 67 L365 70 L368 71.5 L365 73 L363.5 76 L362 73 L359 71.5 Z" fill="#e04e1a" opacity="0.35"/>
+          </g>
+          <g class="spark-trail" style="animation-delay: 1.5s;">
+            <path d="M386 68 L387 66 L388 68 L390 69 L388 70 L387 72 L386 70 L384 69 Z" fill="#e04e1a" opacity="0.2"/>
+          </g>
+          <path d="M318 72 Q360 52 400 72" stroke="#e04e1a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.1" stroke-dasharray="4 4"/>
+        </g>
+
+        <!-- PAGE 3: Reading, absorbed — right -->
+        <g transform="translate(395, 34) rotate(4, 45, 50)" class="page-float" style="animation-delay: 1s;">
+          <ellipse cx="45" cy="136" rx="28" ry="3.5" fill="rgba(0,0,0,0.05)"/>
+          <rect x="6" y="4" width="78" height="104" rx="7" fill="#fdfdfd" stroke="#c8c8c8" stroke-width="1.5"/>
+          <path d="M64 4 L84 24 L64 24 Z" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="1.2" stroke-linejoin="round"/>
+          <rect x="16" y="78" width="28" height="2.5" rx="1.25" fill="#e0e0e0"/>
+          <rect x="16" y="85" width="42" height="2.5" rx="1.25" fill="#e8e8e8"/>
+          <rect x="16" y="92" width="22" height="2.5" rx="1.25" fill="#ececec"/>
+          <!-- eyes looking down (reading) -->
+          <g class="eye-blink-d4">
+            <ellipse cx="30" cy="50" rx="4" ry="3.5" fill="#2a2a2a"/>
+            <ellipse cx="30" cy="52" rx="1.4" ry="1.1" fill="#fff" opacity="0.6"/>
+          </g>
+          <g class="eye-blink-d2">
+            <ellipse cx="52" cy="50" rx="4" ry="3.5" fill="#2a2a2a"/>
+            <ellipse cx="52" cy="52" rx="1.4" ry="1.1" fill="#fff" opacity="0.6"/>
+          </g>
+          <!-- content smile -->
+          <path d="M35 58 Q41 63 47 58" stroke="#2a2a2a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <ellipse cx="25" cy="56" rx="3.5" ry="2" fill="#f5c0a8" opacity="0.35"/>
+          <ellipse cx="57" cy="56" rx="3.5" ry="2" fill="#f5c0a8" opacity="0.35"/>
+          <!-- quiet spark -->
+          <g class="spark-group" style="animation-delay: 1.4s;">
+            <path d="M40 14 L42 8 L44 14 L50 16 L44 18 L42 24 L40 18 L34 16 Z" fill="#e04e1a"/>
+          </g>
+        </g>
+
+      </svg>
+    </div>
+  </div>
+
+  <!-- Scene C: A conversation -->
+  <div class="scene">
+    <div class="scene-label">C &mdash; A conversation (2 pages)</div>
+    <div class="scene-stage" style="min-height: 260px;">
+      <svg width="480" height="250" viewBox="0 0 480 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- PAGE 1: Talking (open mouth), facing right -->
+        <g transform="translate(40, 20) rotate(-3, 65, 75)" class="page-float">
+          <ellipse cx="65" cy="188" rx="42" ry="5" fill="rgba(0,0,0,0.05)"/>
+          <rect x="8" y="6" width="108" height="148" rx="9" fill="#fdfdfd" stroke="#c8c8c8" stroke-width="1.8"/>
+          <path d="M88 6 L116 34 L88 34 Z" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="1.4" stroke-linejoin="round"/>
+          <!-- text lines -->
+          <rect x="22" y="118" width="40" height="3" rx="1.5" fill="#e0e0e0"/>
+          <rect x="22" y="127" width="62" height="3" rx="1.5" fill="#e8e8e8"/>
+          <rect x="22" y="136" width="34" height="3" rx="1.5" fill="#ececec"/>
+          <!-- eyes looking right (toward other page) -->
+          <g class="eye-blink">
+            <ellipse cx="46" cy="72" rx="6" ry="6.5" fill="#2a2a2a"/>
+            <ellipse cx="48" cy="70" rx="2.2" ry="2.2" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d">
+            <ellipse cx="78" cy="72" rx="6" ry="6.5" fill="#2a2a2a"/>
+            <ellipse cx="80" cy="70" rx="2.2" ry="2.2" fill="#fff"/>
+          </g>
+          <!-- open talking mouth -->
+          <ellipse cx="62" cy="90" rx="9" ry="7" fill="#2a2a2a"/>
+          <ellipse cx="62" cy="88" rx="6.5" ry="4" fill="#c44" opacity="0.25"/>
+          <!-- blush -->
+          <ellipse cx="38" cy="84" rx="5" ry="2.8" fill="#f5c0a8" opacity="0.45"/>
+          <ellipse cx="86" cy="84" rx="5" ry="2.8" fill="#f5c0a8" opacity="0.45"/>
+          <!-- conversation sparks orbiting -->
+          <g class="spark-orbit-a">
+            <path d="M54 24 L57 14 L60 24 L70 27 L60 30 L57 40 L54 30 L44 27 Z" fill="#e04e1a"/>
+            <path d="M55.5 24.5 L57 18 L58.5 24.5 L64 26.5 L58.5 28.5 L57 35 L55.5 28.5 L50 26.5 Z" fill="#ff7a45" opacity="0.5"/>
+          </g>
+          <g class="spark-orbit-b">
+            <path d="M66 24 L69 14 L72 24 L82 27 L72 30 L69 40 L66 30 L56 27 Z" fill="#e04e1a" opacity="0.7"/>
+            <path d="M67.5 24.5 L69 18 L70.5 24.5 L76 26.5 L70.5 28.5 L69 35 L67.5 28.5 L63 26.5 Z" fill="#ff7a45" opacity="0.35"/>
+          </g>
+        </g>
+
+        <!-- DANCING SPARKS between them -->
+        <g>
+          <!-- spark cluster in the gap -->
+          <g class="spark-orbit-a" style="animation-delay: 0.2s;">
+            <path d="M232 72 L234 66 L236 72 L242 74 L236 76 L234 82 L232 76 L226 74 Z" fill="#e04e1a" opacity="0.65"/>
+          </g>
+          <g class="spark-orbit-b" style="animation-delay: 0.4s;">
+            <path d="M248 80 L249.5 76 L251 80 L255 82 L251 84 L249.5 88 L248 84 L244 82 Z" fill="#e04e1a" opacity="0.5"/>
+          </g>
+          <g class="spark-orbit-a" style="animation-delay: 0.7s;">
+            <path d="M240 60 L241 58 L242 60 L244 61 L242 62 L241 64 L240 62 L238 61 Z" fill="#e04e1a" opacity="0.35"/>
+          </g>
+          <!-- connection arcs -->
+          <path d="M170 50 Q220 30 270 50" stroke="#e04e1a" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.1" stroke-dasharray="3 4"/>
+          <path d="M175 80 Q225 60 275 80" stroke="#e04e1a" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.08" stroke-dasharray="3 4"/>
+        </g>
+
+        <!-- PAGE 2: Thinking (eyes up), facing left -->
+        <g transform="translate(290, 20) rotate(3, 65, 75)" class="page-float" style="animation-delay: 0.8s;">
+          <ellipse cx="65" cy="188" rx="42" ry="5" fill="rgba(0,0,0,0.05)"/>
+          <rect x="8" y="6" width="108" height="148" rx="9" fill="#fdfdfd" stroke="#c5c5c5" stroke-width="1.8"/>
+          <path d="M88 6 L116 34 L88 34 Z" fill="#f0f0f0" stroke="#c5c5c5" stroke-width="1.4" stroke-linejoin="round"/>
+          <!-- text lines -->
+          <rect x="22" y="118" width="40" height="3" rx="1.5" fill="#e0e0e0"/>
+          <rect x="22" y="127" width="62" height="3" rx="1.5" fill="#e8e8e8"/>
+          <rect x="22" y="136" width="34" height="3" rx="1.5" fill="#ececec"/>
+          <!-- eyes looking up and slightly left (thinking) -->
+          <g class="eye-blink-d3">
+            <ellipse cx="46" cy="72" rx="6" ry="6.5" fill="#2a2a2a"/>
+            <ellipse cx="44" cy="68" rx="2.2" ry="2.2" fill="#fff"/>
+          </g>
+          <g class="eye-blink-d4">
+            <ellipse cx="78" cy="72" rx="6" ry="6.5" fill="#2a2a2a"/>
+            <ellipse cx="76" cy="68" rx="2.2" ry="2.2" fill="#fff"/>
+          </g>
+          <!-- thoughtful asymmetric smile -->
+          <path d="M52 90 Q62 97 72 91" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- blush -->
+          <ellipse cx="38" cy="84" rx="5" ry="2.8" fill="#f5c0a8" opacity="0.4"/>
+          <ellipse cx="86" cy="84" rx="5" ry="2.8" fill="#f5c0a8" opacity="0.4"/>
+          <!-- conversation sparks -->
+          <g class="spark-orbit-b" style="animation-delay: 0.5s;">
+            <path d="M54 24 L57 14 L60 24 L70 27 L60 30 L57 40 L54 30 L44 27 Z" fill="#e04e1a"/>
+            <path d="M55.5 24.5 L57 18 L58.5 24.5 L64 26.5 L58.5 28.5 L57 35 L55.5 28.5 L50 26.5 Z" fill="#ff7a45" opacity="0.5"/>
+          </g>
+          <g class="spark-orbit-a" style="animation-delay: 0.8s;">
+            <path d="M66 24 L69 14 L72 24 L82 27 L72 30 L69 40 L66 30 L56 27 Z" fill="#e04e1a" opacity="0.7"/>
+          </g>
+        </g>
+
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 2: STATIC / PRINT VERSION -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-num">Section 2</div>
+  <h2>Static / print version</h2>
+  <p class="section-desc">No animations. Solid spark, welcoming eyes (looking at viewer). The version for favicon, print, and social sharing contexts where motion is not available.</p>
+
+  <div class="static-row">
+
+    <!-- 16px favicon -->
+    <div class="static-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="1" width="11" height="14" rx="1.5" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+        <path d="M10 1 L13 4 L10 4 Z" fill="#e8e8e8" stroke="#bbb" stroke-width="0.7" stroke-linejoin="round"/>
+        <path d="M7 7 L7.7 5 L8.4 7 L10.4 7.7 L8.4 8.4 L7.7 10.4 L7 8.4 L5 7.7 Z" fill="#e04e1a"/>
+      </svg>
+      <span class="size-label">16px</span>
+    </div>
+
+    <!-- 32px favicon -->
+    <div class="static-item">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="3" width="19" height="24" rx="2.5" fill="#f5f5f5" stroke="#bbb" stroke-width="1.3"/>
+        <path d="M19 3 L24 8 L19 8 Z" fill="#e8e8e8" stroke="#bbb" stroke-width="0.9" stroke-linejoin="round"/>
+        <!-- eyes centered (welcoming) -->
+        <ellipse cx="12" cy="15" rx="1" ry="1.1" fill="#555"/>
+        <ellipse cx="17" cy="15" rx="1" ry="1.1" fill="#555"/>
+        <!-- spark solid -->
+        <path d="M14.5 8 L15.2 6 L15.9 8 L18 8.7 L15.9 9.4 L15.2 11.4 L14.5 9.4 L12.4 8.7 Z" fill="#e04e1a"/>
+      </svg>
+      <span class="size-label">32px</span>
+    </div>
+
+    <!-- 48px print header -->
+    <div class="static-item">
+      <svg width="48" height="56" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="4" width="32" height="42" rx="4" fill="#f8f8f8" stroke="#c0c0c0" stroke-width="1.3"/>
+        <path d="M30 4 L38 12 L30 12 Z" fill="#eeeeee" stroke="#c0c0c0" stroke-width="1" stroke-linejoin="round"/>
+        <!-- eyes centered -->
+        <ellipse cx="17" cy="24" rx="2" ry="2.2" fill="#333"/>
+        <ellipse cx="27" cy="24" rx="2" ry="2.2" fill="#333"/>
+        <!-- smile -->
+        <path d="M19 29 Q22 33 25 29" stroke="#333" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <!-- text lines -->
+        <rect x="11" y="35" width="14" height="1.5" rx="0.75" fill="#ddd"/>
+        <rect x="11" y="39" width="20" height="1.5" rx="0.75" fill="#e2e2e2"/>
+        <!-- spark solid -->
+        <path d="M22 9 L23.5 5 L25 9 L29 10.5 L25 12 L23.5 16 L22 12 L18 10.5 Z" fill="#e04e1a"/>
+      </svg>
+      <span class="size-label">48px</span>
+    </div>
+
+    <!-- 200px social/og:image -->
+    <div class="static-item">
+      <svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- shadow -->
+        <ellipse cx="100" cy="232" rx="60" ry="6" fill="rgba(0,0,0,0.06)"/>
+        <!-- page body -->
+        <rect x="30" y="10" width="130" height="175" rx="10" fill="#fdfdfd" stroke="#c8c8c8" stroke-width="2"/>
+        <path d="M125 10 L160 45 L125 45 Z" fill="#f0f0f0" stroke="#c8c8c8" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M130 15 L155 40" stroke="#ddd" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <!-- text lines -->
+        <rect x="48" y="130" width="60" height="4" rx="2" fill="#e0e0e0"/>
+        <rect x="48" y="142" width="80" height="4" rx="2" fill="#e8e8e8"/>
+        <rect x="48" y="154" width="45" height="4" rx="2" fill="#e8e8e8"/>
+        <rect x="48" y="166" width="70" height="4" rx="2" fill="#ececec"/>
+        <!-- eyes centered (welcoming, at viewer) -->
+        <ellipse cx="75" cy="95" rx="7" ry="8" fill="#2a2a2a"/>
+        <ellipse cx="73" cy="92" rx="2.5" ry="2.5" fill="#fff"/>
+        <ellipse cx="115" cy="95" rx="7" ry="8" fill="#2a2a2a"/>
+        <ellipse cx="113" cy="92" rx="2.5" ry="2.5" fill="#fff"/>
+        <!-- smile -->
+        <path d="M84 108 Q95 118 106 108" stroke="#2a2a2a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- blush -->
+        <ellipse cx="68" cy="106" rx="6" ry="3.5" fill="#f5c0a8" opacity="0.45"/>
+        <ellipse cx="122" cy="106" rx="6" ry="3.5" fill="#f5c0a8" opacity="0.45"/>
+        <!-- spark solid (no animation) -->
+        <path d="M95 40 L100 20 L105 40 L125 45 L105 50 L100 70 L95 50 L75 45 Z" fill="#e04e1a"/>
+        <path d="M97 40 L100 30 L103 40 L113 43 L103 46 L100 56 L97 46 L87 43 Z" fill="#ff7a45" opacity="0.6"/>
+        <line x1="100" y1="14" x2="100" y2="19" stroke="#e04e1a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <line x1="100" y1="71" x2="100" y2="76" stroke="#e04e1a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <line x1="69" y1="45" x2="74" y2="45" stroke="#e04e1a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <line x1="126" y1="45" x2="131" y2="45" stroke="#e04e1a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <line x1="80" y1="26" x2="83" y2="30" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="117" y1="26" x2="114" y2="30" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="80" y1="62" x2="83" y2="58" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="117" y1="62" x2="114" y2="58" stroke="#e04e1a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      </svg>
+      <span class="size-label">200px &middot; og:image</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 3: ON THE V3 HOMEPAGE -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-num">Section 3</div>
+  <h2>On the V3 homepage</h2>
+  <p class="section-desc">The character integrated into the V3 hero section. Inverted palette for the orange background: white page, white spark. Welcoming expression.</p>
+
+  <div class="hero-mockup">
+    <div class="hero-mockup-text">
+      <h3>Written materials for sharing the Baha'i Faith</h3>
+      <p>Twelve modules on subjects that matter to seekers. Each one gives a small group something to read together, questions to sit with, and a reason to keep talking for three hours.</p>
+      <div class="hero-mockup-btns">
+        <a class="btn-w">Browse modules</a>
+        <a class="btn-o">About this project</a>
+      </div>
+    </div>
+
+    <!-- Character: inverted for orange bg -->
+    <div style="flex-shrink: 0;">
+      <svg width="160" height="200" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-float">
+        <!-- soft shadow on orange -->
+        <ellipse cx="100" cy="232" rx="55" ry="5" fill="rgba(0,0,0,0.08)"/>
+
+        <!-- page body — white on orange -->
+        <rect x="30" y="10" width="130" height="175" rx="10" fill="rgba(255,255,255,0.95)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+        <path d="M125 10 L160 45 L125 45 Z" fill="rgba(255,255,255,0.75)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M130 15 L155 40" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+
+        <!-- text lines (subtle on white-on-orange) -->
+        <rect x="48" y="130" width="60" height="4" rx="2" fill="rgba(224,78,26,0.15)"/>
+        <rect x="48" y="142" width="80" height="4" rx="2" fill="rgba(224,78,26,0.1)"/>
+        <rect x="48" y="154" width="45" height="4" rx="2" fill="rgba(224,78,26,0.1)"/>
+        <rect x="48" y="166" width="70" height="4" rx="2" fill="rgba(224,78,26,0.08)"/>
+
+        <!-- eyes — dark on white, welcoming (centered, at viewer) -->
+        <g class="eye-blink">
+          <ellipse cx="75" cy="95" rx="7" ry="8" fill="#b83510"/>
+          <ellipse cx="73" cy="92" rx="2.5" ry="2.5" fill="rgba(255,255,255,0.8)"/>
+        </g>
+        <g class="eye-blink-d">
+          <ellipse cx="115" cy="95" rx="7" ry="8" fill="#b83510"/>
+          <ellipse cx="113" cy="92" rx="2.5" ry="2.5" fill="rgba(255,255,255,0.8)"/>
+        </g>
+
+        <!-- smile -->
+        <path d="M84 108 Q95 118 106 108" stroke="#b83510" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+        <!-- blush -->
+        <ellipse cx="68" cy="106" rx="6" ry="3.5" fill="rgba(255,255,255,0.2)"/>
+        <ellipse cx="122" cy="106" rx="6" ry="3.5" fill="rgba(255,255,255,0.2)"/>
+
+        <!-- spark — white on orange -->
+        <g class="spark-twinkle">
+          <path d="M95 40 L100 20 L105 40 L125 45 L105 50 L100 70 L95 50 L75 45 Z" fill="#fff"/>
+          <path d="M97 40 L100 30 L103 40 L113 43 L103 46 L100 56 L97 46 L87 43 Z" fill="rgba(255,255,255,0.5)"/>
+          <line x1="100" y1="14" x2="100" y2="19" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+          <line x1="100" y1="71" x2="100" y2="76" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+          <line x1="69" y1="45" x2="74" y2="45" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+          <line x1="126" y1="45" x2="131" y2="45" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+          <line x1="80" y1="26" x2="83" y2="30" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <line x1="117" y1="26" x2="114" y2="30" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <line x1="80" y1="62" x2="83" y2="58" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <line x1="117" y1="62" x2="114" y2="58" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+<footer style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--gray-200);">
+  <p style="font-size:0.75rem;color:var(--gray-500);">Final character exploration. The spark represents the conversation the text ignites.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+# Encrypt per-fireside research material (third-party copyrighted sources).
+# Decryptable only with the git-crypt symmetric key.
+content/firesides/*/research/** filter=git-crypt diff=git-crypt

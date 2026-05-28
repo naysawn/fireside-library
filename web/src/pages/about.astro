@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About | Fireside Library" activeNav="about">
+
+<header class="hero-night overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 text-white">
+  <div class="relative max-w-5xl mx-auto px-6 md:px-12">
+    <p class="hero-rise hero-eyebrow text-[0.75rem] uppercase tracking-[0.2em] font-bold mb-3">About this project</p>
+    <h1 class="hero-rise text-3xl md:text-5xl font-black tracking-tight leading-[1.05] md:whitespace-nowrap">Materials for <em>meaningful</em> conversations.</h1>
+  </div>
+</header>
+
+<section class="pt-12 pb-14 md:pt-14 md:pb-16">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+    <p class="t-section-title max-w-3xl">Each fireside is a written text to maintain a 2 hour discussion.</p>
+    <p class="t-body max-w-3xl mt-4">They're built for a small group of 2 to 8 people. They open with questions, ground discussion in passages from the Baha'i Writings, and never assume the reader subscribes to the teachings or is familiar with any Baha'i specific jargon.</p>
+    <p class="t-body max-w-3xl mt-4">They are free and open source — you're welcome to download them, edit them, mix them up, and contribute however you'd like.</p>
+  </div>
+</section>
+
+<!-- Stages -->
+<section class="py-12 md:py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+
+    <h2 class="t-section-title mb-3">Stages of interest</h2>
+    <p class="t-lede mb-8 max-w-2xl">Each fireside is tagged with a stage. The subjects, depth, and what the text assumes about the reader all shift accordingly.</p>
+
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white rounded-lg p-6 border border-gray-200">
+        <span class="t-eyebrow text-accent">Stage 01</span>
+        <h3 class="font-bold text-lg text-gray-900 mt-2 mb-1">Discovery</h3>
+        <p class="t-caption font-semibold text-gray-500 mb-3">For first-time encounters</p>
+        <p class="t-body">Nothing is assumed. These begin with ordinary human experience, so the conversation never depends on anyone already believing anything.</p>
+      </div>
+      <div class="bg-white rounded-lg p-6 border border-gray-200">
+        <span class="t-eyebrow text-accent">Stage 02</span>
+        <h3 class="font-bold text-lg text-gray-900 mt-2 mb-1">Investigation</h3>
+        <p class="t-caption font-semibold text-gray-500 mb-3">For active explorers</p>
+        <p class="t-body">For someone genuinely curious about what the Baha'i Faith is. These dig into its teachings, its history, and the questions people actually ask.</p>
+      </div>
+      <div class="bg-white rounded-lg p-6 border border-gray-200">
+        <span class="t-eyebrow text-accent">Stage 03</span>
+        <h3 class="font-bold text-lg text-gray-900 mt-2 mb-1">Consolidation</h3>
+        <p class="t-caption font-semibold text-gray-500 mb-3">For newly declared Baha'is</p>
+        <p class="t-body">For someone who has embraced the Faith and wants to live it. These connect the teachings to the texture of daily life.</p>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <a href="/#firesides" class="inline-flex items-center gap-2 bg-accent text-white font-semibold text-[0.9375rem] px-6 py-3 rounded-full no-underline hover:-translate-y-0.5 hover:shadow-md transition">Browse the library →</a>
+    </div>
+  </div>
+</section>
+
+<!-- What's in a fireside -->
+<section class="py-12 md:py-20">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+
+    <h2 class="t-section-title mb-8">What's in a fireside text?</h2>
+
+    <ol class="max-w-2xl">
+      <li class="flex gap-5">
+        <div class="flex flex-col items-center self-stretch">
+          <span class="flex-none w-9 h-9 rounded-full bg-accent text-white font-bold text-sm flex items-center justify-center">1</span>
+          <span class="flex-1 w-px bg-gray-200 mt-2"></span>
+        </div>
+        <div class="pb-8">
+          <h3 class="font-bold text-gray-900 mb-1">2–3 sections</h3>
+          <p class="t-body">Each text is built from two or three sections. They're designed to stand on their own rather than bleed into the next, so a single session can be capped at about two hours.</p>
+        </div>
+      </li>
+      <li class="flex gap-5">
+        <div class="flex flex-col items-center self-stretch">
+          <span class="flex-none w-9 h-9 rounded-full bg-accent text-white font-bold text-sm flex items-center justify-center">2</span>
+          <span class="flex-1 w-px bg-gray-200 mt-2"></span>
+        </div>
+        <div class="pb-8">
+          <h3 class="font-bold text-gray-900 mb-1">Text and quotations</h3>
+          <p class="t-body">Direct commentary on the subject at hand, interwoven with quotations from the Baha'i Writings. Every section contains both.</p>
+        </div>
+      </li>
+      <li class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <span class="flex-none w-9 h-9 rounded-full bg-accent text-white font-bold text-sm flex items-center justify-center">3</span>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-1">Questions</h3>
+          <p class="t-body">Each fireside opens and closes with questions. They come before any analysis, inviting people to reflect on their own experience before turning to the text. <em>"Have you ever felt the presence of the divine?"</em></p>
+        </div>
+      </li>
+    </ol>
+
+    <aside class="mt-10 max-w-2xl border-l-4 border-accent bg-accent-pale rounded-r-lg px-5 py-4">
+      <p class="t-body"><strong class="text-gray-900">Print a copy for everyone.</strong> Each fireside is made to print cleanly — so hand one to every participant instead of passing a phone around or reading off a screen. When people can follow along, sit with a passage, and look back at the questions in their own hands, the conversation goes deeper and more people join in.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- Why this is needed -->
+<section class="py-12 md:py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+
+    <h2 class="t-section-title mb-6 max-w-2xl">Who is this for?</h2>
+
+    <div class="max-w-3xl t-body space-y-6">
+      <p>These materials are made for Baha'is who are passionate about teaching the Faith — and especially for those drawn to focusing their efforts on the individuals most receptive to it.</p>
+      <p>In any given population, some people are highly receptive to the Baha'i teachings and actively want to explore them. Not everyone, of course. But people often reach a point where they genuinely want to understand what the Faith is, and to consider whether to embrace it for themselves. When you meet someone like that, these firesides give the conversation a place to start and somewhere to go.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-12 md:py-20">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+
+    <h2 class="t-section-title mb-8">Common questions</h2>
+
+    <div class="max-w-3xl divide-y divide-gray-200">
+
+      <div class="pb-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">What's a fireside?</h3>
+        <p class="t-body">A fireside is a warm, informal gathering held in a Baha'i's home, to which friends interested in the Faith are invited so that, through hospitality and unhurried conversation, they can learn about its teachings and have their personal questions answered. Shoghi Effendi repeatedly called it the single most effective method of teaching the Faith. Each text on this site is written to carry one of those gatherings from start to finish.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">Can these be used outside the home?</h3>
+        <p class="t-body">Yes. A fireside is classically held in someone's home, but we often use these texts in other settings too: with a small group in a public space, over coffee in a café, on a home visit, or in someone else's home. Anywhere a few people can sit and talk works. They also aren't the only thing we suggest. Depending on the person, we'll point them to individual books as well, and encourage them to start reading the Baha'i Writings for themselves.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">How are these related to the institute materials?</h3>
+        <p class="t-body">They're a complement. The institute courses are designed to train people to carry out acts of service and build community life. These firesides do something different: they help a person understand what the Baha'i Faith is at an individual level, and stir the motivation to dedicate one's life to it. Both are necessary. People need honest conversation to discover the Faith for themselves, and they need the institute materials to learn how to serve once they have.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">Why direct conversations at all?</h3>
+        <p class="t-body">The Baha'i community places great weight on direct, meaningful conversation as the way people come to the Faith. The institute courses prepare a person to initiate and sustain exactly these conversations, developing not just the ability to articulate ideas clearly but the attitudes and spiritual qualities that make a conversation effective. These firesides are an assistant to that effort: a ready text that gives a conversation somewhere to go, so the capacities those courses build have an occasion to be used.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">Do we need written materials for conversations?</h3>
+        <p class="t-body">In almost every setting, a written anchor makes conversation more fruitful. Can you run a productive meeting without an agenda? Do we study the institute materials without a book and a tutor to guide us? A direct conversation about the Baha'i Faith works the same way. A written text gives everyone a shared starting point and a clear path through the subject, so the group can go deep rather than wander. It also means a conversation that went well in one living room can be run again in another.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">Should everyone have their own copy?</h3>
+        <p class="t-body">We'd recommend it. The firesides are made to print cleanly, so the easiest thing is to print one for each person rather than passing a single copy around or reading off a screen. When everyone can follow along, mark a passage, and look back at the questions in their own hands, more people stay engaged and the conversation goes deeper.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">Are these official Baha'i materials?</h3>
+        <p class="t-body">No. They're written and edited by a small group of Baha'is in Boston, not produced or endorsed by any Baha'i institution. We've worked hard to represent the teachings faithfully and to quote the Writings accurately, but the framing and commentary around those passages are our own, as with the work of any Baha'i author. They've been written with a particular reader in mind: a college-educated young adult investigating the Faith, who enjoys reading and would describe themselves as spiritual but not religious.</p>
+      </div>
+
+      <div class="py-6">
+        <h3 class="t-body font-bold text-gray-900 mb-2">Can I edit, remix, and reuse them?</h3>
+        <p class="t-body">Yes, and they're free. Everything here is released under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" class="text-accent underline underline-offset-2 hover:no-underline">Creative Commons Attribution 4.0</a> license, so you can copy, adapt, translate, and even use the firesides commercially, as long as you credit Fireside Library. Download one, change what doesn't fit your group, and run with it.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</Layout>

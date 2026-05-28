@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Test: Open Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    padding: 3rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 3rem;
+  }
+
+  section {
+    margin-bottom: 3.5rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 1rem;
+  }
+
+  .showcase {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .showcase-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .wordmark-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+  }
+
+  .accent-bg {
+    background: #e04e1a;
+    border-radius: 1rem;
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  /* Glow animation for hero size */
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.5;
+      filter: blur(6px);
+    }
+    50% {
+      opacity: 0.9;
+      filter: blur(10px);
+    }
+  }
+
+  @keyframes glow-flicker {
+    0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.7; }
+    25% { transform: scaleY(1.08) translateY(-1px); opacity: 0.9; }
+    50% { transform: scaleY(0.95) translateY(1px); opacity: 0.6; }
+    75% { transform: scaleY(1.04) translateY(-0.5px); opacity: 0.85; }
+  }
+
+  .hero-book .glow-anim {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  .hero-book .flame-anim {
+    animation: glow-flicker 2s ease-in-out infinite;
+  }
+
+  /* Subtle float for hero */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .hero-book {
+    animation: float 4s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  .size-note {
+    font-size: 0.625rem;
+    color: #bbb;
+    text-align: center;
+    margin-top: 0.35rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Character Test: Book</h1>
+<p class="subtitle">Geometric open book with personality. Accent: #e04e1a</p>
+
+<!-- ============================================================
+     SVG DEFINITIONS
+     ============================================================ -->
+
+<!--
+  The book character:
+  - Two cover halves (orange) angled open like a tent / butterfly
+  - White/cream pages fanning inside each cover
+  - A warm glow emanating from the center spine
+  - Two small friendly eyes near the top of the spine
+  - A tiny smile curve below the eyes
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <!-- Radial glow gradient -->
+    <radialGradient id="book-glow" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#ffcc44" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#ff9922" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff9922" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Inverted glow for accent bg -->
+    <radialGradient id="book-glow-inv" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#fff8e0" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#ffe8aa" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffe8aa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- NORMAL VARIANT (orange covers, white pages) -->
+  <symbol id="book-char" viewBox="0 0 100 100">
+    <!-- Glow from center -->
+    <ellipse cx="50" cy="58" rx="22" ry="30" fill="url(#book-glow)" class="glow-anim"/>
+
+    <!-- Left cover (orange) -->
+    <path d="M48 22 L12 30 L12 82 L48 78 Z" fill="#e04e1a" rx="2"/>
+    <!-- Right cover (orange) -->
+    <path d="M52 22 L88 30 L88 82 L52 78 Z" fill="#e04e1a"/>
+
+    <!-- Left cover inner edge / highlight -->
+    <path d="M48 22 L12 30 L12 82 L48 78 Z" fill="#c84115" opacity="0.3"/>
+
+    <!-- Left pages (cream/white, slightly inset) -->
+    <path d="M48 25 L18 32 L18 79 L48 75 Z" fill="#fdf6ec"/>
+    <!-- Right pages -->
+    <path d="M52 25 L82 32 L82 79 L52 75 Z" fill="#fff9f0"/>
+
+    <!-- Page lines left -->
+    <line x1="22" y1="40" x2="44" y2="37" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="48" x2="44" y2="45" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="56" x2="44" y2="53" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="64" x2="44" y2="61" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Page lines right -->
+    <line x1="56" y1="37" x2="78" y2="40" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="56" y1="45" x2="78" y2="48" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="56" y1="53" x2="78" y2="56" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="56" y1="61" x2="78" y2="64" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Spine -->
+    <rect x="47" y="20" width="6" height="60" rx="3" fill="#c84115"/>
+
+    <!-- Spine highlight -->
+    <rect x="48.5" y="22" width="3" height="56" rx="1.5" fill="#e04e1a" opacity="0.6"/>
+
+    <!-- Flame / light wisps coming from pages (center top) -->
+    <ellipse cx="50" cy="18" rx="8" ry="6" fill="#ffcc44" opacity="0.35" class="flame-anim"/>
+    <ellipse cx="50" cy="15" rx="5" ry="5" fill="#ffdd66" opacity="0.25" class="flame-anim"/>
+    <ellipse cx="50" cy="12" rx="3" ry="4" fill="#ffeeaa" opacity="0.2" class="flame-anim"/>
+
+    <!-- EYES - friendly, slightly asymmetric for charm -->
+    <!-- Left eye -->
+    <ellipse cx="43" cy="34" rx="3.2" ry="3.5" fill="#1a1a1a"/>
+    <ellipse cx="42" cy="33" rx="1.2" ry="1.3" fill="#fff"/>
+
+    <!-- Right eye -->
+    <ellipse cx="57" cy="34" rx="3.2" ry="3.5" fill="#1a1a1a"/>
+    <ellipse cx="56" cy="33" rx="1.2" ry="1.3" fill="#fff"/>
+
+    <!-- Tiny happy mouth -->
+    <path d="M46 40 Q50 44 54 40" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Rosy cheeks for extra charm -->
+    <circle cx="38" cy="39" r="3" fill="#ff8866" opacity="0.3"/>
+    <circle cx="62" cy="39" r="3" fill="#ff8866" opacity="0.3"/>
+  </symbol>
+
+  <!-- INVERTED VARIANT (white/cream covers for accent bg) -->
+  <symbol id="book-char-inv" viewBox="0 0 100 100">
+    <!-- Glow from center -->
+    <ellipse cx="50" cy="58" rx="22" ry="30" fill="url(#book-glow-inv)" class="glow-anim"/>
+
+    <!-- Left cover (white/cream) -->
+    <path d="M48 22 L12 30 L12 82 L48 78 Z" fill="#fff"/>
+    <!-- Right cover -->
+    <path d="M52 22 L88 30 L88 82 L52 78 Z" fill="#fff"/>
+
+    <!-- Left cover shadow -->
+    <path d="M48 22 L12 30 L12 82 L48 78 Z" fill="#e8ddd0" opacity="0.3"/>
+
+    <!-- Left pages -->
+    <path d="M48 25 L18 32 L18 79 L48 75 Z" fill="#fff9f0"/>
+    <!-- Right pages -->
+    <path d="M52 25 L82 32 L82 79 L52 75 Z" fill="#fffcf5"/>
+
+    <!-- Page lines left -->
+    <line x1="22" y1="40" x2="44" y2="37" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="48" x2="44" y2="45" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="56" x2="44" y2="53" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="64" x2="44" y2="61" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Page lines right -->
+    <line x1="56" y1="37" x2="78" y2="40" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="56" y1="45" x2="78" y2="48" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="56" y1="53" x2="78" y2="56" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+    <line x1="56" y1="61" x2="78" y2="64" stroke="#e8ddd0" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Spine -->
+    <rect x="47" y="20" width="6" height="60" rx="3" fill="#ddd"/>
+
+    <!-- Spine highlight -->
+    <rect x="48.5" y="22" width="3" height="56" rx="1.5" fill="#fff" opacity="0.6"/>
+
+    <!-- Flame / light wisps -->
+    <ellipse cx="50" cy="18" rx="8" ry="6" fill="#fff8e0" opacity="0.5" class="flame-anim"/>
+    <ellipse cx="50" cy="15" rx="5" ry="5" fill="#fffaee" opacity="0.35" class="flame-anim"/>
+    <ellipse cx="50" cy="12" rx="3" ry="4" fill="#fff" opacity="0.25" class="flame-anim"/>
+
+    <!-- Eyes -->
+    <ellipse cx="43" cy="34" rx="3.2" ry="3.5" fill="#1a1a1a"/>
+    <ellipse cx="42" cy="33" rx="1.2" ry="1.3" fill="#fff"/>
+    <ellipse cx="57" cy="34" rx="3.2" ry="3.5" fill="#1a1a1a"/>
+    <ellipse cx="56" cy="33" rx="1.2" ry="1.3" fill="#fff"/>
+
+    <!-- Mouth -->
+    <path d="M46 40 Q50 44 54 40" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Rosy cheeks -->
+    <circle cx="38" cy="39" r="3" fill="#ff8866" opacity="0.35"/>
+    <circle cx="62" cy="39" r="3" fill="#ff8866" opacity="0.35"/>
+  </symbol>
+</svg>
+
+
+<!-- 1. NAV SIZE -->
+<section>
+  <p class="label">1. Nav size (24-32px)</p>
+  <div class="showcase" style="gap: 1.5rem;">
+    <div>
+      <svg width="24" height="24"><use href="#book-char"/></svg>
+      <div class="size-note">24px</div>
+    </div>
+    <div>
+      <svg width="28" height="28"><use href="#book-char"/></svg>
+      <div class="size-note">28px</div>
+    </div>
+    <div>
+      <svg width="32" height="32"><use href="#book-char"/></svg>
+      <div class="size-note">32px</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 2. HERO SIZE -->
+<section>
+  <p class="label">2. Hero size (150-200px) with glow animation</p>
+  <div class="showcase-centered">
+    <div class="hero-book">
+      <svg width="200" height="200"><use href="#book-char"/></svg>
+    </div>
+  </div>
+</section>
+
+
+<!-- 3. INLINE SIZE -->
+<section>
+  <p class="label">3. Inline size (48-64px)</p>
+  <div class="showcase">
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <svg width="48" height="48"><use href="#book-char"/></svg>
+      <span style="font-size:1.125rem; font-weight:600;">Section Heading</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <svg width="64" height="64"><use href="#book-char"/></svg>
+      <span style="font-size:1.25rem; font-weight:600;">Larger Heading</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- 4. WITH TEXT (WORDMARK) -->
+<section>
+  <p class="label">4. With text (wordmark / logo lockup)</p>
+  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+    <div class="wordmark">
+      <svg width="40" height="40"><use href="#book-char"/></svg>
+      <span class="wordmark-text">Baha'i Modules</span>
+    </div>
+    <div class="wordmark">
+      <svg width="28" height="28"><use href="#book-char"/></svg>
+      <span class="wordmark-text" style="font-size:1.1rem;">Baha'i Modules</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- 5. MULTIPLE -->
+<section>
+  <p class="label">5. Multiple at different sizes</p>
+  <div class="row">
+    <svg width="32" height="32"><use href="#book-char"/></svg>
+    <svg width="56" height="56"><use href="#book-char"/></svg>
+    <svg width="80" height="80"><use href="#book-char"/></svg>
+    <svg width="120" height="120"><use href="#book-char"/></svg>
+  </div>
+</section>
+
+
+<!-- 6. ON ACCENT BACKGROUND -->
+<section>
+  <p class="label">6. On accent background (inverted)</p>
+  <div class="accent-bg">
+    <svg width="32" height="32"><use href="#book-char-inv"/></svg>
+    <svg width="64" height="64"><use href="#book-char-inv"/></svg>
+    <svg width="120" height="120"><use href="#book-char-inv"/></svg>
+  </div>
+</section>
+
+</body>
+</html>
