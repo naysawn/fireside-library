@@ -32,6 +32,7 @@ Which brings us back to where we started. What makes a life count? The answer tu
 
 2. A tree's whole purpose, the reading says, is the fruit it gives away — not anything it keeps for itself. Is it really true that a human life is "for" what it gives to others? What in you resists that idea, and what in you recognizes it?
 
+
 ---
 
 ## Section 2: The Shape of Service — How We Bear the Fruit
@@ -40,9 +41,8 @@ Which brings us back to where we started. What makes a life count? The answer tu
 
 1. Who is someone you've watched spend themselves on other people? What did their life look like up close — did it look like a sacrifice, or like something else?
 
-2. Think about your own work or daily responsibilities. Is there a difference, in how it actually feels, between doing them just to get them done and doing them for the people they serve?
+2. Baha'u'llah says that Work done in the spirit of service is the same as worship to God. What do you think it means to do work in the spirit of service?
 
-3. When in your life have you felt most connected to other people? What were you doing together?
 
 ### Reading
 

@@ -4,6 +4,19 @@
 
 ## Section 1: Created in the Image of God
 
+<!--
+ARC · Section 1 — WHY
+
+  1. Made in the image of God — a mirror built to carry a light not its own
+  2. Two natures:   higher / divine   vs   lower / ego
+  3. Acting virtuously   →   manifests the divine nature
+  4. So the good is God's   ("all good cometh from God")
+  5. STAKES: the world's crisis is spiritual (Shoghi Effendi)
+  6. Highest calling, named daily: created to know & worship God
+
+  SETS UP → the turn "worship means service," which Section 2 unpacks
+-->
+
 ### Opening Questions
 
 1. Think of someone you've known whom you admire for how much they give to others. Let's honor them: tell us about them, and what it is you admire.
@@ -46,6 +59,21 @@ To know God, and to worship Him. That is what we are for. And as the next sectio
 
 ## Section 2: The Hollow Reed
 
+<!--
+ARC · Section 2 — HOW IT WORKS (the mechanism)
+
+  0. Opens on the question: if worship = service and the good is God's, what's OUR part?
+  1. The reed — it makes music only because it's hollow
+  2. The ego is the blockage
+  3. Emptying = subduing / controlling the self, NOT erasing it ("chalice of selflessness")
+  4. The channel is cleared by acting — not by waiting to feel ready
+  5. prayer + meditation + study + service   —   reinforce one another
+  6. Self steps aside   →   ordinary acts become "beautiful prayers"
+
+  LANDS → the reed never becomes the musician, but the music is His;
+          points out the door to Section 3
+-->
+
 ### Opening Questions
 
 1. Think of a performance or an act of help that genuinely moved you, from a musician, a nurse, a teacher, anyone. Did it feel like they were showing off, or like they had disappeared into the thing itself?
@@ -85,6 +113,19 @@ The reed never becomes the musician. But the music that comes through it is the 
 ---
 
 ## Section 3: The Shape of Service
+
+<!--
+ARC · Section 3 — THE FORMS + PAYOFF
+
+  0. The channel is open — so what flows out?
+  1. Abdu'l-Baha as model  (the sick · the poor · Lua Getsinger) — service ordinary and daily
+  2. Our own work / profession as service
+  3. Official / institutional service — "shining lamps"; order joined to love & devotion
+  4. Teaching = the cornerstone of the core activities
+       └─ the "greatest service" — priority, not exclusivity
+  5. PAYOFF: the most fulfilling, connected life, open to everyone
+       └─ each of us a channel whose job is to keep it clear
+-->
 
 ### Opening Questions
 

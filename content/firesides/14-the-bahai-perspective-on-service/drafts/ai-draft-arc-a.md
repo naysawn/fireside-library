@@ -4,6 +4,23 @@
 
 ## Section 1: Created to Manifest God
 
+<!--
+ARC · Section 1 — WHY + MECHANISM
+
+  1. Made in the image of God — built to reflect His qualities
+  2. Two natures:   higher / divine   vs   lower / ego
+  3. Acting virtuously   →   manifests the divine nature into the world
+  4. So the good is God's, not ours   ("all good cometh from God")
+       └─ the ego blocks it;  the channel is cleared by acting
+  5. STAKES: the world's crisis is spiritual, not material (Shoghi Effendi)
+       └─ what it needs is transformed souls
+  6. Highest calling, named daily: created to know & worship God
+  7. Worship IS service — "Service is prayer"   →   actions become "beautiful prayers"
+
+  LANDS → purpose and action are one act;
+          closing block quote ("Enrich the poor…") points out the door to Section 2
+-->
+
 ### Opening Questions
 
 1. Think of someone you've known whom you admire for how much they give to others. Let's honor them: tell us about them, and what it is you admire.
@@ -47,6 +64,20 @@ That last line is already pointing somewhere: out the door, toward actual people
 ---
 
 ## Section 2: The Shape of Service
+
+<!--
+ARC · Section 2 — THE FORMS + PAYOFF
+
+  1. Abdu'l-Baha as model — service is ordinary, daily, aimed at whoever's in front of you
+       └─ the sick · the poor · Lua Getsinger
+  2. Our own work / profession is service — when done with care and for others
+  3. prayer + meditation + study + service   —   reinforce one another, none works alone
+  4. Official / institutional service — no clergy; "shining lamps"; order joined to love & devotion
+  5. Teaching = the cornerstone that anchors the core activities
+       └─ the "greatest service" — priority, not exclusivity
+  6. PAYOFF: the most fulfilling, connected life, open to everyone
+       └─ each of us a channel whose job is to keep it clear
+-->
 
 ### Opening Questions
 
