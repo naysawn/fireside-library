@@ -1,4 +1,4 @@
-<!-- Draft 2, Arc A — 2 sections: "Created to Manifest God" (why + mechanism) → "The Shape of Service" (forms + payoff). -->
+<!-- Draft 2, Arc A — 3 sections: "Created to Manifest God" (why + mechanism) → "The Shape of Service" (forms + payoff) → "Walking the Path" (where do I begin, and with whom). -->
 
 # The Baha'i Perspective on Service
 
@@ -77,6 +77,8 @@ ARC · Section 2 — THE FORMS + PAYOFF
        └─ the "greatest service" — priority, not exclusivity
   6. PAYOFF: the most fulfilling, connected life, open to everyone
        └─ each of us a channel whose job is to keep it clear
+
+  LANDS → but no one keeps the channel clear alone; points out the door to Section 3
 -->
 
 ### Opening Questions
@@ -107,7 +109,7 @@ Step back and a quiet surprise comes into view. A life poured out this way doesn
 
 > Ultimately, the power to transform the world is effected by love, love originating from the relationship with the divine, love ablaze among members of a community, love extended without restriction to every human being. This divine love, ignited by the Word of God, is disseminated by enkindled souls through intimate conversations that create new susceptibilities in human hearts, open minds to moral persuasion, and loosen the hold of biased norms and social systems so that they can gradually take on a new form… You are channels for this divine love; let it flow through you to all who cross your path.
 
-Each of us is a channel. The work of a life is simply to keep it clear.
+Each of us is a channel. The work of a life is simply to keep it clear. But that work is never done alone, and no one is born already knowing how. Where a person learns it, and who walks beside them, is what the final section is about.
 
 ### Questions for Discussion
 
@@ -116,3 +118,49 @@ Each of us is a channel. The work of a life is simply to keep it clear.
 2. Prayer, meditation, study, and service are described as feeding one another. Be honest about your own life: which of these do you lean on, and which do you neglect? What happens when one drops out?
 
 3. The reading ends by calling each of us "a channel" whose only job is to keep it clear. In practice, what clogs the channel for you? And have you ever felt it actually flow?
+
+---
+
+## Section 3: Walking the Path
+
+<!--
+ARC · Section 3 — THE PATH (where do I begin, and with whom)
+
+  0. Picks up "each of us is a channel" — names the lonely-climb worry
+  1. The relief: no one keeps the channel clear, or learns to serve, alone
+  2. There is a path, and it is walked WITH others — "a path of service," "accompany one another"
+  3. What is different from a class: study + action go hand in hand; a peer guide, not clergy/teacher; no grades or tests
+  4. Trust: created "principally to benefit the believers themselves," not to recruit — open to all, free
+  5. Callback to Section 1: the channel is cleared by acting — the path just gives that acting a shape and good company
+  6. PAYOFF / LANDS → "from the ground up, one person at a time"; the first step is small, and a gathering like this one is where it begins
+-->
+
+### Opening Questions
+
+1. Think of something difficult you learned not from a book or a class, but by doing it alongside someone a step ahead of you. What did their company make possible that going it alone would not have?
+
+2. When you have truly wanted to change how you live, has willpower on its own been enough, or has it taken other people around you?
+
+3. Is there some good you have quietly wanted to do for others but never quite known how to begin? What has stopped you?
+
+### Reading
+
+By now the picture might feel a little daunting. A clear channel, a polished mirror, a hollow reed: said all at once, it can sound like a solitary climb, something you manage alone by sheer effort and then keep up forever. But that was never the idea. No one learns to serve in isolation, and no one keeps the channel clear by themselves.
+
+From its earliest days the Baha'i community has had a simple answer to how an ordinary person actually grows into a life of service: you walk a path, and you walk it with others. Small groups of people meet, often in someone's living room, to study the Writings together and then put what they have studied into practice. The phrase Baha'is use for this is worth keeping because it is so plain. They walk a path of service together, and they accompany one another along the way.
+
+Two things set this apart from a class. The first is that study and action go hand in hand. You read a little, talk it over honestly, and then try something real before the next gathering: hosting a devotional, helping with a class for children, simply sitting with a neighbor. The second is that no one stands over the group as the expert. The person guiding it is not a teacher, and not a member of clergy, since the Faith has neither, but someone who walked the same stretch of path a little earlier and came back to walk it with you. There are no grades, no tests, nothing to pass or fail.
+
+It helps to know where this came from, because it is easy to mistake for something it is not. These gatherings were not designed to recruit anyone. They were created, in the words of the Universal House of Justice, *"principally to benefit the believers themselves,"* as a way for people already in the community to grow their own capacity to serve. That they later became a doorway others could enter through was something that happened on its own, not the reason they exist. Which is exactly why they are open to people of every faith and none, cost nothing, and ask for no commitment beyond your own curiosity.
+
+Notice, too, that this is the very principle the first section began with, now made practical. The channel is cleared by acting, not by waiting until you feel holy enough. The path simply gives that acting a shape, and good company for the walk. Capacity grows the way any real skill grows: a step at a time, in the doing, beside people a little further along.
+
+There is a line the Baha'is in Boston use to describe how all of this adds up. This is how a community builds itself, they say. Not from the top down. From the ground up, one person at a time. It is not a grand program. It is a prayer gathering you would be welcome at, a conversation you would be welcome to join, a first course you could begin whenever you wished. And if anything in these pages has stirred something in you, then the first step is smaller than you might think. A gathering much like this one is where the path begins.
+
+### Questions for Discussion
+
+1. The reading insists no one keeps the channel clear alone, that serving is something learned in good company. Think about the changes that actually stuck in your life: did they come from willpower, or from the people around you?
+
+2. These gatherings, the reading says, were built "principally to benefit the believers themselves," not to draw anyone in. Does knowing that change how an invitation to one would land for you? Why?
+
+3. The reading claims the capacity to serve is built in the doing, a step at a time, and is not reserved for the naturally gifted. Where in your own life have you become capable of something only by beginning before you felt ready?
