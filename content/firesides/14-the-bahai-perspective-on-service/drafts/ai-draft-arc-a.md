@@ -12,7 +12,8 @@ ARC · Section 1 — WHY + MECHANISM
   3. Acting virtuously   →   manifests the divine nature into the world
   4. So the good is God's, not ours   ("all good cometh from God")
        └─ the ego blocks it;  the channel is cleared by acting
-  5. STAKES: the world's crisis is spiritual, not material (Shoghi Effendi)
+  5. STAKES: the world's crisis is spiritual, not material
+       └─ Baha'u'llah ("vitality… dying out / corrosion of ungodliness") → Shoghi Effendi follows
        └─ what it needs is transformed souls
   6. Highest calling, named daily: created to know & worship God
   7. Worship IS service — "Service is prayer"   →   actions become "beautiful prayers"
@@ -33,19 +34,21 @@ ARC · Section 1 — WHY + MECHANISM
 
 We were made in the image of God.
 
-It's a claim several of the world's religions share, and the Baha'i teachings hold it too. It doesn't mean God has a face like ours. It means each of us was given the capacity to reflect God's own qualities: love, honesty, courage, compassion, generosity. We are something like mirrors, built to carry a light that doesn't begin in us. The light that shines in such a mirror was never the mirror's own; it is the light of God, borrowed and passed along.
+It's a claim several of the world's religions share, and the Baha'i teachings hold it too. It doesn't mean God has a face like ours. It means each of us was given the capacity to reflect God's own qualities: love, honesty, courage, compassion, generosity. We are something like mirrors, built to carry a light that doesn't begin in us. The light that shines in such a mirror was never the mirror's own; it is the light of God, borrowed and passed along. Baha'u'llah says as much, and notice how much He entrusts to ordinary people:
+
+> O friends! Be not careless of the virtues with which ye have been endowed, neither be neglectful of your high destiny.… Ye are the stars of the heaven of understanding, the breeze that stirreth at the break of day, the soft-flowing waters upon which must depend the very life of all men, the letters inscribed upon His sacred scroll. With the utmost unity, and in a spirit of perfect fellowship, exert yourselves, that ye may be enabled to achieve that which beseemeth this Day of God.…
+
+Stars, breeze, life-giving water: every image is of something whose whole purpose is to pour itself into what surrounds it. That is the high destiny He tells us not to be careless of.
 
 The Writings describe two sides to our nature. One is this higher, spiritual self, the part that can reflect God. The other is a lower, self-centered nature, the ego that thinks first and last of itself. Both are real, and much of a human life is the quiet contest between them.
 
-This is what gives service its meaning. Every time we act with genuine love or patience or generosity, we let that higher nature show, which is to say we let God's own qualities shine out into the world. The good is not, in the end, our private invention. It is God's, passing through us. As the scripture says, *"all good cometh from God and all evil from your own selves."* The one thing that blocks the light is the ego. So the spiritual life is, in large part, the work of getting ourselves out of the way, clearing the channel so that what is best in us, which is really what is best in God, can flow through. And the clearing happens not by waiting until we feel holy enough, but by acting:
+This is what gives service its meaning. Every time we act with genuine love or patience or generosity, we let that higher nature show, which is to say we let God's own qualities shine out into the world. The good is not, in the end, our private invention. It is God's, passing through us. As the scripture says, *"all good cometh from God and all evil from your own selves."* The one thing that blocks the light is the ego. So the spiritual life is, in large part, the work of getting ourselves out of the way, clearing the channel so that what is best in us, which is really what is best in God, can flow through. And the channel is not cleared by waiting until we feel holy enough. It is cleared by acting: the more we serve, the more freely the power moves through us.
 
-> Have faith and confidence, that the Power of the Holy Spirit will flow through you, the right way will appear, the door will open, the right message, the right principle or the right book will be given to you… Act as though it had all been answered. Then act with tireless, ceaseless energy. And, as you act, you yourself will become a magnet which will attract more power to your being, until you become an unobstructed channel for the Divine Power to flow through you.
+And this is not some private spiritual hobby. Look honestly at the world's troubles and it's tempting to call them material: broken systems, scarce resources, failing institutions. Baha'u'llah locates the sickness further down:
 
-And this is not some private spiritual hobby. Look honestly at the world's troubles and it's tempting to call them material: broken systems, scarce resources, failing institutions. Shoghi Effendi named the deeper problem:
+> The vitality of men's belief in God is dying out in every land; nothing short of His wholesome medicine can ever restore it. The corrosion of ungodliness is eating into the vitals of human society; what else but the Elixir of His potent Revelation can cleanse and revive it?
 
-> Indeed, the chief reason for the evils now rampant in society is a lack of spirituality… The universal crisis affecting mankind is, therefore, essentially spiritual in its causes.
-
-New laws and better organizations help, but without inner change they go hollow. Even religion, he warned, can *"degenerate into a mere organization, and become a dead thing."* What the world is starving for is people whose own inner lives have been transformed and who carry that outward into everything they touch.
+If the disease is spiritual, no purely material cure will reach it. Shoghi Effendi said the same in plainer terms: the universal crisis facing mankind is *"essentially spiritual in its causes,"* and laws and institutions, for all their use, go hollow without an inner change. Religion itself, he warned, can *"degenerate into a mere organization, and become a dead thing."* What the world is starving for is people whose own inner lives have been transformed and who carry that outward into everything they touch.
 
 This is the highest thing a person can do, and the Faith asks us to keep it in front of us. A short prayer that many Baha'is say every day names the whole purpose of a life in a single line: *"I bear witness that Thou hast created me to know Thee and to worship Thee."* We were made to know God and to worship Him. And worship, in this Faith, is not mainly something that happens in a quiet room with the eyes closed. To worship God is to let His qualities live through what we do. *"Service is prayer,"* Abdu'l-Baha taught, which is how an ordinary action, a kindness, a task done with love, becomes a prayer in its own right:
 
@@ -132,7 +135,8 @@ ARC · Section 3 — THE PATH (where do I begin, and with whom)
   3. What is different from a class: study + action go hand in hand; a peer guide, not clergy/teacher; no grades or tests
   4. Trust: created "principally to benefit the believers themselves," not to recruit — open to all, free
   5. Callback to Section 1: the channel is cleared by acting — the path just gives that acting a shape and good company
-  6. PAYOFF / LANDS → "from the ground up, one person at a time"; the first step is small, and a gathering like this one is where it begins
+  6. Baha'u'llah's promise — "shall aid whosoever will arise… a company of Our favored angels" — no one takes the first step unaided
+  7. PAYOFF / LANDS → "from the ground up, one person at a time"; the first step is small and not taken alone, and a gathering like this one is where it begins
 -->
 
 ### Opening Questions
@@ -155,7 +159,11 @@ It helps to know where this came from, because it is easy to mistake for somethi
 
 Notice, too, that this is the very principle the first section began with, now made practical. The channel is cleared by acting, not by waiting until you feel holy enough. The path simply gives that acting a shape, and good company for the walk. Capacity grows the way any real skill grows: a step at a time, in the doing, beside people a little further along.
 
-There is a line the Baha'is in Boston use to describe how all of this adds up. This is how a community builds itself, they say. Not from the top down. From the ground up, one person at a time. It is not a grand program. It is a prayer gathering you would be welcome at, a conversation you would be welcome to join, a first course you could begin whenever you wished. And if anything in these pages has stirred something in you, then the first step is smaller than you might think. A gathering much like this one is where the path begins.
+And no one who takes that step takes it unaided. Baha'u'llah's promise to anyone who arises is unambiguous:
+
+> Verily, We behold you from Our realm of glory, and shall aid whosoever will arise for the triumph of Our Cause with the hosts of the Concourse on high and a company of Our favored angels.
+
+There is a line the Baha'is in Boston use to describe how all of this adds up. This is how a community builds itself, they say. Not from the top down. From the ground up, one person at a time. It is not a grand program. It is a prayer gathering you would be welcome at, a conversation you would be welcome to join, a first course you could begin whenever you wished. And if anything in these pages has stirred something in you, then the first step is smaller than you might think, and you would not be taking it alone. A gathering much like this one is where the path begins.
 
 ### Questions for Discussion
 
