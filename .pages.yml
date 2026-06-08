@@ -1,0 +1,79 @@
+# Pages CMS configuration — https://pagescms.org
+#
+# Lets non-technical writers edit firesides from a visual editor at
+# https://app.pagescms.org with no Git, terminal, or GitHub account.
+#
+# WORKFLOW (see PAGES-CMS.md for the full guide):
+#   - Writers are invited by email and point Pages CMS at the `content` branch.
+#   - Each save is one commit, attributed to the individual writer (see settings).
+#   - An editor reviews `content` and merges to `main`; the site builds from `main`.
+#
+# NOTE: this repo splits each fireside across two files — metadata.yaml and a
+# draft under drafts/ — so the CMS exposes two collections rather than one entry.
+# That's the honest cost of keeping the existing folder model and build untouched.
+
+# Uploaded images land in the Astro public folder, so they get real URLs with
+# zero build-pipeline work and resolve at the deployed site root.
+media:
+  - name: uploads
+    label: Images & uploads
+    input: web/public/uploads
+    output: /uploads
+    categories: [image]
+
+settings:
+  commit:
+    # Attribute every save to the real writer (name + email), not the GitHub App,
+    # so git history / blame shows exactly who changed which fireside.
+    identity: user
+    templates:
+      create: "{userName} added {path}"
+      update: "{userName} edited {path}"
+      delete: "{userName} removed {path}"
+      rename: "{userName} renamed {path}"
+
+content:
+  # --- The editorial details for each fireside (title, status, phase, topics) ---
+  # One metadata.yaml per fireside folder. This is the clean, primary collection.
+  - name: fireside_details
+    label: Fireside details
+    type: collection
+    path: content/firesides
+    subfolders: true
+    format: yaml
+    view:
+      primary: title
+      fields: [title, status, phase]
+      sort: [id, title]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: id, label: Number, type: number }
+      - name: phase
+        label: Seeker phase
+        type: select
+        options:
+          values: [discovery, investigation, consolidation]
+      - name: status
+        label: Status
+        type: select
+        # Lifecycle from content/CLAUDE.md, plus the values already in use.
+        options:
+          values: [planning, drafting, review, rewrite, beta, testing, v1, research]
+      - { name: topics, label: Topics, type: string, list: true }
+      - { name: hidden, label: Hidden from site, type: boolean }
+
+  # --- The actual writing: the draft markdown bodies ---
+  # These files carry NO frontmatter, so they're edited as raw markdown to
+  # preserve the repo's conventions exactly (*"quotes"* and %%editorial notes%%
+  # that the build strips). A rich-text WYSIWYG could silently reflow those, so
+  # we keep a faithful source editor for now.
+  - name: fireside_text
+    label: Fireside text (drafts)
+    type: collection
+    path: content/firesides
+    subfolders: true
+    format: raw
+    # Keep research files and the metadata.yaml out of the writing view.
+    exclude: ["**/research/**", "**/metadata.yaml"]
+    fields:
+      - { name: body, label: Draft, type: text }
