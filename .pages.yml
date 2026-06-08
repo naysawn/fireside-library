@@ -67,10 +67,14 @@ content:
       - { name: hidden, label: Hidden from site, type: boolean }
 
   # --- The actual writing: the draft markdown bodies ---
-  # These files carry NO frontmatter, so they're edited as raw markdown to
-  # preserve the repo's conventions exactly (*"quotes"* and %%editorial notes%%
-  # that the build strips). A rich-text WYSIWYG could silently reflow those, so
-  # we keep a faithful source editor for now.
+  # These files carry NO frontmatter, so they're edited as raw markdown. We use a
+  # full-height code editor (markdown) rather than a WYSIWYG so the repo's exact
+  # conventions survive: *"quotes"*, %%editorial notes%% (stripped at build), and
+  # the <!-- planning --> scaffolding in some AI drafts.
+  #
+  # NOTE: with no frontmatter there is no "title" field, so Pages CMS labels each
+  # entry by its first line and the list shows blanks. The clean fix is the
+  # one-file-per-fireside migration (see PAGES-CMS.md, "Option B").
   - name: fireside_text
     label: Fireside text (drafts)
     type: collection
@@ -80,4 +84,8 @@ content:
     # Keep research files and the metadata.yaml out of the writing view.
     exclude: ["**/research/**", "**/metadata.yaml"]
     fields:
-      - { name: body, label: Draft, type: text }
+      - name: body
+        label: Draft
+        type: code
+        options:
+          language: markdown
