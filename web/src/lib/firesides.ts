@@ -103,8 +103,11 @@ export function getAllFiresides(): Fireside[] {
     // Skip entries explicitly hidden (e.g. House letters, not firesides)
     if (metadata.hidden) continue;
 
-    const draftsDir = path.join(folderPath, 'drafts');
-    const draft = getLatestDraft(draftsDir);
+    // Prefer a structured `sections/` collection if one exists; otherwise fall
+    // back to the latest free-form draft in `drafts/`.
+    const draft =
+      getSectionsDraft(path.join(folderPath, 'sections'), metadata.title) ??
+      getLatestDraft(path.join(folderPath, 'drafts'));
 
     if (!draft) continue;
 
@@ -122,6 +125,67 @@ export function getAllFiresides(): Fireside[] {
   }
 
   return firesides.sort((a, b) => a.metadata.id - b.metadata.id);
+}
+
+interface SectionEntry {
+  order: number;
+  title: string;
+  opening_questions?: string[];
+  discussion_questions?: string[];
+  body: string;
+}
+
+/**
+ * Assemble a fireside from a `sections/` folder, where each `.md` file is one
+ * section (frontmatter for title/questions, body for the reading). Sections are
+ * ordered by their `order` field and rendered into the same shape as a hand-
+ * written draft, so the published page is identical. The `idea_progression`
+ * field is author-only scaffolding and is intentionally left out of the output.
+ */
+function getSectionsDraft(sectionsDir: string, firesideTitle: string): DraftSource | null {
+  if (!fs.existsSync(sectionsDir)) return null;
+
+  const files = fs.readdirSync(sectionsDir).filter(f => f.endsWith('.md'));
+  if (files.length === 0) return null;
+
+  let modified = new Date(0);
+  const sections: SectionEntry[] = [];
+
+  for (const filename of files) {
+    const filepath = path.join(sectionsDir, filename);
+    const mtime = fs.statSync(filepath).mtime;
+    if (mtime > modified) modified = mtime;
+
+    const raw = fs.readFileSync(filepath, 'utf-8');
+    const match = raw.match(/^﻿?---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    if (!match) continue;
+
+    const fm = (parseYaml(match[1]) ?? {}) as Record<string, unknown>;
+    sections.push({
+      order: typeof fm.order === 'number' ? fm.order : Number.MAX_SAFE_INTEGER,
+      title: typeof fm.title === 'string' ? fm.title : '',
+      opening_questions: Array.isArray(fm.opening_questions) ? fm.opening_questions as string[] : [],
+      discussion_questions: Array.isArray(fm.discussion_questions) ? fm.discussion_questions as string[] : [],
+      body: match[2].trim(),
+    });
+  }
+
+  if (sections.length === 0) return null;
+  sections.sort((a, b) => a.order - b.order);
+
+  const numbered = (qs: string[]) => qs.map((q, i) => `${i + 1}. ${q}`).join('\n\n');
+
+  const blocks = sections.map(s => {
+    let block = `## Section ${s.order}: ${s.title}`;
+    if (s.opening_questions?.length) block += `\n\n### Opening Questions\n\n${numbered(s.opening_questions)}`;
+    block += `\n\n### Reading\n\n${s.body}`;
+    if (s.discussion_questions?.length) block += `\n\n### Questions for Discussion\n\n${numbered(s.discussion_questions)}`;
+    return block;
+  });
+
+  const content = `# ${firesideTitle}\n\n${blocks.join('\n\n---\n\n')}\n`;
+
+  return { content: stripEditorialComments(content), filename: 'sections/', modified };
 }
 
 export function getFiresideBySlug(slug: string): Fireside | undefined {

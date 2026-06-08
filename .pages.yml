@@ -44,7 +44,7 @@ content:
     # Only the per-fireside metadata.yaml belongs here. Without this, Pages CMS
     # recurses into drafts/ and research/ and tries to parse the .md drafts as
     # YAML, throwing "Error parsing frontmatter".
-    exclude: ["**/drafts/**", "**/research/**"]
+    exclude: ["**/drafts/**", "**/research/**", "**/sections/**"]
     view:
       primary: title
       fields: [title, status, phase]
@@ -67,14 +67,8 @@ content:
       - { name: hidden, label: Hidden from site, type: boolean }
 
   # --- The actual writing: the draft markdown bodies ---
-  # These files carry NO frontmatter, so they're edited as raw markdown. We use a
-  # full-height code editor (markdown) rather than a WYSIWYG so the repo's exact
-  # conventions survive: *"quotes"*, %%editorial notes%% (stripped at build), and
-  # the <!-- planning --> scaffolding in some AI drafts.
-  #
-  # NOTE: with no frontmatter there is no "title" field, so Pages CMS labels each
-  # entry by its first line and the list shows blanks. The clean fix is the
-  # one-file-per-fireside migration (see PAGES-CMS.md, "Option B").
+  # Each draft carries a `title` frontmatter (CMS-only; firesides.ts strips it),
+  # so the list shows a title and the body opens in the visual editor.
   - name: fireside_text
     label: Fireside text (drafts)
     type: collection
@@ -85,11 +79,34 @@ content:
     # list, and the body opens in a visual editor. The `body` rich-text field maps
     # to everything after the frontmatter, with a source toggle for exact markdown.
     format: yaml-frontmatter
-    # Keep research files and the metadata.yaml out of the writing view.
-    exclude: ["**/research/**", "**/metadata.yaml"]
+    # Keep research, metadata, and structured sections out of the drafts view.
+    exclude: ["**/research/**", "**/metadata.yaml", "**/sections/**"]
     view:
       primary: title
       fields: [title]
     fields:
       - { name: title, label: Title, type: string }
       - { name: body, label: Draft, type: rich-text }
+
+  # --- Structured sections (TEST: fireside 14 only) ---
+  # Each file is ONE section, shown as a sequential, individually-editable row.
+  # Frontmatter holds the structured bits; the body is the reading (rich-text).
+  # `idea_progression` is author-only scaffolding — firesides.ts leaves it out of
+  # the published page. Scoped to one fireside so the rest are untouched.
+  - name: service_sections
+    label: "Service — sections (test)"
+    type: collection
+    path: content/firesides/14-the-bahai-perspective-on-service/sections
+    format: yaml-frontmatter
+    view:
+      primary: title
+      fields: [order, title]
+      sort: [order]
+      order: asc
+    fields:
+      - { name: order, label: Order, type: number }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: idea_progression, label: Idea progression (notes, not published), type: text }
+      - { name: opening_questions, label: Opening questions, type: string, list: true }
+      - { name: discussion_questions, label: Discussion questions, type: string, list: true }
+      - { name: body, label: Reading, type: rich-text }
