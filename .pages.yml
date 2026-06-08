@@ -41,6 +41,10 @@ content:
     path: content/firesides
     subfolders: true
     format: yaml
+    # Only the per-fireside metadata.yaml belongs here. Without this, Pages CMS
+    # recurses into drafts/ and research/ and tries to parse the .md drafts as
+    # YAML, throwing "Error parsing frontmatter".
+    exclude: ["**/drafts/**", "**/research/**"]
     view:
       primary: title
       fields: [title, status, phase]
