@@ -1,3 +1,7 @@
+---
+title: "The Baha'i Perspective on Service — ai-draft-arc-a"
+---
+
 <!-- Draft 2, Arc A — 3 sections: "Created to Manifest God" (why + mechanism) → "The Shape of Service" (forms + payoff) → "Walking the Path" (where do I begin, and with whom). -->
 
 # The Baha'i Perspective on Service

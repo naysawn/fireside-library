@@ -80,16 +80,16 @@ content:
     type: collection
     path: content/firesides
     subfolders: true
-    format: raw
+    # Drafts carry a small `title` frontmatter (added for the CMS only; the
+    # published site ignores it — firesides.ts strips it). That title labels the
+    # list, and the body opens in a visual editor. The `body` rich-text field maps
+    # to everything after the frontmatter, with a source toggle for exact markdown.
+    format: yaml-frontmatter
     # Keep research files and the metadata.yaml out of the writing view.
     exclude: ["**/research/**", "**/metadata.yaml"]
-    # Label each row by its FILENAME (V1.md, ai-draft-arc-a.md, ...).
     view:
-      primary: name
-      fields: [name]
-    # No `fields:` block ON PURPOSE. For a raw collection with no fields, Pages CMS
-    # (1) populates the row label with the filename and (2) auto-provides a
-    # full-height markdown code editor for the whole file. Declaring a `body`
-    # field BREAKS the list (the filename stops populating) and titles each entry
-    # by its first line — the <!-- --> comment overrun. Verified in pages-cms
-    # source: entry.tsx synthesizes a code/markdown editor when fields is empty.
+      primary: title
+      fields: [title]
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: body, label: Draft, type: rich-text }

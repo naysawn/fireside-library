@@ -41,6 +41,16 @@ function stripEditorialComments(content: string): string {
     .replace(/\n{3,}/g, '\n\n');
 }
 
+/**
+ * Strip a leading YAML frontmatter block (`---\n…\n---`) from a draft. Drafts
+ * carry a `title` so Pages CMS can label the entry and open the body in its
+ * visual editor; the published page takes all metadata from `metadata.yaml`,
+ * so the block is dropped before rendering. No-op for drafts without it.
+ */
+function stripFrontmatter(content: string): string {
+  return content.replace(/^﻿?---\r?\n[\s\S]*?\r?\n---\r?\n*/, '');
+}
+
 function getLatestDraft(draftsDir: string): DraftSource | null {
   if (!fs.existsSync(draftsDir)) return null;
 
@@ -49,7 +59,7 @@ function getLatestDraft(draftsDir: string): DraftSource | null {
   const read = (filename: string): DraftSource => {
     const filepath = path.join(draftsDir, filename);
     return {
-      content: stripEditorialComments(fs.readFileSync(filepath, 'utf-8')),
+      content: stripEditorialComments(stripFrontmatter(fs.readFileSync(filepath, 'utf-8'))),
       filename,
       modified: fs.statSync(filepath).mtime,
     };

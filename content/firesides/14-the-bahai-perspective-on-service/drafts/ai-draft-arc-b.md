@@ -1,3 +1,7 @@
+---
+title: "The Baha'i Perspective on Service — ai-draft-arc-b"
+---
+
 <!-- Draft 2, Arc B — 3 sections: "Created in the Image of God" (why) → "The Hollow Reed" (how/mechanism) → "The Shape of Service" (forms + payoff). -->
 
 # The Baha'i Perspective on Service

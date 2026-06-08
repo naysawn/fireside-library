@@ -1,3 +1,7 @@
+---
+title: "Prayer — ai-draft-humanized"
+---
+
 # Prayer
 
 ## Section 1: Why Pray?
