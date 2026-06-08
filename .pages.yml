@@ -83,15 +83,13 @@ content:
     format: raw
     # Keep research files and the metadata.yaml out of the writing view.
     exclude: ["**/research/**", "**/metadata.yaml"]
-    # No frontmatter means no title field, so label each row by its FILENAME
-    # (the synthetic "name" column). Without this the list shows blanks and the
-    # editor titles the entry with the file's first line (the <!-- --> comment).
+    # Label each row by its FILENAME (V1.md, ai-draft-arc-a.md, ...).
     view:
       primary: name
       fields: [name]
-    fields:
-      - name: body
-        label: Draft
-        type: code
-        options:
-          language: markdown
+    # No `fields:` block ON PURPOSE. For a raw collection with no fields, Pages CMS
+    # (1) populates the row label with the filename and (2) auto-provides a
+    # full-height markdown code editor for the whole file. Declaring a `body`
+    # field BREAKS the list (the filename stops populating) and titles each entry
+    # by its first line — the <!-- --> comment overrun. Verified in pages-cms
+    # source: entry.tsx synthesizes a code/markdown editor when fields is empty.
