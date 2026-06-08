@@ -41,10 +41,9 @@ content:
     path: content/firesides
     subfolders: true
     format: yaml
-    # Only the per-fireside metadata.yaml belongs here. Without this, Pages CMS
-    # recurses into drafts/ and research/ and tries to parse the .md drafts as
-    # YAML, throwing "Error parsing frontmatter".
-    exclude: ["**/drafts/**", "**/research/**", "**/sections/**"]
+    # Only the per-fireside metadata.yaml belongs here. `exclude` matches the
+    # literal folder/file NAME (no globs), so list the subfolder names to skip.
+    exclude: ["drafts", "research", "sections"]
     view:
       primary: title
       fields: [title, status, phase]
@@ -79,8 +78,9 @@ content:
     # list, and the body opens in a visual editor. The `body` rich-text field maps
     # to everything after the frontmatter, with a source toggle for exact markdown.
     format: yaml-frontmatter
-    # Keep research, metadata, and structured sections out of the drafts view.
-    exclude: ["**/research/**", "**/metadata.yaml", "**/sections/**"]
+    # `exclude` matches literal names (no globs). Skip the research + sections
+    # folders so only the draft .md files show here.
+    exclude: ["research", "sections", "metadata.yaml"]
     view:
       primary: title
       fields: [title]
@@ -102,7 +102,9 @@ content:
       primary: title
       fields: [order, title]
       sort: [order]
-      order: asc
+      default:
+        sort: order
+        order: asc
     fields:
       - { name: order, label: Order, type: number }
       - { name: title, label: Title, type: string, required: true }
