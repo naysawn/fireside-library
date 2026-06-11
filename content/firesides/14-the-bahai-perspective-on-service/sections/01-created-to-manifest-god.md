@@ -46,15 +46,13 @@ We are not given these gifts to hoard them. These gifts, channelled correctly, c
 
 Those gifts only find merit when used in the world. Can you really be kind in the absence of another person? Can you really be generous in isolation? 
 
-Worship of God manifests itself by attempting to lift the burden of others in the world. Acts of service to others are manifesting the very purpose for which we were created. 
-
-Abdu'l-Baha explains: 
+Here the two halves of our purpose meet. Worship is not only what happens when we pray or turn to God in our hearts — a deed done with love is itself a kind of prayer. To lift another's burden, to act with kindness, is not merely a good thing to do; it is worship. Abdu'l-Baha says it plainly:
 
 > Therefore strive that your actions day by day may be beautiful prayers. Turn towards God, and seek always to do that which is right and noble. Enrich the poor, raise the fallen, comfort the sorrowful, bring healing to the sick, reassure the fearful, rescue the oppressed, bring hope to the hopeless, shelter the destitute! (Abdu'l-Baha, Paris Talks)
 
-It is through service that our lives attain their real meaning, and it is how God's light reaches the world. You might say the whole reason we were created is to channel God's love into the world — and love is what gives life to the lifeless.
+It is how God's light reaches the world: you might say the whole reason we were created is to channel His love into it — and love is what transforms the world. The mirror, at last, is turned to cast its light on someone else.
 
-But giving of ourselves, day after day, is hard; left to our own strength, we soon run dry. This is why we are also given an inner life — prayer, meditation, and study of the sacred writings. Together, these three refill us and give us the strength to keep acting in the world. 
+But giving of ourselves, day after day, is hard; left to our own strength, we soon run dry. This is why we are also given an inner life — prayer, meditation, and study of the sacred writings. Together, these three refill us and give us the superhuman strength to keep acting in the world. 
 
 Shoghi Effendi, the Guardian of the Baha'i Faith, captures this rhythm of giving out and being refilled:
 
