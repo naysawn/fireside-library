@@ -4,11 +4,10 @@ title: Created to Manifest God
 idea_progression: |-
   1. Made in the image of God — built to reflect His qualities (done)
   2. Two natures:   higher / divine   vs   lower / ego (done)
-  3. Acting virtuously   →   manifests the divine nature into the world
-  4. So the good is God's
-  5. Created to know & worship God.
-  6. Worship IS service — prayers 
-  7. So you might say the whole purpose we've been created is to provide acts of service by channelling God's love to the world. 
+  3. Acting virtuously  →  manifests the divine nature into the world, so the good is God's
+  4. Created to know & worship God.
+  5. Worship IS service — prayers 
+  6. So you might say the whole purpose we've been created is to provide acts of service by channelling God's love to the world. 
      - Love gives life the the lifeless
 opening_questions:
   - "Think of someone you've known whom you admire for how much they give to others. Let's honor them: tell us about them, and what it is you admire."
@@ -19,46 +18,46 @@ discussion_questions:
   - If our daily actions can be "beautiful prayers," does that change what a religious life even is? Could someone who never sets foot in a temple be living a deeply worshipful life, and could someone who prays constantly be missing it?
 ---
 
-The writings of Baha'u'llah explain that each one of us was created in the image and likeness of God. 
+Throughout history, humanity has pondered the fundamental questions of existence: Who are we? Why are we here?
 
-> Veiled in My immemorial being and in the ancient eternity of My essence, I knew My love for thee; therefore I created thee, have engraved on thee Mine image and revealed to thee My beauty. (Baha'u'lláh, The Hidden Words)
+The writings of Baha'u'llah offer much guidance on this age-old question. While the answer is multi-faceted and deep, Baha'u'llah emphasizes that we were each created out of God's infinite love, to come to know God and to worship Him. In the Short Obligatory Prayer, we all say: *"I bear witness, O my God, that Thou hast created me to know Thee and to worship Thee."* What that means — and why, in the end, it leads us to a life of service — is what this section aims to unpack.
 
-Baha'is understand this to mean that each of us is given the capacity to reflect God's own qualities: love, honesty, courage, compassion, generosity. We are like mirrors, built to reflect a Divine light into the world. 
+In a Hidden Word, Baha'u'llah says:
 
-> The light of the sun becomes apparent in each object according to the capacity of that object. The difference is simply one of degree and receptivity. The stone would be a recipient only to a limited extent; another created thing might be as a mirror wherein the sun is fully reflected; but the same light shines upon both.
->
-> The most important thing is to polish the mirrors of hearts in order that they may become illumined and receptive of the divine light. One heart may possess the capacity of the polished mirror; another, be covered and obscured by the dust and dross of this world. Although the same Sun is shining upon both, in the mirror which is polished, pure and sanctified you may behold the Sun in all its fullness, glory and power, revealing its majesty and effulgence; but in the mirror which is rusted and obscured there is no capacity for reflection, although so far as the Sun itself is concerned it is shining thereon and is neither lessened nor deprived. Therefore, our duty lies in seeking to polish the mirrors of our hearts in order that we shall become reflectors of that light and recipients of the divine bounties which may be fully revealed through them. ('Abdu'l-Bahá, The Promulgation of Universal Peace)
+> Veiled in My immemorial being and in the ancient eternity of My essence, I knew My love for thee; therefore I created thee, have engraved on thee Mine image and revealed to thee My beauty. (Baha'u'llah, The Hidden Words)
 
-The light that shines in such a mirror was never the mirror's own; it is the light of God, borrowed and passed along. 
+Baha'is understand being created in the image of God to mean that each of us was crafted with the ability to reflect God's light into the world: love, honesty, courage, compassion, generosity. We are like mirrors, made to catch the divine light and cast it outward. And because we have free will, we can also turn away — choosing hate, deceit, cowardice. Life, to some extent, is a constant work of orienting toward the divine light and polishing our mirrors, so that its light can shine through us.
 
-Baha'u'llah further clarifies that *"Every good thing is of God, and every evil thing is from yourselves"* (Baha'u'lláh, Gleanings). The ability to act virtously provdiing all good in the world comes from our divine nature.   
+Abdu'l-Baha explains:
 
-The Writings describe two sides to our nature. We have a higher, spiritual nature, capable of reflecting God's attributes such as kindness, generosity, justice, and love. And we have an egotistical nature, pulled toward self-interest and the satisfaction of immediate desires.
+> The most important thing is to polish the mirrors of hearts in order that they may become illumined and receptive of the divine light.… Our duty lies in seeking to polish the mirrors of our hearts in order that we shall become reflectors of that light and recipients of the divine bounties which may be fully revealed through them. (Abdu'l-Baha, The Promulgation of Universal Peace)
 
-Spiritual development is the ongoing work of subordinating the lower nature to the higher. In the Baha'i view, this is one if the central challenges of human life.
+The Writings describe two sides to our nature. We have a higher, spiritual nature, capable of reflecting God's attributes — kindness, generosity, justice, love. And we have a lower, egotistical nature, pulled toward self-interest and the satisfaction of immediate desires. Spiritual development is the ongoing work of subordinating the lower nature to the higher. In the Baha'i view, this is one of the central challenges of human life.
 
-Seen another way, since we are created in the image and likeness of God, we are pure channels for God's love to flow into the world. It is our ego and love of the world that gets in the way of this love to flow into the world. 
+> "Man has two aspects: the physical, which is subject to nature, and the merciful or divine, which is connected with God.… if the divine and spiritual should triumph over the human and natural, he is, verily, an angel." (Abdu'l-Baha, The Promulgation of Universal Peace)
 
-We also have been designed with God's loving care and each of us have created uniquely with particular talents and capablities which makes us each a special snowflake to provide ways to channel love into the world. Baha'u'llah shares that we should not regard these virtues with which we have been provided carelessly:
+Seen this way, because we are created in the image and likeness of God, we are meant to be clear channels for God's love to flow into the world. It is our ego and our attachment to the world that gets in the way.
 
-> O friends! Be not careless of the virtues with which ye have been endowed, neither be neglectful of your high destiny.… Ye are the stars of the heaven of understanding, the breeze that stirreth at the break of day, the soft-flowing waters upon which must depend the very life of all men, the letters inscribed upon His sacred scroll. With the utmost unity, and in a spirit of perfect fellowship, exert yourselves, that ye may be enabled to achieve that which beseemeth this Day of God.…
+So acting virtuously — through kindness, love, generosity — is the very means by which God's love reaches the world. Perhaps this is why Baha'u'llah says, *"Every good thing is of God, and every evil thing is from yourselves"* (Baha'u'llah, Gleanings). The good is not our private invention; it is God's, passing through us. The one thing that blocks it is the ego. And the channel is not cleared by waiting until we feel holy enough — it is cleared by acting and struggling. The more we serve, the more freely the power moves through us.
 
-Having been chosen and crafted to be unique with each of us custom talents, Baha'u'llah advises us not to disregard those talents. Those talents find their manifestation and are fundementally given to us to be channels of divine grace to the world. 
+We are not given these gifts to hoard them. These gifts, channelled correctly, can become the *"very life of all men"*:
 
-This is why Baha'is understand each of our fundemental purposes in lives to be to know God and to worship Him. 
+> O friends! Be not careless of the virtues with which ye have been endowed, neither be neglectful of your high destiny.… Ye are the stars of the heaven of understanding, the breeze that stirreth at the break of day, the soft-flowing waters upon which must depend the very life of all men.… (Baha'u'llah, Gleanings)
 
-This is what gives service its meaning. Every time we act with genuine love or patience or generosity, we let that higher nature show, which is to say we let God's own qualities shine out into the world. The good is not, in the end, our private invention. It is God's, passing through us. As the scripture says, *"all good cometh from God and all evil from your own selves."* The one thing that blocks the light is the ego. So the spiritual life is, in large part, the work of getting ourselves out of the way, clearing the channel so that what is best in us, which is really what is best in God, can flow through. And the channel is not cleared by waiting until we feel holy enough. It is cleared by acting: the more we serve, the more freely the power moves through us.
+Those gifts only find merit when used in the world. Can you really be kind in the absence of another person? Can you really be generous in isolation? 
 
-And this is not some private spiritual hobby. Look honestly at the world's troubles and it's tempting to call them material: broken systems, scarce resources, failing institutions. Baha'u'llah locates the sickness further down:
+Worship of God manifests itself by attempting to lift the burden of others in the world. Acts of service to others are manifesting the very purpose for which we were created. 
 
-> The vitality of men's belief in God is dying out in every land; nothing short of His wholesome medicine can ever restore it. The corrosion of ungodliness is eating into the vitals of human society; what else but the Elixir of His potent Revelation can cleanse and revive it?
+Abdu'l-Baha explains: 
 
-If the disease is spiritual, no purely material cure will reach it. Shoghi Effendi said the same in plainer terms: the universal crisis facing mankind is *"essentially spiritual in its causes,"* and laws and institutions, for all their use, go hollow without an inner change. Religion itself, he warned, can *"degenerate into a mere organization, and become a dead thing."* What the world is starving for is people whose own inner lives have been transformed and who carry that outward into everything they touch.
+> Therefore strive that your actions day by day may be beautiful prayers. Turn towards God, and seek always to do that which is right and noble. Enrich the poor, raise the fallen, comfort the sorrowful, bring healing to the sick, reassure the fearful, rescue the oppressed, bring hope to the hopeless, shelter the destitute! (Abdu'l-Baha, Paris Talks)
 
-This is the highest thing a person can do, and the Faith asks us to keep it in front of us. A short prayer that many Baha'is say every day names the whole purpose of a life in a single line: *"I bear witness that Thou hast created me to know Thee and to worship Thee."* We were made to know God and to worship Him. And worship, in this Faith, is not mainly something that happens in a quiet room with the eyes closed. 
+It is through service that our lives attain their real meaning, and it is how God's light reaches the world. You might say the whole reason we were created is to channel God's love into the world — and love is what gives life to the lifeless.
 
-To worship God is to let His qualities live through what we do. *"Service is prayer,"* Abdu'l-Baha taught, which is how an ordinary action, a kindness, a task done with love, becomes a prayer in its own right:
+But giving of ourselves, day after day, is hard; left to our own strength, we soon run dry. This is why we are also given an inner life — prayer, meditation, and study of the sacred writings. Together, these three refill us and give us the strength to keep acting in the world. 
 
-> Therefore strive that your actions day by day may be beautiful prayers. Turn towards God, and seek always to do that which is right and noble. Enrich the poor, raise the fallen, comfort the sorrowful, bring healing to the sick, reassure the fearful, rescue the oppressed, bring hope to the hopeless, shelter the destitute!
+Shoghi Effendi, the Guardian of the Baha'i Faith, captures this rhythm of giving out and being refilled:
 
-That last line is already pointing somewhere: out the door, toward actual people. Which is the question Section 2 takes up, what carrying this light into the world looks like, day after day.
+> We must be like the fountain or spring that is continually emptying itself of all that it has and is continually being refilled from an invisible source. To be continually giving out for the good of our fellows undeterred by fear of poverty and reliant on the unfailing bounty of the Source of all wealth and all good—this is the secret of right living. (Shoghi Effendi)
+
+But what does this look like in an ordinary day? How do we actually live as channels of God's love, moment to moment? That is what we'll explore in Section 2.
