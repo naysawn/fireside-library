@@ -52,3 +52,32 @@ There's a stray `content/firesides/metadata.yaml` at the top level (a duplicate 
 fireside 11, "Suffering and Justice") that sits outside any fireside folder. It will show
 up as a loose entry in the "Fireside details" list. It looks misplaced, but I didn't
 delete it — confirm whether it should be removed or relocated.
+
+## Roadmap
+
+- **Self-host the CMS (fork on Vercel).** Pages CMS is MIT; owning the instance unlocks
+  two things the hosted `app.pagescms.org` doesn't:
+  - **Theme the editor.** It's TipTap + Tailwind — restyle
+    `fields/core/rich-text/edit-component.css` (editor typography) and `app/globals.css`
+    (brand tokens) so the WYSIWYG **previews the published page** (serif, sizing, quote
+    styling) and writers see near-final output.
+  - **Contributor governance.** Control the auth/invite flow and the collaborator DB.
+    The `collaborator` table already carries a nullable **`branch`** column, so writers
+    can be **locked to a specific branch** (e.g. each contributor on their own, or all on
+    `content`). There's no role column upstream, so **custom roles/permissions** would be
+    a fork addition. This is the path if contributor count or access control grows beyond
+    a few trusted people.
+
+  Trade-off: owning the fork means keeping it in sync with upstream. *Long-term; not urgent.*
+
+- **Sections-as-blocks + thought progression** (deferred design idea). Model a fireside
+  body as a list of section blocks, each with a structured "thought progression" field —
+  moving the `<!-- ARC -->` planning out of prose (also fixes WYSIWYG round-trip fidelity)
+  and giving writers a guided template. Pairs with collapsing to one file per fireside.
+  Would require reworking `firesides.ts` to assemble blocks → HTML and a manual content
+  split. *Prototype on one fireside before committing.*
+
+- **One file per fireside (Option B).** If the two-collection seam or the draft-title
+  duplication starts to grate, collapse each fireside to a single frontmatter file
+  (title = the canonical meta title, versioning → Git history). Resolves the
+  title/versioning tension cleanly. *Bigger migration; revisit if the seam bites.*
