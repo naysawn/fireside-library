@@ -1,3 +1,7 @@
+---
+title: "Spiritual Development — ai-draft-1"
+---
+
 # Spiritual Development
 
 ## Section 1: Our Twofold Nature

@@ -1,0 +1,89 @@
+# Pages CMS configuration — https://pagescms.org
+#
+# Lets non-technical writers edit firesides from a visual editor at
+# https://app.pagescms.org with no Git, terminal, or GitHub account.
+#
+# WORKFLOW (see PAGES-CMS.md for the full guide):
+#   - Writers are invited by email and point Pages CMS at the `content` branch.
+#   - Each save is one commit, attributed to the individual writer (see settings).
+#   - An editor reviews `content` and merges to `main`; the site builds from `main`.
+#
+# NOTE: this repo splits each fireside across two files — metadata.yaml and a
+# draft under drafts/ — so the CMS exposes two collections rather than one entry.
+# That's the honest cost of keeping the existing folder model and build untouched.
+
+# Uploaded images land in the Astro public folder, so they get real URLs with
+# zero build-pipeline work and resolve at the deployed site root.
+media:
+  - name: uploads
+    label: Images & uploads
+    input: web/public/uploads
+    output: /uploads
+    categories: [image]
+
+settings:
+  commit:
+    # Attribute every save to the real writer (name + email), not the GitHub App,
+    # so git history / blame shows exactly who changed which fireside.
+    identity: user
+    templates:
+      create: "{userName} added {path}"
+      update: "{userName} edited {path}"
+      delete: "{userName} removed {path}"
+      rename: "{userName} renamed {path}"
+
+content:
+  # --- The editorial details for each fireside (title, status, phase, topics) ---
+  # One metadata.yaml per fireside folder. This is the clean, primary collection.
+  - name: fireside_details
+    label: Fireside details
+    type: collection
+    path: content/firesides
+    subfolders: true
+    format: yaml
+    # Only the per-fireside metadata.yaml belongs here. `exclude` matches the
+    # literal folder/file NAME (no globs), so list the subfolder names to skip.
+    exclude: ["drafts", "research", "sections"]
+    view:
+      primary: title
+      fields: [title, status, phase]
+      sort: [id, title]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: id, label: Number, type: number }
+      - name: phase
+        label: Seeker phase
+        type: select
+        options:
+          values: [discovery, investigation, consolidation]
+      - name: status
+        label: Status
+        type: select
+        # Lifecycle from content/CLAUDE.md, plus the values already in use.
+        options:
+          values: [planning, drafting, review, rewrite, beta, testing, v1, research]
+      - { name: topics, label: Topics, type: string, list: true }
+      - { name: hidden, label: Hidden from site, type: boolean }
+
+  # --- The actual writing: the draft markdown bodies ---
+  # Each draft carries a `title` frontmatter (CMS-only; firesides.ts strips it),
+  # so the list shows a title and the body opens in the visual editor.
+  - name: fireside_text
+    label: Fireside text (drafts)
+    type: collection
+    path: content/firesides
+    subfolders: true
+    # Drafts carry a small `title` frontmatter (added for the CMS only; the
+    # published site ignores it — firesides.ts strips it). That title labels the
+    # list, and the body opens in a visual editor. The `body` rich-text field maps
+    # to everything after the frontmatter, with a source toggle for exact markdown.
+    format: yaml-frontmatter
+    # `exclude` matches literal names (no globs). Skip the research + sections
+    # folders so only the draft .md files show here.
+    exclude: ["research", "sections", "metadata.yaml"]
+    view:
+      primary: title
+      fields: [title]
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: body, label: Draft, type: rich-text }

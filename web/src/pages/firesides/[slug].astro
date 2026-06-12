@@ -45,7 +45,54 @@ function annotateSectionWordCounts(md: string): string {
   return lines.join('\n');
 }
 
-const htmlContent = await marked(annotateSectionWordCounts(fireside.content));
+/**
+ * Turn the inline `[n]` citation markers into subtle superscript links, and tag
+ * the trailing endnotes block (a "References"/"Citations" heading plus the list
+ * that follows it) so it can be styled as a compact, muted note list. Handles
+ * both an h2 (`## Citations`) and h3 (`### References`) heading.
+ */
+function renderFootnotes(html: string): string {
+  // Tolerate trailing markup before </h2|h3> — h2 headings carry an injected
+  // word-count <span>, which is dropped when the heading is re-tagged.
+  const headingRe = /<(h2|h3)(?:\s[^>]*)?>\s*(References|Citations)\b[\s\S]*?<\/\1>/i;
+  const m = html.match(headingRe);
+  if (!m || m.index === undefined) return html;
+
+  let body = html.slice(0, m.index);
+  let tail = html.slice(m.index);
+
+  // Inline markers: `[3]` (with any leading space) -> gray superscript link.
+  body = body.replace(
+    /\s*\[(\d{1,3})\]/g,
+    (_, n) => `<sup class="fn-ref" id="ref-${n}"><a href="#fn-${n}">${n}</a></sup>`,
+  );
+
+  // For block quotes, a marker floating at the end of the quoted text reads as
+  // out of place. Pull any markers out of each quote and re-attach them as a
+  // small right-aligned reference beneath it (the attribution convention).
+  body = body.replace(/<blockquote>([\s\S]*?)<\/blockquote>/g, (whole, inner) => {
+    const refs: string[] = [];
+    const cleaned = inner.replace(/<sup class="fn-ref"[\s\S]*?<\/sup>/g, (s: string) => {
+      refs.push(s);
+      return '';
+    });
+    if (refs.length === 0) return whole;
+    return `<blockquote>${cleaned}<cite class="blockquote-ref">${refs.join(' ')}</cite></blockquote>`;
+  });
+
+  // Tag the endnotes heading, then the first list after it; give each note an
+  // id so the superscript links land on it.
+  tail = tail.replace(headingRe, (_, tag, label) => `<${tag} class="endnotes-heading">${label}</${tag}>`);
+  tail = tail.replace(/<ol>([\s\S]*?)<\/ol>/, (_, inner) => {
+    let n = 0;
+    const items = inner.replace(/<li>/g, () => `<li id="fn-${++n}">`);
+    return `<ol class="endnotes-list">${items}</ol>`;
+  });
+
+  return body + tail;
+}
+
+const htmlContent = renderFootnotes(await marked(annotateSectionWordCounts(fireside.content)));
 
 const sourceModified = new Date(fireside.sourceModified).toLocaleString('en-US', {
   dateStyle: 'medium',

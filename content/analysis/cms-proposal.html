@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposal: Letting non-technical writers edit the Fireside Library</title>
+<style>
+  :root {
+    --ink: #1a1a1a; --muted: #5b5b5b; --line: #e6e3dd; --accent: #b8531f;
+    --bg: #faf8f5; --card: #ffffff; --good: #2f7d4f; --warn: #9a6b00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink); background: var(--bg); margin: 0; padding: 3rem 1.25rem;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 2rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 .4rem; }
+  .sub { color: var(--muted); font-size: 1.05rem; margin: 0 0 2.5rem; }
+  h2 { font-size: 1.3rem; letter-spacing: -0.01em; margin: 2.75rem 0 .75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  h3 { font-size: 1.02rem; margin: 1.5rem 0 .35rem; }
+  p { margin: 0 0 1rem; }
+  .muted { color: var(--muted); }
+  .lead { font-size: 1.12rem; }
+  .pill { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+          letter-spacing: .08em; padding: .2rem .55rem; border-radius: 999px; vertical-align: middle; }
+  .pill.rec { background: #eef6f0; color: var(--good); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.4rem; margin: 1.25rem 0; }
+  .flow { background: #1f1b16; color: #f2ede4; border-radius: 12px; padding: 1.1rem 1.3rem;
+          font: 13px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; margin: 1.25rem 0; }
+  .flow b { color: #f0a35e; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: .95rem; }
+  th, td { text-align: left; vertical-align: top; padding: .7rem .8rem; border-bottom: 1px solid var(--line); }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  td:first-child { font-weight: 600; width: 38%; }
+  code { background: #f0ede7; padding: .1rem .35rem; border-radius: 4px; font-size: .88em; }
+  ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 1.25rem 0; }
+  ol.steps > li { counter-increment: s; position: relative; padding: 0 0 1.1rem 2.6rem; }
+  ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: -.1rem;
+    width: 1.7rem; height: 1.7rem; background: var(--accent); color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; }
+  .callout { border-left: 3px solid var(--accent); background: #fbf3ec; padding: .9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; }
+  .callout.warn { border-color: var(--warn); background: #fdf7ea; }
+  .label { font-weight: 700; }
+  .footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Letting non-technical writers edit the Fireside Library</h1>
+  <p class="sub">A simple proposal &middot; June 2026</p>
+
+  <p class="lead">The goal: let a small team of trusted writers &mdash; think five people &mdash; add or improve firesides from a clean
+  visual editor, with no Git, no terminal, and no Markdown frontmatter, while you keep version control and a review step
+  before anything goes live. <span class="muted">See <a href="#five">&ldquo;Scenario: five writers at once&rdquo;</a> for how the team workflow holds up.</span></p>
+
+  <h2>The recommendation <span class="pill rec">Pages&nbsp;CMS</span></h2>
+  <p>Use <a href="https://pagescms.org">Pages&nbsp;CMS</a> (free, open-source, MIT). It gives writers a Google-Docs-style
+  editor in the browser that reads and writes the Markdown files already sitting in <code>content/firesides/</code>.
+  Your repo stays the single source of truth &mdash; the files survive even if the tool disappears &mdash; and the existing
+  Astro build on Vercel is untouched.</p>
+
+  <div class="flow">
+Writer &rarr; <b>app.pagescms.org</b> (visual editor) &rarr; saves a commit on a branch
+        &rarr; you review the change &rarr; merge &rarr; Vercel rebuilds &rarr; <b>live</b>
+  </div>
+
+  <h2>What changed since we last looked</h2>
+  <p>The old objection to a Git-backed CMS was &ldquo;every writer needs a GitHub account.&rdquo;
+  <span class="label">That&rsquo;s no longer true.</span> Pages&nbsp;CMS now supports <span class="label">email invites</span>:
+  you invite a writer by email, their edits are committed through a GitHub App on your behalf, and
+  <em>they never create a GitHub account or see GitHub at all</em>. For a handful of trusted contributors,
+  the onboarding friction is essentially gone.</p>
+
+  <h2>The one real decision: how content is shaped</h2>
+  <p>This is the part the generic write-up missed. Our firesides are <span class="label">not</span> flat files with frontmatter.
+  Today each fireside is a <em>folder</em>:</p>
+
+  <div class="card" style="font-family: ui-monospace, monospace; font-size: .9rem;">
+    content/firesides/01-overview-of-the-bahai-faith/<br>
+    &nbsp;&nbsp;&nbsp;metadata.yaml&nbsp;&nbsp;&larr; title, id, phase, topics, status<br>
+    &nbsp;&nbsp;&nbsp;drafts/V1.md&nbsp;&nbsp;&nbsp;&larr; the actual writing (no frontmatter)<br>
+    &nbsp;&nbsp;&nbsp;research/
+  </div>
+
+  <p>The build (<code>web/src/lib/firesides.ts</code>) is opinionated: it picks <code>final.md</code> over the
+  highest <code>v*.md</code> over <code>ai-draft-*.md</code>, and strips <code>%%&hellip;%%</code> editorial notes so they never publish.
+  A CMS expects one tidy file per entry, so we pick a lane:</p>
+
+  <table>
+    <tr><th>Option</th><th>What it means</th><th>Effort</th></tr>
+    <tr>
+      <td>A. Fit the CMS to our model <span class="pill rec">recommended</span></td>
+      <td>Configure Pages&nbsp;CMS to edit <code>metadata.yaml</code> and the latest draft in place, keeping the current folder layout and build logic exactly as-is.</td>
+      <td>Low &mdash; config only</td>
+    </tr>
+    <tr>
+      <td>B. Move to one-file-with-frontmatter</td>
+      <td>Migrate each fireside to a single Markdown file with frontmatter (the CMS-native shape), and simplify <code>firesides.ts</code> to match.</td>
+      <td>Medium &mdash; one-time migration + loader rewrite</td>
+    </tr>
+  </table>
+
+  <p>Start with <span class="label">A</span>. It&rsquo;s the smallest change, leaves your AI-draft / versioning workflow intact,
+  and we can always graduate to B later if the frontmatter shape proves cleaner for writers.</p>
+
+  <h2>What the writer actually does</h2>
+  <ol class="steps">
+    <li><span class="label">Gets an email invite</span> &mdash; one click, no account to create. (One-time.)</li>
+    <li><span class="label">Opens a clean list of firesides</span> and clicks one, or hits &ldquo;New.&rdquo;</li>
+    <li><span class="label">Writes in a visual editor</span> &mdash; headings, bold, links, block quotes &mdash; no Markdown syntax, no frontmatter.</li>
+    <li><span class="label">Sets status</span> to <code>in-review</code> and saves. That&rsquo;s it.</li>
+  </ol>
+
+  <h2>Keeping it safe</h2>
+  <p>Two lightweight guardrails, no technical knowledge required from the writer:</p>
+  <div class="card">
+    <p style="margin:0 0 .6rem"><span class="label">1. A status field.</span> Drafts carry <code>draft &rarr; in-review &rarr; published</code>.
+    The site only renders <code>published</code> (and <code>%%&hellip;%%</code> notes are already stripped), so nothing half-finished can leak to the public page.</p>
+    <p style="margin:0"><span class="label">2. A review glance.</span> Each save is a normal commit. You skim the change in GitHub and merge when it&rsquo;s ready
+    &mdash; the writer never knows a &ldquo;pull request&rdquo; existed. Later we can automate spell-check or a voice-rules pass on each change if useful.</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="label">Honest caveat.</span> Pages&nbsp;CMS edits live content in your real repo. The status field plus the
+    review-before-merge habit are what keep an accidental save from reaching readers &mdash; worth setting up on day one, not later.
+  </div>
+
+  <h2 id="five">Scenario: five writers at once</h2>
+  <p>This is the real test. Here&rsquo;s how a team of five works without stepping on each other &mdash; and why,
+  given how this repo is laid out, that&rsquo;s far less fragile than it sounds.</p>
+
+  <h3>The setup (one-time, ~5 minutes)</h3>
+  <p>You send five <span class="label">email invites</span> from Pages&nbsp;CMS. Each writer gets a magic-link login &mdash;
+  no GitHub account, no install. All five point at <span class="label">one shared content branch</span> (call it <code>content</code>),
+  not at <code>main</code>. The public site keeps building from <code>main</code>, so nothing the five do is live until you merge.</p>
+
+  <div class="flow">
+5 writers &rarr; each save = <b>1 auto-commit</b> to branch <b>content</b>
+          &rarr; you review <b>content</b> vs <b>main</b> &rarr; merge &rarr; Vercel rebuilds <b>main</b> &rarr; live
+  </div>
+
+  <h3>Why they don&rsquo;t collide: one fireside = one folder</h3>
+  <p>Each fireside is its own folder (<code>NN-slug/</code>) with its own <code>metadata.yaml</code> and <code>drafts/</code> files.
+  Two writers working on <em>different</em> firesides are editing <em>different files</em> &mdash; so Git merges their commits cleanly and
+  a conflict is <span class="label">structurally impossible</span>. A conflict can only happen if two people edit the
+  <em>same</em> fireside at the same moment. So the only coordination rule the team needs is plain editorial assignment:</p>
+
+  <div class="callout">
+    <span class="label">The one rule:</span> one writer &ldquo;owns&rdquo; a fireside at a time. The <code>status</code> field in
+    <code>metadata.yaml</code> is the signal &mdash; if it&rsquo;s <code>drafting</code> with someone&rsquo;s name on it, others leave it alone.
+    No locking software needed; it&rsquo;s a whiteboard rule, enforced by the status field everyone can see.
+  </div>
+
+  <h3>A worked example</h3>
+  <p>Five writers, a normal afternoon &mdash; all committing to <code>content</code>, zero conflicts because every file is distinct:</p>
+  <table>
+    <tr><th>Writer</th><th>Fireside (folder)</th><th>What they touch</th><th>status</th></tr>
+    <tr><td>Sara</td><td><code>15-the-covenant/</code> (new)</td><td>creates the folder, <code>v1.md</code> + <code>metadata.yaml</code></td><td><code>drafting</code></td></tr>
+    <tr><td>Jamal</td><td><code>08-prayer/</code></td><td>edits <code>drafts/v2.md</code></td><td><code>rewrite</code></td></tr>
+    <tr><td>Mei</td><td><code>11-suffering-and-justice/</code></td><td>fixes a quote in <code>v1.md</code></td><td><code>review</code></td></tr>
+    <tr><td>Diego</td><td><code>03-social-teachings/</code></td><td>uploads a cover image</td><td><code>beta</code></td></tr>
+    <tr><td>Amara</td><td>(editor)</td><td>reviews <code>content</code>, merges Mei&rsquo;s to <code>main</code></td><td>&mdash;</td></tr>
+  </table>
+  <p>Four different folders, four different files. Git interleaves the four writers&rsquo; commits with no drama, and Amara
+  promotes the ones that are ready. The only thing that would break this is Sara and Jamal both opening
+  <code>08-prayer/drafts/v2.md</code> at once &mdash; which the &ldquo;one owner&rdquo; rule prevents.</p>
+
+  <h3>How versioning works &mdash; two layers</h3>
+  <p>Don&rsquo;t confuse the CMS with the version history. There are two independent layers, and that&rsquo;s a feature:</p>
+  <table>
+    <tr><th>Layer</th><th>What it gives you</th></tr>
+    <tr><td><span class="label">Git history</span> (automatic)</td>
+        <td>Every save is a commit, so <em>every</em> revision of every fireside is recoverable, diffable, and attributable to a writer &mdash; forever. This is the real safety net. Nobody can lose work or silently overwrite someone; a bad edit is one revert away.</td></tr>
+    <tr><td><span class="label">Draft files</span> (editorial)</td>
+        <td>The repo&rsquo;s own convention, unchanged: AI starts in <code>ai-draft.md</code>; a writer&rsquo;s revisions are <code>v1.md</code>, <code>v2.md</code>&hellip;; and on approval an editor promotes the chosen draft to <code>final.md</code>. The build prefers <code>final.md</code> &gt; highest <code>v*.md</code> &gt; <code>ai-draft</code>, so promotion <em>is</em> publishing.</td></tr>
+  </table>
+  <p>For a CMS team, the smooth path is: <span class="label">writers edit their current <code>v*.md</code> in place</span> and let Git history
+  be the &ldquo;versions&rdquo; &mdash; spinning up a brand-new <code>v3.md</code> by hand is a power-user move that doesn&rsquo;t fit a visual editor.
+  Creating a fresh numbered draft stays available for a deliberate &ldquo;start-over&rdquo; rewrite; it&rsquo;s just not the default.</p>
+
+  <h3>The review loop (who plays editor)</h3>
+  <p>With five writers you want one or two people in the <span class="label">editor</span> seat. Their job isn&rsquo;t technical:</p>
+  <ol class="steps">
+    <li>Writers move a fireside&rsquo;s <code>status</code> to <code>review</code> when it&rsquo;s ready for eyes.</li>
+    <li>The editor skims the change on the <code>content</code> branch (a normal GitHub diff &mdash; or a one-screen review tool), leaves notes if needed.</li>
+    <li>When it&rsquo;s good, the editor promotes it to <code>final.md</code> / <code>status: beta</code> and merges <code>content</code> &rarr; <code>main</code>.</li>
+    <li>Vercel rebuilds. The writers never saw a &ldquo;pull request&rdquo; or touched <code>main</code>.</li>
+  </ol>
+  <p>Cadence is up to you &mdash; merge continuously, or batch a weekly &ldquo;publish&rdquo;. Because writers work off <code>content</code>,
+  an in-progress draft never blocks a finished one from shipping.</p>
+
+  <h3>Tracking who changed what &mdash; and talking to the editor</h3>
+  <p>Two things you&rsquo;ll want with five people: <span class="label">accountability</span> (who edited what) and a
+  <span class="label">back-channel</span> (writer &harr; editor notes). Both exist &mdash; one needs a config flag.</p>
+
+  <p><span class="label">Per-editor attribution.</span> Each save is a commit, so Git history already records every change.
+  But by default Pages&nbsp;CMS stamps commits with the <em>app&rsquo;s</em> identity &mdash; meaning all five writers would look the same in history.
+  One setting fixes it: <code>commit.identity: user</code> stamps each commit with that writer&rsquo;s own name and email, so
+  <code>git blame</code>, the GitHub history, and the in-app change log all show exactly who touched which fireside. Commit
+  <em>messages</em> are templatable too, so they read in plain English:</p>
+
+  <div class="card" style="font-family: ui-monospace, monospace; font-size: .86rem;">
+    settings:<br>
+    &nbsp;&nbsp;commit:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;identity: user&nbsp;&nbsp;&larr; attribute each save to the real writer<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;templates:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;update: &quot;{userName} edited {path}&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create: &quot;{userName} added {path}&quot;
+  </div>
+  <p class="muted" style="margin-top:-.4rem">Result in history: <code>Sara Khan edited content/firesides/08-prayer/drafts/v2.md</code> &mdash; not an anonymous app commit.</p>
+
+  <p><span class="label">Comments for the editor.</span> Three channels, use whichever fits:</p>
+  <table>
+    <tr><th>Channel</th><th>Good for</th></tr>
+    <tr><td>Inline comments in Pages&nbsp;CMS</td><td>Writer &harr; editor notes attached to a specific spot in the content, without leaving the editor. The native, no-Git option.</td></tr>
+    <tr><td>GitHub review comments</td><td>The editor commenting on the change/diff during review &mdash; threaded, resolvable, tied to the exact line that changed.</td></tr>
+    <tr><td><code>%%&hellip;%%</code> in-body notes</td><td>Already works today: a writer can leave a note right in the draft (&ldquo;not sure about this quote&rdquo;). The build strips <code>%%&hellip;%%</code>, so it never reaches readers.</td></tr>
+  </table>
+
+  <h3>Honest limits at five people</h3>
+  <div class="callout warn">
+    <ul style="margin:.2rem 0 0; padding-left:1.1rem">
+      <li><span class="label">Same-file collisions still need the &ldquo;one owner&rdquo; rule.</span> If two people <em>do</em> edit one fireside at once, the second save can hit a Git conflict, and Pages&nbsp;CMS has no rich in-app conflict resolver &mdash; you&rsquo;d untangle it in GitHub. Distinct-folder work avoids this entirely; the rule is the cheap insurance.</li>
+      <li><span class="label">Someone has to own the merge.</span> Five writers means at least one editor who reviews and merges. It&rsquo;s a light, non-technical role, but it has to exist &mdash; otherwise <code>content</code> just accumulates and nothing ships.</li>
+      <li><span class="label">All five share one branch.</span> Simplest by far for a trusted team. If you later want each writer fully sandboxed (strict per-person sign-off, or co-editing the same file), that&rsquo;s branch-per-writer &mdash; more isolation, but more setup, and only worth it past this scale.</li>
+    </ul>
+  </div>
+
+  <h2>Why this over the alternatives</h2>
+  <table>
+    <tr><th>vs.</th><th>Trade-off</th></tr>
+    <tr><td>Google&nbsp;Docs / Notion</td><td>Content stays portable Markdown in our repo &mdash; versioned, no export step, directly built by Astro. No copy-paste round trip.</td></tr>
+    <tr><td>A database CMS (Sanity, Strapi)</td><td>No server, no database, no hosting bill, no API keys. Git is the database.</td></tr>
+    <tr><td>Hand-editing files</td><td>The whole point &mdash; writers get a real editor instead of raw Markdown and YAML.</td></tr>
+  </table>
+
+  <h2>The escape hatch: it&rsquo;s ours if we need it</h2>
+  <p>Pages&nbsp;CMS is MIT-licensed and open-source, so we&rsquo;re never locked in. Three levels of control, in order:</p>
+  <table>
+    <tr><th>Level</th><th>When you&rsquo;d use it</th></tr>
+    <tr><td>Hosted (<code>app.pagescms.org</code>)</td><td>Default. Zero setup, just invite writers. Start here.</td></tr>
+    <tr><td>Self-host the stock app</td><td>If you want the editor on our own Vercel project / domain &mdash; one-click deploy, still the standard tool.</td></tr>
+    <tr><td>Fork &amp; customize</td><td>If we ever need a tailored editor &mdash; e.g. enforce the quote/voice rules in the UI, or match our content model exactly. We own the code and change whatever we want.</td></tr>
+  </table>
+  <p>The point: we can adopt the hosted version today for near-zero effort, knowing that forking is always available as a fallback &mdash;
+  and because the content is just Markdown in our repo, switching levels (or leaving entirely) costs nothing.</p>
+
+  <h2>Next step</h2>
+  <p>If this looks right, the concrete setup is small: a <code>.pages.yml</code> at the repo root describing the fireside
+  collection (Option&nbsp;A), set <code>web/public/</code> as the image upload folder so uploads get real URLs, and one test invite to a writer.
+  I can scaffold that <code>.pages.yml</code> whenever you want to move.</p>
+
+  <div class="footer">
+    Sources:
+    <a href="https://pagescms.org/">pagescms.org</a> &middot;
+    <a href="https://pagescms.org/docs/">Pages CMS docs</a> &middot;
+    <a href="https://pagescms.org/docs/configuration/collaborators/">Collaborators (email invites)</a> &middot;
+    <a href="https://css-tricks.com/using-pages-cms-for-static-site-content-management/">CSS-Tricks walkthrough</a>.
+    Repo facts verified against <code>web/src/lib/firesides.ts</code> and <code>content/firesides/</code>.
+  </div>
+
+</main>
+</body>
+</html>

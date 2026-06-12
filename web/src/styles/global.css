@@ -253,9 +253,54 @@
     margin: 3em 0;
   }
 
-  /* Citations section — last h2 directly followed by an ol */
-  .fireside-prose h2#citations,
-  .fireside-prose h2:last-of-type:has(+ ol) {
+  /* Inline citation markers — subtle gray superscript links. A controlled
+     raise (not `vertical-align: super`, which sits too high with a small font). */
+  .fireside-prose sup.fn-ref {
+    font-size: 0.72em;
+    line-height: 0;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.35em;
+    margin-left: 1px;
+  }
+
+  .fireside-prose sup.fn-ref a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .fireside-prose sup.fn-ref a:hover {
+    color: var(--color-accent);
+  }
+
+  /* Block-quote citation — pulled out of the quote and set as a small,
+     right-aligned reference beneath it (the attribution convention). */
+  .fireside-prose blockquote .blockquote-ref {
+    display: block;
+    margin-top: 0.6em;
+    text-align: right;
+    font-style: normal;
+  }
+
+  .fireside-prose blockquote .blockquote-ref sup.fn-ref {
+    position: static;
+    top: 0;
+    font-size: 0.8125rem;
+    margin-left: 0.4em;
+  }
+
+  .fireside-prose blockquote .blockquote-ref sup.fn-ref a {
+    color: #9ca3af;
+  }
+
+  .fireside-prose blockquote .blockquote-ref sup.fn-ref a::before {
+    content: "\2014\00a0"; /* em dash + space, so a lone number reads as a citation */
+  }
+
+  /* Endnotes — the "References"/"Citations" heading and its note list. The
+     heading + list are tagged in [slug].astro; works for h2 or h3. */
+  .fireside-prose .endnotes-heading {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -265,14 +310,15 @@
     border-bottom: 1px solid #e5e5e5;
     background: none;
     padding: 0 0 0.5rem;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin: 3rem 0 1rem;
   }
 
-  .fireside-prose h2#citations + ol li,
-  .fireside-prose h2:last-of-type:has(+ ol) + ol li {
+  .fireside-prose .endnotes-list {
+    counter-reset: endnote;
+  }
+
+  .fireside-prose .endnotes-list li {
+    counter-increment: endnote;
     font-size: 13px;
     line-height: 1.5;
     color: #737373;
@@ -280,16 +326,20 @@
     padding-left: 1.75rem;
   }
 
-  .fireside-prose h2#citations + ol li::before,
-  .fireside-prose h2:last-of-type:has(+ ol) + ol li::before {
+  .fireside-prose .endnotes-list li::before {
+    content: counter(endnote) ".";
     font-size: 13px;
     line-height: 1.5;
     color: #999;
   }
 
-  .fireside-prose h2#citations + ol li em,
-  .fireside-prose h2:last-of-type:has(+ ol) + ol li em {
+  .fireside-prose .endnotes-list li em {
     color: #737373;
+  }
+
+  /* Briefly mark the note a superscript link jumps to */
+  .fireside-prose .endnotes-list li:target {
+    color: #141414;
   }
 
 } /* close @layer base */
@@ -452,6 +502,57 @@
 
   .fireside-prose hr {
     display: none;
+  }
+
+  /* Inline citation markers — small black superscript, no link styling */
+  .fireside-prose sup.fn-ref {
+    font-size: 7pt;
+  }
+
+  .fireside-prose sup.fn-ref a {
+    color: black !important;
+  }
+
+  /* Block-quote citation — small right-aligned reference beneath the quote */
+  .fireside-prose blockquote .blockquote-ref {
+    display: block;
+    margin-top: 4pt;
+    text-align: right;
+  }
+
+  .fireside-prose blockquote .blockquote-ref sup.fn-ref {
+    font-size: 8pt;
+    top: 0;
+  }
+
+  .fireside-prose blockquote .blockquote-ref sup.fn-ref a::before {
+    content: "\2014\00a0";
+  }
+
+  /* Endnotes — compact, regardless of h2/h3 heading level */
+  .fireside-prose .endnotes-heading {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: black;
+    border-top: none;
+    border-bottom: 0.5pt solid #999;
+    margin: 14pt 0 8pt;
+    padding-bottom: 3pt;
+    page-break-after: avoid;
+  }
+
+  .fireside-prose .endnotes-list li {
+    font-size: 8.5pt;
+    line-height: 1.3;
+    margin-bottom: 3pt;
+    color: #222;
+  }
+
+  .fireside-prose .endnotes-list li::before {
+    font-size: 8.5pt;
+    color: #555;
   }
 
   a {
