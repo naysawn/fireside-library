@@ -20,6 +20,8 @@ discussion_questions:
 
 Throughout history, humanity has pondered the fundamental questions of existence: Who are we? Why are we here?
 
+### Created in God's Image
+
 The writings of Baha'u'llah offer much guidance on this age-old question. While the answer is multi-faceted and deep, Baha'u'llah emphasizes that we were each created out of God's infinite love, to come to know God and to worship Him. In the Short Obligatory Prayer, we all say: *"I bear witness, O my God, that Thou hast created me to know Thee and to worship Thee."* What that means — and why, in the end, it leads us to a life of service — is what this section aims to unpack.
 
 In a Hidden Word, Baha'u'llah says:
@@ -36,6 +38,8 @@ The Writings describe two sides to our nature. We have a higher, spiritual natur
 
 > "Man has two aspects: the physical, which is subject to nature, and the merciful or divine, which is connected with God.… if the divine and spiritual should triumph over the human and natural, he is, verily, an angel." (Abdu'l-Baha, The Promulgation of Universal Peace)
 
+### The Good Is God's
+
 Seen this way, because we are created in the image and likeness of God, we are meant to be clear channels for God's love to flow into the world. It is our ego and our attachment to the world that gets in the way.
 
 So acting virtuously — through kindness, love, generosity — is the very means by which God's love reaches the world. Perhaps this is why Baha'u'llah says, *"Every good thing is of God, and every evil thing is from yourselves"* (Baha'u'llah, Gleanings). The good is not our private invention; it is God's, passing through us. The one thing that blocks it is the ego. And the channel is not cleared by waiting until we feel holy enough — it is cleared by acting and struggling. The more we serve, the more freely the power moves through us.
@@ -48,14 +52,16 @@ Those gifts only find merit when used in the world. Can you really be kind in th
 
 Here the two halves of our purpose meet. Worship is not only what happens when we pray or turn to God in our hearts — a deed done with love is itself a kind of prayer. To lift another's burden, to act with kindness, is not merely a good thing to do; it is worship. Abdu'l-Baha says it plainly:
 
-> Therefore strive that your actions day by day may be beautiful prayers. Turn towards God, and seek always to do that which is right and noble. Enrich the poor, raise the fallen, comfort the sorrowful, bring healing to the sick, reassure the fearful, rescue the oppressed, bring hope to the hopeless, shelter the destitute! (Abdu'l-Baha, Paris Talks)
+> Strive that your actions day by day may be beautiful prayers. Turn towards God, and seek always to do that which is right and noble. Enrich the poor, raise the fallen, comfort the sorrowful, bring healing to the sick, reassure the fearful, rescue the oppressed, bring hope to the hopeless, shelter the destitute! (Abdu'l-Baha, Paris Talks)
 
-It is how God's light reaches the world: you might say the whole reason we were created is to channel His love into it — and love is what transforms the world. The mirror, at last, is turned to cast its light on someone else.
+### Giving Out & Being Refilled
 
-But giving of ourselves, day after day, is hard; left to our own strength, we soon run dry. This is why we are also given an inner life — prayer, meditation, and study of the sacred writings. Together, these three refill us and give us the superhuman strength to keep acting in the world. 
+It is how God's light reaches the world - through pure channels funneling His love into it — and it is His love which is what transforms the world. The hollow reed, emptied of self is able to channel God's love through themselves to others. The perfect mirror, attuned to the sun is able to reflect that light onto others. 
+
+But acts of selfless service, day after day, is often hard; left to our own strength alone, we soon run dry. This is why we are also the tools of prayer, meditation, and study of the sacred writings. Together, these three tools refill us and give us the superhuman strength to keep acting in the world. 
 
 Shoghi Effendi, the Guardian of the Baha'i Faith, captures this rhythm of giving out and being refilled:
 
 > We must be like the fountain or spring that is continually emptying itself of all that it has and is continually being refilled from an invisible source. To be continually giving out for the good of our fellows undeterred by fear of poverty and reliant on the unfailing bounty of the Source of all wealth and all good—this is the secret of right living. (Shoghi Effendi)
 
-But what does this look like in an ordinary day? How do we actually live as channels of God's love, moment to moment? That is what we'll explore in Section 2.
+Shoghi Effendi manifested this himself in all of His days - serving from monrning until night. But what does this in our lives? That is what we'll explore in Section 2.

@@ -68,8 +68,6 @@ This is what gives service its meaning. Every time we act with genuine love or p
 
 And this is not some private spiritual hobby. Look honestly at the world's troubles and it's tempting to call them material: broken systems, scarce resources, failing institutions. Baha'u'llah locates the sickness further down:
 
-
-
 To worship God is to let His qualities live through what we do. *"Service is prayer,"* Abdu'l-Baha taught, which is how an ordinary action, a kindness, a task done with love, becomes a prayer in its own right:
 
 > Therefore strive that your actions day by day may be beautiful prayers. Turn towards God, and seek always to do that which is right and noble. Enrich the poor, raise the fallen, comfort the sorrowful, bring healing to the sick, reassure the fearful, rescue the oppressed, bring hope to the hopeless, shelter the destitute!

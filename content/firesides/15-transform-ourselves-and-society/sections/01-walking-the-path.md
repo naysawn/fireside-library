@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 1
 title: Walking the Path
 idea_progression: |-
   0. Picks up "each of us is a channel" — names the lonely-climb worry
